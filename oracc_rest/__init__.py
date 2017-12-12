@@ -38,6 +38,17 @@ class GeneralSearch(Resource):
         return results
 
 
+class FullList(Resource):
+    def get(self):
+        """Search "all" fields in the database for the given word."""
+        # Pass to ElasticSearch
+        search = ESearch()
+        results = search.list_all()
+        # Return search results to caller
+        return results
+
+
 # Make the search API available at the "/search" endpoint
 api.add_resource(SingleFieldSearch, '/search')
 api.add_resource(GeneralSearch, '/search/<string:word>')
+api.add_resource(FullList, '/search_all')

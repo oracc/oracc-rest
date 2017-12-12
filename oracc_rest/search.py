@@ -58,3 +58,14 @@ class ESearch:
             return self._get_results(self._execute_general(word))
         else:
             return self._get_results(self._execute(word, fieldname))
+
+    def list_all(self):
+        '''Get a list of all entries.'''
+        search = Search(using=self.client, index="oracc").query(
+                                            "nested",
+                                            path="entries",
+                                            inner_hits={},
+                                            query=Q("match_all")
+                                            )
+        results = search.execute()
+        return self._get_results(results)
