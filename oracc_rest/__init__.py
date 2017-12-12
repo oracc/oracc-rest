@@ -8,7 +8,7 @@ app = Flask(__name__)
 api = Api(app)
 
 
-class OraccREST(Resource):
+class SingleFieldSearch(Resource):
     def get(self):
         args = request.form
         # Parse request
@@ -26,5 +26,18 @@ class OraccREST(Resource):
         return results
 
 
+class GeneralSearch(Resource):
+    def get(self, word):
+        """Search "all" fields in the database for the given word."""
+        # Pass to ElasticSearch
+        search = ESearch()
+        results = search.run_general(word)
+        # Return search results to caller
+        if not results:
+            return {}, 204  # "empty content" response if no results found
+        return results
+
+
 # Make the search API available at the "/search" endpoint
-api.add_resource(OraccREST, '/search')
+api.add_resource(SingleFieldSearch, '/search')
+api.add_resource(GeneralSearch, '/search/<string:word>')
