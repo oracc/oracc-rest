@@ -5,6 +5,7 @@ from elasticsearch_dsl import Search, Q
 
 class ESearch:
     FIELDNAMES = ['headword', 'gw', 'cf', 'forms.n', 'norms.n', 'senses.mng']
+    NESTED_FIELDS = ["entries.{}".format(field) for field in FIELDNAMES]
 
     def __init__(self):
         self.client = Elasticsearch()
@@ -28,17 +29,13 @@ class ESearch:
         '''
         Given a word, return all matching entries in the local ElasticSearch DB.
         '''
-        # Build the subqueries searching the individual fields for the word
-        subqueries = [
-            Q("match", **{"entries.{}".format(fieldname): word})
-            for fieldname in self.FIELDNAMES
-        ]
-        # And combine them in a bool query (within a nested query)
         search = Search(using=self.client, index="oracc").query(
                                             "nested",
                                             path="entries",
                                             inner_hits={},
-                                            query=Q("bool", should=subqueries)
+                                            query=Q("multi_match",
+                                                    query=word,
+                                                    fields=self.NESTED_FIELDS)
                                             )
         results = search.execute()
         return results
