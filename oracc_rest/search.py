@@ -9,7 +9,7 @@ class ESearch:
     def __init__(self):
         self.client = Elasticsearch()
 
-    def _execute(self, fieldname, word):
+    def _execute(self, word, fieldname):
         '''
         Given a word and an entries fieldname, return all matching entries in
         the local ElasticSearch DB.
@@ -54,8 +54,9 @@ class ESearch:
                 result_list.append(hit.summary)
         return result_list
 
-    def run(self, fieldname, word):
-        return self._get_results(self._execute(fieldname, word))
-
-    def run_general(self, word):
-        return self._get_results(self._execute_general(word))
+    def run(self, word, fieldname=None):
+        '''Find matches for the given word (optionally in a specified field).'''
+        if fieldname is None:
+            return self._get_results(self._execute_general(word))
+        else:
+            return self._get_results(self._execute(word, fieldname))

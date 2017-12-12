@@ -19,7 +19,7 @@ class SingleFieldSearch(Resource):
         fieldname, word = list(args.items())[0]
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.run(fieldname, word)
+        results = search.run(word, fieldname)
         # Return search results to caller
         if not results:
             return {}, 204  # "empty content" response if no results found
@@ -31,7 +31,7 @@ class GeneralSearch(Resource):
         """Search "all" fields in the database for the given word."""
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.run_general(word)
+        results = search.run(word)
         # Return search results to caller
         if not results:
             return {}, 204  # "empty content" response if no results found
