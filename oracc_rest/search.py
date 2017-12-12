@@ -4,7 +4,7 @@ from elasticsearch_dsl import Search, Q
 
 
 class ESearch:
-    FIELDNAMES = ['headword', 'gw', 'cf']
+    FIELDNAMES = ['headword', 'gw', 'cf', 'forms.n', 'norms.n', 'senses.mng']
 
     def __init__(self):
         self.client = Elasticsearch()
