@@ -45,13 +45,14 @@ class ESearch:
 
     def _get_results(self, results):
         '''
-        Compile list of results.
+        Compile list of the headword, guideword and cuniform for each result.
         '''
-        # Currently returns the summary for each hit
         result_list = []
         for glossary_results in results.hits.hits:
             for hit in glossary_results['inner_hits']['entries'].hits:
-                result_list.append(hit.summary)
+                result_list.append({'headword': hit.headword,
+                                    'gw': hit.gw,
+                                    'cf': hit.cf})
         return result_list
 
     def run(self, word, fieldname=None):
