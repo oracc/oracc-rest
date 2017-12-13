@@ -35,7 +35,10 @@ class ESearch:
                                             inner_hits={},
                                             query=Q("multi_match",
                                                     query=word,
-                                                    fields=self.NESTED_FIELDS)
+                                                    fields=self.NESTED_FIELDS,
+                                                    size=1000  # nr of entries
+                                                    ),
+                                            size=120
                                             )
         results = search.execute()
         return results
@@ -63,7 +66,8 @@ class ESearch:
                                             "nested",
                                             path="entries",
                                             inner_hits={},
-                                            query=Q("match_all")
+                                            query=Q("match_all", size=1000),
+                                            size=120  # number of glossaries
                                             )
         results = search.execute()
         return self._get_results(results)
