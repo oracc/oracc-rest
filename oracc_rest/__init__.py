@@ -1,4 +1,4 @@
-from flask import Flask
+from flask import Flask, jsonify
 
 from .search import ESearch
 
@@ -23,7 +23,7 @@ def general_search(word):
     # Return search results to caller
     if not results:
         return ''
-    return str(results)
+    return jsonify(entries=results)
 
 
 @app.route('/search_all')
@@ -33,7 +33,7 @@ def all_entries():
     search = ESearch()
     results = search.list_all()
     # Return search results to caller
-    return str(results)
+    return jsonify(entries=results)
 
 
 # class SingleFieldSearch(Resource):
