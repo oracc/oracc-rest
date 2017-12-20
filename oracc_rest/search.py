@@ -4,8 +4,7 @@ from elasticsearch_dsl import Search, Q
 
 
 class ESearch:
-    FIELDNAMES = ['headword', 'gw', 'cf', 'forms.n', 'norms.n', 'senses.mng']
-    NESTED_FIELDS = ["entries.{}".format(field) for field in FIELDNAMES]
+    FIELDNAMES = ['headword', 'gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
 
     def __init__(self):
         self.client = Elasticsearch()
@@ -14,31 +13,27 @@ class ESearch:
         '''
         Given a word and an entries fieldname, return all matching entries in
         the local ElasticSearch DB.
+
+        Currently returns at most 10(?) hits.
         '''
-        search = Search(using=self.client,
-                        index="oracc").query(
-                            "nested",
-                            path="entries",
-                            inner_hits={},
-                            query=Q("match",
-                                    **{"entries.{}".format(fieldname): word}))
+        search = Search(using=self.client, index="oracc").query(
+                                    "match",
+                                    **{"entries.{}".format(fieldname): word})
         results = search.execute()
         return results
 
     def _execute_general(self, word):
         '''
         Given a word, return all matching entries in the local ElasticSearch DB.
+
+        Currently returns at most 100 hits.
         '''
         search = Search(using=self.client, index="oracc").query(
-                                            "nested",
-                                            path="entries",
-                                            inner_hits={"size": 100},  # nr of inner hits
-                                            query=Q("multi_match",
-                                                    query=word,
-                                                    fields=self.NESTED_FIELDS
-                                                    )
+                                            "multi_match",
+                                            query=word,
+                                            fields=self.FIELDNAMES
                                             )
-        results = search[:120].execute()  # number of glossaries
+        results = search[:100].execute()
         return results
 
     def _get_results(self, results):
@@ -46,11 +41,11 @@ class ESearch:
         Compile list of the headword, guideword and cuniform for each result.
         '''
         result_list = []
-        for glossary_results in results.hits.hits:
-            for hit in glossary_results['inner_hits']['entries'].hits:
-                result_list.append({'headword': hit.headword,
-                                    'gw': hit.gw,
-                                    'cf': hit.cf})
+        for hit in results:
+            # TODO investigate why some entries don't have certain attributes
+            result_list.append({'headword': hit.headword if hasattr(hit, "headword") else None,
+                                'gw': hit.gw if hasattr(hit, "gw") else None,
+                                'cf': hit.cf if hasattr(hit, "cf") else None})
         return result_list
 
     def run(self, word, fieldname=None):
@@ -61,12 +56,9 @@ class ESearch:
             return self._get_results(self._execute(word, fieldname))
 
     def list_all(self):
-        '''Get a list of all entries.'''
-        search = Search(using=self.client, index="oracc").query(
-                                            "nested",
-                                            path="entries",
-                                            inner_hits={"size": 100},
-                                            query=Q("match_all"),
-                                            )
-        results = search[:120].execute()
+        '''Get a list of all entries.
+
+        Currently returns at most 100 hits.'''
+        search = Search(using=self.client, index="oracc").query("match_all")
+        results = search[:100].execute()
         return self._get_results(results)
