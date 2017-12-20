@@ -48,7 +48,9 @@ class ESearch:
         result_list = []
         for glossary_results in results.hits.hits:
             for hit in glossary_results['inner_hits']['entries'].hits:
-                result_list.append(hit.to_dict())
+                result_list.append({'headword': hit.headword,
+                                    'gw': hit.gw,
+                                    'cf': hit.cf})
         return result_list
 
     def run(self, word, fieldname=None):
