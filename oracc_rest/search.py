@@ -43,9 +43,10 @@ class ESearch:
         result_list = []
         for hit in results:
             # TODO investigate why some entries don't have certain attributes
-            result_list.append({'headword': hit.headword if hasattr(hit, "headword") else None,
-                                'gw': hit.gw if hasattr(hit, "gw") else None,
-                                'cf': hit.cf if hasattr(hit, "cf") else None})
+            # result_list.append({'headword': hit.headword if hasattr(hit, "headword") else None,
+            #                     'gw': hit.gw if hasattr(hit, "gw") else None,
+            #                     'cf': hit.cf if hasattr(hit, "cf") else None})
+            result_list.append(hit.to_dict())
         return result_list
 
     def run(self, word, fieldname=None):
