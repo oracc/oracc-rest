@@ -65,9 +65,8 @@ class ESearch:
         search = Search(using=self.client, index="oracc").query(
                                             "nested",
                                             path="entries",
-                                            inner_hits={},
-                                            query=Q("match_all", size=1000),
-                                            size=120  # number of glossaries
+                                            inner_hits={"size": 100},
+                                            query=Q("match_all"),
                                             )
-        results = search.execute()
+        results = search[:120].execute()
         return self._get_results(results)
