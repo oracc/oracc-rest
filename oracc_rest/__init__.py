@@ -20,19 +20,16 @@ def search_field():
     args = request.form
     # Parse request
     if not args:
-        return jsonify([])
-        # return 'No query specified!', 400
+        return 'No query specified!', 400
     elif len(args) > 1:
-        return jsonify([])
-        # abort(400, 'Too many fields specified!')
+        return 'Too many fields specified!', 400
     fieldname, word = list(args.items())[0]
     # Pass to ElasticSearch
     search = ESearch()
     results = search.run(word, fieldname)
     # Return search results to caller
     if not results:
-        return jsonify([])
-        # return {}, 204  # "empty content" response if no results found
+        return jsonify([]), 204  # "no content" response if no results found
     return jsonify(results)
 
 
@@ -44,7 +41,7 @@ def general_search(word):
     results = search.run(word)
     # Return search results to caller
     if not results:
-        return ''
+        return jsonify([]), 204  # "no content" response if no results found
     return jsonify(results)
 
 
