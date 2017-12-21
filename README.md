@@ -14,5 +14,7 @@ endpoint. This searches multiple fields for the given query word and returns all
 results. The list of fields currently searched is: headword, gw (guideword), cf
 (cuniform), senses.mng (meaning), forms.n and norms.n (lemmatisations).
 
-In either search mode, each hit is returned as a dictionary comprising the
-headword, gw and cf fields.
+A third endpoint at `/search_all` can be used to retrieve all indexed entries.
+
+In all cases, the result is a JSON array with the full contents of each hit. If
+no matches are found, a 204 (No Content) status code is returned.
