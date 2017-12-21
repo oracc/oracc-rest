@@ -1,2 +1,2 @@
-flask_restful
+flask
 elasticsearch_dsl
