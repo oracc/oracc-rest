@@ -16,7 +16,7 @@ class ESearch:
         '''
         search = Search(using=self.client, index="oracc").query(
                                     "match",
-                                    **{"entries.{}".format(fieldname): word})
+                                    **{fieldname: word})
         results = search.scan()
         return results
 
