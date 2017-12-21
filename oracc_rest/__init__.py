@@ -25,7 +25,7 @@ def general_search(word):
     # Return search results to caller
     if not results:
         return ''
-    return json.dumps(results)
+    return jsonify(results)
 
 
 @app.route('/search_all')
@@ -35,7 +35,7 @@ def all_entries():
     search = ESearch()
     results = search.list_all()
     # Return search results to caller
-    return json.dumps(results)
+    return jsonify(results)
 
 
 # class SingleFieldSearch(Resource):
