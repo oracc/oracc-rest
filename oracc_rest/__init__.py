@@ -45,7 +45,7 @@ class FullList(Resource):
         search = ESearch()
         results = search.list_all()
         # Return search results to caller
-        return results
+        return results, {'Access-Control-Allow-Origin': '*'}
 
 
 # Make the search API available at the "/search" endpoint
