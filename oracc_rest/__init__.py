@@ -1,5 +1,5 @@
-from flask import Flask, request, abort
-from flask_restful import Resource, Api
+from flask import abort, Flask, request
+from flask_restful import Api, Resource
 
 from .search import ESearch
 
