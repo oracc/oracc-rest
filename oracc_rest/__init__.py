@@ -1,10 +1,12 @@
 from flask import abort, Flask, request
+from flask_cors import CORS
 from flask_restful import Api, Resource
 
 from .search import ESearch
 
 
 app = Flask(__name__)
+CORS(app)
 api = Api(app)
 
 
@@ -45,7 +47,7 @@ class FullList(Resource):
         search = ESearch()
         results = search.list_all()
         # Return search results to caller
-        return results, {'Access-Control-Allow-Origin': '*'}
+        return results
 
 
 # Make the search API available at the "/search" endpoint
