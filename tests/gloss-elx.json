@@ -1,0 +1,445 @@
+{
+  "type": "glossary",
+  "project": "neo",
+  "source": "http://oracc.org/neo",
+  "license": "This data is released under the CC0 license",
+  "license-url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "more-info": "http://oracc.org/doc/opendata/",
+  "UTC-timestamp": "2017-12-14T10:48:39",
+  "lang": "elx",
+  "entries": [
+    {
+      "headword": "kirir[goddess]N",
+      "id": "elx.x000000",
+      "icount": "1",
+      "ipct": "100",
+      "xis": "elx.r00000",
+      "dc_title": "neo/elx/kirir[goddess]",
+      "cf": "kirir",
+      "gw": "goddess",
+      "pos": "N",
+      "forms": [
+        {
+          "type": "form",
+          "id": "elx.x000001",
+          "n": "ki-ri-ir",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00000"
+        }
+      ],
+      "norms": [
+        {
+          "id": "elx.x000002",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00000",
+          "n": "kirir",
+          "forms": [
+            {
+              "type": "normform",
+              "id": "elx.x000003",
+              "ref": "elx.x000001",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00000"
+            }
+          ]
+        }
+      ],
+      "senses": [
+        {
+          "type": "sense",
+          "id": "elx.x000004",
+          "n": "kirir[goddess//goddess]N'N",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00000",
+          "num": "1.",
+          "pos": "N",
+          "mng": "goddess",
+          "forms": [
+            {
+              "type": "form",
+              "id": "elx.x000005",
+              "n": "ki-ri-ir",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00000"
+            }
+          ],
+          "norms": [
+            {
+              "id": "elx.x000006",
+              "n": "kirir",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00000"
+            }
+          ],
+          "sigs": [
+            {
+              "type": "sig",
+              "id": "elx.x000007",
+              "sig": "@neo%elx:ki-ri-ir=kirir[goddess//goddess]N'N$kirir",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00000"
+            }
+          ]
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00000.p.s000"
+        }
+      ]
+    },
+    {
+      "headword": "nap[god]N",
+      "id": "elx.x000008",
+      "icount": "1",
+      "ipct": "100",
+      "xis": "elx.r00001",
+      "dc_title": "neo/elx/nap[god]",
+      "cf": "nap",
+      "gw": "god",
+      "pos": "N",
+      "forms": [
+        {
+          "type": "form",
+          "id": "elx.x000009",
+          "n": "nap",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00001"
+        }
+      ],
+      "norms": [
+        {
+          "id": "elx.x000010",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00001",
+          "n": "nap",
+          "forms": [
+            {
+              "type": "normform",
+              "id": "elx.x000011",
+              "ref": "elx.x000009",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00001"
+            }
+          ]
+        }
+      ],
+      "senses": [
+        {
+          "type": "sense",
+          "id": "elx.x000012",
+          "n": "nap[god//god]N'N",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00001",
+          "num": "1.",
+          "pos": "N",
+          "mng": "god",
+          "forms": [
+            {
+              "type": "form",
+              "id": "elx.x000013",
+              "n": "nap",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00001"
+            }
+          ],
+          "norms": [
+            {
+              "id": "elx.x000014",
+              "n": "nap",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00001"
+            }
+          ],
+          "sigs": [
+            {
+              "type": "sig",
+              "id": "elx.x000015",
+              "sig": "@neo%elx:nap=nap[god//god]N'N$nap",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00001"
+            }
+          ]
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00001.p.s000"
+        }
+      ]
+    },
+    {
+      "headword": "usan[goddess]N",
+      "id": "elx.x000016",
+      "icount": "1",
+      "ipct": "100",
+      "xis": "elx.r00002",
+      "dc_title": "neo/elx/usan[goddess]",
+      "cf": "usan",
+      "gw": "goddess",
+      "pos": "N",
+      "forms": [
+        {
+          "type": "form",
+          "id": "elx.x000017",
+          "n": "{u₂-sa-an}usan₄",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00002"
+        }
+      ],
+      "norms": [
+        {
+          "id": "elx.x000018",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00002",
+          "n": "usan",
+          "forms": [
+            {
+              "type": "normform",
+              "id": "elx.x000019",
+              "ref": "elx.x000017",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00002"
+            }
+          ]
+        }
+      ],
+      "senses": [
+        {
+          "type": "sense",
+          "id": "elx.x000020",
+          "n": "usan[goddess//goddess]N'N",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00002",
+          "num": "1.",
+          "pos": "N",
+          "mng": "goddess",
+          "forms": [
+            {
+              "type": "form",
+              "id": "elx.x000021",
+              "n": "{u₂-sa-an}usan₄",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00002"
+            }
+          ],
+          "norms": [
+            {
+              "id": "elx.x000022",
+              "n": "usan",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00002"
+            }
+          ],
+          "sigs": [
+            {
+              "type": "sig",
+              "id": "elx.x000023",
+              "sig": "@neo%elx:{u₂-sa-an}usan₄=usan[goddess//goddess]N'N$usan",
+              "icount": "1",
+              "ipct": "100",
+              "xis": "elx.r00002"
+            }
+          ]
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian",
+          "icount": "1",
+          "ipct": "100",
+          "xis": "elx.r00002.p.s000"
+        }
+      ]
+    },
+    {
+      "headword": "apši[snake]N",
+      "id": "xhu.x000040",
+      "icount": "2",
+      "ipct": "100",
+      "xis": "xhu.r00005",
+      "dc_title": "neo/xhu/apši[snake]",
+      "cf": "apši",
+      "gw": "snake",
+      "pos": "N",
+      "forms": [
+        {
+          "type": "form",
+          "id": "xhu.x000041",
+          "n": "ap-še",
+          "icount": "1",
+          "ipct": "50",
+          "xis": "xhu.r00006"
+        },
+        {
+          "type": "form",
+          "id": "xhu.x000042",
+          "n": "ap-ši",
+          "icount": "1",
+          "ipct": "50",
+          "xis": "xhu.r00007"
+        }
+      ],
+      "norms": [
+        {
+          "id": "xhu.x000043",
+          "icount": "1",
+          "ipct": "50",
+          "xis": "xhu.r00006",
+          "n": "apše",
+          "forms": [
+            {
+              "type": "normform",
+              "id": "xhu.x000044",
+              "ref": "xhu.x000041",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00006"
+            }
+          ]
+        },
+        {
+          "id": "xhu.x000045",
+          "icount": "1",
+          "ipct": "50",
+          "xis": "xhu.r00007",
+          "n": "apši",
+          "forms": [
+            {
+              "type": "normform",
+              "id": "xhu.x000046",
+              "ref": "xhu.x000042",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00007"
+            }
+          ]
+        }
+      ],
+      "senses": [
+        {
+          "type": "sense",
+          "id": "xhu.x000047",
+          "n": "apši[snake//snake]N'N",
+          "icount": "2",
+          "ipct": "100",
+          "xis": "xhu.r00005",
+          "num": "1.",
+          "pos": "N",
+          "mng": "snake",
+          "forms": [
+            {
+              "type": "form",
+              "id": "xhu.x000048",
+              "n": "ap-še",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00006"
+            },
+            {
+              "type": "form",
+              "id": "xhu.x000049",
+              "n": "ap-ši",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00007"
+            }
+          ],
+          "norms": [
+            {
+              "id": "xhu.x000050",
+              "n": "apše",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00006"
+            },
+            {
+              "id": "xhu.x000051",
+              "n": "apši",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00007"
+            }
+          ],
+          "sigs": [
+            {
+              "type": "sig",
+              "id": "xhu.x000052",
+              "sig": "@neo%xhu:ap-še=apši[snake//snake]N'N$apše",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00006"
+            },
+            {
+              "type": "sig",
+              "id": "xhu.x000053",
+              "sig": "@neo%xhu:ap-ši=apši[snake//snake]N'N$apši",
+              "icount": "1",
+              "ipct": "50",
+              "xis": "xhu.r00007"
+            }
+          ]
+        }
+      ],
+      "periods": [
+        {
+          "p": "Middle Babylonian",
+          "icount": "2",
+          "ipct": "100",
+          "xis": "xhu.r00005.p.s000"
+        }
+      ]
+    }
+  ],
+  "instances": {
+    "elx.r00000": [
+      "dcclt/nineveh:P365771.134.1"
+    ],
+    "elx.r00001": [
+      "dcclt/nineveh:P365771.126.1"
+    ],
+    "elx.r00002": [
+      "dcclt/nineveh:P365771.135.1"
+    ],
+    "elx.r00000.p.s000": [
+      "dcclt/nineveh:P365771.134.1"
+    ],
+    "elx.r00001.p.s000": [
+      "dcclt/nineveh:P365771.126.1"
+    ],
+    "elx.r00002.p.s000": [
+      "dcclt/nineveh:P365771.135.1"
+    ]
+  },
+  "summaries": {
+    "elx.x000000": "<p class=\"summary\" id=\"elx.x000000\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000000.html')\"><span class=\"cf\">kirir</span> [<span class=\"gw\">GODDESS</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"goddess\"</span></p>",
+    "elx.x000008": "<p class=\"summary\" id=\"elx.x000008\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000008.html')\"><span class=\"cf\">nap</span> [<span class=\"gw\">GOD</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"god\"</span></p>",
+    "elx.x000016": "<p class=\"summary\" id=\"elx.x000016\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000016.html')\"><span class=\"cf\">usan</span> [<span class=\"gw\">GODDESS</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"goddess\"</span></p>"
+  }
+}
