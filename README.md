@@ -29,7 +29,7 @@ On a machine with elasticsearch installed, start the ElasticSearch service
 This will make an instance of ElasticSearch accessible on port 9200 by default.
 
 Before the search can be used, the data must be uploaded to ElasticSearch. This
-can be done with `python ingest/bulk_upload.py`, which will ingest the glossary
+can be done with `python -m ingest.bulk_upload`, which will ingest the glossary
 files located in the [neo](neo) folder. The [ingest](ingest) folder has
 some additional information and alternative ways of performing the indexing.
 More documentation will be added about this in due course.

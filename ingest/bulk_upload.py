@@ -5,7 +5,7 @@ import elasticsearch
 import elasticsearch.client
 import elasticsearch.helpers
 
-from break_down import process_file
+from .break_down import process_file
 
 
 INDEX_NAME = "oracc"

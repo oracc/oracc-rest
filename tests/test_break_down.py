@@ -1,6 +1,11 @@
 import json
 
-from break_down import process_file, base_fields, direct_fields, indirect_fields
+from ingest.break_down import (
+    process_file,
+    base_fields,
+    direct_fields,
+    indirect_fields
+)
 
 
 def test_process_file():
