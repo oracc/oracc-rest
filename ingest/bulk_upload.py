@@ -16,12 +16,15 @@ def debug(msg):
     print(msg)
 
 
-def upload_file(es, input_file):
-    entries = process_file(input_file, write_file=False)
+def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["_type"] = TYPE_NAME
     elasticsearch.helpers.bulk(es, entries)
+
+
+def upload_file(es, input_file):
+    upload_entries(es, process_file(input_file, write_file=False))
 
 
 if __name__ == "__main__":
