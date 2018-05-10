@@ -43,12 +43,20 @@ def process_file(input_name, write_file=True):
     with open(input_name, 'r') as infile:
         data = json.load(infile)
 
-    data.pop('instances', None)  # TODO link these later using the xis
+    instances = data["instances"]
     base_data = {key: data[key] for key in base_fields}
 
     new_entries = []
     for entry in data["entries"]:
+        # Create a flat entry from the nested norms, forms, senses etc.
         new_entry = process_entry(entry)
+        # Find the instance that is referred to by the entry. For now, just link
+        # the top-level reference rather than that of individual senses, norms
+        # etc. Every entry should have a corresponding instance in the glossary,
+        # so if something is missing this will throw a KeyError, which will let
+        # us know that there is something wrong with the glossary.
+        new_entry["instances"] = instances[entry["xis"]]
+        # Add the attributes shared by all entries in the glossary
         new_entry.update(base_data)
         new_entries.append(new_entry)
         if write_file:

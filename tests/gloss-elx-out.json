@@ -17,6 +17,9 @@
         "periods_p": [
             "Neo-Assyrian"
         ],
+        "instances": [
+            "dcclt/nineveh:P365771.134.1"
+        ],
         "project": "neo",
         "lang": "elx"
     },
@@ -38,6 +41,9 @@
         "periods_p": [
             "Neo-Assyrian"
         ],
+        "instances": [
+            "dcclt/nineveh:P365771.126.1"
+        ],
         "project": "neo",
         "lang": "elx"
     },
@@ -58,6 +64,9 @@
         ],
         "periods_p": [
             "Neo-Assyrian"
+        ],
+        "instances": [
+            "dcclt/nineveh:P365771.135.1"
         ],
         "project": "neo",
         "lang": "elx"
@@ -81,6 +90,10 @@
         ],
         "periods_p": [
             "Middle Babylonian"
+        ],
+        "instances": [
+            "dcclt:P332928.83.4",
+            "dcclt:P332948.43.4"
         ],
         "project": "neo",
         "lang": "elx"
