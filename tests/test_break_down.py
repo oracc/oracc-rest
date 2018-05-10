@@ -31,3 +31,6 @@ def test_process_file():
                 nested_name = "{}_{}".format(field, nested_field)
                 for value in old_entry[field]:
                     assert value[nested_field] in new_entry[nested_name]
+        # Check that the top-level instances are correctly linked
+        correct_instances = original_data["instances"][old_entry["xis"]]
+        assert sorted(new_entry["instances"]) == sorted(correct_instances)
