@@ -59,10 +59,11 @@ def process_file(input_name, write_file=True):
         # Add the attributes shared by all entries in the glossary
         new_entry.update(base_data)
         new_entries.append(new_entry)
-        if write_file:
-            output_name = input_name.rsplit('.', 1)[0] + "-entries.json"
-            with open(output_name, 'w') as outfile:
-                header = '{ "index" : { "_id" : "' + entry["id"] + '" } }'
+    if write_file:
+        output_name = input_name.rsplit('.', 1)[0] + "-entries.json"
+        with open(output_name, 'w') as outfile:
+            for new_entry in new_entries:
+                header = '{ "index" : { "_id" : "' + new_entry["id"] + '" } }'
                 print(header, file=outfile)
                 print(json.dumps(new_entry), file=outfile)
     print("Finished processing {}".format(input_name))
