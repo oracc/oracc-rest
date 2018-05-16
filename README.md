@@ -1,5 +1,47 @@
 A RESTful API for querying the ORACC database using ElasticSearch.
 
+## ElasticSearch management
+We are currently using ElasticSearch 6.
+
+To install ElasticSearch:
+* OS X: `brew install elasticsearch`
+* Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). 
+
+To launch an instance of ElasticSearch accessible in its default port 9200:
+* OS X: `elasticsearch -d`
+* Ubuntu: `systemctl start elasticsearch`
+
+You can check ElasticSearch was successfully launched by running:
+
+```
+curl localhost:9200
+```
+
+The output should show something similar to this:
+
+```
+{
+  "name" : "RAjuGHr",
+  "cluster_name" : "elasticsearch_raquel",
+  "cluster_uuid" : "QnjkS8UATzCIIAil2HMAYQ",
+  "version" : {
+    "number" : "6.1.1",
+    "build_hash" : "bd92e7f",
+    "build_date" : "2017-12-17T20:23:25.338Z",
+    "build_snapshot" : false,
+    "lucene_version" : "7.1.0",
+    "minimum_wire_compatibility_version" : "5.6.0",
+    "minimum_index_compatibility_version" : "5.0.0"
+  },
+  "tagline" : "You Know, for Search"
+}
+```
+
+To stop ElasticSearch:
+* OS X: `pkill -f elasticsearch`
+* Ubuntu: `sudo service elasticsearch stop`
+
+
 ## Calling the search functionality
 
 The search can be accessed at the `/search` endpoint of a server running
@@ -23,10 +65,6 @@ no matches are found, a 204 (No Content) status code is returned.
 
 
 ## Indexing the data
-
-On a machine with elasticsearch installed, start the ElasticSearch service
-(e.g. on OS X, type `elasticsearch`; on Ubuntu, `systemctl start elasticsearch`).
-This will make an instance of ElasticSearch accessible on port 9200 by default.
 
 Before the search can be used, the data must be uploaded to ElasticSearch. This
 can be done with `python -m ingest.bulk_upload`, which will ingest the glossary
