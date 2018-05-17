@@ -5,7 +5,7 @@ The code in this repository has been tested with ElasticSearch 5 and 6.
 
 To install ElasticSearch:
 * OS X: `brew install elasticsearch`
-* Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html). 
+* Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html).
 
 To launch an instance of ElasticSearch accessible in its default port 9200:
 * OS X: `elasticsearch -d`
@@ -39,7 +39,7 @@ The output should show something similar to this:
 
 To stop ElasticSearch:
 * OS X: `pkill -f elasticsearch`
-* Ubuntu: `sudo service elasticsearch stop`
+* Ubuntu: `systemctl stop elasticsearch`
 
 
 ## Calling the search functionality
