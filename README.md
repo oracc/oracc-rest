@@ -1,7 +1,7 @@
 A RESTful API for querying the ORACC database using ElasticSearch.
 
 ## ElasticSearch management
-We are currently using ElasticSearch 6.
+The code in this repository has been tested with ElasticSearch 5 and 6.
 
 To install ElasticSearch:
 * OS X: `brew install elasticsearch`
