@@ -56,3 +56,13 @@ def test_process_file(direct_fields, indirect_fields):
         # Check that the top-level instances are correctly linked
         correct_instances = original_data["instances"][old_entry["xis"]]
         assert sorted(new_entry["instances"]) == sorted(correct_instances)
+
+
+def test_name_and_type():
+    """Test that the breaking down of field specs into name and type works."""
+    # Check that we return the right name and str when there is no type given
+    assert name_and_type("field_name") == ("field_name", str)
+    # Check that we return the spec itself when it contains a type, e.g. float
+    assert name_and_type(("field_name", float)) == ("field_name", float)
+    # And check that this still works when the specified type is already str
+    assert name_and_type(("field_name", str)) == ("field_name", str)
