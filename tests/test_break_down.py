@@ -3,7 +3,7 @@ import json
 import pytest
 
 from ingest.break_down import (
-    get_field_name,
+    name_and_type,
     process_file,
     base_fields,
 )
@@ -13,7 +13,7 @@ from ingest.break_down import (
 def direct_fields():
     """Return the names of the fields directly copied into the new entries."""
     from ingest.break_down import direct_fields as fields
-    return [get_field_name(field) for field in fields]
+    return [name_and_type(field)[0] for field in fields]
 
 
 @pytest.fixture(scope="module")
@@ -21,7 +21,7 @@ def indirect_fields():
     """Return the indirect fields as a dictionary, but with any types removed."""
     from ingest.break_down import indirect_fields as fields
     return {
-        outer: [get_field_name(inner) for inner in fields[outer]]
+        outer: [name_and_type(inner)[0] for inner in fields[outer]]
         for outer in fields
     }
 
