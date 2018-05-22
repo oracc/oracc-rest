@@ -42,6 +42,8 @@ def test_process_file(direct_fields, indirect_fields):
         # Check that the direct fields are copied correctly (if seen as strings)
         for field in direct_fields:
             assert str(new_entry[field]) == old_entry[field]
+        # Also check that the count of instances has the right type
+        assert isinstance(new_entry["icount"], int)
         # And the same for the indirect fields
         # For an example of how the output should be like, look at gloss-elx-out.json
         for field in indirect_fields:
