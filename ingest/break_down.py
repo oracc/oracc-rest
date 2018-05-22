@@ -4,7 +4,7 @@ import sys
 
 
 base_fields = ["project", "lang"]  # fields to copy into each entry
-direct_fields = ["gw", "headword", "cf", "icount", "id"]
+direct_fields = ["gw", "headword", "cf", ("icount", int), "id"]
 indirect_fields = {
     "senses": ["mng"],
     "forms": ["n"],
@@ -13,16 +13,36 @@ indirect_fields = {
 }
 
 
+def get_field_name(field_spec):
+    """Get just the field name from a spec which may also contain a target type."""
+    return field_spec[0] if not isinstance(field_spec, str) else field_spec
+
+
+def retrieve_and_cast(entry, spec):
+    """Get a specified field from an entry, possibly casting it to a given type.
+
+    :param entry: a dictionary representing an entry
+    :param spec: a field name (string) or a (field name, type) tuple
+    :return: the requested field of that entry, in the type specified or as a
+        string if spec is only a field name
+    """
+    if not isinstance(spec, str):
+        field, to_type = spec
+    else:  # if spec contains only the field name, not a type
+        field, to_type = spec, str
+    return to_type(entry[field])
+
+
 def process_entry(entry):
     """Flatten the nested fields of an entry."""
     new_entry = {}
     for field in direct_fields:
-        new_entry[field] = entry[field]
+        new_entry[get_field_name(field)] = retrieve_and_cast(entry, field)
     for top_field in indirect_fields:
         for inner_field in indirect_fields[top_field]:
-            new_field = "{}_{}".format(top_field, inner_field)
+            new_field = "{}_{}".format(top_field, get_field_name(inner_field))
             new_entry[new_field] = [
-                        inner_entry[inner_field]
+                        retrieve_and_cast(inner_entry, inner_field)
                         for inner_entry
                         in entry.get(top_field, [])  # in case field is missing
             ]
