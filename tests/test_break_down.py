@@ -23,7 +23,7 @@ def test_process_file():
     for old_entry, new_entry in zip(original_data["entries"], new_entries):
         # Check that the direct fields are copied correctly
         for field in direct_fields:
-            new_entry[field] = old_entry[field]
+            assert new_entry[field] == old_entry[field]
         # And the same for the indirect fields
         # For an example of how the output should be like, look at gloss-elx-out.json
         for field in indirect_fields:
