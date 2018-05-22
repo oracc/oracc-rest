@@ -1,14 +1,32 @@
 import json
 
+import pytest
+
 from ingest.break_down import (
+    get_field_name,
     process_file,
     base_fields,
-    direct_fields,
-    indirect_fields
 )
 
 
-def test_process_file():
+@pytest.fixture(scope="module")
+def direct_fields():
+    """Return the names of the fields directly copied into the new entries."""
+    from ingest.break_down import direct_fields as fields
+    return [get_field_name(field) for field in fields]
+
+
+@pytest.fixture(scope="module")
+def indirect_fields():
+    """Return the indirect fields as a dictionary, but with any types removed."""
+    from ingest.break_down import indirect_fields as fields
+    return {
+        outer: [get_field_name(inner) for inner in fields[outer]]
+        for outer in fields
+    }
+
+
+def test_process_file(direct_fields, indirect_fields):
     """Test that we can break down a small glossary correctly."""
     input_name = "tests/gloss-elx.json"  # modified from the original
     with open(input_name, 'r') as infile:
@@ -21,15 +39,17 @@ def test_process_file():
         for field in base_fields:
             assert entry[field] == original_data[field]
     for old_entry, new_entry in zip(original_data["entries"], new_entries):
-        # Check that the direct fields are copied correctly
+        # Check that the direct fields are copied correctly (if seen as strings)
         for field in direct_fields:
-            assert new_entry[field] == old_entry[field]
+            assert str(new_entry[field]) == old_entry[field]
         # And the same for the indirect fields
         # For an example of how the output should be like, look at gloss-elx-out.json
         for field in indirect_fields:
             for nested_field in indirect_fields[field]:
                 nested_name = "{}_{}".format(field, nested_field)
                 for value in old_entry[field]:
+                    # TODO this needs some changes if the nested field is not a
+                    # string (but so far this isn't the case)
                     assert value[nested_field] in new_entry[nested_name]
         # Check that the top-level instances are correctly linked
         correct_instances = original_data["instances"][old_entry["xis"]]
