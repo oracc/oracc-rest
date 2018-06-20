@@ -26,12 +26,6 @@ def process_entry(entry):
                         for inner_entry
                         in entry.get(top_field, [])  # in case field is missing
             ]
-    # forget about summaries for now
-    # try:
-    #     entry["summary"] = data['summaries'][entry["id"]]
-    #     success += 1
-    # except KeyError:
-    #     print("ID {} not found!".format(entry['id']))
     # TODO Consider making this a generator (if too slow for bigger files)?
     return new_entry
 
