@@ -69,7 +69,7 @@ through an API or from the command line, by sending HTTP requests with `curl`).
 
 ## Setting up the server
 
-To enable the search endpoints described above, the Flask server must also be
+To enable the search endpoints described below, the Flask server must also be
 started. To do this, from the top-level directory do:
 ```
 export FLASK_APP=app.py
@@ -78,11 +78,11 @@ flask run &
 ```
 This will start the server on port 5000 (by default) and expose the endpoints.
 To run the server on a different port, specify (e.g.) `flask run --port 3000`,
-and adjust the port number in the curl calls to `localhost/search` etc.
+and adjust the port number in the curl calls to `localhost/search` etc (see below).
 Additionally, this starts the server in development mode, so any changes to the
 code should be picked up automatically and make the server restart.
 
-## Calling the ORACC's web server search functionality
+## Calling ORACC's web server search functionality
 
 The search can be accessed at the `/search` endpoint of a server running
 ElasticSearch and the ORACC web server in this repo, e.g.:
