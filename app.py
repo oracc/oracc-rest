@@ -1,4 +1,5 @@
 from oracc_rest import app
 
 
-app.run(debug=False)
+if __name__ == "__main__":
+    app.run()

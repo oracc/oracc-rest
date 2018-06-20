@@ -1,0 +1,30 @@
+# Delete the 'oracc' index
+curl -XDELETE 'localhost:9200/oracc'
+
+# Delete all documents of type "entry"
+curl -XPOST 'localhost:9200/oracc/entry/_delete_by_query?conflicts=proceed&pretty' -H 'Content-Type: application/json' -d'
+{
+  "query": {
+    "match_all": {}
+  }
+}
+'
+
+# How many documents are in the index?
+curl -XPOST 'localhost:9200/oracc/_count'
+
+# How many documents of type "entry"?
+curl -XPOST 'localhost:9200/oracc/entry/_count'
+
+# A bit more information on the indexed documents
+curl 'http://localhost:9200/oracc/simple_glossary/_search?pretty=true' -H 'Content-Type: application/json' -d '
+{
+    "query" : {
+        "match_all" : {}
+    },
+    "_source": "false"
+}
+'
+
+# What indices exist within the local ES instance?
+curl -XGET 'http://localhost:9200/_cat/indices'

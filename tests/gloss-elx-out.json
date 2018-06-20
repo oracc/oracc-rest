@@ -1,0 +1,88 @@
+[
+    {
+        "gw": "goddess",
+        "headword": "kirir[goddess]N",
+        "cf": "kirir",
+        "icount": "1",
+        "id": "elx.x000000",
+        "senses_mng": [
+            "goddess"
+        ],
+        "forms_n": [
+            "ki-ri-ir"
+        ],
+        "norms_n": [
+            "kirir"
+        ],
+        "periods_p": [
+            "Neo-Assyrian"
+        ],
+        "project": "neo",
+        "lang": "elx"
+    },
+    {
+        "gw": "god",
+        "headword": "nap[god]N",
+        "cf": "nap",
+        "icount": "1",
+        "id": "elx.x000008",
+        "senses_mng": [
+            "god"
+        ],
+        "forms_n": [
+            "nap"
+        ],
+        "norms_n": [
+            "nap"
+        ],
+        "periods_p": [
+            "Neo-Assyrian"
+        ],
+        "project": "neo",
+        "lang": "elx"
+    },
+    {
+        "gw": "goddess",
+        "headword": "usan[goddess]N",
+        "cf": "usan",
+        "icount": "1",
+        "id": "elx.x000016",
+        "senses_mng": [
+            "goddess"
+        ],
+        "forms_n": [
+            "{u\u2082-sa-an}usan\u2084"
+        ],
+        "norms_n": [
+            "usan"
+        ],
+        "periods_p": [
+            "Neo-Assyrian"
+        ],
+        "project": "neo",
+        "lang": "elx"
+    },
+    {
+        "gw": "snake",
+        "headword": "ap\u0161i[snake]N",
+        "cf": "ap\u0161i",
+        "icount": "2",
+        "id": "xhu.x000040",
+        "senses_mng": [
+            "snake"
+        ],
+        "forms_n": [
+            "ap-\u0161e",
+            "ap-\u0161i"
+        ],
+        "norms_n": [
+            "ap\u0161e",
+            "ap\u0161i"
+        ],
+        "periods_p": [
+            "Middle Babylonian"
+        ],
+        "project": "neo",
+        "lang": "elx"
+    }
+]
