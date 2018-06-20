@@ -42,28 +42,6 @@ To stop ElasticSearch:
 * Ubuntu: `systemctl stop elasticsearch`
 
 
-## Calling the search functionality
-
-The search can be accessed at the `/search` endpoint of a server running
-ElasticSearch, e.g.:
-
-```curl -XGET localhost:5000/search' -d 'headword=water'```
-
-This mode supports searching a single field (e.g. headword) for the given value.
-If more than one fields are specified (or if none are), an error will be
-returned.
-
-A second, more general, search mode is provided at the `/search/<query>`
-endpoint. This searches multiple fields for the given query word and returns all
-results. The list of fields currently searched is: headword, gw (guideword), cf
-(cuniform), senses.mng (meaning), forms.n and norms.n (lemmatisations).
-
-A third endpoint at `/search_all` can be used to retrieve all indexed entries.
-
-In all cases, the result is a JSON array with the full contents of each hit. If
-no matches are found, a 204 (No Content) status code is returned.
-
-
 ## Indexing the data
 
 Before the search can be used, the data must be uploaded to ElasticSearch. This
@@ -93,3 +71,28 @@ To run the server on a different port, specify (e.g.) `flask run --port 3000`,
 and adjust the port number in the curl calls to `localhost/search` etc.
 Additionally, this starts the server in development mode, so any changes to the
 code should be picked up automatically and make the server restart.
+
+## Calling the ORACC's web server search functionality
+
+The search can be accessed at the `/search` endpoint of a server running
+ElasticSearch and the ORACC web server in this repo, e.g.:
+
+```curl -XGET localhost:5000/search -d 'headword=water'```
+
+This mode supports searching a single field (e.g. headword) for the given value.
+If more than one fields are specified (or if none are), an error will be
+returned.
+
+A second, more general, search mode is provided at the `/search/<query>`
+endpoint. For example:
+
+```curl -XGET localhost:5000/search/water```
+
+This searches multiple fields for the given query word and returns all
+results. The list of fields currently searched is: `headword`, `gw` (guideword),
+`cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n` (lemmatisations).
+
+A third endpoint at `/search_all` can be used to retrieve all indexed entries.
+
+In all cases, the result is a JSON array with the full contents of each hit. If
+no matches are found, a 204 (No Content) status code is returned.
