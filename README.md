@@ -111,3 +111,13 @@ A third endpoint at `/search_all` can be used to retrieve all indexed entries.
 
 In all cases, the result is a JSON array with the full contents of each hit. If
 no matches are found, a 204 (No Content) status code is returned.
+
+
+## Running the tests
+The code is accompanied by tests written for the [pytest](https://pytest.org)
+library (installed with the requirements), which can help ensure that important
+functionality is not broken. To run the tests after making changes, execute
+```
+python -m pytest tests
+```
+from the top-level directory of the repository.
