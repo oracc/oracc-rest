@@ -26,7 +26,7 @@ before_script:
 
 script:
   - |
-    # Check if this is the PEP8 test instance and run pep8
+    # Check if this is the PEP8 test instance and run pycodestyle
     if [ -z "$PEP8" ]; then
       python -m pytest -s tests
     else
