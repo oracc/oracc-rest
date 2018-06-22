@@ -3,6 +3,12 @@ import json
 import sys
 
 
+# By default, we treat most glossary data as strings, but sometimes we want the
+# REST API to return a different type (for instance, counts should be integers).
+# The below sequences refer to fields in two ways: a field name just by itself
+# indicates that the field should be indexed as a string; alternatively, if the
+# name is accompanied by a type [e.g. ("icount", int)], that means that its
+# values should be converted to the given type.
 base_fields = ["project", "lang"]  # fields to copy into each entry
 direct_fields = ["gw", "headword", "cf", ("icount", int), "id"]
 indirect_fields = {
