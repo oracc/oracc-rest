@@ -435,11 +435,32 @@
     ],
     "elx.r00002.p.s000": [
       "dcclt/nineveh:P365771.135.1"
+    ],
+    "xhu.r00005": [
+      "dcclt:P332928.83.4",
+      "dcclt:P332948.43.4"
+    ],
+    "xhu.r00005.p.s000": [
+      "dcclt:P332928.83.4",
+      "dcclt:P332948.43.4"
+    ],
+    "xhu.r00006": [
+      "dcclt:P332928.83.4"
+    ],
+    "xhu.r00006.p.s000": [
+      "dcclt:P332928.83.4"
+    ],
+    "xhu.r00007": [
+      "dcclt:P332948.43.4"
+    ],
+    "xhu.r00007.p.s000": [
+      "dcclt:P332948.43.4"
     ]
   },
   "summaries": {
     "elx.x000000": "<p class=\"summary\" id=\"elx.x000000\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000000.html')\"><span class=\"cf\">kirir</span> [<span class=\"gw\">GODDESS</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"goddess\"</span></p>",
     "elx.x000008": "<p class=\"summary\" id=\"elx.x000008\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000008.html')\"><span class=\"cf\">nap</span> [<span class=\"gw\">GOD</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"god\"</span></p>",
-    "elx.x000016": "<p class=\"summary\" id=\"elx.x000016\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000016.html')\"><span class=\"cf\">usan</span> [<span class=\"gw\">GODDESS</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"goddess\"</span></p>"
+    "elx.x000016": "<p class=\"summary\" id=\"elx.x000016\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/elx/elx.x000016.html')\"><span class=\"cf\">usan</span> [<span class=\"gw\">GODDESS</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"goddess\"</span></p>",
+    "xhu.x000040": "<p class=\"summary\" id=\"xhu.x000040\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/xhu.x000040.html')\"><span class=\"cf\">apši</span> [<span class=\"gw\">SNAKE</span>] <span class=\"cf\">N</span></a> (2x) </span>Middle Babylonian  \"snake\"</span></p>"
   }
 }
