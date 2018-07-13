@@ -42,10 +42,19 @@ class GeneralSearch(Resource):
 
 class FullList(Resource):
     def get(self):
-        """Search "all" fields in the database for the given word."""
+        """Return all entries in the database.
+
+        Optionally search within a specific range of entries, by passing a
+        starting index (start) and the desired number of results (count)."""
+        # See if the user has asked for pagination
+        try:
+            start = int(request.args['start'])
+            count = int(request.args['count'])
+        except (KeyError, ValueError):
+            start, count = None, None
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.list_all()
+        results = search.list_all(start, count)
         # Return search results to caller
         return results
 

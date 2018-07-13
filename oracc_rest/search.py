@@ -57,8 +57,11 @@ class ESearch:
         else:
             return self._get_results(self._execute(word, fieldname))
 
-    def list_all(self):
+    def list_all(self, start=None, count=None):
         '''Get a list of all entries.'''
         search = Search(using=self.client, index="oracc").query("match_all")
-        results = search.scan()
+        if start is None or count is None:
+            results = search.scan()
+        else:
+            results = search[start:start+count]
         return self._get_results(results)
