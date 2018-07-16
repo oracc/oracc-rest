@@ -5,6 +5,7 @@ from elasticsearch_dsl import Search
 
 class ESearch:
     FIELDNAMES = ['headword', 'gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
+    TEXT_FIELDS = ['gw', 'cf']  # fields with text content on which we can sort
 
     def __init__(self):
         self.client = Elasticsearch()
@@ -57,11 +58,25 @@ class ESearch:
         else:
             return self._get_results(self._execute(word, fieldname))
 
-    def list_all(self, start=None, count=None):
+    def list_all(self, sort_field, dir, start=None, count=None):
         '''Get a list of all entries.'''
-        search = Search(using=self.client, index="oracc").query("match_all")
+        search = (
+                Search(using=self.client, index="oracc")
+                .query("match_all")
+                .sort(self._sort_field_name(sort_field, dir))
+                )
         if start is None or count is None:
             results = search.scan()
         else:
             results = search[start:start+count]
         return self._get_results(results)
+
+    def _sort_field_name(self, field, dir):
+        '''Build the argument to sort based on a field name and a direction.'''
+        return "{}{}".format(
+            # A - indicates descending sorting order in the ElasticSearch DSL
+            "-" if dir == 'desc' else "",
+            # Text-valued fields cannot be sorted on directly; we must instead
+            # sort on the automatically-created X.keyword field
+            field + ".keyword" if field in self.TEXT_FIELDS else field
+        )

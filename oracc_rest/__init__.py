@@ -52,9 +52,15 @@ class FullList(Resource):
             count = int(request.args['count'])
         except (KeyError, ValueError):
             start, count = None, None
+        # Sort by the cf field unless otherwise specified
+        sort_field = request.args.get('sort_by', 'cf')
+        # Sort in ascending order unless otherwise specified
+        # TODO Throw an error if invalid direction is given? Be more flexible
+        # (e.g. accept "ascending" as a synonym of "asc")?
+        dir = request.args.get('dir', 'asc')
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.list_all(start, count)
+        results = search.list_all(sort_field, dir, start, count)
         # Return search results to caller
         return results
 
