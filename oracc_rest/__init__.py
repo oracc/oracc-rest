@@ -58,9 +58,11 @@ class FullList(Resource):
         # TODO Throw an error if invalid direction is given? Be more flexible
         # (e.g. accept "ascending" as a synonym of "asc")?
         dir = request.args.get('dir', 'asc')
+        # See if a starting point has been specified
+        after = request.args.get('after', None)
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.list_all(sort_field, dir, start, count)
+        results = search.list_all(sort_field, dir, start, count, after)
         # Return search results to caller
         return results
 
