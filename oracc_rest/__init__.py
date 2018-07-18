@@ -46,12 +46,11 @@ class FullList(Resource):
 
         Optionally search within a specific range of entries, by passing a
         starting index (start) and the desired number of results (count)."""
-        # See if the user has asked for pagination
+        # See if the user has specified how many results to retrieve
         try:
-            start = int(request.args['start'])
             count = int(request.args['count'])
         except (KeyError, ValueError):
-            start, count = None, None
+            count = None
         # Sort by the cf field unless otherwise specified
         sort_field = request.args.get('sort_by', 'cf')
         # Sort in ascending order unless otherwise specified
@@ -62,7 +61,7 @@ class FullList(Resource):
         after = request.args.get('after', None)
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.list_all(sort_field, dir, start, count, after)
+        results = search.list_all(sort_field, dir, count, after)
         # Return search results to caller
         return results
 

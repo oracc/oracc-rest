@@ -58,22 +58,28 @@ class ESearch:
         else:
             return self._get_results(self._execute(word, fieldname))
 
-    def list_all(self, sort_field, dir, start=None, count=None, after=None):
+    def list_all(self, sort_field, dir, count=None, after=None):
         '''Get a list of all entries.'''
         search = (
                 Search(using=self.client, index="oracc")
                 .query("match_all")
+                # TODO We should maybe sort on a tie-breaker field (eg _id) too...
                 .sort(self._sort_field_name(sort_field, dir))
                 )
         if after is not None:
             search = search.extra(search_after=[after])
-            start = 0  # "from" parameter should be 0 if using "search_after"
-            if count is None:  # display 10 results by default (we need this as
-                count = 10  # we cannot scan if we also use search_after)
-        if start is None or count is None:
+            # TODO Should we require count to be given here? Otherwise, the
+            # default behaviour below (10 hits) could be surprising.
+            if count is not None:  # if not given, we will only retrieve 10 hits
+                search = search.params(size=count)
+            # ES doesn't allow the scan/scroll API to be used with search_after
             results = search.execute().hits
+        elif count is not None:
+            # If count is specified, only get that many results
+            results = search[0:count]
         else:
-            results = search[start:start+count]
+            # When scanning, we must explicitly ask to preserve sorting order!
+            results = search.params(preserve_order=True).scan()
         return self._get_results(results)
 
     def _sort_field_name(self, field, dir):
