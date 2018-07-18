@@ -58,13 +58,13 @@ class ESearch:
         else:
             return self._get_results(self._execute(word, fieldname))
 
-    def list_all(self, sort_field, dir, count=None, after=None):
+    def list_all(self, sort_by="cf", dir="asc", count=None, after=None):
         '''Get a list of all entries.'''
         search = (
                 Search(using=self.client, index="oracc")
                 .query("match_all")
                 # TODO We should maybe sort on a tie-breaker field (eg _id) too...
-                .sort(self._sort_field_name(sort_field, dir))
+                .sort(self._sort_field_name(sort_by, dir))
                 )
         if after is not None:
             search = search.extra(search_after=[after])

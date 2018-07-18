@@ -10,6 +10,27 @@ CORS(app)
 api = Api(app)
 
 
+def _parse_request_args(args):
+    """Retrieve the options of interest from a dictionary of arguments.
+
+    If any expected options are not found, they will just not be copied over.
+    Unexpected parameters are simply ignored."""
+    out_args = {}
+    string_options = ['sort_by', 'dir', 'after']
+    for option in string_options:
+        if option in args:
+            # TODO Throw an error if invalid values are given? Be more flexible?
+            # (e.g. accept "ascending" as a synonym of "asc")
+            out_args[option] = args[option]
+    # See if the user has specified how many results to retrieve
+    # (we do this separately as we have to convert it to an integer)
+    try:
+        out_args['count'] = int(args['count'])
+    except (KeyError, ValueError):
+        pass
+    return out_args
+
+
 class SingleFieldSearch(Resource):
     def get(self):
         args = request.form
@@ -46,22 +67,10 @@ class FullList(Resource):
 
         Optionally search within a specific range of entries, by passing a
         starting index (start) and the desired number of results (count)."""
-        # See if the user has specified how many results to retrieve
-        try:
-            count = int(request.args['count'])
-        except (KeyError, ValueError):
-            count = None
-        # Sort by the cf field unless otherwise specified
-        sort_field = request.args.get('sort_by', 'cf')
-        # Sort in ascending order unless otherwise specified
-        # TODO Throw an error if invalid direction is given? Be more flexible
-        # (e.g. accept "ascending" as a synonym of "asc")?
-        dir = request.args.get('dir', 'asc')
-        # See if a starting point has been specified
-        after = request.args.get('after', None)
+        args = _parse_request_args(request.args)
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.list_all(sort_field, dir, count, after)
+        results = search.list_all(**args)
         # Return search results to caller
         return results
 
