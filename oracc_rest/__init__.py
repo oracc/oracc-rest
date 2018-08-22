@@ -1,4 +1,4 @@
-from urllib import unquote
+from urllib.parse import unquote
 
 from flask import abort, Flask, request
 from flask_cors import CORS
