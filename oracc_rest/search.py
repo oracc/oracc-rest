@@ -21,17 +21,20 @@ class ESearch:
         results = search.scan()
         return results
 
-    def _execute_general(self, word):
+    def _execute_general(self, word, sort_by="cf", dir="asc",
+                         count=None, after=None):
         '''
         Given a word, return all matching entries in the local ElasticSearch DB.
         '''
-        search = Search(using=self.client, index="oracc").query(
+        search = (
+                Search(using=self.client, index="oracc").query(
                                             "multi_match",
                                             query=word,
                                             fields=self.FIELDNAMES
                                             )
-        results = search.scan()
-        return results
+                .sort(self._sort_field_name(sort_by, dir))
+                )
+        return self._customise_and_run(search, count, after)
 
     def _get_results(self, results):
         '''
@@ -51,10 +54,10 @@ class ESearch:
         #    result_list.append(hit.to_dict())
         return result_list
 
-    def run(self, word, fieldname=None):
+    def run(self, word, fieldname=None, **args):
         '''Find matches for the given word (optionally in a specified field).'''
         if fieldname is None:
-            return self._get_results(self._execute_general(word))
+            return self._get_results(self._execute_general(word, **args))
         else:
             return self._get_results(self._execute(word, fieldname))
 
@@ -66,6 +69,13 @@ class ESearch:
                 # TODO We should maybe sort on a tie-breaker field (eg _id) too...
                 .sort(self._sort_field_name(sort_by, dir))
                 )
+        results = self._customise_and_run(search, count, after)
+        return self._get_results(results)
+
+    def _customise_and_run(self, search, count, after):
+        """Execute an ES search appropriately, depending on the specified
+        customisation.
+        """
         if after is not None:
             search = search.extra(search_after=[after])
             # TODO Should we require count to be given here? Otherwise, the
@@ -80,7 +90,7 @@ class ESearch:
         else:
             # When scanning, we must explicitly ask to preserve sorting order!
             results = search.params(preserve_order=True).scan()
-        return self._get_results(results)
+        return results
 
     def _sort_field_name(self, field, dir):
         '''Build the argument to sort based on a field name and a direction.'''

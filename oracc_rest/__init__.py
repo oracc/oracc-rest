@@ -52,9 +52,10 @@ class SingleFieldSearch(Resource):
 class GeneralSearch(Resource):
     def get(self, word):
         """Search "all" fields in the database for the given word."""
+        args = _parse_request_args(request.args)
         # Pass to ElasticSearch
         search = ESearch()
-        results = search.run(word)
+        results = search.run(word, **args)
         # Return search results to caller
         if not results:
             return {}, 204  # "empty content" response if no results found
