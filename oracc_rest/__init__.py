@@ -1,3 +1,5 @@
+from urllib import unquote
+
 from flask import abort, Flask, request
 from flask_cors import CORS
 from flask_restful import Api, Resource
@@ -21,7 +23,12 @@ def _parse_request_args(args):
         if option in args:
             # TODO Throw an error if invalid values are given? Be more flexible?
             # (e.g. accept "ascending" as a synonym of "asc")
-            out_args[option] = args[option]
+            # It seems that Flask automatically un-escapes spaces in the request
+            # parameters, but I couldn't find any docs for it. Just in case some
+            # characters are not handled (remember that some glossary entries
+            # contain "weird" characters), we explicitly un-escape the arguments
+            # here.
+            out_args[option] = unquote(args[option])
     # See if the user has specified how many results to retrieve
     # (we do this separately as we have to convert it to an integer)
     try:
