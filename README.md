@@ -17,6 +17,11 @@ To install ElasticSearch:
 * OS X: `brew install elasticsearch`
 * Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html).
 
+This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html).
+To install it:
+* OS X: `elasticsearch-plugin install analysis-icu`
+* Ubuntu: `sudo bin/elasticsearch-plugin install analysis-icu` (as per link above)
+
 To launch an instance of ElasticSearch accessible in its default port 9200:
 * OS X: `elasticsearch -d`
 * Ubuntu: `systemctl start elasticsearch`
@@ -45,6 +50,16 @@ The output should show something similar to this:
   },
   "tagline" : "You Know, for Search"
 }
+```
+
+You can verify that the ICU Analysis plugin has been installed by running:
+```
+curl "localhost:9200/_cat/plugins?v&s=component&h=name,component,version,description"
+```
+This should show something like:
+```
+name    component    version description
+FRNKdvi analysis-icu 6.0.1   The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components.
 ```
 
 To stop ElasticSearch:
