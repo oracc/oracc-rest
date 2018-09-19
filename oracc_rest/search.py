@@ -19,7 +19,11 @@ class ESearch:
         search = Search(using=self.client, index="oracc").query(
                                     "match",
                                     **{fieldname: word})
-        results = search.scan()
+        # To ensure that each result has a "sort" value (for consistency with
+        # the other search modes), we sort by _doc, which is meaningless but
+        # efficient, as suggested in the docs:
+        # https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
+        results = search.sort("_doc").scan()
         return results
 
     def _execute_general(self, word, sort_by="cf", dir="asc",
@@ -41,10 +45,13 @@ class ESearch:
         """
         Get the required information from each result and compile it in a list.
 
-        Currently returns the whole result document.
+        Currently returns the whole result document along with the sort score.
         """
-        # TODO investigate why some entries don't have certain attributes!
-        result_list = [hit.to_dict() for hit in results]
+        result_list = [
+            # Add a key called "sort" to each hit, containing its sort "score"
+            dict(**hit.to_dict(), sort=hit.meta.sort)
+            for hit in results
+        ]
         # This is probably better as a comprehension at the moment,
         # but in the future we might want some more elaborate processing
         # result_list = []
