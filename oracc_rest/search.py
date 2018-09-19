@@ -12,10 +12,10 @@ class ESearch:
         self.client = Elasticsearch()
 
     def _execute(self, word, fieldname):
-        '''
+        """
         Given a word and a fieldname, return all matching entries in the local
         ElasticSearch DB.
-        '''
+        """
         search = Search(using=self.client, index="oracc").query(
                                     "match",
                                     **{fieldname: word})
@@ -24,9 +24,9 @@ class ESearch:
 
     def _execute_general(self, word, sort_by="cf", dir="asc",
                          count=None, after=None):
-        '''
+        """
         Given a word, return all matching entries in the local ElasticSearch DB.
-        '''
+        """
         search = (
                 Search(using=self.client, index="oracc").query(
                                             "multi_match",
@@ -38,11 +38,11 @@ class ESearch:
         return self._customise_and_run(search, count, after)
 
     def _get_results(self, results):
-        '''
+        """
         Get the required information from each result and compile it in a list.
 
         Currently returns the whole result document.
-        '''
+        """
         # TODO investigate why some entries don't have certain attributes!
         result_list = [hit.to_dict() for hit in results]
         # This is probably better as a comprehension at the moment,
@@ -56,14 +56,14 @@ class ESearch:
         return result_list
 
     def run(self, word, fieldname=None, **args):
-        '''Find matches for the given word (optionally in a specified field).'''
+        """Find matches for the given word (optionally in a specified field)."""
         if fieldname is None:
             return self._get_results(self._execute_general(word, **args))
         else:
             return self._get_results(self._execute(word, fieldname))
 
     def list_all(self, sort_by="cf", dir="asc", count=None, after=None):
-        '''Get a list of all entries.'''
+        """Get a list of all entries."""
         search = (
                 Search(using=self.client, index="oracc")
                 .query("match_all")
@@ -74,7 +74,8 @@ class ESearch:
         return self._get_results(results)
 
     def _customise_and_run(self, search, count, after):
-        """Execute an ES search appropriately, depending on the specified
+        """
+        Execute an ES search appropriately, depending on the specified
         customisation.
         """
         if after is not None:
@@ -94,7 +95,7 @@ class ESearch:
         return results
 
     def _sort_field_name(self, field, dir):
-        '''Build the argument to sort based on a field name and a direction.'''
+        """Build the argument to sort based on a field name and a direction."""
         return "{}{}{}".format(
             # A - indicates descending sorting order in the ElasticSearch DSL
             "-" if dir == 'desc' else "",

@@ -16,7 +16,8 @@ def _parse_request_args(args):
     """Retrieve the options of interest from a dictionary of arguments.
 
     If any expected options are not found, they will just not be copied over.
-    Unexpected parameters are simply ignored."""
+    Unexpected parameters are simply ignored.
+    """
     out_args = {}
     string_options = ['sort_by', 'dir', 'after']
     for option in string_options:
@@ -74,7 +75,8 @@ class FullList(Resource):
         """Return all entries in the database.
 
         Optionally search within a specific range of entries, by passing a
-        starting index (start) and the desired number of results (count)."""
+        starting index (start) and the desired number of results (count).
+        """
         args = _parse_request_args(request.args)
         # Pass to ElasticSearch
         search = ESearch()

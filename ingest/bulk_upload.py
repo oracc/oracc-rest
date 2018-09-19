@@ -47,7 +47,7 @@ if __name__ == "__main__":
         files = glob.glob("neo/gloss-???.json")
     debug("Will index {}".format(",".join(files)))
 
-    # clear ES database if desired
+    # Clear ES database if desired
     client = elasticsearch.client.IndicesClient(es)
     if clear_database:
         try:
@@ -70,7 +70,6 @@ if __name__ == "__main__":
                     }}}}}
     client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME, body=body)
 
-    # for each file:
     for file in files:
-        # break down into individual entries and upload to ES using the bulk API
+        # Break down into individual entries and upload to ES using the bulk API
         upload_file(es, file)

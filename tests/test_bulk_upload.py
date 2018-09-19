@@ -1,5 +1,5 @@
-import time
 import json
+import time
 import warnings
 
 from elasticsearch import Elasticsearch, exceptions
