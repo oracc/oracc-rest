@@ -9,7 +9,7 @@ from .break_down import process_file
 
 
 INDEX_NAME = "oracc"
-TYPE_NAME = "entry"  # ES6 only allows one type per index, so maybe not needed
+TYPE_NAME = "entry"
 
 
 def debug(msg):
@@ -45,6 +45,21 @@ if __name__ == "__main__":
             client.delete(INDEX_NAME)
         except elasticsearch.exceptions.NotFoundError:
             debug("Index not found, continuing")
+
+    # Create an additional field used for sorting. The new field is called
+    # cf.sort and will use a locale-aware collation. We need to do this before
+    # ingesting the data, so that the new field is properly populated.
+    # TODO Check that the ICU plugin exists? (or mapping creation will likely fail)
+    client.create(index=INDEX_NAME)
+    body = {
+        "properties": {
+            "cf": {
+                "type": "text",
+                "fields": {
+                    "sort": {
+                        "type": "icu_collation_keyword"
+                    }}}}}
+    client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME, body=body)
 
     # for each file:
     for file in files:
