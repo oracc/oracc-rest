@@ -5,7 +5,8 @@ from elasticsearch_dsl import Search
 
 class ESearch:
     FIELDNAMES = ['headword', 'gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
-    TEXT_FIELDS = ['gw', 'cf']  # fields with text content on which we can sort
+    TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
+    UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
 
     def __init__(self):
         self.client = Elasticsearch()
@@ -94,10 +95,17 @@ class ESearch:
 
     def _sort_field_name(self, field, dir):
         '''Build the argument to sort based on a field name and a direction.'''
-        return "{}{}".format(
+        return "{}{}{}".format(
             # A - indicates descending sorting order in the ElasticSearch DSL
             "-" if dir == 'desc' else "",
+            # The base field name
+            field,
+            # Potentially, a suffix for the field:
             # Text-valued fields cannot be sorted on directly; we must instead
-            # sort on the automatically-created X.keyword field
-            field + ".keyword" if field in self.TEXT_FIELDS else field
+            # sort on the automatically-created X.keyword field. For fields that
+            # contain non-ASCII characters, we use the X.sort field instead.
+            # TODO Since the suffixes don't change, we can store them in a dict
+            # instead of building them every time.
+            ".sort" if field in self.UNICODE_FIELDS else (
+                ".keyword" if field in self.TEXT_FIELDS else "")
         )

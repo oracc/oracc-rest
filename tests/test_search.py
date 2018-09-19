@@ -5,8 +5,8 @@ def test_sort_field_name():
     """Check that we construct the sorting field argument for ES correctly."""
     search = ESearch()
     combinations = [
-        ("cf", "asc", "cf.keyword"),
-        ("cf", "desc", "-cf.keyword"),
+        ("cf", "asc", "cf.sort"),
+        ("cf", "desc", "-cf.sort"),
         ("gw", "asc", "gw.keyword"),
         ("gw", "desc", "-gw.keyword"),
         ("icount", "asc", "icount"),
