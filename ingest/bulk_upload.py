@@ -27,7 +27,18 @@ def upload_file(es, input_file):
     upload_entries(es, process_file(input_file, write_file=False))
 
 
+def ICU_installed(es):
+    """Check whether the ICU Analysis plugin is installed locally."""
+    cc = elasticsearch.client.CatClient(es)
+    return 'analysis-icu' in [p['component'] for p in cc.plugins(format="json")]
+
+
 if __name__ == "__main__":
+    es = elasticsearch.Elasticsearch()
+    if not ICU_installed(es):
+        debug("ICU Analysis plugin is required but could not be found. Exiting.")
+        sys.exit()
+
     clear_database = True
 
     if len(sys.argv) > 1:
@@ -37,7 +48,6 @@ if __name__ == "__main__":
     debug("Will index {}".format(",".join(files)))
 
     # clear ES database if desired
-    es = elasticsearch.Elasticsearch()
     client = elasticsearch.client.IndicesClient(es)
     if clear_database:
         try:
@@ -49,7 +59,6 @@ if __name__ == "__main__":
     # Create an additional field used for sorting. The new field is called
     # cf.sort and will use a locale-aware collation. We need to do this before
     # ingesting the data, so that the new field is properly populated.
-    # TODO Check that the ICU plugin exists? (or mapping creation will likely fail)
     client.create(index=INDEX_NAME)
     body = {
         "properties": {
