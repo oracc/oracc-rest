@@ -49,7 +49,7 @@ class ESearch:
         """
         result_list = [
             # Add a key called "sort" to each hit, containing its sort "score"
-            dict(**hit.to_dict(), sort=hit.meta.sort)
+            dict(**hit.to_dict(), sort=str(hit.meta.sort))
             for hit in results
         ]
         # This is probably better as a comprehension at the moment,
