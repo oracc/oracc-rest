@@ -20,7 +20,7 @@ To install ElasticSearch:
 This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html).
 To install it:
 * OS X: `elasticsearch-plugin install analysis-icu`
-* Ubuntu: `sudo bin/elasticsearch-plugin install analysis-icu` (as per link above)
+* Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per link above)
 
 To launch an instance of ElasticSearch accessible in its default port 9200:
 * OS X: `elasticsearch -d`
