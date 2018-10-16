@@ -1,4 +1,4 @@
-A RESTful API for querying the ORACC database using ElasticSearch.
+A RESTful API for querying the Oracc database using ElasticSearch.
 
 ## Install instructions
 This codebase has been written in Python and has been tested in Python 3. To
@@ -9,9 +9,9 @@ pip install -r requirements.txt
 ```
 
 ### ElasticSearch management
-To store ORACC's texts and their related metadata, we use
+To store Oracc's texts and their related metadata, we use
 [ElasticSearch](https://www.elastic.co/products/elasticsearch). The code in
-this repository has been tested with ElasticSearch 5 and 6.
+this repository has been tested with ElasticSearch 6.
 
 To install ElasticSearch:
 * OS X: `brew install elasticsearch`
@@ -97,11 +97,11 @@ and adjust the port number in the curl calls to `localhost/search` etc (see belo
 Additionally, this starts the server in development mode, so any changes to the
 code should be picked up automatically and make the server restart.
 
-## Calling ORACC's web server search functionality
+## Calling Oracc's web server search functionality
 
 ### Endpoints
 The search can be accessed at the `/search` endpoint of a server running
-ElasticSearch and the ORACC web server in this repo, e.g.:
+ElasticSearch and the Oracc web server in this repo, e.g.:
 ```
 curl -XGET localhost:5000/search/water
 ```
