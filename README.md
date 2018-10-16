@@ -99,6 +99,7 @@ code should be picked up automatically and make the server restart.
 
 ## Calling ORACC's web server search functionality
 
+### Endpoints
 The search can be accessed at the `/search` endpoint of a server running
 ElasticSearch and the ORACC web server in this repo, e.g.:
 ```
@@ -121,9 +122,35 @@ curl -XGET localhost:5000/search -d 'headword=water'
 ```
 This mode supports searching a single field (e.g. headword) for the given value.
 If more than one fields are specified (or if none are), an error will be
-returned. This does not accept the extra parameters described above, and should
+returned. This does not accept the extra parameters described below, and should
 be considered deprecated.
 
+### Customising the search
+
+You can customise the search by optionally specifying additional parameters.
+These are:
+- `sort_by`: the field on which to sort (`headword`, `gw`, `cf` or `icount`)
+- `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
+- `count`: the maximum number of results
+
+For example, if you want to retrieve the 20 entries that appear most frequently
+in the indexed corpus, you can request this at:
+```
+localhost:5000/search_all?sort_by=icount&dir=desc&count=20
+```
+
+### Paginating the results
+
+If you don't want to retrieve all results at once, you can use a combination of
+the `count` parameter described above and the `after` parameter. The latter
+takes a "sorting threshold" and only returns entries whose sorting score is
+greater or lesser (for ascending or descending search, respectively) than this
+threshold.
+
+**Important note**: The sorting score depends on the field being sorted on, but
+it is *not* equal to the value of that field! Instead, you can retrieve an
+entry's score by looking at the `sort` field returned with each hit. You can
+then use this value as the threshold when requesting the next batch of results.
 
 ## Running the tests
 The code is accompanied by tests written for the [pytest](https://pytest.org)
