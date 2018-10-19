@@ -1,4 +1,4 @@
-A RESTful API for querying the ORACC database using ElasticSearch.
+A RESTful API for querying the Oracc database using ElasticSearch.
 
 ## Install instructions
 This codebase has been written in Python and has been tested in Python 3. To
@@ -9,13 +9,18 @@ pip install -r requirements.txt
 ```
 
 ### ElasticSearch management
-To store ORACC's texts and their related metadata, we use
+To store Oracc's texts and their related metadata, we use
 [ElasticSearch](https://www.elastic.co/products/elasticsearch). The code in
-this repository has been tested with ElasticSearch 5 and 6.
+this repository has been tested with ElasticSearch 6.
 
 To install ElasticSearch:
 * OS X: `brew install elasticsearch`
 * Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html).
+
+This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html).
+To install it:
+* OS X: `elasticsearch-plugin install analysis-icu`
+* Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per link above)
 
 To launch an instance of ElasticSearch accessible in its default port 9200:
 * OS X: `elasticsearch -d`
@@ -45,6 +50,16 @@ The output should show something similar to this:
   },
   "tagline" : "You Know, for Search"
 }
+```
+
+You can verify that the ICU Analysis plugin has been installed by running:
+```
+curl "localhost:9200/_cat/plugins?v&s=component&h=name,component,version,description"
+```
+This should show something like:
+```
+name    component    version description
+FRNKdvi analysis-icu 6.0.1   The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components.
 ```
 
 To stop ElasticSearch:
@@ -82,22 +97,11 @@ and adjust the port number in the curl calls to `localhost/search` etc (see belo
 Additionally, this starts the server in development mode, so any changes to the
 code should be picked up automatically and make the server restart.
 
-## Calling ORACC's web server search functionality
+## Calling Oracc's web server search functionality
 
+### Endpoints
 The search can be accessed at the `/search` endpoint of a server running
-ElasticSearch and the ORACC web server in this repo, e.g.:
-
-```
-curl -XGET localhost:5000/search -d 'headword=water'
-```
-
-This mode supports searching a single field (e.g. headword) for the given value.
-If more than one fields are specified (or if none are), an error will be
-returned.
-
-A second, more general, search mode is provided at the `/search/<query>`
-endpoint. For example:
-
+ElasticSearch and the Oracc web server in this repo, e.g.:
 ```
 curl -XGET localhost:5000/search/water
 ```
@@ -107,11 +111,46 @@ results. The list of fields currently searched is: `headword`, `gw`
 (guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n`
 (lemmatisations).
 
-A third endpoint at `/search_all` can be used to retrieve all indexed entries.
+A second endpoint at `/search_all` can be used to retrieve all indexed entries.
 
-In all cases, the result is a JSON array with the full contents of each hit. If
+In both cases, the result is a JSON array with the full contents of each hit. If
 no matches are found, a 204 (No Content) status code is returned.
 
+An older, simpler search mode can also be accessed at the `/search` endpoint:
+```
+curl -XGET localhost:5000/search -d 'headword=water'
+```
+This mode supports searching a single field (e.g. headword) for the given value.
+If more than one fields are specified (or if none are), an error will be
+returned. This does not accept the extra parameters described below, and should
+be considered deprecated.
+
+### Customising the search
+
+You can customise the search by optionally specifying additional parameters.
+These are:
+- `sort_by`: the field on which to sort (`headword`, `gw`, `cf` or `icount`)
+- `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
+- `count`: the maximum number of results
+
+For example, if you want to retrieve the 20 entries that appear most frequently
+in the indexed corpus, you can request this at:
+```
+localhost:5000/search_all?sort_by=icount&dir=desc&count=20
+```
+
+### Paginating the results
+
+If you don't want to retrieve all results at once, you can use a combination of
+the `count` parameter described above and the `after` parameter. The latter
+takes a "sorting threshold" and only returns entries whose sorting score is
+greater or lesser (for ascending or descending search, respectively) than this
+threshold.
+
+**Important note**: The sorting score depends on the field being sorted on, but
+it is *not* equal to the value of that field! Instead, you can retrieve an
+entry's score by looking at the `sort` field returned with each hit. You can
+then use this value as the threshold when requesting the next batch of results.
 
 ## Running the tests
 The code is accompanied by tests written for the [pytest](https://pytest.org)
