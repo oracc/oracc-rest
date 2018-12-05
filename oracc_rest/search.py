@@ -7,6 +7,7 @@ class ESearch:
     FIELDNAMES = ['headword', 'gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
     TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
     UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
+    UNIQUE_FIELD = '_id'  # a field that identifies an entry, used to break ties
 
     def __init__(self):
         self.client = Elasticsearch()
@@ -37,7 +38,7 @@ class ESearch:
                                             query=word,
                                             fields=self.FIELDNAMES
                                             )
-                .sort(self._sort_field_name(sort_by, dir))
+                .sort(self._sort_field_name(sort_by, dir), self.UNIQUE_FIELD)
                 )
         return self._customise_and_run(search, count, after)
 
@@ -49,7 +50,7 @@ class ESearch:
         """
         result_list = [
             # Add a key called "sort" to each hit, containing its sort "score"
-            dict(**hit.to_dict(), sort=str(hit.meta.sort))
+            dict(**hit.to_dict(), sort=[str(s) for s in hit.meta.sort])
             for hit in results
         ]
         # This is probably better as a comprehension at the moment,
@@ -74,8 +75,7 @@ class ESearch:
         search = (
                 Search(using=self.client, index="oracc")
                 .query("match_all")
-                # TODO We should maybe sort on a tie-breaker field (eg _id) too...
-                .sort(self._sort_field_name(sort_by, dir))
+                .sort(self._sort_field_name(sort_by, dir), self.UNIQUE_FIELD)
                 )
         results = self._customise_and_run(search, count, after)
         return self._get_results(results)
