@@ -35,7 +35,8 @@ class ESearch:
                 Search(using=self.client, index="oracc").query(
                                             "multi_match",
                                             query=word,
-                                            fields=self.FIELDNAMES
+                                            fields=self.FIELDNAMES,
+                                            type="phrase_prefix"
                                             )
                 .sort(self._sort_field_name(sort_by, dir))
                 )
