@@ -75,7 +75,13 @@ def process_file(input_name, write_file=True):
         # etc. Every entry should have a corresponding instance in the glossary,
         # so if something is missing this will throw a KeyError, which will let
         # us know that there is something wrong with the glossary.
-        new_entry["instances"] = instances[entry["xis"]]
+        try:
+            new_entry["instances"] = instances[entry["xis"]]
+        except KeyError:
+            print("Could not find the instance {} for entry {}!".format(
+                    entry["xis"], entry["headword"]
+            ))
+            continue
         # Add the attributes shared by all entries in the glossary
         new_entry.update(base_data)
         new_entries.append(new_entry)
