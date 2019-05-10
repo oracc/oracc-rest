@@ -1,5 +1,7 @@
 """A module for breaking down a glossary into individual entries."""
 import json
+import os
+import subprocess
 import sys
 
 
@@ -60,7 +62,18 @@ def process_file(input_name, write_file=True):
     :param write_file: whether to write the entries in a new file, to be used later
     :return: a list of the new individual entries, as dictionaries
     """
-    with open(input_name, 'r') as infile:
+    # The glossaries contain a lot of information that we do not use.
+    # Sometimes this can make them too large to load in memory. Therefore,
+    # we first preprocess each file to remove the fields we do not need.
+    temp_file = input_name.rsplit('.', 1)[0] + "-preprocessed.json"
+    filter_file = os.path.join("ingest", "remove_unused.jq")
+    with open(temp_file, 'w') as tempfile:
+        subprocess.Popen(
+            ["jq", "-f", filter_file, input_name],
+            stdout=tempfile
+        )
+
+    with open(temp_file, 'r') as infile:
         data = json.load(infile)
 
     instances = data["instances"]
