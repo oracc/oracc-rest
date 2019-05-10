@@ -68,10 +68,12 @@ def process_file(input_name, write_file=True):
     temp_file = input_name.rsplit('.', 1)[0] + "-preprocessed.json"
     filter_file = os.path.join("ingest", "remove_unused.jq")
     with open(temp_file, 'w') as tempfile:
-        subprocess.Popen(
-            ["jq", "-f", filter_file, input_name],
-            stdout=tempfile
+        s = subprocess.run(
+                ["jq", "-f", filter_file, input_name],
+                stdout=subprocess.PIPE
         )
+        # We need to decode this to a string if not working in binary mode
+        print(s.stdout.decode("utf8"), file=tempfile)
 
     with open(temp_file, 'r') as infile:
         data = json.load(infile)
