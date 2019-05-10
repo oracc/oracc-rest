@@ -65,18 +65,14 @@ def process_file(input_name, write_file=True):
     # The glossaries contain a lot of information that we do not use.
     # Sometimes this can make them too large to load in memory. Therefore,
     # we first preprocess each file to remove the fields we do not need.
-    temp_file = input_name.rsplit('.', 1)[0] + "-preprocessed.json"
     filter_file = os.path.join("ingest", "remove_unused.jq")
-    with open(temp_file, 'w') as tempfile:
-        s = subprocess.run(
-                ["jq", "-f", filter_file, input_name],
-                stdout=subprocess.PIPE
-        )
-        # We need to decode this to a string if not working in binary mode
-        print(s.stdout.decode("utf8"), file=tempfile)
+    s = subprocess.run(
+            ["jq", "-f", filter_file, input_name],
+            stdout=subprocess.PIPE
+    )
 
-    with open(temp_file, 'r') as infile:
-        data = json.load(infile)
+    # We need to decode the output to a string if not working in binary mode
+    data = json.loads(s.stdout.decode("utf8"))
 
     instances = data["instances"]
     base_data = {key: data[key] for key in base_fields}
