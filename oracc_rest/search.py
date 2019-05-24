@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import Search
+from elasticsearch_dsl import Q, Search
 
 
 class ESearch:
@@ -26,18 +26,29 @@ class ESearch:
         results = search.sort("_doc").scan()
         return results
 
-    def _execute_general(self, word, sort_by="cf", dir="asc",
+    def _execute_general(self, phrase, sort_by="cf", dir="asc",
                          count=None, after=None):
         """
-        Given a word, return all matching entries in the local ElasticSearch DB.
+        Given a phrase of space-separated words, return all matching entries in
+        the local ElasticSearch DB.
+
+        This works by forming sub-queries for each of the words in the phrase,
+        and then taking the set of all results.
         """
+        # Create one subquery for each word. This is necessary because the
+        # multi_match query doesn't support prefix-style matching for multiple
+        # words, so we need to run multiple queries and combine them.
+        # See Issue #17 for more details.
+        subqueries = [
+                     Q("multi_match", query=word,
+                       fields=self.FIELDNAMES, type="phrase_prefix")
+                     for word in phrase.split()
+                     ]
+        # To combine, we pass these subqueries as "should" arguments to a bool
+        # query. This essentially gets the union of their results.
         search = (
-                Search(using=self.client, index="oracc").query(
-                                            "multi_match",
-                                            query=word,
-                                            fields=self.FIELDNAMES,
-                                            type="phrase_prefix"
-                                            )
+                Search(using=self.client, index="oracc")
+                .query("bool", should=subqueries)
                 .sort(self._sort_field_name(sort_by, dir))
                 )
         return self._customise_and_run(search, count, after)
