@@ -9,19 +9,19 @@ import ingest.bulk_upload
 
 
 @pytest.fixture(scope="session")
-def index_name():
+def test_index_name():
     """The name of the fake index to use throughout the tests."""
     return "oracc_test"
 
 
 @pytest.fixture
-def es(monkeypatch, index_name):
+def es(monkeypatch, test_index_name):
     """An ElasticSearch client which also ensures we operate on a fake index."""
     # NB: INDEX_NAME cannot be imported directly, or the patching won't work.
     # Also note that this fixture cannot be module-scoped because monkeypatch is
     # function-scoped.
-    monkeypatch.setattr(ingest.bulk_upload, "INDEX_NAME", index_name)
-    assert ingest.bulk_upload.INDEX_NAME == index_name  # just making sure
+    monkeypatch.setattr(ingest.bulk_upload, "INDEX_NAME", test_index_name)
+    assert ingest.bulk_upload.INDEX_NAME == test_index_name  # just making sure
     client = Elasticsearch()
     yield client
     try:
