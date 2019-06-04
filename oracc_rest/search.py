@@ -8,15 +8,16 @@ class ESearch:
     TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
     UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
 
-    def __init__(self):
+    def __init__(self, index_name="oracc"):
         self.client = Elasticsearch()
+        self.index = index_name
 
     def _execute(self, word, fieldname):
         """
         Given a word and a fieldname, return all matching entries in the local
         ElasticSearch DB.
         """
-        search = Search(using=self.client, index="oracc").query(
+        search = Search(using=self.client, index=self.index).query(
                                     "match",
                                     **{fieldname: word})
         # To ensure that each result has a "sort" value (for consistency with
@@ -47,7 +48,7 @@ class ESearch:
         # To combine, we pass these subqueries as "should" arguments to a bool
         # query. This essentially gets the union of their results.
         search = (
-                Search(using=self.client, index="oracc")
+                Search(using=self.client, index=self.index)
                 .query("bool", should=subqueries)
                 .sort(self._sort_field_name(sort_by, dir))
                 )
@@ -84,7 +85,7 @@ class ESearch:
     def list_all(self, sort_by="cf", dir="asc", count=None, after=None):
         """Get a list of all entries."""
         search = (
-                Search(using=self.client, index="oracc")
+                Search(using=self.client, index=self.index)
                 .query("match_all")
                 # TODO We should maybe sort on a tie-breaker field (eg _id) too...
                 .sort(self._sort_field_name(sort_by, dir))
