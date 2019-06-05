@@ -7,11 +7,18 @@ from oracc_rest import ESearch
 
 
 @pytest.fixture
-def uploaded_entries(es, entries):
+def uploaded_entries(es, entries, test_index_name):
     """A fixture to ensure that the test glossary entries have been uploaded."""
     ingest.bulk_upload.upload_entries(es, entries)
-    time.sleep(2)  # a small delay to make sure the upload has finished
-    return entries
+    # Wait until the upload has finished, but give up after about 10 seconds.
+    number_attempts = 20  # how many times to check before giving up
+    delay = 0.5  # how long to sleep between attempts
+    for _ in range(number_attempts):
+        if es.count(index=test_index_name)["count"] == len(entries):
+            return entries  # all uploaded!
+        else:
+            time.sleep(delay)
+    assert False  # raise an error if upload not complete after all attempts
 
 
 def test_sort_field_name():
