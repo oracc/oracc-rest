@@ -39,6 +39,19 @@ def missing_instances_glossary():
     return original_data, 1
 
 
+@pytest.fixture(scope="module",
+                params=[
+                  ('tests/gloss-elx.json', 'tests/gloss-elx-preprocessed.json'),
+                ])
+def preprocessing_pair(request):
+    """Return the filename of a glossary and the result of preprocessing it."""
+    input_file = request.param[0]
+    expected_output_file = request.param[1]
+    with open(expected_output_file, 'r') as f:
+        expected_data = json.load(f)
+    return input_file, expected_data
+
+
 def test_process_file(direct_fields, indirect_fields):
     """Test that we can break down a small glossary correctly."""
     input_name = "tests/gloss-elx.json"  # modified from the original
@@ -79,15 +92,11 @@ def test_missing_instances(missing_instances_glossary):
     assert len(processed_data) == len(original_data["entries"]) - missing_number
 
 
-def test_preprocess():
+def test_preprocess(preprocessing_pair):
     """Test that the preprocessing step gives the expected results."""
-    # TODO Can parametrise this to test other sample files
     # TODO Should we check the properties of the output data (e.g. keys, length)
     # rather than compare it to a fixed output?
-    input_file = 'tests/gloss-elx.json'
-    expected_output_file = 'tests/gloss-elx-preprocessed.json'
-    with open(expected_output_file, 'r') as f:
-        expected_data = json.load(f)
+    input_file, expected_data = preprocessing_pair
     output_data = preprocess_glossary(input_file)
     assert output_data == expected_data
 
