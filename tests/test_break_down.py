@@ -5,6 +5,7 @@ import pytest
 from ingest.break_down import (
     name_and_type,
     process_file,
+    process_glossary_data,
     base_fields,
 )
 
@@ -24,6 +25,17 @@ def indirect_fields():
         outer: [name_and_type(inner)[0] for inner in fields[outer]]
         for outer in fields
     }
+
+
+@pytest.fixture(scope="module")
+def missing_instances_glossary():
+    """
+    Return a glossary where some entries refer to a non-existent instance,
+    along with the number of missing entries.
+    """
+    with open("tests/gloss-missing-instance.json", 'r') as infile:
+        original_data = json.load(infile)
+    return original_data, 1
 
 
 def test_process_file(direct_fields, indirect_fields):
@@ -56,6 +68,14 @@ def test_process_file(direct_fields, indirect_fields):
         # Check that the top-level instances are correctly linked
         correct_instances = original_data["instances"][old_entry["xis"]]
         assert sorted(new_entry["instances"]) == sorted(correct_instances)
+
+
+def test_missing_instances(missing_instances_glossary):
+    """Test that we skip entries with missing instances and raise a warning."""
+    original_data, missing_number = missing_instances_glossary
+    with pytest.warns(UserWarning):
+        processed_data = process_glossary_data(original_data)
+    assert len(processed_data) == len(original_data["entries"]) - missing_number
 
 
 def test_name_and_type():
