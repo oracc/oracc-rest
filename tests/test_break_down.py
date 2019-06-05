@@ -101,6 +101,28 @@ def test_preprocess(preprocessing_pair):
     assert output_data == expected_data
 
 
+def test_preprocess_no_jq(monkeypatch):
+    """Test that the preprocessing step raises an error if jq is not found."""
+    monkeypatch.setenv("PATH", "")
+    with pytest.raises(RuntimeError):
+        preprocess_glossary("tests/gloss-elx.json")
+
+
+def test_process_file_no_jq(monkeypatch):
+    """
+    Test that a file can be processed if jq is not found, but that a warning
+    is raised.
+    """
+    input_file = "tests/gloss-elx.json"
+    monkeypatch.setenv("PATH", "")
+    with pytest.warns(RuntimeWarning) as warning:
+        process_file(input_file, write_file=False)
+    # Check that the filename is present in the warning message
+    assert len(warning) == 1
+    assert input_file in warning[0].message.args[0]
+    # TODO Could check the validity of the result here
+
+
 def test_name_and_type():
     """Test that the breaking down of field specs into name and type works."""
     # Check that we return the right name and str when there is no type given

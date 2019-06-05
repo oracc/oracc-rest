@@ -96,10 +96,14 @@ def process_glossary_data(data):
 def preprocess_glossary(glossary_filename):
     """Remove unused fields from a glossary and return it as a dictionary."""
     filter_file = os.path.join("ingest", "remove_unused.jq")
-    s = subprocess.run(
-            ["jq", "-f", filter_file, glossary_filename],
-            stdout=subprocess.PIPE
-    )
+    try:
+        s = subprocess.run(
+                ["jq", "-f", filter_file, glossary_filename],
+                stdout=subprocess.PIPE
+        )
+    except FileNotFoundError as e:
+        # If the jq is executable is not found, a FileNotFoundError is raised
+        raise RuntimeError('Could not run jq command.') from e
     # We need to decode the output to a string if not working in binary mode
     return json.loads(s.stdout.decode("utf8"))
 
@@ -117,7 +121,19 @@ def process_file(input_name, write_file=True):
     # The glossaries contain a lot of information that we do not use.
     # Sometimes this can make them too large to load in memory. Therefore,
     # we first preprocess each file to remove the fields we do not need.
-    data = preprocess_glossary(input_name)
+    try:
+        data = preprocess_glossary(input_name)
+    except RuntimeError:
+        # If the preprocessing fails (most likely reason is that the jq tool
+        # is not present), try to read the file normally as a last resort.
+        warnings.warn(
+            "Could not preprocess file {}. Is jq installed?\n"
+            "Will attempt to ingest without preprocessing."
+            "This may fail for large glossaries.".format(input_name),
+            RuntimeWarning
+        )
+        with open(input_name, 'r') as input_file:
+            data = json.load(input_file)
 
     new_entries = process_glossary_data(data)
     if write_file:
