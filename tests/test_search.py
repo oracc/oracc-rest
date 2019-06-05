@@ -45,10 +45,15 @@ def test_multi_word_search(uploaded_entries, test_index_name):
     Specifically, this tests that partial matching works correctly, and that
     a multi-word query gives the union of results, as expected.
     """
+    # The test glossary that we use contains two entries for the word "goddess",
+    # one for "god", and one for "snake".
     search = ESearch(index_name=test_index_name)
     # Check that we get partial matches ("god" should also match "goddess")
     assert len(search.run("god", sort_by="gw")) == 3
+    # Check that the whole query word has to match (just in case!)
+    assert len(search.run("goddess", sort_by="gw")) == 2
     # Check that a multi-word query returns results matching any word in it
     assert len(search.run("god snake", sort_by="gw")) == 4
     # Check that if an entry matches two query words, it is only returned once
+    # ("usan" is one of the words meaning "goddess")
     assert len(search.run("god usan", sort_by="gw")) == 3
