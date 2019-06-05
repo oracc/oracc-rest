@@ -111,6 +111,14 @@ results. The list of fields currently searched is: `headword`, `gw`
 (guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n`
 (lemmatisations).
 
+The matching is not exact: an entry is considered to match a query word if it
+contains any term starting with the query in the relevant fields. For
+example, searching for "cat" would return words with either "cat" or "catch" in
+their meanings (among others).
+
+The query can also be a phrase of words separated by spaces. In this case, it
+will return results matching **any** of the words in the phrase.
+
 A second endpoint at `/search_all` can be used to retrieve all indexed entries.
 
 In both cases, the result is a JSON array with the full contents of each hit. If

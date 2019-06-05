@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from elasticsearch import Elasticsearch
-from elasticsearch_dsl import Search
+from elasticsearch_dsl import Q, Search
 
 
 class ESearch:
@@ -8,15 +8,16 @@ class ESearch:
     TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
     UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
 
-    def __init__(self):
+    def __init__(self, index_name="oracc"):
         self.client = Elasticsearch()
+        self.index = index_name
 
     def _execute(self, word, fieldname):
         """
         Given a word and a fieldname, return all matching entries in the local
         ElasticSearch DB.
         """
-        search = Search(using=self.client, index="oracc").query(
+        search = Search(using=self.client, index=self.index).query(
                                     "match",
                                     **{fieldname: word})
         # To ensure that each result has a "sort" value (for consistency with
@@ -26,17 +27,29 @@ class ESearch:
         results = search.sort("_doc").scan()
         return results
 
-    def _execute_general(self, word, sort_by="cf", dir="asc",
+    def _execute_general(self, phrase, sort_by="cf", dir="asc",
                          count=None, after=None):
         """
-        Given a word, return all matching entries in the local ElasticSearch DB.
+        Given a phrase of space-separated words, return all matching entries in
+        the local ElasticSearch DB.
+
+        This works by forming sub-queries for each of the words in the phrase,
+        and then taking the set of all results.
         """
+        # Create one subquery for each word. This is necessary because the
+        # multi_match query doesn't support prefix-style matching for multiple
+        # words, so we need to run multiple queries and combine them.
+        # See Issue #17 for more details.
+        subqueries = [
+                     Q("multi_match", query=word,
+                       fields=self.FIELDNAMES, type="phrase_prefix")
+                     for word in phrase.split()
+                     ]
+        # To combine, we pass these subqueries as "should" arguments to a bool
+        # query. This essentially gets the union of their results.
         search = (
-                Search(using=self.client, index="oracc").query(
-                                            "multi_match",
-                                            query=word,
-                                            fields=self.FIELDNAMES
-                                            )
+                Search(using=self.client, index=self.index)
+                .query("bool", should=subqueries)
                 .sort(self._sort_field_name(sort_by, dir))
                 )
         return self._customise_and_run(search, count, after)
@@ -72,7 +85,7 @@ class ESearch:
     def list_all(self, sort_by="cf", dir="asc", count=None, after=None):
         """Get a list of all entries."""
         search = (
-                Search(using=self.client, index="oracc")
+                Search(using=self.client, index=self.index)
                 .query("match_all")
                 # TODO We should maybe sort on a tie-breaker field (eg _id) too...
                 .sort(self._sort_field_name(sort_by, dir))
