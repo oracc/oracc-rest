@@ -3,6 +3,7 @@ import json
 import os
 import subprocess
 import sys
+import warnings
 
 
 # By default, we treat most glossary data as strings, but sometimes we want the
@@ -81,9 +82,10 @@ def process_glossary_data(data):
         try:
             new_entry["instances"] = instances[entry["xis"]]
         except KeyError:
-            print("Could not find the instance {} for entry {}!".format(
-                    entry["xis"], entry["headword"]
-            ))
+            warnings.warn(
+                "Could not find the instance {} for entry {}!".format(
+                    entry["xis"], entry["headword"])
+            )
             continue
         # Add the attributes shared by all entries in the glossary
         new_entry.update(base_data)
