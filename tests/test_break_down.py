@@ -4,6 +4,7 @@ import pytest
 
 from ingest.break_down import (
     name_and_type,
+    preprocess_glossary,
     process_file,
     process_glossary_data,
     base_fields,
@@ -76,6 +77,19 @@ def test_missing_instances(missing_instances_glossary):
     with pytest.warns(UserWarning):
         processed_data = process_glossary_data(original_data)
     assert len(processed_data) == len(original_data["entries"]) - missing_number
+
+
+def test_preprocess():
+    """Test that the preprocessing step gives the expected results."""
+    # TODO Can parametrise this to test other sample files
+    # TODO Should we check the properties of the output data (e.g. keys, length)
+    # rather than compare it to a fixed output?
+    input_file = 'tests/gloss-elx.json'
+    expected_output_file = 'tests/gloss-elx-preprocessed.json'
+    with open(expected_output_file, 'r') as f:
+        expected_data = json.load(f)
+    output_data = preprocess_glossary(input_file)
+    assert output_data == expected_data
 
 
 def test_name_and_type():
