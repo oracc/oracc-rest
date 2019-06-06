@@ -8,6 +8,16 @@ install all necessary Python modules:
 pip install -r requirements.txt
 ```
 
+### Installing jq
+
+We use the [jq](https://stedolan.github.io/jq/) tool to efficiently preprocess
+large glossary files. This can be easily installed through a package manager:
+* OS X: `brew install jq`
+* Ubuntu: `sudo apt-get install jq`
+
+For more installation instructions and options, see
+[the tool's official page](https://stedolan.github.io/jq/download/).
+
 ### ElasticSearch management
 To store Oracc's texts and their related metadata, we use
 [ElasticSearch](https://www.elastic.co/products/elasticsearch). The code in

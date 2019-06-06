@@ -1,0 +1,165 @@
+{
+  "project": "neo",
+  "lang": "elx",
+  "entries": [
+    {
+      "headword": "kirir[goddess]N",
+      "id": "elx.x000000",
+      "icount": "1",
+      "xis": "elx.r00000",
+      "cf": "kirir",
+      "gw": "goddess",
+      "forms": [
+        {
+          "n": "ki-ri-ir"
+        }
+      ],
+      "norms": [
+        {
+          "n": "kirir"
+        }
+      ],
+      "senses": [
+        {
+          "mng": "goddess"
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian"
+        }
+      ]
+    },
+    {
+      "headword": "nap[god]N",
+      "id": "elx.x000008",
+      "icount": "1",
+      "xis": "elx.r00001",
+      "cf": "nap",
+      "gw": "god",
+      "forms": [
+        {
+          "n": "nap"
+        }
+      ],
+      "norms": [
+        {
+          "n": "nap"
+        }
+      ],
+      "senses": [
+        {
+          "mng": "god"
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian"
+        }
+      ]
+    },
+    {
+      "headword": "usan[goddess]N",
+      "id": "elx.x000016",
+      "icount": "1",
+      "xis": "elx.r00002",
+      "cf": "usan",
+      "gw": "goddess",
+      "forms": [
+        {
+          "n": "{u₂-sa-an}usan₄"
+        }
+      ],
+      "norms": [
+        {
+          "n": "usan"
+        }
+      ],
+      "senses": [
+        {
+          "mng": "goddess"
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian"
+        }
+      ]
+    },
+    {
+      "headword": "apši[snake]N",
+      "id": "xhu.x000040",
+      "icount": "2",
+      "xis": "xhu.r00005",
+      "cf": "apši",
+      "gw": "snake",
+      "forms": [
+        {
+          "n": "ap-še"
+        },
+        {
+          "n": "ap-ši"
+        }
+      ],
+      "norms": [
+        {
+          "n": "apše"
+        },
+        {
+          "n": "apši"
+        }
+      ],
+      "senses": [
+        {
+          "mng": "snake"
+        }
+      ],
+      "periods": [
+        {
+          "p": "Middle Babylonian"
+        }
+      ]
+    }
+  ],
+  "instances": {
+    "elx.r00000": [
+      "dcclt/nineveh:P365771.134.1"
+    ],
+    "elx.r00001": [
+      "dcclt/nineveh:P365771.126.1"
+    ],
+    "elx.r00002": [
+      "dcclt/nineveh:P365771.135.1"
+    ],
+    "elx.r00000.p.s000": [
+      "dcclt/nineveh:P365771.134.1"
+    ],
+    "elx.r00001.p.s000": [
+      "dcclt/nineveh:P365771.126.1"
+    ],
+    "elx.r00002.p.s000": [
+      "dcclt/nineveh:P365771.135.1"
+    ],
+    "xhu.r00005": [
+      "dcclt:P332928.83.4",
+      "dcclt:P332948.43.4"
+    ],
+    "xhu.r00005.p.s000": [
+      "dcclt:P332928.83.4",
+      "dcclt:P332948.43.4"
+    ],
+    "xhu.r00006": [
+      "dcclt:P332928.83.4"
+    ],
+    "xhu.r00006.p.s000": [
+      "dcclt:P332928.83.4"
+    ],
+    "xhu.r00007": [
+      "dcclt:P332948.43.4"
+    ],
+    "xhu.r00007.p.s000": [
+      "dcclt:P332948.43.4"
+    ]
+  }
+}
+

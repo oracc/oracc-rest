@@ -4,7 +4,9 @@ import pytest
 
 from ingest.break_down import (
     name_and_type,
+    preprocess_glossary,
     process_file,
+    process_glossary_data,
     base_fields,
 )
 
@@ -24,6 +26,30 @@ def indirect_fields():
         outer: [name_and_type(inner)[0] for inner in fields[outer]]
         for outer in fields
     }
+
+
+@pytest.fixture(scope="module")
+def missing_instances_glossary():
+    """
+    Return a glossary where some entries refer to a non-existent instance,
+    along with the number of missing entries.
+    """
+    with open("tests/gloss-missing-instance.json", 'r') as infile:
+        original_data = json.load(infile)
+    return original_data, 1
+
+
+@pytest.fixture(scope="module",
+                params=[
+                  ('tests/gloss-elx.json', 'tests/gloss-elx-preprocessed.json'),
+                ])
+def preprocessing_pair(request):
+    """Return the filename of a glossary and the result of preprocessing it."""
+    input_file = request.param[0]
+    expected_output_file = request.param[1]
+    with open(expected_output_file, 'r') as f:
+        expected_data = json.load(f)
+    return input_file, expected_data
 
 
 def test_process_file(direct_fields, indirect_fields):
@@ -56,6 +82,45 @@ def test_process_file(direct_fields, indirect_fields):
         # Check that the top-level instances are correctly linked
         correct_instances = original_data["instances"][old_entry["xis"]]
         assert sorted(new_entry["instances"]) == sorted(correct_instances)
+
+
+def test_missing_instances(missing_instances_glossary):
+    """Test that we skip entries with missing instances and raise a warning."""
+    original_data, missing_number = missing_instances_glossary
+    with pytest.warns(UserWarning):
+        processed_data = process_glossary_data(original_data)
+    assert len(processed_data) == len(original_data["entries"]) - missing_number
+
+
+def test_preprocess(preprocessing_pair):
+    """Test that the preprocessing step gives the expected results."""
+    # TODO Should we check the properties of the output data (e.g. keys, length)
+    # rather than compare it to a fixed output?
+    input_file, expected_data = preprocessing_pair
+    output_data = preprocess_glossary(input_file)
+    assert output_data == expected_data
+
+
+def test_preprocess_no_jq(monkeypatch):
+    """Test that the preprocessing step raises an error if jq is not found."""
+    monkeypatch.setenv("PATH", "")
+    with pytest.raises(RuntimeError):
+        preprocess_glossary("tests/gloss-elx.json")
+
+
+def test_process_file_no_jq(monkeypatch):
+    """
+    Test that a file can be processed if jq is not found, but that a warning
+    is raised.
+    """
+    input_file = "tests/gloss-elx.json"
+    monkeypatch.setenv("PATH", "")
+    with pytest.warns(RuntimeWarning) as warning:
+        process_file(input_file, write_file=False)
+    # Check that the filename is present in the warning message
+    assert len(warning) == 1
+    assert input_file in warning[0].message.args[0]
+    # TODO Could check the validity of the result here
 
 
 def test_name_and_type():

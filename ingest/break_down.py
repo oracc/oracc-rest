@@ -1,6 +1,9 @@
 """A module for breaking down a glossary into individual entries."""
 import json
+import os
+import subprocess
 import sys
+import warnings
 
 
 # By default, we treat most glossary data as strings, but sometimes we want the
@@ -50,6 +53,61 @@ def process_entry(entry):
     return new_entry
 
 
+def process_glossary_data(data):
+    """
+    Process a glossary and link the entries to their instances.
+
+    Glossaries contain entries in a nested format. This step extracts the
+    relevant information at various nesting levels, and produces a list of
+    entries with "flattened" fields. It also incorporates the information from
+    the instances part of the glossary into the relevant entries.
+    Any entries referring to non-existent instances will be ignored. A warning
+    will be raised in those cases.
+
+    :param data: a dictionary representing a glossary, including the instances.
+    :return: a list of entries, flattened and linked to instances when possible.
+
+    """
+    instances = data["instances"]
+    base_data = {key: data[key] for key in base_fields}
+    new_entries = []
+    for entry in data["entries"]:
+        # Create a flat entry from the nested norms, forms, senses etc.
+        new_entry = process_entry(entry)
+        # Find the instance that is referred to by the entry. For now, just link
+        # the top-level reference rather than that of individual senses, norms
+        # etc. Every entry should have a corresponding instance in the glossary,
+        # so if something is missing this will throw a KeyError, which will let
+        # us know that there is something wrong with the glossary.
+        try:
+            new_entry["instances"] = instances[entry["xis"]]
+        except KeyError:
+            warnings.warn(
+                "Could not find the instance {} for entry {}!".format(
+                    entry["xis"], entry["headword"])
+            )
+            continue
+        # Add the attributes shared by all entries in the glossary
+        new_entry.update(base_data)
+        new_entries.append(new_entry)
+    return new_entries
+
+
+def preprocess_glossary(glossary_filename):
+    """Remove unused fields from a glossary and return it as a dictionary."""
+    filter_file = os.path.join("ingest", "remove_unused.jq")
+    try:
+        s = subprocess.run(
+                ["jq", "-f", filter_file, glossary_filename],
+                stdout=subprocess.PIPE
+        )
+    except FileNotFoundError as e:
+        # If the jq is executable is not found, a FileNotFoundError is raised
+        raise RuntimeError('Could not run jq command.') from e
+    # We need to decode the output to a string if not working in binary mode
+    return json.loads(s.stdout.decode("utf8"))
+
+
 def process_file(input_name, write_file=True):
     """
     Process all entries in a glossary file, extracting the common information to
@@ -60,25 +118,24 @@ def process_file(input_name, write_file=True):
     :param write_file: whether to write the entries in a new file, to be used later
     :return: a list of the new individual entries, as dictionaries
     """
-    with open(input_name, 'r') as infile:
-        data = json.load(infile)
+    # The glossaries contain a lot of information that we do not use.
+    # Sometimes this can make them too large to load in memory. Therefore,
+    # we first preprocess each file to remove the fields we do not need.
+    try:
+        data = preprocess_glossary(input_name)
+    except RuntimeError:
+        # If the preprocessing fails (most likely reason is that the jq tool
+        # is not present), try to read the file normally as a last resort.
+        warnings.warn(
+            "Could not preprocess file {}. Is jq installed?\n"
+            "Will attempt to ingest without preprocessing."
+            "This may fail for large glossaries.".format(input_name),
+            RuntimeWarning
+        )
+        with open(input_name, 'r') as input_file:
+            data = json.load(input_file)
 
-    instances = data["instances"]
-    base_data = {key: data[key] for key in base_fields}
-
-    new_entries = []
-    for entry in data["entries"]:
-        # Create a flat entry from the nested norms, forms, senses etc.
-        new_entry = process_entry(entry)
-        # Find the instance that is referred to by the entry. For now, just link
-        # the top-level reference rather than that of individual senses, norms
-        # etc. Every entry should have a corresponding instance in the glossary,
-        # so if something is missing this will throw a KeyError, which will let
-        # us know that there is something wrong with the glossary.
-        new_entry["instances"] = instances[entry["xis"]]
-        # Add the attributes shared by all entries in the glossary
-        new_entry.update(base_data)
-        new_entries.append(new_entry)
+    new_entries = process_glossary_data(data)
     if write_file:
         output_name = input_name.rsplit('.', 1)[0] + "-entries.json"
         with open(output_name, 'w') as outfile:

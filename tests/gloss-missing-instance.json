@@ -1,0 +1,67 @@
+{
+  "project": "neo",
+  "lang": "elx",
+  "entries": [
+    {
+      "headword": "kirir[goddess]N",
+      "id": "elx.x000000",
+      "icount": "1",
+      "xis": "elx.non_existent",
+      "cf": "kirir",
+      "gw": "goddess",
+      "forms": [
+        {
+          "n": "ki-ri-ir"
+        }
+      ],
+      "norms": [
+        {
+          "n": "kirir"
+        }
+      ],
+      "senses": [
+        {
+          "mng": "goddess"
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian"
+        }
+      ]
+    },
+    {
+      "headword": "nap[god]N",
+      "id": "elx.x000008",
+      "icount": "1",
+      "xis": "elx.r00001",
+      "cf": "nap",
+      "gw": "god",
+      "forms": [
+        {
+          "n": "nap"
+        }
+      ],
+      "norms": [
+        {
+          "n": "nap"
+        }
+      ],
+      "senses": [
+        {
+          "mng": "god"
+        }
+      ],
+      "periods": [
+        {
+          "p": "Neo-Assyrian"
+        }
+      ]
+    }
+  ],
+  "instances": {
+    "elx.r00001": [
+      "dcclt/nineveh:P365771.126.1"
+    ]
+  }
+}
