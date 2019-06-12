@@ -127,7 +127,7 @@ example, searching for "cat" would return words with either "cat" or "catch" in
 their meanings (among others).
 
 The query can also be a phrase of words separated by spaces. In this case, it
-will return results matching **any** of the words in the phrase.
+will return results matching **all** of the words in the phrase.
 
 A second endpoint at `/search_all` can be used to retrieve all indexed entries.
 
