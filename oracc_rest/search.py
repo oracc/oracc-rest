@@ -1,4 +1,6 @@
 # -*- coding: utf-8 -*-
+import itertools
+
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
 
@@ -130,3 +132,40 @@ class ESearch:
             ".sort" if field in self.UNICODE_FIELDS else (
                 ".keyword" if field in self.TEXT_FIELDS else "")
         )
+
+    def suggest(self, word):
+        """Get search suggestions matching a given word.
+
+        This will return terms found in the indexed data which are close to the
+        query word. This is useful for correcting misspellings.
+        Note that this does not return the query word itself, even if it is
+        found in the data.
+        """
+        search = Search(using=self.client, index=self.index)
+        # Use one term suggester per searchable field, as we can't have multiple
+        # fields in each suggester
+        # TODO We are mostly using the default values for the term suggester.
+        #      We may want to tweak it a bit, or expose some options as request
+        #      arguments.
+        for field_name in self.FIELDNAMES:
+            search = search.suggest("sug_{}".format(field_name),
+                                    word,
+                                    term={"field": field_name,
+                                          # so small words match:
+                                          "min_word_length": 3,
+                                          "size": 10}  # TODO how to get all?
+                                    )
+        suggestion_results = search.execute().suggest.to_dict().values()
+        # The format of the response is a little involved: the results for each
+        # suggester are in a list of lists (to account for multiple query terms,
+        # even thougth we're not allowing that). Therefore, we need two steps
+        # of flattening to get a single results list.
+        all_suggestions = [
+            option["text"]
+            for option
+            in itertools.chain.from_iterable(
+                result["options"] for sr in suggestion_results for result in sr
+            )
+        ]
+        # Remove duplicate results (use a dictionary vs a set to preserve order)
+        return list(dict.fromkeys(all_suggestions))
