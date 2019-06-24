@@ -45,11 +45,11 @@ class ESearch:
                        fields=self.FIELDNAMES, type="phrase_prefix")
                      for word in phrase.split()
                      ]
-        # To combine, we pass these subqueries as "should" arguments to a bool
-        # query. This essentially gets the union of their results.
+        # To combine, we pass these subqueries as "must" arguments to a bool
+        # query. This essentially gets the intersection of their results.
         search = (
                 Search(using=self.client, index=self.index)
-                .query("bool", should=subqueries)
+                .query("bool", must=subqueries)
                 .sort(self._sort_field_name(sort_by, dir))
                 )
         return self._customise_and_run(search, count, after)

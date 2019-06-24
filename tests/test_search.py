@@ -50,7 +50,7 @@ def test_multi_word_search(uploaded_entries, test_index_name):
     Check that the main endpoint gives the right results for basic use cases.
 
     Specifically, this tests that partial matching works correctly, and that
-    a multi-word query gives the union of results, as expected.
+    a multi-word query gives the intersection of results, as expected.
     """
     # The test glossary that we use contains two entries for the word "goddess",
     # one for "god", and one for "snake".
@@ -59,8 +59,8 @@ def test_multi_word_search(uploaded_entries, test_index_name):
     assert len(search.run("god", sort_by="gw")) == 3
     # Check that the whole query word has to match (just in case!)
     assert len(search.run("goddess", sort_by="gw")) == 2
-    # Check that a multi-word query returns results matching any word in it
-    assert len(search.run("god snake", sort_by="gw")) == 4
-    # Check that if an entry matches two query words, it is only returned once
-    # ("usan" is one of the words meaning "goddess")
-    assert len(search.run("god usan", sort_by="gw")) == 3
+    # Check that a multi-word query returns results matching all words in it,
+    # or an empty result-set if no such combination exists.
+    # ("usan" is one of the words meaning "goddess"; there are no snake gods).
+    assert len(search.run("god usan", sort_by="gw")) == 1
+    assert not search.run("god snake", sort_by="gw")
