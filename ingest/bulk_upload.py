@@ -33,6 +33,28 @@ def ICU_installed(es):
     return 'analysis-icu' in [p['component'] for p in cc.plugins(format="json")]
 
 
+def prepare_index_settings():
+    """Create the mapping and settings to be used for the index.
+
+    These must be specified before ingesting the data, so that the fields are
+    properly populated.
+    """
+    # Create an additional field used for sorting. The new field is called
+    # cf.sort and will use a locale-aware collation.
+    field_properties = {
+        "cf": {
+            "type": "text",
+            "fields": {
+                "sort": {
+                    "type": "icu_collation_keyword"
+                }
+            }
+        }
+    }
+    body = {"properties": field_properties}
+    return body
+
+
 if __name__ == "__main__":
     es = elasticsearch.Elasticsearch()
     if not ICU_installed(es):
@@ -56,19 +78,10 @@ if __name__ == "__main__":
         except elasticsearch.exceptions.NotFoundError:
             debug("Index not found, continuing")
 
-    # Create an additional field used for sorting. The new field is called
-    # cf.sort and will use a locale-aware collation. We need to do this before
-    # ingesting the data, so that the new field is properly populated.
+    # Create the index with the required settings
     client.create(index=INDEX_NAME)
-    body = {
-        "properties": {
-            "cf": {
-                "type": "text",
-                "fields": {
-                    "sort": {
-                        "type": "icu_collation_keyword"
-                    }}}}}
-    client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME, body=body)
+    client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME,
+                       body=prepare_index_settings())
 
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API
