@@ -39,11 +39,39 @@ def prepare_index_settings():
     These must be specified before ingesting the data, so that the fields are
     properly populated.
     """
+    # Some fields will contain non-ASCII characters. We want these characters
+    # to be searchable by some equivalent ASCII sequences, according to the
+    # Oracc conventions. For this, we need a custom analyzer that will replace
+    # the non-ASCII characters with their "equivalents".
+    analysis_properties = {
+        "analyzer": {
+            "cuneiform_analyzer": {
+                # The standard tokenizer will remove "," and ".", which are
+                # used in some substitution sequences; instead, we can break
+                # tokens on whitespace, which will ignore punctuation.
+                "tokenizer": "whitespace",
+                "filter": ["lowercase"],
+                "char_filter": ["cuneiform_to_ascii"]
+            }
+        },
+        # For the list of character substitutions, see
+        # http://oracc.museum.upenn.edu/doc/search/searchingcorpora/index.html#h_asciinonunicode
+        "char_filter": {
+            "cuneiform_to_ascii": {
+                "type": "mapping",
+                "mappings": [
+                    "š => sz",
+                    "ṣ => s."
+                ]
+            }
+        }
+    }
     # Create an additional field used for sorting. The new field is called
     # cf.sort and will use a locale-aware collation.
     field_properties = {
         "cf": {
             "type": "text",
+            "analyzer": "cuneiform_analyzer",
             "fields": {
                 "sort": {
                     "type": "icu_collation_keyword"
@@ -51,8 +79,10 @@ def prepare_index_settings():
             }
         }
     }
-    body = {"properties": field_properties}
-    return body
+
+    settings = {"analysis": analysis_properties}
+    mappings = {"properties": field_properties}
+    return settings, mappings
 
 
 if __name__ == "__main__":
@@ -79,9 +109,10 @@ if __name__ == "__main__":
             debug("Index not found, continuing")
 
     # Create the index with the required settings
-    client.create(index=INDEX_NAME)
+    settings, mappings = prepare_index_settings()
+    client.create(index=INDEX_NAME, body={"settings": settings})
     client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME,
-                       body=prepare_index_settings())
+                       body=mappings)
 
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API
