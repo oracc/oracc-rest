@@ -117,8 +117,8 @@ curl -XGET localhost:5000/search/water
 ```
 
 This searches multiple fields for the given query word and returns all
-results. The list of fields currently searched is: `headword`, `gw`
-(guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n`
+results. The list of fields currently searched is: `gw` (guideword),
+`cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n`
 (lemmatisations).
 
 The matching is not exact: an entry is considered to match a query word if it
@@ -136,9 +136,9 @@ no matches are found, a 204 (No Content) status code is returned.
 
 An older, simpler search mode can also be accessed at the `/search` endpoint:
 ```
-curl -XGET localhost:5000/search -d 'headword=water'
+curl -XGET localhost:5000/search -d 'gw=water'
 ```
-This mode supports searching a single field (e.g. headword) for the given value.
+This mode supports searching a single field (e.g. guideword) for the given value.
 If more than one fields are specified (or if none are), an error will be
 returned. This does not accept the extra parameters described below, and should
 be considered deprecated.
@@ -147,7 +147,7 @@ be considered deprecated.
 
 You can customise the search by optionally specifying additional parameters.
 These are:
-- `sort_by`: the field on which to sort (`headword`, `gw`, `cf` or `icount`)
+- `sort_by`: the field on which to sort (`gw`, `cf` or `icount`)
 - `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
 - `count`: the maximum number of results
 

@@ -4,7 +4,7 @@ from elasticsearch_dsl import Q, Search
 
 
 class ESearch:
-    FIELDNAMES = ['headword', 'gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
+    FIELDNAMES = ['gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
     TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
     UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
 
