@@ -1,12 +1,5 @@
 """Methods for creating an index for Oracc glossary data."""
-import elasticsearch
 from elasticsearch_dsl import analyzer, char_filter, Index
-
-
-def ICU_installed(es):
-    """Check whether the ICU Analysis plugin is installed locally."""
-    cc = elasticsearch.client.CatClient(es)
-    return 'analysis-icu' in [p['component'] for p in cc.plugins(format="json")]
 
 
 def prepare_index_mapping():

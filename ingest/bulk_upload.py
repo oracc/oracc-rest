@@ -6,7 +6,7 @@ import elasticsearch.client
 import elasticsearch.helpers
 
 from .break_down import process_file
-from .prepare_index import ICU_installed, create_index
+from .prepare_index import create_index
 
 INDEX_NAME = "oracc"
 TYPE_NAME = "entry"
@@ -25,6 +25,12 @@ def upload_entries(es, entries):
 
 def upload_file(es, input_file):
     upload_entries(es, process_file(input_file, write_file=False))
+
+
+def ICU_installed(es):
+    """Check whether the ICU Analysis plugin is installed locally."""
+    cc = elasticsearch.client.CatClient(es)
+    return 'analysis-icu' in [p['component'] for p in cc.plugins(format="json")]
 
 
 if __name__ == "__main__":
