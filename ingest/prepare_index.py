@@ -1,28 +1,18 @@
 """Methods for creating an index for Oracc glossary data."""
-from elasticsearch_dsl import analyzer, char_filter, Index
+from elasticsearch_dsl import analyzer, char_filter, Field, Index, Mapping
 
 
-def prepare_index_mapping():
-    """Create the mapping to be used for the index.
+ANALYZER_NAME = "cuneiform_analyzer"
+CHAR_FILTER_NAME = "cuneiform_to_ascii"
 
-    These must be specified before ingesting the data, so that the fields are
-    properly populated.
+
+class ICUKeywordField(Field):
+    """A class to represent fields of type icu_collation_keyword.
+
+    We need to define this as the DSL does not recognise field names from
+    plugins.
     """
-    # Create an additional field used for sorting. The new field is called
-    # cf.sort and will use a locale-aware collation.
-    field_properties = {
-        "cf": {
-            "type": "text",
-            "analyzer": "cuneiform_analyzer",
-            "fields": {
-                "sort": {
-                    "type": "icu_collation_keyword"
-                }
-            }
-        }
-    }
-    mappings = {"properties": field_properties}
-    return mappings
+    name = "icu_collation_keyword"
 
 
 def prepare_cuneiform_analyzer():
@@ -41,7 +31,7 @@ def prepare_cuneiform_analyzer():
     """
     # First we define the character filter that will do the replacement.
     cuneiform_to_ascii = char_filter(
-        "cuneiform_to_ascii",
+        CHAR_FILTER_NAME,
         type="mapping",
         mappings=[
             "š => sz",
@@ -50,7 +40,7 @@ def prepare_cuneiform_analyzer():
     )
     # Now we define the analyzer using this character filter and some builtins.
     cuneiform_analyzer = analyzer(
-        "cuneiform_analyzer",
+        ANALYZER_NAME,
         # The standard tokenizer will remove "," and ".", which are
         # used in some substitution sequences; instead, we can break
         # tokens on whitespace, which will ignore punctuation.
@@ -59,6 +49,21 @@ def prepare_cuneiform_analyzer():
         char_filter=cuneiform_to_ascii
     )
     return cuneiform_analyzer
+
+
+def prepare_index_mapping(doc_type):
+    """Create the field mappings in the index for the specified type.
+
+    These must be specified before ingesting the data, so that the fields are
+    properly populated.
+    """
+    mappings = Mapping(doc_type)
+    # Create an additional field used for sorting. The new field is called
+    # cf.sort and will use a locale-aware collation.
+    # The base cf field will use the custom cuneiform analyzer.
+    mappings.field("cf", "text", analyzer=ANALYZER_NAME,
+                   fields={"sort": ICUKeywordField})
+    return mappings
 
 
 def create_index(es, index_name, type_name):
@@ -74,6 +79,5 @@ def create_index(es, index_name, type_name):
     """
     index = Index(index_name)
     index.analyzer(prepare_cuneiform_analyzer())
+    index.mappings(prepare_index_mapping(type_name))
     index.create(using=es)
-    mappings = prepare_index_mapping()
-    index.put_mapping(using=es, doc_type=type_name, body=mappings)
