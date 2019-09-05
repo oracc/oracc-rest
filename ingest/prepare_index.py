@@ -1,5 +1,6 @@
 """Methods for creating an index for Oracc glossary data."""
 import elasticsearch
+from elasticsearch_dsl import analyzer, char_filter
 
 
 def ICU_installed(es):
@@ -58,6 +59,42 @@ def prepare_index_settings():
     settings = {"analysis": analysis_properties}
     mappings = {"properties": field_properties}
     return settings, mappings
+
+
+def prepare_cuneiform_analyzer():
+    """Create an analyzer to handle cuneiform transliterations.
+
+    Some fields will contain non-ASCII characters. We want these characters
+    to be searchable by some equivalent ASCII sequences, according to the
+    Oracc conventions. For this, we need a custom analyzer that will replace
+    the non-ASCII characters with their "equivalents".
+
+    For the list of character substitutions that we allow, see:
+    http://oracc.museum.upenn.edu/doc/search/searchingcorpora/index.html#h_asciinonunicode
+
+    For more information on Elasticsearch analyzers and their components, see:
+    https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
+    """
+    # First we define the character filter that will do the replacement.
+    cuneiform_to_ascii = char_filter(
+        "cuneiform_to_ascii",
+        type="mapping",
+        mappings=[
+            "š => sz",
+            "ṣ => s."
+        ]
+    )
+    # Now we define the analyzer using this character filter and some builtins.
+    cuneiform_analyzer = analyzer(
+        "cuneiform_analyzer",
+        # The standard tokenizer will remove "," and ".", which are
+        # used in some substitution sequences; instead, we can break
+        # tokens on whitespace, which will ignore punctuation.
+        tokenizer="whitespace",
+        filter=["lowercase"],
+        char_filter=cuneiform_to_ascii
+    )
+    return cuneiform_analyzer
 
 
 def create_index(es, index_name, type_name):
