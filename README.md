@@ -22,6 +22,7 @@ For more installation instructions and options, see
 To store Oracc's texts and their related metadata, we use
 [ElasticSearch](https://www.elastic.co/products/elasticsearch). The code in
 this repository has been tested with ElasticSearch 6.
+In particular, **it is not (yet) compatible with ElasticSearch 7!**
 
 To install ElasticSearch:
 * OS X: `brew install elasticsearch`
