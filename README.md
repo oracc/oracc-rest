@@ -33,6 +33,11 @@ To install it:
 * OS X: `elasticsearch-plugin install analysis-icu`
 * Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per link above)
 
+Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted.
+If running as a service (like in the instructions below), all nodes can be restarted with one command:
+* OS X: `brew services restart elasticsearch`
+* Ubuntu: `sudo service elasticsearch restart`
+
 To launch an instance of ElasticSearch accessible in its default port 9200:
 * OS X: `elasticsearch -d`
 * Ubuntu: `systemctl start elasticsearch`
