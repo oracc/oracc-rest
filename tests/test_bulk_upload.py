@@ -19,6 +19,12 @@ def test_analyzer(es, test_index_name):
         response = index.analyze(
             using=es, body={"text": original, "analyzer": ANALYZER_NAME})
         assert response["tokens"][0]["token"] == analyzed
+    # Check a text consisting of multiple words
+    combined_original = " ".join(original_texts)
+    response = index.analyze(
+        using=es, body={"text": combined_original, "analyzer": ANALYZER_NAME})
+    tokens = [block["token"] for block in response["tokens"]]
+    assert tokens == analyzed_texts
 
 
 def test_upload_entries(es, entries, test_index_name):
