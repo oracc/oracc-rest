@@ -35,7 +35,7 @@ def prepare_cuneiform_analyzer():
         type="mapping",
         mappings=[
             "š => sz",
-            "ṣ => s."
+            "ṣ => s,"
         ]
     )
     # Now we define the analyzer using this character filter and some builtins.
