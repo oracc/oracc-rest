@@ -61,6 +61,11 @@ def prepare_index_mapping(doc_type):
     # The base cf field will use the custom cuneiform analyzer.
     mappings.field("cf", "text", analyzer=ANALYZER_NAME,
                    fields={"sort": ICUKeywordField()})
+    # Also use the analyzer for other fields which contain cuneiform text.
+    for field in ["forms_n", "norms_n"]:
+        # TODO Do we lose anything by making this mapping explicit? (compared
+        # to the dynamic mapping created by Elasticsearch automatically)
+        mappings.field(field, "text", analyzer=ANALYZER_NAME)
     return mappings
 
 

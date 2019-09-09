@@ -4,6 +4,7 @@ from elasticsearch_dsl import Index, Search
 
 import ingest.bulk_upload
 from ingest.prepare_index import (ANALYZER_NAME, create_index,
+                                  prepare_index_mapping,
                                   prepare_cuneiform_analyzer)
 
 
@@ -35,6 +36,16 @@ def test_upload_entries(es, entries, test_index_name):
     time.sleep(2)  # a small delay to make sure the upload has finished
     # Check that all documents have been uploaded
     assert es.count(index=test_index_name)["count"] == len(entries)
+
+
+def test_analyzer_in_mapping(es, test_index_name):
+    """Test that all relevant fields are set to use the cuneiform analyzer."""
+    create_index(es, test_index_name, ingest.bulk_upload.TYPE_NAME)
+    full_mapping = Index(test_index_name).get_mapping(using=es)
+    field_mappings = full_mapping[test_index_name]["mappings"][
+        ingest.bulk_upload.TYPE_NAME]["properties"]
+    for field in ["cf", "forms_n", "norms_n"]:
+        assert field_mappings[field]["analyzer"] == ANALYZER_NAME
 
 
 def test_analyzer_search_results(es, entries, test_index_name):
