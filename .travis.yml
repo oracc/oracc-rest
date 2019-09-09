@@ -10,9 +10,6 @@ matrix:
     - python: '3.6'
       env: PEP8=1
 
-services:
-  - elasticsearch
-
 install:
   - pip install -r requirements.txt
   - |
@@ -22,9 +19,13 @@ install:
     fi
 
 before_script:
-  - sleep 10 # While ElasticSearch starts up (as per Travis docs)
-  - sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu
-  - sudo service elasticsearch restart
+  - |
+    # Install plugin and start ElasticSearch if not on the PEP8 test instance
+    if [ -z "$PEP8" ]; then
+      sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu
+      sudo service elasticsearch start
+      sleep 10 # While ElasticSearch starts up (as per Travis docs)
+    fi
 
 script:
   - |
