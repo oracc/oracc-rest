@@ -30,13 +30,11 @@ def prepare_cuneiform_analyzer():
     https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
     """
     # First we define the character filter that will do the replacement.
+    synonyms = {"ḫ": "h", "ŋ": "j", "ṣ": "s,", "š": "sz", "ṭ": "t,"}
     cuneiform_to_ascii = char_filter(
         CHAR_FILTER_NAME,
         type="mapping",
-        mappings=[
-            "š => sz",
-            "ṣ => s,"
-        ]
+        mappings=["{} => {}".format(*pair) for pair in synonyms.items()],
     )
     # Now we define the analyzer using this character filter and some builtins.
     cuneiform_analyzer = analyzer(
