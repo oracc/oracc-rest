@@ -60,7 +60,7 @@ def prepare_index_mapping(doc_type):
     # cf.sort and will use a locale-aware collation.
     # The base cf field will use the custom cuneiform analyzer.
     mappings.field("cf", "text", analyzer=ANALYZER_NAME,
-                   fields={"sort": ICUKeywordField})
+                   fields={"sort": ICUKeywordField()})
     return mappings
 
 
@@ -77,5 +77,5 @@ def create_index(es, index_name, type_name):
     """
     index = Index(index_name)
     index.analyzer(prepare_cuneiform_analyzer())
-    index.mappings(prepare_index_mapping(type_name))
+    index.mapping(prepare_index_mapping(type_name))
     index.create(using=es)
