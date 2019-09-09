@@ -13,9 +13,11 @@ def test_analyzer(es, test_index_name):
     index.analyzer(analyzer)
     index.create(using=es)
     # Check various character substitutions work
-    for (text, analyzed) in [("apši", "apszi"), ("ṣa", "s,a")]:
+    original_texts = ["ḫa", "ŋen", "ṣa", "ša", "ṭa"]
+    analyzed_texts = ["ha", "jen", "s,a", "sza", "t,a"]
+    for (original, analyzed) in zip(original_texts, analyzed_texts):
         response = index.analyze(
-            using=es, body={"text": text, "analyzer": ANALYZER_NAME})
+            using=es, body={"text": original, "analyzer": ANALYZER_NAME})
         assert response["tokens"][0]["token"] == analyzed
 
 
