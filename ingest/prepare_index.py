@@ -80,7 +80,7 @@ def create_index(es, index_name, type_name):
     :param index_name: the name of the index to create
     :param type_name: the name of the document type to apply the mappings to
     """
-    index = Index(index_name)
+    index = Index(index_name, doc_type=type_name)
     index.analyzer(prepare_cuneiform_analyzer())
     index.mapping(prepare_index_mapping(type_name))
     index.create(using=es)
