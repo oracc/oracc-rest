@@ -30,7 +30,18 @@ def prepare_cuneiform_analyzer():
     https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
     """
     # First we define the character filter that will do the replacement.
-    synonyms = {"ḫ": "h", "ŋ": "j", "ṣ": "s,", "š": "sz", "ṭ": "t,"}
+    synonyms = {"ḫ": "h", "ŋ": "j", "ṣ": "s,", "š": "sz", "ṭ": "t,",
+                # Unicode "positions" of vowel variants do not follow any
+                # pattern, so they must be listed explicitly:
+                "á": "a2", "à": "a3", "â": "a", "ā": "a",
+                "é": "e2", "è": "e3", "ê": "e", "ē": "e",
+                "í": "i2", "ì": "i3", "î": "i", "ī": "i",
+                "ú": "u2", "ù": "u3", "û": "u", "ū": "u",
+                }
+    # Numerical subscript characters (₀, ₁, etc) run contiguously from 0x2080.
+    # We map them to their "normal" digits, so that e.g. ₁ is matched by 1.
+    for digit in range(10):
+        synonyms[chr(8320 + digit)] = str(digit)
     cuneiform_to_ascii = char_filter(
         CHAR_FILTER_NAME,
         type="mapping",
