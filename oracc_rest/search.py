@@ -169,3 +169,39 @@ class ESearch:
         ]
         # Remove duplicate results (use a dictionary vs a set to preserve order)
         return list(dict.fromkeys(all_suggestions))
+
+
+    def complete(self, word):
+        """Get search suggestions matching a given word.
+
+        This will return terms found in the indexed data which are close to the
+        query word. This is useful for correcting misspellings.
+        Note that this does not return the query word itself, even if it is
+        found in the data.
+        """
+        search = Search(using=self.client, index=self.index)
+        # Use one term suggester per searchable field, as we can't have multiple
+        # fields in each suggester
+        # TODO We are mostly using the default values for the term suggester.
+        #      We may want to tweak it a bit, or expose some options as request
+        #      arguments.
+        search = search.suggest("sug_complete",
+                                word,
+                                completion={"field": "completions",
+                                        "skip_duplicates": True,
+                                        "size": 10}  # TODO how to get all?
+                                )
+        completion_results = search.execute().suggest.to_dict().values()
+        # The format of the response is a little involved: the results for each
+        # suggester are in a list of lists (to account for multiple query terms,
+        # even thougth we're not allowing that). Therefore, we need two steps
+        # of flattening to get a single results list.
+        all_completions = [
+            option["text"]
+            for option
+            in itertools.chain.from_iterable(
+                result["options"] for sr in completion_results for result in sr
+            )
+        ]
+        # Remove duplicate results (use a dictionary vs a set to preserve order)
+        return list(dict.fromkeys(all_completions))

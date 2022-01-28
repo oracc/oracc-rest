@@ -20,6 +20,7 @@ def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["_type"] = TYPE_NAME
+        entry["completions"] = [entry["cf"],entry["gw"]]
     elasticsearch.helpers.bulk(es, entries)
 
 
@@ -67,8 +68,12 @@ if __name__ == "__main__":
                 "fields": {
                     "sort": {
                         "type": "icu_collation_keyword"
-                    }}}}}
+                    }}},
+            "completions": {
+                "type": "completion"
+                }}}
     client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME, body=body)
+
 
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API
