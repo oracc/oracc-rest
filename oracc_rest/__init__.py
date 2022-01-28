@@ -79,7 +79,7 @@ class Suggestion(Resource):
 
 class Completion(Resource):
     def get(self, word):
-        """Get suggestions for terms similar to a (possibly partial) word."""
+        """Get completions for partial words."""
         search = ESearch()
         results = search.complete(word)
         return results

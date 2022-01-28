@@ -172,19 +172,14 @@ class ESearch:
 
 
     def complete(self, word):
-        """Get search suggestions matching a given word.
+        """Get completions for a given word.
 
-        This will return terms found in the indexed data which are close to the
-        query word. This is useful for correcting misspellings.
-        Note that this does not return the query word itself, even if it is
+        This will return terms and guidewords found in the indexed data which are completions
+        of the query. This is useful for finding a range of results from limited input.
+        Note that this does not return the query itself, even if it is
         found in the data.
         """
         search = Search(using=self.client, index=self.index)
-        # Use one term suggester per searchable field, as we can't have multiple
-        # fields in each suggester
-        # TODO We are mostly using the default values for the term suggester.
-        #      We may want to tweak it a bit, or expose some options as request
-        #      arguments.
         search = search.suggest("sug_complete",
                                 word,
                                 completion={"field": "completions",
