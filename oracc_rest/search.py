@@ -186,17 +186,13 @@ class ESearch:
                                         "skip_duplicates": True,
                                         "size": 10}  # TODO how to get all?
                                 )
-        completion_results = search.execute().suggest.to_dict().values()
-        # The format of the response is a little involved: the results for each
-        # suggester are in a list of lists (to account for multiple query terms,
-        # even thougth we're not allowing that). Therefore, we need two steps
-        # of flattening to get a single results list.
+        completion_results = search.execute().suggest.to_dict()['sug_complete']
+        
+      
         all_completions = [
             option["text"]
             for option
-            in itertools.chain.from_iterable(
-                result["options"] for sr in completion_results for result in sr
-            )
+            in completion_results[0]["options"]
         ]
-        # Remove duplicate results (use a dictionary vs a set to preserve order)
-        return list(dict.fromkeys(all_completions))
+        
+        return all_completions
