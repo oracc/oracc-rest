@@ -22,6 +22,7 @@ For more installation instructions and options, see
 To store Oracc's texts and their related metadata, we use
 [ElasticSearch](https://www.elastic.co/products/elasticsearch). The code in
 this repository has been tested with ElasticSearch 6.
+In particular, **it is not (yet) compatible with ElasticSearch 7!**
 
 To install ElasticSearch:
 * OS X: `brew install elasticsearch`
@@ -31,6 +32,11 @@ This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en
 To install it:
 * OS X: `elasticsearch-plugin install analysis-icu`
 * Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per link above)
+
+Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted.
+If running as a service (like in the instructions below), all nodes can be restarted with one command:
+* OS X: `brew services restart elasticsearch`
+* Ubuntu: `sudo service elasticsearch restart`
 
 To launch an instance of ElasticSearch accessible in its default port 9200:
 * OS X: `elasticsearch -d`
@@ -117,8 +123,8 @@ curl -XGET localhost:5000/search/water
 ```
 
 This searches multiple fields for the given query word and returns all
-results. The list of fields currently searched is: `headword`, `gw`
-(guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n`
+results. The list of fields currently searched is: `gw` (guideword),
+`cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n`
 (lemmatisations).
 
 The matching is not exact: an entry is considered to match a query word if it
@@ -136,9 +142,9 @@ no matches are found, a 204 (No Content) status code is returned.
 
 An older, simpler search mode can also be accessed at the `/search` endpoint:
 ```
-curl -XGET localhost:5000/search -d 'headword=water'
+curl -XGET localhost:5000/search -d 'gw=water'
 ```
-This mode supports searching a single field (e.g. headword) for the given value.
+This mode supports searching a single field (e.g. guideword) for the given value.
 If more than one fields are specified (or if none are), an error will be
 returned. This does not accept the extra parameters described below, and should
 be considered deprecated.
@@ -147,7 +153,7 @@ be considered deprecated.
 
 You can customise the search by optionally specifying additional parameters.
 These are:
-- `sort_by`: the field on which to sort (`headword`, `gw`, `cf` or `icount`)
+- `sort_by`: the field on which to sort (`gw`, `cf` or `icount`)
 - `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
 - `count`: the maximum number of results
 

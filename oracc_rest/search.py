@@ -4,7 +4,7 @@ from elasticsearch_dsl import Q, Search
 
 
 class ESearch:
-    FIELDNAMES = ['headword', 'gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
+    FIELDNAMES = ['gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
     TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
     UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
 
@@ -27,7 +27,7 @@ class ESearch:
         results = search.sort("_doc").scan()
         return results
 
-    def _execute_general(self, phrase, sort_by="cf", dir="asc",
+    def _execute_general(self, phrase, sort_by="cf", direction="asc",
                          count=None, after=None):
         """
         Given a phrase of space-separated words, return all matching entries in
@@ -50,7 +50,7 @@ class ESearch:
         search = (
                 Search(using=self.client, index=self.index)
                 .query("bool", must=subqueries)
-                .sort(self._sort_field_name(sort_by, dir))
+                .sort(self._sort_field_name(sort_by, direction))
                 )
         return self._customise_and_run(search, count, after)
 
@@ -82,13 +82,13 @@ class ESearch:
         else:
             return self._get_results(self._execute(word, fieldname))
 
-    def list_all(self, sort_by="cf", dir="asc", count=None, after=None):
+    def list_all(self, sort_by="cf", direction="asc", count=None, after=None):
         """Get a list of all entries."""
         search = (
                 Search(using=self.client, index=self.index)
                 .query("match_all")
                 # TODO We should maybe sort on a tie-breaker field (eg _id) too...
-                .sort(self._sort_field_name(sort_by, dir))
+                .sort(self._sort_field_name(sort_by, direction))
                 )
         results = self._customise_and_run(search, count, after)
         return self._get_results(results)
@@ -114,11 +114,11 @@ class ESearch:
             results = search.params(preserve_order=True).scan()
         return results
 
-    def _sort_field_name(self, field, dir):
+    def _sort_field_name(self, field, direction):
         """Build the argument to sort based on a field name and a direction."""
         return "{}{}{}".format(
             # A - indicates descending sorting order in the ElasticSearch DSL
-            "-" if dir == 'desc' else "",
+            "-" if direction == 'desc' else "",
             # The base field name
             field,
             # Potentially, a suffix for the field:
