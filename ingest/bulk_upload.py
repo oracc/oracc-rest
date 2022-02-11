@@ -6,7 +6,7 @@ import elasticsearch.client
 import elasticsearch.helpers
 
 from .break_down import process_file
-
+from .prepare_index import create_index
 
 INDEX_NAME = "oracc"
 TYPE_NAME = "entry"
@@ -57,22 +57,8 @@ if __name__ == "__main__":
         except elasticsearch.exceptions.NotFoundError:
             debug("Index not found, continuing")
 
-    # Create two additional fields used for sorting. The new fields are called
-    # cf.sort and completions, they will use a locale-aware collation. We need to do this 
-    # before ingesting the data, so that the new field is properly populated.
-    client.create(index=INDEX_NAME)
-    body = {
-        "properties": {
-            "cf": {
-                "type": "text",
-                "fields": {
-                    "sort": {
-                        "type": "icu_collation_keyword"
-                    }}},
-            "completions": {
-                "type": "completion"
-                }}}
-    client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME, body=body)
+    # Create the index with the required settings
+    create_index(es, INDEX_NAME, TYPE_NAME)
 
 
     for file in files:
