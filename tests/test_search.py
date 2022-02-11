@@ -111,3 +111,10 @@ def test_completion(uploaded_entries, test_index_name):
     # Check that we can complete from one letter and check that we have no duplicates (set in the method)
     assert results == ["god", "goddess"]
 
+def test_completion_cf(uploaded_entries, test_index_name):
+    """Check completions work
+    """
+    search = ESearch(index_name=test_index_name)
+    results = search.complete("u")
+    # Check that we can complete from one letter and check that we have no duplicates (set in the method)
+    assert "usan" in results
