@@ -20,6 +20,7 @@ def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["_type"] = TYPE_NAME
+        entry["completions"] = [entry["cf"], entry["gw"]]
     elasticsearch.helpers.bulk(es, entries)
 
 
@@ -56,9 +57,9 @@ if __name__ == "__main__":
         except elasticsearch.exceptions.NotFoundError:
             debug("Index not found, continuing")
 
-    # Create an additional field used for sorting. The new field is called
-    # cf.sort and will use a locale-aware collation. We need to do this before
-    # ingesting the data, so that the new field is properly populated.
+    # Create two additional fields used for sorting. The new fields are called
+    # cf.sort and completions, they will use a locale-aware collation. We need to do this 
+    # before ingesting the data, so that the new field is properly populated.
     client.create(index=INDEX_NAME)
     body = {
         "properties": {
@@ -67,8 +68,12 @@ if __name__ == "__main__":
                 "fields": {
                     "sort": {
                         "type": "icu_collation_keyword"
-                    }}}}}
+                    }}},
+            "completions": {
+                "type": "completion"
+                }}}
     client.put_mapping(index=INDEX_NAME, doc_type=TYPE_NAME, body=body)
+
 
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API
