@@ -20,7 +20,7 @@ def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["_type"] = TYPE_NAME
-        entry["completions"] = [entry["cf"],entry["gw"]]
+        entry["completions"] = [entry["cf"], entry["gw"]]
     elasticsearch.helpers.bulk(es, entries)
 
 
