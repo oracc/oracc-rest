@@ -56,8 +56,8 @@ def test_suggest_basic(uploaded_entries, test_index_name):
     results = search.suggest("apsu")
     # Check the returned type.
     assert isinstance(results, list)
-    # Check that we match a term with two substitutions...
-    assert "apši" in results
+    # Check that we match a term with two changes...
+    assert "apszi" in results
     # ...but not unrelated results.
     assert "kirir" not in results
 
