@@ -60,7 +60,6 @@ if __name__ == "__main__":
     # Create the index with the required settings
     create_index(es, INDEX_NAME, TYPE_NAME)
 
-
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API
         upload_file(es, file)

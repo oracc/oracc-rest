@@ -170,7 +170,6 @@ class ESearch:
         # Remove duplicate results (use a dictionary vs a set to preserve order)
         return list(dict.fromkeys(all_suggestions))
 
-
     def complete(self, word):
         """Get completions for a given word.
 
@@ -182,17 +181,17 @@ class ESearch:
         search = Search(using=self.client, index=self.index)
         search = search.suggest("sug_complete",
                                 word,
-                                completion={"field": "completions",
-                                        "skip_duplicates": True,
-                                        "size": 10}  # TODO how to get all?
+                                completion={
+                                    "field": "completions",
+                                    "skip_duplicates": True,
+                                    "size": 10}  # TODO how to get all?
                                 )
         completion_results = search.execute().suggest.to_dict()['sug_complete']
-        
-      
+
         all_completions = [
             option["text"]
             for option
             in completion_results[0]["options"]
         ]
-        
+
         return all_completions

@@ -77,6 +77,7 @@ class Suggestion(Resource):
         results = search.suggest(word)
         return results
 
+
 class Completion(Resource):
     def get(self, word):
         """Get completions for partial words."""
