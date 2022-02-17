@@ -171,6 +171,26 @@ takes a "sorting threshold" and only returns entries whose sorting score is
 greater or lesser (for ascending or descending search, respectively) than this
 threshold.
 
+### Suggesters
+
+Two other end points can be accessed at the `/suggest` and `/completion` endpoints
+of a server running ElasticSearch and the Oracc web server in this repo.
+In the case of `/suggest` e.g.:
+```
+curl -XGET localhost:5000/suggest/yam
+```
+This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which are 
+within a distance of 2 changes from the query word, e.g.: `yam` returns `ym` and `ya` (`cf`).
+
+In the case of `/completion` e.g.:
+```
+curl -XGET localhost:5000/completion/go
+```
+This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which begin 
+with the query. This works for single letters or fragments of words.
+e.g.: `go` returns `god` and `goddess`
+
+
 **Important note**: The sorting score depends on the field being sorted on, but
 it is *not* equal to the value of that field! Instead, you can retrieve an
 entry's score by looking at the `sort` field returned with each hit. You can
