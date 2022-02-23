@@ -6,7 +6,6 @@ from flask_restful import Api, Resource
 
 from .search import ESearch
 
-
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
@@ -19,7 +18,7 @@ def _parse_request_args(args):
     Unexpected parameters are simply ignored.
     """
     out_args = {}
-    string_options = ['sort_by', 'dir', 'after']
+    string_options = ["sort_by", "dir", "after"]
     for option in string_options:
         if option in args:
             # TODO Throw an error if invalid values are given? Be more flexible?
@@ -33,7 +32,7 @@ def _parse_request_args(args):
     # See if the user has specified how many results to retrieve
     # (we do this separately as we have to convert it to an integer)
     try:
-        out_args['count'] = int(args['count'])
+        out_args["count"] = int(args["count"])
     except (KeyError, ValueError):
         pass
     return out_args
@@ -44,9 +43,9 @@ class SingleFieldSearch(Resource):
         args = request.form
         # Parse request
         if not args:
-            abort(400, 'No query specified!')
+            abort(400, "No query specified!")
         elif len(args) > 1:
-            abort(400, 'Too many fields specified!')
+            abort(400, "Too many fields specified!")
         fieldname, word = list(args.items())[0]
         # Pass to ElasticSearch
         search = ESearch()
@@ -86,6 +85,19 @@ class Completion(Resource):
         return results
 
 
+class CombinedSuggestions(Resource):
+    def get(self, word):
+        """Call both completion and suggestion methods
+
+        This also then uses a function to combine the results into
+        a dictionary"""
+        search = ESearch()
+        completions = search.complete(word)
+        suggestions = search.suggest(word)
+        formatted = ESearch.all_suggest_compiler(completions, suggestions)
+        return formatted
+
+
 class FullList(Resource):
     def get(self):
         """Return all entries in the database.
@@ -102,8 +114,9 @@ class FullList(Resource):
 
 
 # Make the search API available at the "/search" and "/suggest" endpoints
-api.add_resource(SingleFieldSearch, '/search')
-api.add_resource(GeneralSearch, '/search/<string:word>')
-api.add_resource(FullList, '/search_all')
-api.add_resource(Suggestion, '/suggest/<string:word>')
-api.add_resource(Completion, '/completion/<string:word>')
+api.add_resource(SingleFieldSearch, "/search")
+api.add_resource(GeneralSearch, "/search/<string:word>")
+api.add_resource(FullList, "/search_all")
+api.add_resource(Suggestion, "/suggest/<string:word>")
+api.add_resource(Completion, "/completion/<string:word>")
+api.add_resource(CombinedSuggestions, "/suggest_all/<string:word>")
