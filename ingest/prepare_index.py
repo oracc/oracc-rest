@@ -77,6 +77,8 @@ def prepare_index_mapping(doc_type):
         # TODO Do we lose anything by making this mapping explicit? (compared
         # to the dynamic mapping created by Elasticsearch automatically)
         mappings.field(field, "text", analyzer=ANALYZER_NAME)
+    # Add completions field to index
+    mappings.field("completions", "completion")
     return mappings
 
 

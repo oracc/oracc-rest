@@ -70,6 +70,22 @@ class GeneralSearch(Resource):
         return results
 
 
+class Suggestion(Resource):
+    def get(self, word):
+        """Get suggestions for terms similar to a (possibly partial) word."""
+        search = ESearch()
+        results = search.suggest(word)
+        return results
+
+
+class Completion(Resource):
+    def get(self, word):
+        """Get completions for partial words."""
+        search = ESearch()
+        results = search.complete(word)
+        return results
+
+
 class FullList(Resource):
     def get(self):
         """Return all entries in the database.
@@ -85,7 +101,9 @@ class FullList(Resource):
         return results
 
 
-# Make the search API available at the "/search" endpoint
+# Make the search API available at the "/search" and "/suggest" endpoints
 api.add_resource(SingleFieldSearch, '/search')
 api.add_resource(GeneralSearch, '/search/<string:word>')
 api.add_resource(FullList, '/search_all')
+api.add_resource(Suggestion, '/suggest/<string:word>')
+api.add_resource(Completion, '/completion/<string:word>')

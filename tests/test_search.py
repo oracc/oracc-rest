@@ -44,3 +44,61 @@ def test_multi_word_search(uploaded_entries, test_index_name):
     # ("usan" is one of the words meaning "goddess"; there are no snake gods).
     assert len(search.run("god usan", sort_by="gw")) == 1
     assert not search.run("god snake", sort_by="gw")
+
+
+def test_suggest_basic(uploaded_entries, test_index_name):
+    """Check the basic behaviour of the suggestion endpoint.
+
+    More specifically, ensure that we return a list that contains vaguely
+    relevant results.
+    """
+    search = ESearch(index_name=test_index_name)
+    results = search.suggest("apsu")
+    # Check the returned type.
+    assert isinstance(results, list)
+    # Check that we match a term with two changes...
+    assert "apszi" in results
+    # ...but not unrelated results.
+    assert "kirir" not in results
+
+
+def test_suggest_short_word(uploaded_entries, test_index_name):
+    """Check that we can get suggestions for 3-letter words.
+
+    This is important because the term suggester only returns terms of length
+    4 or more by default, but our data contains shorter words.
+    """
+    search = ESearch(index_name=test_index_name)
+    results = search.suggest("gos")
+    # Check that we match a short term.
+    assert "god" in results
+
+
+def test_suggest_no_duplicates(uploaded_entries, test_index_name):
+    """Check that the returned suggestions contain no duplicates."""
+    search = ESearch(index_name=test_index_name)
+    results = search.suggest("goddes")  # intentionally misspelled
+    # The term "goddess" appears in multiple fields/entries in the test data
+    # but should only appear in the results once.
+    assert results  # to make sure the assertion below isn't trivially true!
+    assert len(results) == len(set(results))
+
+
+def test_completion(uploaded_entries, test_index_name):
+    """Check completions work
+    """
+    search = ESearch(index_name=test_index_name)
+    results = search.complete("g")
+    # Check that we can complete from one letter and
+    # check that we have no duplicates (set in the method)
+    assert results == ["god", "goddess"]
+
+
+def test_completion_cf(uploaded_entries, test_index_name):
+    """Check completions work
+    """
+    search = ESearch(index_name=test_index_name)
+    results = search.complete("u")
+    # Check that we can complete from one letter and
+    # check that we have no duplicates (set in the method)
+    assert "usan" in results

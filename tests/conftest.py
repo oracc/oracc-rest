@@ -7,6 +7,7 @@ from elasticsearch.client import IndicesClient
 import pytest
 
 import ingest.bulk_upload
+from ingest.prepare_index import create_index
 
 
 @pytest.fixture(scope="session")
@@ -41,6 +42,7 @@ def entries():
 @pytest.fixture
 def uploaded_entries(es, entries, test_index_name):
     """A fixture to ensure that the test glossary entries have been uploaded."""
+    create_index(es, test_index_name, ingest.bulk_upload.TYPE_NAME)
     ingest.bulk_upload.upload_entries(es, entries)
     # Wait until the upload has finished, but give up after about 10 seconds.
     number_attempts = 20  # how many times to check before giving up
