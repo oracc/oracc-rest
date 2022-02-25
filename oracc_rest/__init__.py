@@ -98,6 +98,13 @@ class CombinedSuggestions(Resource):
         return formatted
 
 
+def all_suggest_compiler(completions, suggestions):
+    """This combines the suggestions and completions into
+    a dictionary which can be displayed."""
+    results = {"completions": completions, "suggestions": suggestions}
+    return results
+
+
 class FullList(Resource):
     def get(self):
         """Return all entries in the database.

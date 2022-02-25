@@ -155,7 +155,7 @@ class ESearch:
                     "field": field_name,
                     # so small words match:
                     "min_word_length": 3,
-                    "size": 10,
+                    "size": 100,
                 },  # TODO how to get all?
             )
         suggestion_results = search.execute().suggest.to_dict().values()
@@ -187,7 +187,7 @@ class ESearch:
             completion={
                 "field": "completions",
                 "skip_duplicates": True,
-                "size": 10,
+                "size": 200,
             },  # TODO how to get all?
         )
         completion_results = search.execute().suggest.to_dict()["sug_complete"]
@@ -197,9 +197,3 @@ class ESearch:
         ]
 
         return all_completions
-
-    def all_suggest_compiler(completions, suggestions):
-        """This combines the suggestions and completions into
-        a dictionary which can be displayed."""
-        results = {"completions": completions, "suggestions": suggestions}
-        return results
