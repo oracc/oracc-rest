@@ -38,6 +38,13 @@ def _parse_request_args(args):
     return out_args
 
 
+def _all_suggest_compiler(completions, suggestions):
+    """This combines the suggestions and completions into
+    a dictionary which can be displayed."""
+    format_results = {"completions": completions, "suggestions": suggestions}
+    return format_results
+
+
 class SingleFieldSearch(Resource):
     def get(self):
         args = request.form
@@ -94,15 +101,8 @@ class CombinedSuggestions(Resource):
         search = ESearch()
         completions = search.complete(word)
         suggestions = search.suggest(word)
-        formatted = ESearch.all_suggest_compiler(completions, suggestions)
-        return formatted
-
-
-def all_suggest_compiler(completions, suggestions):
-    """This combines the suggestions and completions into
-    a dictionary which can be displayed."""
-    results = {"completions": completions, "suggestions": suggestions}
-    return results
+        results = _all_suggest_compiler(completions, suggestions)
+        return results
 
 
 class FullList(Resource):
