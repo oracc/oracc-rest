@@ -6,9 +6,9 @@ from elasticsearch_dsl import Q, Search
 
 
 class ESearch:
-    FIELDNAMES = ['gw', 'cf', 'forms_n', 'norms_n', 'senses_mng']
-    TEXT_FIELDS = ['gw']  # fields with text content on which we can sort
-    UNICODE_FIELDS = ['cf']  # fields which may contain non-ASCII characters
+    FIELDNAMES = ["gw", "cf", "forms_n", "norms_n", "senses_mng"]
+    TEXT_FIELDS = ["gw"]  # fields with text content on which we can sort
+    UNICODE_FIELDS = ["cf"]  # fields which may contain non-ASCII characters
 
     def __init__(self, index_name="oracc"):
         self.client = Elasticsearch()
@@ -20,8 +20,8 @@ class ESearch:
         ElasticSearch DB.
         """
         search = Search(using=self.client, index=self.index).query(
-                                    "match",
-                                    **{fieldname: word})
+            "match", **{fieldname: word}
+        )
         # To ensure that each result has a "sort" value (for consistency with
         # the other search modes), we sort by _doc, which is meaningless but
         # efficient, as suggested in the docs:
@@ -29,8 +29,9 @@ class ESearch:
         results = search.sort("_doc").scan()
         return results
 
-    def _execute_general(self, phrase, sort_by="cf", direction="asc",
-                         count=None, after=None):
+    def _execute_general(
+        self, phrase, sort_by="cf", direction="asc", count=None, after=None
+    ):
         """
         Given a phrase of space-separated words, return all matching entries in
         the local ElasticSearch DB.
@@ -43,17 +44,16 @@ class ESearch:
         # words, so we need to run multiple queries and combine them.
         # See Issue #17 for more details.
         subqueries = [
-                     Q("multi_match", query=word,
-                       fields=self.FIELDNAMES, type="phrase_prefix")
-                     for word in phrase.split()
-                     ]
+            Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase_prefix")
+            for word in phrase.split()
+        ]
         # To combine, we pass these subqueries as "must" arguments to a bool
         # query. This essentially gets the intersection of their results.
         search = (
-                Search(using=self.client, index=self.index)
-                .query("bool", must=subqueries)
-                .sort(self._sort_field_name(sort_by, direction))
-                )
+            Search(using=self.client, index=self.index)
+            .query("bool", must=subqueries)
+            .sort(self._sort_field_name(sort_by, direction))
+        )
         return self._customise_and_run(search, count, after)
 
     def _get_results(self, results):
@@ -87,11 +87,10 @@ class ESearch:
     def list_all(self, sort_by="cf", direction="asc", count=None, after=None):
         """Get a list of all entries."""
         search = (
-                Search(using=self.client, index=self.index)
-                .query("match_all")
-                # TODO We should maybe sort on a tie-breaker field (eg _id) too...
-                .sort(self._sort_field_name(sort_by, direction))
-                )
+            Search(using=self.client, index=self.index).query("match_all")
+            # TODO We should maybe sort on a tie-breaker field (eg _id) too...
+            .sort(self._sort_field_name(sort_by, direction))
+        )
         results = self._customise_and_run(search, count, after)
         return self._get_results(results)
 
@@ -120,7 +119,7 @@ class ESearch:
         """Build the argument to sort based on a field name and a direction."""
         return "{}{}{}".format(
             # A - indicates descending sorting order in the ElasticSearch DSL
-            "-" if direction == 'desc' else "",
+            "-" if direction == "desc" else "",
             # The base field name
             field,
             # Potentially, a suffix for the field:
@@ -129,8 +128,9 @@ class ESearch:
             # contain non-ASCII characters, we use the X.sort field instead.
             # TODO Since the suffixes don't change, we can store them in a dict
             # instead of building them every time.
-            ".sort" if field in self.UNICODE_FIELDS else (
-                ".keyword" if field in self.TEXT_FIELDS else "")
+            ".sort"
+            if field in self.UNICODE_FIELDS
+            else (".keyword" if field in self.TEXT_FIELDS else ""),
         )
 
     def suggest(self, word):
@@ -148,13 +148,16 @@ class ESearch:
         #      We may want to tweak it a bit, or expose some options as request
         #      arguments.
         for field_name in self.FIELDNAMES:
-            search = search.suggest("sug_{}".format(field_name),
-                                    word,
-                                    term={"field": field_name,
-                                          # so small words match:
-                                          "min_word_length": 3,
-                                          "size": 10}  # TODO how to get all?
-                                    )
+            search = search.suggest(
+                "sug_{}".format(field_name),
+                word,
+                term={
+                    "field": field_name,
+                    # so small words match:
+                    "min_word_length": 3,
+                    "size": 100,
+                },  # TODO how to get all?
+            )
         suggestion_results = search.execute().suggest.to_dict().values()
         # The format of the response is a little involved: the results for each
         # suggester are in a list of lists (to account for multiple query terms,
@@ -162,8 +165,7 @@ class ESearch:
         # of flattening to get a single results list.
         all_suggestions = [
             option["text"]
-            for option
-            in itertools.chain.from_iterable(
+            for option in itertools.chain.from_iterable(
                 result["options"] for sr in suggestion_results for result in sr
             )
         ]
@@ -179,19 +181,19 @@ class ESearch:
         found in the data.
         """
         search = Search(using=self.client, index=self.index)
-        search = search.suggest("sug_complete",
-                                word,
-                                completion={
-                                    "field": "completions",
-                                    "skip_duplicates": True,
-                                    "size": 10}  # TODO how to get all?
-                                )
-        completion_results = search.execute().suggest.to_dict()['sug_complete']
+        search = search.suggest(
+            "sug_complete",
+            word,
+            completion={
+                "field": "completions",
+                "skip_duplicates": True,
+                "size": 200,
+            },  # TODO how to get all?
+        )
+        completion_results = search.execute().suggest.to_dict()["sug_complete"]
 
         all_completions = [
-            option["text"]
-            for option
-            in completion_results[0]["options"]
+            option["text"] for option in completion_results[0]["options"]
         ]
 
         return all_completions
