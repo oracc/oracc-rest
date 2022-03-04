@@ -98,9 +98,16 @@ class CombinedSuggestions(Resource):
 
         This also then uses a function to combine the results into
         a dictionary"""
+        args = _parse_request_args(request.args)
+        if "count" in args:
+            c_size = s_size = args["count"]
+        else:
+            c_size = 200
+            s_size = 100
         search = ESearch()
-        completions = search.complete(word)
-        suggestions = search.suggest(word)
+
+        completions = search.complete(word, c_size)
+        suggestions = search.suggest(word, s_size)
         results = _all_suggest_compiler(completions, suggestions)
         return results
 
