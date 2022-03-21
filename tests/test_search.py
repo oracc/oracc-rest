@@ -61,9 +61,9 @@ def test_suggest_basic(uploaded_entries, test_index_name):
     # ...but not unrelated results.
     assert "kirir" not in results
     # Check that the size parameter functions
-    # there are 3 sources for suggestions, ergo
-    # we should expect no more than 3 * the size
-    assert len(results) <= 15
+    # there are 5 sources for suggestions, ergo
+    # we should expect no more than 5 * the size
+    assert len(results) <= 25
 
 
 def test_suggest_short_word(uploaded_entries, test_index_name):
@@ -76,7 +76,7 @@ def test_suggest_short_word(uploaded_entries, test_index_name):
     results = search.suggest("gos", 5)
     # Check that we match a short term.
     assert "god" in results
-    assert len(results) <= 15
+    assert len(results) <= 25
 
 
 def test_suggest_no_duplicates(uploaded_entries, test_index_name):
