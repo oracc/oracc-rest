@@ -133,7 +133,7 @@ class ESearch:
             else (".keyword" if field in self.TEXT_FIELDS else ""),
         )
 
-    def suggest(self, word):
+    def suggest(self, word, size):
         """Get search suggestions matching a given word.
 
         This will return terms found in the indexed data which are close to the
@@ -155,7 +155,7 @@ class ESearch:
                     "field": field_name,
                     # so small words match:
                     "min_word_length": 3,
-                    "size": 100,
+                    "size": size,
                 },  # TODO how to get all?
             )
         suggestion_results = search.execute().suggest.to_dict().values()
@@ -172,7 +172,7 @@ class ESearch:
         # Remove duplicate results (use a dictionary vs a set to preserve order)
         return list(dict.fromkeys(all_suggestions))
 
-    def complete(self, word):
+    def complete(self, word, size):
         """Get completions for a given word.
 
         This will return terms and guidewords found in the indexed data which are completions
@@ -187,7 +187,7 @@ class ESearch:
             completion={
                 "field": "completions",
                 "skip_duplicates": True,
-                "size": 200,
+                "size": size,
             },  # TODO how to get all?
         )
         completion_results = search.execute().suggest.to_dict()["sug_complete"]

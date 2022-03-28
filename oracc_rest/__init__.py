@@ -79,16 +79,26 @@ class GeneralSearch(Resource):
 class Suggestion(Resource):
     def get(self, word):
         """Get suggestions for terms similar to a (possibly partial) word."""
+        args = _parse_request_args(request.args)
+        if "count" in args:
+            size = args["count"]
+        else:
+            size = 100
         search = ESearch()
-        results = search.suggest(word)
+        results = search.suggest(word, size)
         return results
 
 
 class Completion(Resource):
     def get(self, word):
         """Get completions for partial words."""
+        args = _parse_request_args(request.args)
+        if "count" in args:
+            size = args["count"]
+        else:
+            size = 200
         search = ESearch()
-        results = search.complete(word)
+        results = search.complete(word, size)
         return results
 
 
@@ -98,9 +108,16 @@ class CombinedSuggestions(Resource):
 
         This also then uses a function to combine the results into
         a dictionary"""
+        args = _parse_request_args(request.args)
+        if "count" in args:
+            c_size = s_size = args["count"]
+        else:
+            c_size = 200
+            s_size = 100
         search = ESearch()
-        completions = search.complete(word)
-        suggestions = search.suggest(word)
+
+        completions = search.complete(word, c_size)
+        suggestions = search.suggest(word, s_size)
         results = _all_suggest_compiler(completions, suggestions)
         return results
 

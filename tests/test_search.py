@@ -53,13 +53,17 @@ def test_suggest_basic(uploaded_entries, test_index_name):
     relevant results.
     """
     search = ESearch(index_name=test_index_name)
-    results = search.suggest("apsu")
+    results = search.suggest("apsu", 5)
     # Check the returned type.
     assert isinstance(results, list)
     # Check that we match a term with two changes...
     assert "apszi" in results
     # ...but not unrelated results.
     assert "kirir" not in results
+    # Check that the size parameter functions
+    # there are 5 sources for suggestions, ergo
+    # we should expect no more than 5 * the size
+    assert len(results) <= 25
 
 
 def test_suggest_short_word(uploaded_entries, test_index_name):
@@ -69,15 +73,16 @@ def test_suggest_short_word(uploaded_entries, test_index_name):
     4 or more by default, but our data contains shorter words.
     """
     search = ESearch(index_name=test_index_name)
-    results = search.suggest("gos")
+    results = search.suggest("gos", 5)
     # Check that we match a short term.
     assert "god" in results
+    assert len(results) <= 25
 
 
 def test_suggest_no_duplicates(uploaded_entries, test_index_name):
     """Check that the returned suggestions contain no duplicates."""
     search = ESearch(index_name=test_index_name)
-    results = search.suggest("goddes")  # intentionally misspelled
+    results = search.suggest("goddes", 5)  # intentionally misspelled
     # The term "goddess" appears in multiple fields/entries in the test data
     # but should only appear in the results once.
     assert results  # to make sure the assertion below isn't trivially true!
@@ -85,20 +90,24 @@ def test_suggest_no_duplicates(uploaded_entries, test_index_name):
 
 
 def test_completion(uploaded_entries, test_index_name):
-    """Check completions work
-    """
+    """Check completions work"""
     search = ESearch(index_name=test_index_name)
-    results = search.complete("g")
+    results = search.complete("g", 5)
     # Check that we can complete from one letter and
     # check that we have no duplicates (set in the method)
     assert results == ["god", "goddess"]
+    # Check that even given a greater size parameter,
+    # there are still only two results
+    assert len(results) == 2
 
 
 def test_completion_cf(uploaded_entries, test_index_name):
-    """Check completions work
-    """
+    """Check completions work"""
     search = ESearch(index_name=test_index_name)
-    results = search.complete("u")
+    results = search.complete("u", 5)
     # Check that we can complete from one letter and
     # check that we have no duplicates (set in the method)
     assert "usan" in results
+    # Completions only has one source so the length should
+    # be the given size parameter
+    assert len(results) <= 5
