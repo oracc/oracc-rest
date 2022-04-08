@@ -101,7 +101,7 @@ def prepare_index_mapping():
     return mappings
 
 
-def create_index(es, index_name, type_name):
+def create_index(es, index_name):
     """
     Create an index to handle glossary data.
 
@@ -110,7 +110,6 @@ def create_index(es, index_name, type_name):
 
     :param es: an Elasticsearch instance to connect to
     :param index_name: the name of the index to create
-    :param type_name: the name of the document type to apply the mappings to
     """
     index = Index(index_name)
     index.analyzer(prepare_cuneiform_analyzer())

@@ -9,7 +9,6 @@ from .break_down import process_file
 from .prepare_index import create_index
 
 INDEX_NAME = "oracc"
-TYPE_NAME = "entry"
 
 
 def debug(msg):
@@ -57,7 +56,7 @@ if __name__ == "__main__":
             debug("Index not found, continuing")
 
     # Create the index with the required settings
-    create_index(es, INDEX_NAME, TYPE_NAME)
+    create_index(es, INDEX_NAME)
 
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API

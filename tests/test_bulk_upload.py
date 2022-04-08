@@ -45,7 +45,7 @@ def test_upload_entries(es, entries, test_index_name):
 
 def test_analyzer_in_mapping(es, test_index_name):
     """Test that all relevant fields are set to use the cuneiform analyzer."""
-    create_index(es, test_index_name, ingest.bulk_upload.TYPE_NAME)
+    create_index(es, test_index_name)
     full_mapping = Index(test_index_name).get_mapping(using=es)
     field_mappings = full_mapping[test_index_name]["mappings"]["properties"]
     for field in ["cf", "forms_n", "norms_n"]:
@@ -55,7 +55,7 @@ def test_analyzer_in_mapping(es, test_index_name):
 def test_analyzer_search_results(es, entries, test_index_name):
     """Test that the analyzer works as expected at search time."""
     # Create the index with all the required settings
-    create_index(es, test_index_name, ingest.bulk_upload.TYPE_NAME)
+    create_index(es, test_index_name)
     ingest.bulk_upload.upload_entries(es, entries)
     time.sleep(2)  # a small delay to make sure the upload has finished
     # The test entries include "apši". Check that its ASCII transliteration
