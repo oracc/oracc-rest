@@ -12,6 +12,7 @@ class ICUKeywordField(Field):
     We need to define this as the DSL does not recognise field names from
     plugins.
     """
+
     name = "icu_collation_keyword"
 
 
@@ -30,14 +31,31 @@ def prepare_cuneiform_analyzer():
     https://www.elastic.co/guide/en/elasticsearch/reference/current/analysis.html
     """
     # First we define the character filter that will do the replacement.
-    synonyms = {"ḫ": "h", "ŋ": "j", "ṣ": "s,", "š": "sz", "ṭ": "t,",
-                # Unicode "positions" of vowel variants do not follow any
-                # pattern, so they must be listed explicitly:
-                "á": "a2", "à": "a3", "â": "a", "ā": "a",
-                "é": "e2", "è": "e3", "ê": "e", "ē": "e",
-                "í": "i2", "ì": "i3", "î": "i", "ī": "i",
-                "ú": "u2", "ù": "u3", "û": "u", "ū": "u",
-                }
+    synonyms = {
+        "ḫ": "h",
+        "ŋ": "j",
+        "ṣ": "s,",
+        "š": "sz",
+        "ṭ": "t,",
+        # Unicode "positions" of vowel variants do not follow any
+        # pattern, so they must be listed explicitly:
+        "á": "a2",
+        "à": "a3",
+        "â": "a",
+        "ā": "a",
+        "é": "e2",
+        "è": "e3",
+        "ê": "e",
+        "ē": "e",
+        "í": "i2",
+        "ì": "i3",
+        "î": "i",
+        "ī": "i",
+        "ú": "u2",
+        "ù": "u3",
+        "û": "u",
+        "ū": "u",
+    }
     # Numerical subscript characters (₀, ₁, etc) run contiguously from 0x2080.
     # We map them to their "normal" digits, so that e.g. ₁ is matched by 1.
     for digit in range(10):
@@ -55,23 +73,24 @@ def prepare_cuneiform_analyzer():
         # tokens on whitespace, which will ignore punctuation.
         tokenizer="whitespace",
         filter=["lowercase"],
-        char_filter=cuneiform_to_ascii
+        char_filter=cuneiform_to_ascii,
     )
     return cuneiform_analyzer
 
 
-def prepare_index_mapping(doc_type):
+def prepare_index_mapping():
     """Create the field mappings in the index for the specified type.
 
     These must be specified before ingesting the data, so that the fields are
     properly populated.
     """
-    mappings = Mapping(doc_type)
+    mappings = Mapping()
     # Create an additional field used for sorting. The new field is called
     # cf.sort and will use a locale-aware collation.
     # The base cf field will use the custom cuneiform analyzer.
-    mappings.field("cf", "text", analyzer=ANALYZER_NAME,
-                   fields={"sort": ICUKeywordField()})
+    mappings.field(
+        "cf", "text", analyzer=ANALYZER_NAME, fields={"sort": ICUKeywordField()}
+    )
     # Also use the analyzer for other fields which contain cuneiform text.
     for field in ["forms_n", "norms_n"]:
         # TODO Do we lose anything by making this mapping explicit? (compared
@@ -82,7 +101,7 @@ def prepare_index_mapping(doc_type):
     return mappings
 
 
-def create_index(es, index_name, type_name):
+def create_index(es, index_name):
     """
     Create an index to handle glossary data.
 
@@ -91,9 +110,8 @@ def create_index(es, index_name, type_name):
 
     :param es: an Elasticsearch instance to connect to
     :param index_name: the name of the index to create
-    :param type_name: the name of the document type to apply the mappings to
     """
-    index = Index(index_name, doc_type=type_name)
+    index = Index(index_name)
     index.analyzer(prepare_cuneiform_analyzer())
-    index.mapping(prepare_index_mapping(type_name))
+    index.mapping(prepare_index_mapping())
     index.create(using=es)

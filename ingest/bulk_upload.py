@@ -9,7 +9,6 @@ from .break_down import process_file
 from .prepare_index import create_index
 
 INDEX_NAME = "oracc"
-TYPE_NAME = "entry"
 
 
 def debug(msg):
@@ -19,7 +18,6 @@ def debug(msg):
 def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
-        entry["_type"] = TYPE_NAME
         entry["completions"] = [entry["cf"], entry["gw"]]
     elasticsearch.helpers.bulk(es, entries)
 
@@ -31,7 +29,7 @@ def upload_file(es, input_file):
 def ICU_installed(es):
     """Check whether the ICU Analysis plugin is installed locally."""
     cc = elasticsearch.client.CatClient(es)
-    return 'analysis-icu' in [p['component'] for p in cc.plugins(format="json")]
+    return "analysis-icu" in [p["component"] for p in cc.plugins(format="json")]
 
 
 if __name__ == "__main__":
@@ -58,7 +56,7 @@ if __name__ == "__main__":
             debug("Index not found, continuing")
 
     # Create the index with the required settings
-    create_index(es, INDEX_NAME, TYPE_NAME)
+    create_index(es, INDEX_NAME)
 
     for file in files:
         # Break down into individual entries and upload to ES using the bulk API

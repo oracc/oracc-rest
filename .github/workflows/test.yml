@@ -25,7 +25,7 @@ jobs:
       - name: Runs Elasticsearch
         uses: elastic/elastic-github-actions/elasticsearch@master
         with:
-          stack-version: 6.8.22  # version installed on server
+          stack-version: 7.17.1  # version installed on server
           plugins: analysis-icu
       - name: Run tests
         run: python -m pytest -s tests
