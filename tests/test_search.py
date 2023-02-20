@@ -1,4 +1,4 @@
-from oracc_rest import ESearch
+from api.app import ESearch
 
 
 def test_sort_field_name():

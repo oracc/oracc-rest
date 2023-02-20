@@ -1,15 +1,26 @@
-from urllib.parse import unquote
+import sys
+import logging
 
+from urllib.parse import unquote
 from flask import abort, Flask, request
 from flask_cors import CORS
 from flask_restful import Api, Resource
 
-from .search import ESearch
+from search import ESearch
 
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
 
+# set up logging
+logging.basicConfig(
+    stream=sys.stdout,
+    level=logging.DEBUG,
+    format="%(levelname)8s | [%(asctime)s] | %(name)s | %(message)s",
+    datefmt="%Y-%m-%d %H:%M:%S",
+    force=True,
+)
+logging.info("flask app started")
 
 def _parse_request_args(args):
     """Retrieve the options of interest from a dictionary of arguments.
@@ -45,9 +56,24 @@ def _all_suggest_compiler(completions, suggestions):
     return format_results
 
 
+# @app.route('/search/<word>', methods=['GET'])
+# def search(word):
+#     """Search "all" fields in the database for the given word."""
+#     print(word, file=sys.stdout)
+
+#     # Pass args to ElasticSearch
+#     search = ESearch()
+#     results = search.run(word, **args)
+
+#     if not results:
+#         return {}, 204  # "empty content" response if no results found
+#     return 'results'
+
 class SingleFieldSearch(Resource):
     def get(self):
         args = request.form
+        print(self, file=sys.stdout)
+
         # Parse request
         if not args:
             abort(400, "No query specified!")
@@ -67,6 +93,8 @@ class GeneralSearch(Resource):
     def get(self, word):
         """Search "all" fields in the database for the given word."""
         args = _parse_request_args(request.args)
+        print(word, flush=True)
+
         # Pass to ElasticSearch
         search = ESearch()
         results = search.run(word, **args)
@@ -137,6 +165,14 @@ class FullList(Resource):
         return results
 
 
+
+# a route to test that the server is running
+@app.route('/test', methods=['GET'])
+def index():
+    message = 'Hello World'
+    return message
+
+
 # Make the search API available at the "/search" and "/suggest" endpoints
 api.add_resource(SingleFieldSearch, "/search")
 api.add_resource(GeneralSearch, "/search/<string:word>")
@@ -144,3 +180,8 @@ api.add_resource(FullList, "/search_all")
 api.add_resource(Suggestion, "/suggest/<string:word>")
 api.add_resource(Completion, "/completion/<string:word>")
 api.add_resource(CombinedSuggestions, "/suggest_all/<string:word>")
+
+
+if __name__ == "__main__":
+    app.run()
+    
