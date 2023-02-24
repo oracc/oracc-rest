@@ -17,6 +17,8 @@ large glossary files. This can be easily installed through a package manager:
 -   OS X: `brew install jq`
 -   Ubuntu: `sudo apt-get install jq`
 
+You can check that jq has been installed with `jq --version`
+
 For more installation instructions and options, see
 [the tool's official page](https://stedolan.github.io/jq/download/).
 
