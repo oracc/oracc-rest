@@ -135,6 +135,11 @@ class FullList(Resource):
         results = search.list_all(**args)
         # Return search results to caller
         return results
+    
+
+class TestRoute(Resource):
+    def get(self):
+        return "Hello world"
 
 
 # Make the search API available at the "/search" and "/suggest" endpoints
@@ -144,3 +149,4 @@ api.add_resource(FullList, "/search_all")
 api.add_resource(Suggestion, "/suggest/<string:word>")
 api.add_resource(Completion, "/completion/<string:word>")
 api.add_resource(CombinedSuggestions, "/suggest_all/<string:word>")
+api.add_resource(TestRoute, "/test")
