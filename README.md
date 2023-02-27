@@ -20,8 +20,8 @@ This will install modules related to both Flask and Elasticsearch.
 
 We use the [jq](https://stedolan.github.io/jq/) tool to efficiently preprocess large glossary files. This can be easily installed through a package manager:
 
--   OS X: `brew install jq`
--   Ubuntu: `sudo apt-get install jq`
+- OS X: `brew install jq`
+- Ubuntu: `sudo apt-get install jq`
 
 For more installation instructions and options, see [the tool's official page](https://stedolan.github.io/jq/download/).
 
@@ -31,25 +31,25 @@ To store Oracc's texts and their related metadata, we use [Elasticsearch](https:
 
 To install ElasticSearch:
 
--   OS X: `brew install elasticsearch`
--   Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html).
+- OS X: `brew install elasticsearch`
+- Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html).
 
 This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html).
 
 To install the ICU Analysis Plugin:
 
--   OS X: `elasticsearch-plugin install analysis-icu`
--   Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per the link above)
+- OS X: `elasticsearch-plugin install analysis-icu`
+- Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per the link above)
 
 Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted. If running as a service (like in the instructions below), all nodes can be restarted with one command:
 
--   OS X: `brew services restart elasticsearch`
--   Ubuntu: `sudo service elasticsearch restart`
+- OS X: `brew services restart elasticsearch`
+- Ubuntu: `sudo service elasticsearch restart`
 
 To launch an instance of Elasticsearch accessible in its default port 9200:
 
--   OS X: `elasticsearch -d`
--   Ubuntu: `systemctl start elasticsearch`
+- OS X: `elasticsearch -d`
+- Ubuntu: `systemctl start elasticsearch`
 
 You can check Elasticsearch was successfully launched by running:
 
@@ -92,8 +92,8 @@ FRNKdvi analysis-icu 6.0.1   The ICU Analysis plugin integrates Lucene ICU modul
 
 To stop ElasticSearch:
 
--   OS X: `pkill -f elasticsearch`
--   Ubuntu: `systemctl stop elasticsearch`
+- OS X: `pkill -f elasticsearch`
+- Ubuntu: `systemctl stop elasticsearch`
 
 ---
 
@@ -165,9 +165,9 @@ You can customise the search by optionally specifying additional parameters.
 
 These are:
 
--   `sort_by`: the field on which to sort (`gw`, `cf` or `icount`)
--   `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
--   `count`: the maximum number of results
+- `sort_by`: the field on which to sort (`gw`, `cf` or `icount`)
+- `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
+- `count`: the maximum number of results
 
 For example, if you want to retrieve the 20 entries that appear most frequently in the indexed corpus, you can request this at:
 
@@ -200,6 +200,59 @@ curl -XGET localhost:5000/completion/go
 This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which begin with the query. This works for single letters or fragments of words. e.g.: `go` returns `god` and `goddess`
 
 **Important note**: The sorting score depends on the field being sorted on, but it is _not_ equal to the value of that field! Instead, you can retrieve an entry's score by looking at the `sort` field returned with each hit. You can then use this value as the threshold when requesting the next batch of results.
+
+---
+
+## Deploying the Flask API on the Oracc Ubuntu server
+
+We currently deploy the Flask API to the Oracc build server which runs on Ubuntu and exposes an Apache web server.
+
+The following software needs to be installed on the Ubuntu server (ask Steve Tinney for help if you cannot install this software yourself):
+
+1. `Git` (for cloning the website repo)
+2. `python3`
+3. `python3-pip`
+4. `mod_wsgi` (for deploying the application. This may require a separate installation of the `apache2-dev` module to work properly, see [here](https://flask.palletsprojects.com/en/2.2.x/deploying/mod_wsgi/) for more instructions)
+
+### Clone the repo
+
+On the server, all our project code is located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `oracc-rest` folder does not exit, you will need to clone the repo via git into `/home/rits`.
+
+### Install python dependencies
+
+From the '/home/rits/oracc-rest' directory, run:
+
+```
+pip install -r requirements.txt
+```
+
+This will install all the necessary python modules.
+
+### Spin up the Flask API
+
+You can now run the following from the top-level directory of this repo:
+
+```
+mod_wsgi-express start-server wsgi.py --port 5000 --processes 4
+```
+
+This will use the mod_wsgi package to spin up the Flask API as a Daemon process in the background on port 5000.
+
+Note that if you press `ctrl+c` you will tear down the server. To leave it running while still being able to execute commands on the server, you can simply exit out of the terminal and log back in again. If you need to tear down the server in the future, you can kill the process by running:
+
+```
+sudo kill -9 `sudo lsof -t -i:5000`
+```
+
+It is also possible to spin up the API in dev mode with the following:
+
+```
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run
+```
+
+While this is fine for testing things out, it is not recommended to run the application in dev mode for production purposes.
 
 ---
 
