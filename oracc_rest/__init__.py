@@ -135,7 +135,7 @@ class FullList(Resource):
         results = search.list_all(**args)
         # Return search results to caller
         return results
-    
+
 
 class TestRoute(Resource):
     def get(self):
