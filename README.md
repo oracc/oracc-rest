@@ -2,21 +2,23 @@ A Flask RESTful API for querying the Oracc database using Elasticsearch.
 
 The accompanying frontend project for accessing this backend is held in [this](https://github.com/oracc/oracc-search-front-end) repo.
 
-This codebase has been written in Python and has been tested in Python 3.
-
-Before contributing code, you should start by setting up your correct environment for either development or production, see instructions below.
+This codebase has been written and tested in Python3.
 
 ---
 
 ## Setting up a development and production environment
 
-For both development and production it is recommended to set up this application using a python virtual environment using an enviornment manager of your choice.
+This application needs both Flask and Elasticsearch to be installed to run correctly. We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
+
+Use of virtual python environments is recommended throughout but is beyond the scope of this README.
+
+---
 
 ## Development environment
 
-While you can run this application directly on your local machine, you may wish to set up a virtual Ubuntu environment for testing the application locally. This is preferable as it mimics the production environment more closely (see below). You can easily spin up a local virtual Ubuntu environment using [Multipass](https://multipass.run/).
+While you can run this application directly on your local machine, you may wish to set up a virtual Ubuntu server for testing the application locally during development. This is preferable as it mimics the production environment more closely (see below). You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/).
 
-To start, clone the repo to your local machine or virtual Ubuntu environment (you will need Git and Python installed).
+To start, clone the repo to your local machine or virtual Ubuntu server (you will need Git and Python3 installed at the very least).
 
 ### Install python modules
 
@@ -28,17 +30,21 @@ pip install -r requirements.txt
 
 This will install modules related to both Flask and Elasticsearch.
 
-## Running the Flask API
+### Spin up the Flask API in dev mode
 
-To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory do:
+To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory run:
 
 ```
-export FLASK_APP=app.py
-export FLASK_ENV=development
-flask run &
+flask run --host localhost --port 8000 --debug
 ```
 
-This will start a dev server on port 5000 (by default) and expose the endpoints. To run the server on a different port, specify (e.g.) `flask run --port 3000`, and adjust the port number in the curl calls to `localhost/search` etc (see below). Additionally, this starts the server in development mode, so any changes to the code should be picked up automatically and make the server restart.
+This will start a dev server on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`. This starts the server in development mode, so any changes to the code should be picked up automatically and make the server restart.
+
+You can stop the server with `ctrl+c`
+
+Do not use the development server when deploying to production. It is intended for use only during local development. It is not designed to be particularly efficient, stable, or secure. See below for production deployment instructions.
+
+---
 
 ## Production environment
 
@@ -53,7 +59,7 @@ The following software needs to be installed on the Ubuntu server (ask Steve Tin
 
 ### Clone the repo
 
-On the server, all our project code should be located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `oracc-rest` folder does not already exit, you will need to clone the repo via git into `/home/rits`.
+On the Ubuntu server, all our project code should be located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `oracc-rest` folder does not already exit, you will need to clone the repo via git into `/home/rits`.
 
 ### Install python modules
 
@@ -75,19 +81,23 @@ mod_wsgi-express start-server wsgi.py --port 5000 --processes 4
 
 This will use the mod_wsgi package to spin up the Flask API as a Daemon process in the background on port 5000.
 
-Note that if you press `ctrl+c` you will tear down the server. To leave it running while still being able to execute commands on the server, you can simply exit out of the terminal and log back in again. If you need to tear down the server in the future, you can kill the process by running:
+You can test that the API is running by making a request to the test endpoint: `curl localhost:5000/test`. You will know the application is running if you get a "Hello world" response.
+
+Note that you wont be able to execute commands once the application has been spun up. To leave the API running while still being able to execute commands on the server, you can simply exit out of the terminal and log back in again. If you need to tear down the server in the future, you can kill the process by running:
 
 ```
 sudo kill -9 `sudo lsof -t -i:5000`
 ```
 
-You can test that the API is running by making a request to the test endpoint: `curl localhost:5000/test`. You will know the application is running if you get a "Hello world" response.
+Otherwise, using `ctrl+c` will tear down the API.
 
 ---
 
-## Running the application: Flask API and Elasticsearch
+## Installing and configuring Elasticsearch
 
-Once you have set up your chosen environmnet (see above), you can then proceed to install all of the necessary packages for getting the application up and running:
+Now that the API is up and running in either development or production mode, you can install Elasticsearch so that you can hit the `/search` API endpoints to return the Oracc data.
+
+To set up Elasticsearch, the following software needs to be installed on your development and production environments.
 
 ### Installing jq
 
@@ -105,7 +115,7 @@ To store Oracc's texts and their related metadata, we use [Elasticsearch](https:
 To install ElasticSearch:
 
 - OS X: `brew install elasticsearch`
-- Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/current/_installation.html).
+- Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/install-elasticsearch.html).
 
 This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html).
 
@@ -172,7 +182,7 @@ To stop ElasticSearch:
 
 ## Indexing data into Elasticsearch
 
-The purpose of this API is to return data related to translations of ancient texts. To make this data searchable via the API, we must first upload the data into an elasticsearch database.
+Now that Elasticsearch has been set up, you can start to upload data into the Elasticsearch database.
 
 The upload process assumes that data exists inside a `/neo` folder at the top-level directory of this repo. Note that the data in the `/neo` directory is currently only stored in the deployed production environment (i.e. on the Oracc Ubuntu server). The data can be provided in the correct format by Steve Tinney.
 
