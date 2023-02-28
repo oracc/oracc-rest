@@ -2,13 +2,25 @@ A Flask RESTful API for querying the Oracc database using Elasticsearch.
 
 The accompanying frontend project for accessing this backend is held in [this](https://github.com/oracc/oracc-search-front-end) repo.
 
+This codebase has been written in Python and has been tested in Python 3.
+
+Before contributing code, you should start by setting up your correct environment for either development or production, see instructions below.
+
 ---
 
-## Prerequisits and installations
+## Setting up a development and production environment
 
-This codebase has been written in Python and has been tested in Python 3. The target deployment is currently on an Ubuntu server running an [Apache web server](https://httpd.apache.org/), therefore our installation instructions reflect this environment. To get the application up and running, you will need to install modules related to both Flask and Elasticsearch as well as some utility libraries.
+For both development and production it is recommended to set up this application using a python virtual environment using an enviornment manager of your choice.
 
-To install necessary Python modules:
+## Development environment
+
+While you can run this application directly on your local machine, you may wish to set up a virtual Ubuntu environment for testing the application locally. This is preferable as it mimics the production environment more closely (see below). You can easily spin up a local virtual Ubuntu environment using [Multipass](https://multipass.run/).
+
+To start, clone the repo to your local machine or virtual Ubuntu environment (you will need Git and Python installed).
+
+### Install python modules
+
+Run the following command from the top-level directory of this repo:
 
 ```
 pip install -r requirements.txt
@@ -16,9 +28,70 @@ pip install -r requirements.txt
 
 This will install modules related to both Flask and Elasticsearch.
 
+## Running the Flask API
+
+To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory do:
+
+```
+export FLASK_APP=app.py
+export FLASK_ENV=development
+flask run &
+```
+
+This will start a dev server on port 5000 (by default) and expose the endpoints. To run the server on a different port, specify (e.g.) `flask run --port 3000`, and adjust the port number in the curl calls to `localhost/search` etc (see below). Additionally, this starts the server in development mode, so any changes to the code should be picked up automatically and make the server restart.
+
+## Production environment
+
+The application is currently deployed for production to the Oracc build server which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
+
+The following software needs to be installed on the Ubuntu server (ask Steve Tinney for help if you cannot install this software yourself):
+
+1. `Git` (for cloning the website repo)
+2. `python3`
+3. `python3-pip`
+4. `mod_wsgi` (for deploying the application. This may require a prior installation of the `apache2-dev` module to work properly, see [here](https://flask.palletsprojects.com/en/2.2.x/deploying/mod_wsgi/) for more instructions. This can be installed with: `sudo apt-get install apache2-dev`)
+
+### Clone the repo
+
+On the server, all our project code should be located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `oracc-rest` folder does not already exit, you will need to clone the repo via git into `/home/rits`.
+
+### Install python modules
+
+Run the following command from the top-level directory of this repo:
+
+```
+pip install -r requirements.txt
+```
+
+This will install modules related to both Flask and Elasticsearch.
+
+### Spin up the Flask API in prod mode
+
+Run the following from the top-level directory of this repo:
+
+```
+mod_wsgi-express start-server wsgi.py --port 5000 --processes 4
+```
+
+This will use the mod_wsgi package to spin up the Flask API as a Daemon process in the background on port 5000.
+
+Note that if you press `ctrl+c` you will tear down the server. To leave it running while still being able to execute commands on the server, you can simply exit out of the terminal and log back in again. If you need to tear down the server in the future, you can kill the process by running:
+
+```
+sudo kill -9 `sudo lsof -t -i:5000`
+```
+
+You can test that the API is running by making a request to the test endpoint: `curl localhost:5000/test`. You will know the application is running if you get a "Hello world" response.
+
+---
+
+## Running the application: Flask API and Elasticsearch
+
+Once you have set up your chosen environmnet (see above), you can then proceed to install all of the necessary packages for getting the application up and running:
+
 ### Installing jq
 
-We use the [jq](https://stedolan.github.io/jq/) tool to efficiently preprocess large glossary files. This can be easily installed through a package manager:
+We use the [jq](https://stedolan.github.io/jq/) tool to efficiently preprocess large .json files to prepare them for upload into Elasticsearch. This can be easily installed through a package manager:
 
 - OS X: `brew install jq`
 - Ubuntu: `sudo apt-get install jq`
@@ -97,11 +170,11 @@ To stop ElasticSearch:
 
 ---
 
-## Indexing the data into Elasticsearch
+## Indexing data into Elasticsearch
 
 The purpose of this API is to return data related to translations of ancient texts. To make this data searchable via the API, we must first upload the data into an elasticsearch database.
 
-The upload process assumes that data exists inside a `/neo` folder at the top-level directory of this repo. Note that the data in the `/neo` directory is currently only stored in the deployed environment (i.e. on the Oracc Ubuntu server). The data can be provided in the correct format by Steve Tinney.
+The upload process assumes that data exists inside a `/neo` folder at the top-level directory of this repo. Note that the data in the `/neo` directory is currently only stored in the deployed production environment (i.e. on the Oracc Ubuntu server). The data can be provided in the correct format by Steve Tinney.
 
 To upload the data into Elasticsearch, you can call the following utility function from the top-level directory of this repo:
 
@@ -109,7 +182,7 @@ To upload the data into Elasticsearch, you can call the following utility functi
 python -m ingest.bulk_upload
 ```
 
-This will ingest the data contained in the `/neo` folder.
+This will ingest the data contained in the `/neo` folder into the Elasticsearch database.
 
 The [ingest](ingest) folder also has some additional information and alternative ways of performing the indexing.
 
@@ -119,21 +192,9 @@ Once the data is indexed, it can be queried with Elasticsearch directly (either 
 
 ---
 
-## Setting up the Flask api
+## Additional infor for querying the Flask API
 
-To enable the search endpoints described below, the Flask server must also be started. To do this, from the top-level directory do:
-
-```
-export FLASK_APP=app.py
-export FLASK_ENV=development
-flask run &
-```
-
-This will start a dev server on port 5000 (by default) and expose the endpoints. To run the server on a different port, specify (e.g.) `flask run --port 3000`, and adjust the port number in the curl calls to `localhost/search` etc (see below). Additionally, this starts the server in development mode, so any changes to the code should be picked up automatically and make the server restart.
-
-## Calling Oracc's web server search functionality
-
-### Endpoints
+### Calling the Flask API endpoints to retrieve data from Elasticsearch
 
 The search can be accessed at the `/search` endpoint of a server running Elasticsearch and the Oracc web server in this repo, e.g.:
 
@@ -200,59 +261,6 @@ curl -XGET localhost:5000/completion/go
 This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which begin with the query. This works for single letters or fragments of words. e.g.: `go` returns `god` and `goddess`
 
 **Important note**: The sorting score depends on the field being sorted on, but it is _not_ equal to the value of that field! Instead, you can retrieve an entry's score by looking at the `sort` field returned with each hit. You can then use this value as the threshold when requesting the next batch of results.
-
----
-
-## Deploying the Flask API on the Oracc Ubuntu server
-
-We currently deploy the Flask API to the Oracc build server which runs on Ubuntu and exposes an Apache web server.
-
-The following software needs to be installed on the Ubuntu server (ask Steve Tinney for help if you cannot install this software yourself):
-
-1. `Git` (for cloning the website repo)
-2. `python3`
-3. `python3-pip`
-4. `mod_wsgi` (for deploying the application. This may require a separate installation of the `apache2-dev` module to work properly, see [here](https://flask.palletsprojects.com/en/2.2.x/deploying/mod_wsgi/) for more instructions)
-
-### Clone the repo
-
-On the server, all our project code is located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `oracc-rest` folder does not exit, you will need to clone the repo via git into `/home/rits`.
-
-### Install python dependencies
-
-From the '/home/rits/oracc-rest' directory, run:
-
-```
-pip install -r requirements.txt
-```
-
-This will install all the necessary python modules.
-
-### Spin up the Flask API
-
-You can now run the following from the top-level directory of this repo:
-
-```
-mod_wsgi-express start-server wsgi.py --port 5000 --processes 4
-```
-
-This will use the mod_wsgi package to spin up the Flask API as a Daemon process in the background on port 5000.
-
-Note that if you press `ctrl+c` you will tear down the server. To leave it running while still being able to execute commands on the server, you can simply exit out of the terminal and log back in again. If you need to tear down the server in the future, you can kill the process by running:
-
-```
-sudo kill -9 `sudo lsof -t -i:5000`
-```
-
-It is also possible to spin up the API in dev mode with the following:
-
-```
-export FLASK_APP=app.py
-export FLASK_ENV=development
-flask run
-```
-
-While this is fine for testing things out, it is not recommended to run the application in dev mode for production purposes.
 
 ---
 
