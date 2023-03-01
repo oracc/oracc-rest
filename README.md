@@ -10,7 +10,7 @@ This codebase has been written and tested in Python3.
 
 This application needs both Flask and Elasticsearch to be installed to run correctly. We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
 
-It is also best practice to work within a python virtual enviornment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure you add any virtual environment directory to .gitignore.
+It is also best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure you add any virtual environment directory to .gitignore.
 
 ---
 
@@ -134,7 +134,7 @@ To set up Elasticsearch, the following software needs to be installed on within 
 
 ### Installing jq
 
-We use the [jq](https://stedolan.github.io/jq/) tool to efficiently preprocess large .json files to prepare them for upload into Elasticsearch. This can be easily installed through a package manager:
+We use the [jq](https://stedolan.github.io/jq/) tool to efficiently pre-process large .json files to prepare them for upload into Elasticsearch. This can be easily installed through a package manager:
 
 - OS X: `brew install jq`
 - Ubuntu: `sudo apt-get install jq`
