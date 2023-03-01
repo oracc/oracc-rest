@@ -10,19 +10,19 @@ This codebase has been written and tested in Python3.
 
 This application needs both Flask and Elasticsearch to be installed to run correctly. We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
 
-Use of virtual python environments is recommended throughout but is beyond the scope of this README.
+It is also best practice to work within a python virtual enviornment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure you add any virtual environment directory to .gitignore.
 
 ---
 
 ## Development environment
 
-While you can run this application directly on your local machine, you may wish to set up a virtual Ubuntu server for testing the application locally during development. This is preferable as it mimics the production environment more closely (see below). You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/).
+While you can run this application directly on your local machine, you may wish to set up a virtual Ubuntu server for testing the application locally during development. This is preferable as it mimics the production environment more closely (see below). You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/), although its usage is beyond the scope of this readme.
 
 To start, clone the repo to your local machine or virtual Ubuntu server (you will need Git and Python3 installed at the very least).
 
 ### Install python modules
 
-Run the following command from the top-level directory of this repo:
+Within your own python virtual environment, run the following command from the top-level directory of this repo:
 
 ```
 pip install -r requirements.txt
@@ -35,35 +35,48 @@ This will install modules related to both Flask and Elasticsearch.
 To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory run:
 
 ```
-flask run --host localhost --port 8000 --debug
+flask --app app --debug run --port 8000
 ```
 
-This will start a dev server on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`. This starts the server in development mode, so any changes to the code should be picked up automatically and make the server restart.
+This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
+
+You can test that the API is running by making a request to the test endpoint: `localhost:5000/test`. You should get a "Hello world" response.
+
+Any changes to the code should be picked up automatically and make the server restart.
 
 You can stop the server with `ctrl+c`
 
-Do not use the development server when deploying to production. It is intended for use only during local development. It is not designed to be particularly efficient, stable, or secure. See below for production deployment instructions.
+Do not use the development server when deploying to production. It is intended for use only during local development. It is not designed to be particularly efficient, stable, or secure.
+
+The production environment will need a slightly different configuration. See the section below for instructions.
 
 ---
 
 ## Production environment
 
-The application is currently deployed for production to the Oracc build server which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
+The application is currently deployed for production to the Oracc build server (called `build-oracc`) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
 
 The following software needs to be installed on the Ubuntu server (ask Steve Tinney for help if you cannot install this software yourself):
 
-1. `Git` (for cloning the website repo)
-2. `python3`
-3. `python3-pip`
-4. `mod_wsgi` (for deploying the application. This may require a prior installation of the `apache2-dev` module to work properly, see [here](https://flask.palletsprojects.com/en/2.2.x/deploying/mod_wsgi/) for more instructions. This can be installed with: `sudo apt-get install apache2-dev`)
+1. `Git` (for cloning the website repo: `sudo apt-get install git`)
+2. `python3` (for running the Flask application: `sudo apt-get install python3.8`)
+3. `python3-pip` (for installing python modules: `sudo apt install python3-pip`)
+4. `mod_wsgi` (for exposing the Flask app endpoints: `sudo apt-get install libapache2-mod-wsgi-py3`)
 
 ### Clone the repo
 
-On the Ubuntu server, all our project code should be located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `oracc-rest` folder does not already exit, you will need to clone the repo via git into `/home/rits`.
+On the Ubuntu server, all our project code should be located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `/oracc-rest` folder does not already exit, you will need to clone the repo via git into `/home/rits`.
 
 ### Install python modules
 
-Run the following command from the top-level directory of this repo:
+First, create and activate the python virtual environment from the top-level directory of this repo:
+
+```python
+python -m venv oracc-flask # run this if the environment does not already exist
+source oracc-flask/bin/activate # activates the environment
+```
+
+Then run the following command from the top-level directory of this repo:
 
 ```
 pip install -r requirements.txt
@@ -71,25 +84,45 @@ pip install -r requirements.txt
 
 This will install modules related to both Flask and Elasticsearch.
 
-### Spin up the Flask API in prod mode
+## Link the Flask folder to an Apache directory
 
-Run the following from the top-level directory of this repo:
+The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -s /home/rits/oracc-rest /var/www/flask`.
 
+Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/flask/oraccflask.wsgi`. This file allows the server to talk to the Flask app.
+
+Finally, add the following Apache config to the file located in `/etc/apache2/sites-enabled/oracc-flask.conf`:
+
+```apacheconf
+<VirtualHost *:5000>
+  ServerAdmin stinney@upenn.edu
+  ServerName build-oracc.museum.upenn.edu
+
+  ErrorLog ${APACHE_LOG_DIR}/oracc-flask_error.log
+  CustomLog ${APACHE_LOG_DIR}/oracc-flask_access.log combined
+
+  SSLEngine On
+  SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
+  SSLCertificateFile /etc/ssl/certs/build-oracc.pem
+
+  WSGIDaemonProcess oraccflask threads=5 python-home=/var/www/flask/env
+  WSGIProcessGroup oraccflask
+  WSGIApplicationGroup %{GLOBAL}
+
+  WSGIScriptAlias / /var/www/flask/oraccflask.wsgi
+
+  <Directory /var/www/flask/oracc-rest>
+    Require all granted
+  </Directory>
+</VirtualHost>
 ```
-mod_wsgi-express start-server wsgi.py --port 5000 --processes 4
-```
 
-This will use the mod_wsgi package to spin up the Flask API as a Daemon process in the background on port 5000.
+This will use the mod_wsgi package to expose the Flask API endpoints on port 5000.
 
-You can test that the API is running by making a request to the test endpoint: `curl localhost:5000/test`. You will know the application is running if you get a "Hello world" response.
+You can test that the API is running by making a request to the test endpoint: `curl localhost:5000/test`. You should get a "Hello world" response.
 
-Note that you wont be able to execute commands once the application has been spun up. To leave the API running while still being able to execute commands on the server, you can simply exit out of the terminal and log back in again. If you need to tear down the server in the future, you can kill the process by running:
+Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
-```
-sudo kill -9 `sudo lsof -t -i:5000`
-```
-
-Otherwise, using `ctrl+c` will tear down the API.
+There are other methods to achieve the same result as above. However, we have set it up this way so as not to conflict with the Apache configs previously set up by Steve Tinney.
 
 ---
 
@@ -97,7 +130,7 @@ Otherwise, using `ctrl+c` will tear down the API.
 
 Now that the API is up and running in either development or production mode, you can install Elasticsearch so that you can hit the `/search` API endpoints to return the Oracc data.
 
-To set up Elasticsearch, the following software needs to be installed on your development and production environments.
+To set up Elasticsearch, the following software needs to be installed on within your current development or production environment.
 
 ### Installing jq
 
@@ -184,7 +217,9 @@ To stop ElasticSearch:
 
 Now that Elasticsearch has been set up, you can start to upload data into the Elasticsearch database.
 
-The upload process assumes that data exists inside a `/neo` folder at the top-level directory of this repo. Note that the data in the `/neo` directory is currently only stored in the deployed production environment (i.e. on the Oracc Ubuntu server). The data can be provided in the correct format by Steve Tinney.
+The upload process assumes that data exists inside a `/neo` folder at the top-level directory of this repo.
+
+Note that the data in the `/neo` directory is currently only stored in the deployed production environment (i.e. on the Oracc Ubuntu server). The data can be provided in the correct format by Steve Tinney.
 
 To upload the data into Elasticsearch, you can call the following utility function from the top-level directory of this repo:
 
@@ -202,7 +237,7 @@ Once the data is indexed, it can be queried with Elasticsearch directly (either 
 
 ---
 
-## Additional infor for querying the Flask API
+## Additional info for querying the Flask API
 
 ### Calling the Flask API endpoints to retrieve data from Elasticsearch
 
