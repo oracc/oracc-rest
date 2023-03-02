@@ -141,6 +141,8 @@ We use the [jq](https://stedolan.github.io/jq/) tool to efficiently pre-process 
 
 For more installation instructions and options, see [the tool's official page](https://stedolan.github.io/jq/download/).
 
+You can check that jq has been installed with `jq --version`
+
 ### ElasticSearch management
 
 To store Oracc's texts and their related metadata, we use [Elasticsearch](https://www.elastic.co/products/elasticsearch). The code in this repository has been tested with ElasticSearch 7.17.7.
