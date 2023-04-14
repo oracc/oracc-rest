@@ -1,14 +1,23 @@
+# Oracc REST
+
 A Flask RESTful API for querying the Oracc database using Elasticsearch.
 
-The accompanying frontend project for accessing this backend is held in [this](https://github.com/oracc/oracc-search-front-end) repo.
+The accompanying frontend project for accessing this backend can be found [here](https://github.com/oracc/oracc-search-front-end).
 
 This codebase has been written and tested in Python3.
+
+The guide below is sufficient for setting up the entire project. For additional technical and supplementary information please also refer to [this](https://github.com/oracc/website/wiki/ORACC-Server) wiki.
 
 ---
 
 ## Setting up a development and production environment
 
-This application needs both Flask and Elasticsearch to be installed to run correctly. We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
+This application needs both Flask and Elasticsearch to be installed to run correctly. Therefore, this guide will take you through the following steps:
+
+1. Setting up Flask on a development and/or production environment.
+2. Installing elasticsearch on each environment.
+
+We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
 
 It is also best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure you add any virtual environment directory to .gitignore.
 
@@ -46,7 +55,7 @@ Any changes to the code should be picked up automatically and make the server re
 
 You can stop the server with `ctrl+c`
 
-Do not use the development server when deploying to production. It is intended for use only during local development. It is not designed to be particularly efficient, stable, or secure.
+Do not use the development server when deploying to production. It is intended for use only during local development.
 
 The production environment will need a slightly different configuration. See the section below for instructions.
 
@@ -54,9 +63,9 @@ The production environment will need a slightly different configuration. See the
 
 ## Production environment
 
-The application is currently deployed for production to the Oracc build server (called `build-oracc`) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
+The application is currently deployed for production to the Oracc build server (more details [here](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
 
-The following software needs to be installed on the Ubuntu server (ask Steve Tinney for help if you cannot install this software yourself):
+The following software needs to be installed on the Ubuntu server:
 
 1. `Git` (for cloning the website repo: `sudo apt-get install git`)
 2. `python3` (for running the Flask application: `sudo apt-get install python3.8`)
@@ -65,7 +74,7 @@ The following software needs to be installed on the Ubuntu server (ask Steve Tin
 
 ### Clone the repo
 
-On the Ubuntu server, all our project code should be located at `/home/rits` and the Flask code is in the `/home/rits/oracc-rest` directory. If the `/oracc-rest` folder does not already exit, you will need to clone the repo via git into `/home/rits`.
+On the Ubuntu server, our project code should be located at `/home/rits` so this is where you should clone the project into. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
 
 ### Install python modules
 
@@ -90,7 +99,7 @@ The Flask app folder needs to be linked to an Apache directory to correctly expo
 
 Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/flask/oraccflask.wsgi`. This file allows the server to talk to the Flask app.
 
-Finally, add the following Apache config to the file located in `/etc/apache2/sites-enabled/oracc-flask.conf`:
+Finally, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-flask.conf`:
 
 ```apacheconf
 <VirtualHost *:5000>
@@ -122,15 +131,13 @@ You can test that the API is running by making a request to the test endpoint: `
 
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
-There are other methods to achieve the same result as above. However, we have set it up this way so as not to conflict with the Apache configs previously set up by Steve Tinney.
-
 ---
 
 ## Installing and configuring Elasticsearch
 
 Now that the API is up and running in either development or production mode, you can install Elasticsearch so that you can hit the `/search` API endpoints to return the Oracc data.
 
-To set up Elasticsearch, the following software needs to be installed on within your current development or production environment.
+To set up Elasticsearch, the following software needs to be installed on your current development or production environment.
 
 ### Installing jq
 
@@ -216,6 +223,8 @@ To stop ElasticSearch:
 ---
 
 ## Indexing data into Elasticsearch
+
+_\*\*NOTE this section currently only applies to the production environment. Future instructions will be added for setting this up locally._
 
 Now that Elasticsearch has been set up, you can start to upload data into the Elasticsearch database.
 
