@@ -40,7 +40,7 @@ flask --app app --debug run --port 8000
 
 This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
 
-You can test that the API is running by making a request to the test endpoint: `localhost:5000/test`. You should get a "Hello world" response.
+You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world" response.
 
 Any changes to the code should be picked up automatically and make the server restart.
 
