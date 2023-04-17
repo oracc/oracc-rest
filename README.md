@@ -127,7 +127,7 @@ Finally, add the following Apache config code to the file located in `/etc/apach
 
 This will use the mod_wsgi package to expose the Flask API endpoints on port 5000.
 
-You can test that the API is running by making a request to the test endpoint: `curl localhost:5000/test`. You should get a "Hello world" response.
+You can test that the API is running by making a request to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
@@ -255,7 +255,7 @@ Once the data is indexed, it can be queried with Elasticsearch directly (either 
 The search can be accessed at the `/search` endpoint of a server running Elasticsearch and the Oracc web server in this repo, e.g.:
 
 ```
-curl -XGET localhost:5000/search/water
+curl -k https://localhost:5000/search/water-skin
 ```
 
 This searches multiple fields for the given query word and returns all results. The list of fields currently searched is: `gw` (guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n` (lemmatisations).
