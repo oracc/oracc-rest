@@ -127,7 +127,7 @@ Finally, add the following Apache config code to the file located in `/etc/apach
 
 This will use the mod_wsgi package to expose the Flask API endpoints on port 5000.
 
-You can test that the API is running by making a request to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
+You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
