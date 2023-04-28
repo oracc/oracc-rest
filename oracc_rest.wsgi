@@ -2,7 +2,7 @@
 # follow the readme instructions for the deployment process
 
 import sys
-sys.path.insert(0, '/var/www/flask/oracc-rest')
+sys.path.insert(0, '/var/www/oracc-rest')
 
 from app import app
 

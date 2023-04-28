@@ -65,16 +65,17 @@ The production environment will need a slightly different configuration. See the
 
 The application is currently deployed for production to the Oracc build server (more details [here](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
 
-It's always a good idea to run the following as a first step to make sure your packages are up to date: `sudo apt-get update && sudo apt-get upgrade -y`
+Once you are connected to the server it's always a good idea to update the packages as a first step: `sudo apt-get update && sudo apt-get upgrade -y`
 
 ### Install software
 
 The following software needs to be installed on the Ubuntu server:
 
-1. `Git` (for cloning the website repo: `sudo apt-get install git`)
-2. `python3` (for running the Flask application: `sudo apt-get install python3.8`)
-3. `python3-pip` (for installing python modules: `sudo apt install python3-pip`)
-4. `mod_wsgi` (for exposing the Flask app endpoints: `sudo apt-get install libapache2-mod-wsgi-py3`)
+1. **Git** - for cloning the website repo: `sudo apt install git`
+2. **python3** - for running the Flask application: `sudo apt install python3.8`
+3. **python3-pip** - for installing python modules: `sudo apt install python3-pip`
+4. **mod_wsgi** - for exposing the Flask app endpoints: `sudo apt install libapache2-mod-wsgi-py3`
+5. **apache2** - the web server that will handle http requests: `sudo apt install apache2` (_note_ this should already be installed on the server, included here for documentation)
 
 ### Enable wsgi on apache
 
@@ -96,39 +97,40 @@ source oracc-flask/bin/activate # activates the environment
 Then run the following command from the top-level directory of this repo:
 
 ```
-pip install -r requirements.txt
+sudo pip install -r requirements.txt
 ```
 
 This will install modules related to both Flask and Elasticsearch.
 
 ## Link the Flask folder to an Apache directory
 
-The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -s /home/rits/oracc-rest /var/www/flask`.
+The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`.
 
+**possibly delete this section**
 Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/flask/oraccflask.wsgi`. This file allows the server to talk to the Flask app.
 
-Then, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-flask.conf`:
+Then, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-rest.conf`:
 
 ```apacheconf
 <VirtualHost *:5000>
   ServerAdmin stinney@upenn.edu
   ServerName build-oracc.museum.upenn.edu
 
-  ErrorLog ${APACHE_LOG_DIR}/oracc-flask_error.log
-  CustomLog ${APACHE_LOG_DIR}/oracc-flask_access.log combined
+  ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
+  CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
   SSLEngine On
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
 
-  WSGIDaemonProcess oraccflask threads=5 python-home=/var/www/flask/env
-  WSGIProcessGroup oraccflask
+  WSGIDaemonProcess oracc-rest threads=5 python-home=/var/www/flask/env
+  WSGIScriptAlias / /var/www/oracc-rest/oracc-rest.wsgi
   WSGIApplicationGroup %{GLOBAL}
 
-  WSGIScriptAlias / /var/www/flask/oraccflask.wsgi
-
   <Directory /var/www/flask/oracc-rest>
-    Require all granted
+    WSGIProcessGroup oracc-rest
+    Order deny,allow
+    Allow from all
   </Directory>
 </VirtualHost>
 ```
