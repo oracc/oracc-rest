@@ -65,12 +65,20 @@ The production environment will need a slightly different configuration. See the
 
 The application is currently deployed for production to the Oracc build server (more details [here](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
 
+It's always a good idea to run the following as a first step to make sure your packages are up to date: `sudo apt-get update && sudo apt-get upgrade -y`
+
+### Install software
+
 The following software needs to be installed on the Ubuntu server:
 
 1. `Git` (for cloning the website repo: `sudo apt-get install git`)
 2. `python3` (for running the Flask application: `sudo apt-get install python3.8`)
 3. `python3-pip` (for installing python modules: `sudo apt install python3-pip`)
 4. `mod_wsgi` (for exposing the Flask app endpoints: `sudo apt-get install libapache2-mod-wsgi-py3`)
+
+### Enable wsgi on apache
+
+You then need to enable wsgi within apache: `sudo a2enmod wsgi`.
 
 ### Clone the repo
 
@@ -99,7 +107,7 @@ The Flask app folder needs to be linked to an Apache directory to correctly expo
 
 Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/flask/oraccflask.wsgi`. This file allows the server to talk to the Flask app.
 
-Finally, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-flask.conf`:
+Then, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-flask.conf`:
 
 ```apacheconf
 <VirtualHost *:5000>
@@ -127,9 +135,9 @@ Finally, add the following Apache config code to the file located in `/etc/apach
 
 This will use the mod_wsgi package to expose the Flask API endpoints on port 5000.
 
-You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
-
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
+
+You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
 ---
 
