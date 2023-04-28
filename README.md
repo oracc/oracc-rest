@@ -247,12 +247,12 @@ Note that the data in the `/neo` directory is currently only stored in the deplo
 To upload the data into Elasticsearch, you can call the following utility function from the top-level directory of this repo:
 
 ```
-python -m elasticsearch-utils.bulk_upload
+python -m ingest.bulk_upload
 ```
 
 This will ingest the data contained in the `/neo` folder into the Elasticsearch database.
 
-The [elasticsearch-utils](elasticsearch-utils) folder also has some additional information and alternative ways of performing the indexing.
+The [ingest](ingest) folder also has some additional information and alternative ways of performing the indexing.
 
 **NB**: At the moment, ingesting the data first deletes any previous version of it that may exist on the Elasticsearch instance, rather than updating it!
 
