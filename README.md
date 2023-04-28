@@ -127,7 +127,7 @@ Then, add the following Apache config code to the file located in `/etc/apache2/
   WSGIScriptAlias / /var/www/oracc-rest/oracc-rest.wsgi
   WSGIApplicationGroup %{GLOBAL}
 
-  <Directory /var/www/flask/oracc-rest>
+  <Directory /var/www/flask>
     WSGIProcessGroup oracc-rest
     Order deny,allow
     Allow from all
