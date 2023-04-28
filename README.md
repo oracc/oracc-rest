@@ -106,10 +106,7 @@ This will install modules related to both Flask and Elasticsearch.
 
 The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`.
 
-**possibly delete this section**
-Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/oracc-rest/oracc-rest.wsgi`. This file allows the server to talk to the Flask app.
-
-Then, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-rest.conf`:
+Then, add the following Apache config file by running `sudo nano /etc/apache2/sites-enabled/oracc-rest.conf`:
 
 ```apacheconf
 <VirtualHost *:5000>
@@ -137,11 +134,24 @@ Then, add the following Apache config code to the file located in `/etc/apache2/
 
 This will use the mod_wsgi package to expose the Flask API endpoints on port 5000.
 
+### Open the necessary ports in apache
+
+The application is now set up to respond to requests at port 5000, but you still need to open the port within apache. You can ask Steve Tinney to open the necessary ports, or add the following code to the file `/etc/apache2/ports.conf`:
+
+```apacheconf
+...
+
+Listen 80
+Listen 5000
+
+...
+```
+
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
 You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
-If there are any problems, check errors here: `/var/log/apache2/error.log`.
+If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering `systemctl status apache2.service`.
 
 ---
 
