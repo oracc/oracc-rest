@@ -139,19 +139,15 @@ This will use the mod_wsgi package to expose the Flask API endpoints on port 500
 The application is now set up to respond to requests at port 5000, but you still need to open the port within apache. You can ask Steve Tinney to open the necessary ports, or add the following code to the file `/etc/apache2/ports.conf`:
 
 ```apacheconf
-...
-
 Listen 80
 Listen 5000
-
-...
 ```
 
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
 You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
-If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering `systemctl status apache2.service`.
+If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering `systemctl status apache2.service`. You can also check if ports are open with: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
 
 ---
 
