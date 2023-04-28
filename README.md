@@ -107,7 +107,7 @@ This will install modules related to both Flask and Elasticsearch.
 The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`.
 
 **possibly delete this section**
-Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/flask/oraccflask.wsgi`. This file allows the server to talk to the Flask app.
+Then, copy the wsgi file into the same directory with the following command: `cp /home/rits/oracc-rest/oraccflask.wsgi /var/www/oracc-rest/oracc-rest.wsgi`. This file allows the server to talk to the Flask app.
 
 Then, add the following Apache config code to the file located in `/etc/apache2/sites-enabled/oracc-rest.conf`:
 
@@ -123,11 +123,11 @@ Then, add the following Apache config code to the file located in `/etc/apache2/
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
 
-  WSGIDaemonProcess oracc-rest threads=5 python-home=/var/www/flask/env
+  WSGIDaemonProcess oracc-rest threads=5
   WSGIScriptAlias / /var/www/oracc-rest/oracc-rest.wsgi
   WSGIApplicationGroup %{GLOBAL}
 
-  <Directory /var/www/flask>
+  <Directory /var/www/oracc-rest>
     WSGIProcessGroup oracc-rest
     Order deny,allow
     Allow from all
@@ -140,6 +140,8 @@ This will use the mod_wsgi package to expose the Flask API endpoints on port 500
 Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
 You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
+
+If there are any problems, check errors here: `/var/log/apache2/error.log`.
 
 ---
 
@@ -245,12 +247,12 @@ Note that the data in the `/neo` directory is currently only stored in the deplo
 To upload the data into Elasticsearch, you can call the following utility function from the top-level directory of this repo:
 
 ```
-python -m ingest.bulk_upload
+python -m elasticsearch-utils.bulk_upload
 ```
 
 This will ingest the data contained in the `/neo` folder into the Elasticsearch database.
 
-The [ingest](ingest) folder also has some additional information and alternative ways of performing the indexing.
+The [elasticsearch-utils](elasticsearch-utils) folder also has some additional information and alternative ways of performing the indexing.
 
 **NB**: At the moment, ingesting the data first deletes any previous version of it that may exist on the Elasticsearch instance, rather than updating it!
 
