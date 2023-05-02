@@ -4,9 +4,11 @@ A Flask RESTful API for querying the Oracc database using Elasticsearch.
 
 The accompanying frontend project for accessing this backend can be found [here](https://github.com/oracc/oracc-search-front-end).
 
-This codebase has been written and tested in Python3.
+The guide below is sufficient for setting up the entire project. For additional technical and supplementary information please refer to [this](https://github.com/oracc/website/wiki/ORACC-Server) wiki.
 
-The guide below is sufficient for setting up the entire project. For additional technical and supplementary information please also refer to [this](https://github.com/oracc/website/wiki/ORACC-Server) wiki.
+You can also see [here](https://github.com/oracc/oracc-rest/wiki/Useful-snippets) for some additional useful info.
+
+This codebase has been written and tested in Python3.
 
 ---
 
