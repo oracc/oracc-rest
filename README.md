@@ -139,7 +139,7 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
 
 Then, to enable the config you need to run: `sudo a2ensite oracc-rest.conf`
 
-This configuration will allow the mod_wsgi package to talk to apache and expose the Flask API endpoints on port 5000.
+This configuration will allow the mod_wsgi package to talk to apache and expose the Flask API endpoints on port 5000. The config is read automatically as apache starts up, so any changes will require you to restart apache.
 
 ### Open the necessary ports in apache
 
