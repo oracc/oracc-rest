@@ -2,11 +2,11 @@
 
 A Flask RESTful API for querying the Oracc database using Elasticsearch.
 
-The accompanying frontend project for accessing this backend can be found [here](https://github.com/oracc/oracc-search-front-end).
+The accompanying frontend project for accessing this backend can be found [on this repo](https://github.com/oracc/oracc-search-front-end).
 
-The guide below is sufficient for setting up the entire project. For additional technical and supplementary information please refer to [this](https://github.com/oracc/website/wiki/ORACC-Server) wiki.
+The guide below is sufficient for setting up the entire project. For additional technical and supplementary information please refer to the [ORACC Server wiki](https://github.com/oracc/website/wiki/ORACC-Server).
 
-You can also see [here](https://github.com/oracc/oracc-rest/wiki/Useful-snippets) for some additional useful info.
+You can also see [these useful snippets](https://github.com/oracc/oracc-rest/wiki/Useful-snippets).
 
 This codebase has been written and tested in Python3.
 
@@ -80,7 +80,7 @@ Do not use the development server when deploying to production. It is intended f
 
 ## Production environment
 
-The application is currently deployed for production to the Oracc build server (more details [here](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
+The application is currently deployed for production to the Oracc build server (more details on the [ORACC Server wiki](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
 
 Once you are connected to the server it's always a good idea to update the packages as a first step: `sudo apt-get update && sudo apt-get upgrade -y`
 
@@ -115,7 +115,7 @@ python3 -m venv venv # run this if the environment does not already exist
 source venv/bin/activate # activates the environment
 ```
 
-You may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [here](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+You may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
 
 Once your virtual environment is activated, run the following command from the top-level directory of this repo:
 
