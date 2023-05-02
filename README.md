@@ -65,6 +65,8 @@ The application is currently deployed for production to the Oracc build server (
 
 Once you are connected to the server it's always a good idea to update the packages as a first step: `sudo apt-get update && sudo apt-get upgrade -y`
 
+You may need to restart apache after running certain commands along the way, you can do this with: `sudo service apache2 restart`
+
 ### Install software
 
 The following software needs to be installed on the Ubuntu server:
@@ -88,23 +90,25 @@ On the Ubuntu server, our project code should be located at `/home/rits` so this
 First, create and activate a python virtual environment from the top-level directory of this repo:
 
 ```python
-python -m venv venv # run this if the environment does not already exist
+python3 -m venv venv # run this if the environment does not already exist
 source venv/bin/activate # activates the environment
 ```
 
-Then run the following command from the top-level directory of this repo:
+You may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [here](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+
+Once your virtual environment is activated, run the following command from the top-level directory of this repo:
 
 ```
-sudo pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 This will install modules related to both Flask and Elasticsearch.
 
-## Link the Flask folder to an Apache directory
+### Link the Flask folder to an Apache directory
 
 The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`.
 
-Then, add the following Apache config file by running: `sudo nano /etc/apache2/sites-enabled/oracc-rest.conf`:
+Then, add the following Apache config file by running: `sudo nano /etc/apache2/sites-available/oracc-rest.conf`:
 
 ```apacheconf
 <VirtualHost *:5000>
@@ -114,11 +118,12 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
   ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
   CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
+  # remove these next three lines if you are not running the app over HTTPS
   SSLEngine On
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
 
-  WSGIDaemonProcess oracc-rest threads=5
+  WSGIDaemonProcess oracc-rest threads=5 python-home=/var/www/oracc-rest/venv
   WSGIScriptAlias / /var/www/oracc-rest/oracc-rest.wsgi
   WSGIApplicationGroup %{GLOBAL}
 
@@ -130,7 +135,9 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
 </VirtualHost>
 ```
 
-This will use the mod_wsgi package to expose the Flask API endpoints on port 5000.
+Then, to enable the config you need to run: `sudo a2ensite oracc-rest.conf`
+
+This configuration will allow the mod_wsgi package to talk to apache and expose the Flask API endpoints on port 5000.
 
 ### Open the necessary ports in apache
 
