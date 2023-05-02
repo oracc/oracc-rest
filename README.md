@@ -19,7 +19,7 @@ This application needs both Flask and Elasticsearch to be installed to run corre
 
 We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
 
-It is also best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure you add any virtual environment directory to .gitignore.
+It is also best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure not to commit your virtual environment folder to this repo.
 
 ---
 
@@ -57,8 +57,6 @@ You can stop the server with `ctrl+c`
 
 Do not use the development server when deploying to production. It is intended for use only during local development.
 
-The production environment will need a slightly different configuration. See the section below for instructions.
-
 ---
 
 ## Production environment
@@ -72,14 +70,14 @@ Once you are connected to the server it's always a good idea to update the packa
 The following software needs to be installed on the Ubuntu server:
 
 1. **Git** - for cloning the website repo: `sudo apt install git`
-2. **python3** - for running the Flask application: `sudo apt install python3.8`
+2. **python3** - for running the Flask app: `sudo apt install python3.8`
 3. **python3-pip** - for installing python modules: `sudo apt install python3-pip`
-4. **mod_wsgi** - for exposing the Flask app endpoints: `sudo apt install libapache2-mod-wsgi-py3`
+4. **mod_wsgi** - tells apache how to host the Flask app: `sudo apt install libapache2-mod-wsgi-py3`
 5. **apache2** - the web server that will handle http requests: `sudo apt install apache2` (_note_ this should already be installed on the server, included here for documentation)
 
 ### Enable wsgi on apache
 
-You then need to enable wsgi within apache: `sudo a2enmod wsgi`.
+Once the above software has been installed, you then need to enable wsgi within apache: `sudo a2enmod wsgi`.
 
 ### Clone the repo
 
@@ -87,11 +85,11 @@ On the Ubuntu server, our project code should be located at `/home/rits` so this
 
 ### Install python modules
 
-First, create and activate the python virtual environment from the top-level directory of this repo:
+First, create and activate a python virtual environment from the top-level directory of this repo:
 
 ```python
-python -m venv oracc-flask # run this if the environment does not already exist
-source oracc-flask/bin/activate # activates the environment
+python -m venv venv # run this if the environment does not already exist
+source venv/bin/activate # activates the environment
 ```
 
 Then run the following command from the top-level directory of this repo:
@@ -106,7 +104,7 @@ This will install modules related to both Flask and Elasticsearch.
 
 The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`.
 
-Then, add the following Apache config file by running `sudo nano /etc/apache2/sites-enabled/oracc-rest.conf`:
+Then, add the following Apache config file by running: `sudo nano /etc/apache2/sites-enabled/oracc-rest.conf`:
 
 ```apacheconf
 <VirtualHost *:5000>
@@ -136,18 +134,20 @@ This will use the mod_wsgi package to expose the Flask API endpoints on port 500
 
 ### Open the necessary ports in apache
 
-The application is now set up to respond to requests at port 5000, but you still need to open the port within apache. You can ask Steve Tinney to open the necessary ports, or add the following code to the file `/etc/apache2/ports.conf`:
+The application is now set up to respond to requests at port 5000, but you still need to open the port to let the requests come through in apache. You can ask Steve Tinney to open the necessary ports, or add the following code to the file `/etc/apache2/ports.conf`:
 
 ```apacheconf
 Listen 80
 Listen 5000
 ```
 
-Apache may need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
+Apache will need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
 
 You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
-If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering `systemctl status apache2.service`. You can also check if ports are open with: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
+### Troubleshooting
+
+If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering: `systemctl status apache2.service`. You can also check if ports are open with: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
 
 ---
 
