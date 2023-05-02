@@ -1,4 +1,4 @@
-from oracc_rest import ESearch
+from api import ESearch
 
 
 def test_sort_field_name():
@@ -12,7 +12,7 @@ def test_sort_field_name():
         ("icount", "asc", "icount"),
         ("icount", "desc", "-icount"),
     ]
-    for (field, dir, expected) in combinations:
+    for field, dir, expected in combinations:
         assert search._sort_field_name(field, dir) == expected
 
 
