@@ -85,6 +85,8 @@ Once the above software has been installed, you then need to enable wsgi within 
 
 On the Ubuntu server, our project code should be located at `/home/rits` so this is where you should clone the project into. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
 
+The production deployment should run from the `main` branch of this repo. You may need to manually switch to this branch once the project has been cloned.
+
 ### Install python modules
 
 First, create and activate a python virtual environment from the top-level directory of this repo:
