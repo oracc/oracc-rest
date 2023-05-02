@@ -12,7 +12,24 @@ This codebase has been written and tested in Python3.
 
 ---
 
-## Setting up a development and production environment
+## Project structure
+
+This is the directory structure in the project root:
+
+```bash
+.
+├── api # flask API code
+├── ingest # scripts for processing and uploading data into elasticsearch
+├── tests # custom tests
+├── app.py # entrypoint for running the flask api
+├── oracc-rest.wsgi # config file for serving the flask api via apache
+└── requirements.txt # list of python modules used by the project
+
+```
+
+---
+
+## Setting up the project
 
 This application needs both Flask and Elasticsearch to be installed to run correctly. Therefore, this guide will take you through the following steps:
 
