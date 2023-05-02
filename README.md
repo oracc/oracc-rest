@@ -81,13 +81,13 @@ The following software needs to be installed on the Ubuntu server:
 
 ### Enable wsgi on apache
 
-Once the above software has been installed, you then need to enable wsgi within apache: `sudo a2enmod wsgi`.
+Once the above software has been installed, you then need to enable wsgi within apache: `sudo a2enmod wsgi`
 
 ### Clone the repo
 
 On the Ubuntu server, our project code should be located at `/home/rits` so this is where you should clone the project into. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
 
-The production deployment should run from the `main` branch of this repo. You may need to manually switch to this branch once the project has been cloned.
+The production deployment should run from the `main` branch of this repo.
 
 ### Install python modules
 
@@ -110,7 +110,7 @@ This will install modules related to both Flask and Elasticsearch.
 
 ### Link the Flask folder to an Apache directory
 
-The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`.
+The Flask app folder needs to be linked to an Apache directory to correctly expose the API endpoints. This is done by creating a symlink with the following command: `sudo ln -sT /home/rits/oracc-rest /var/www/oracc-rest`
 
 Then, add the following Apache config file by running: `sudo nano /etc/apache2/sites-available/oracc-rest.conf`:
 
@@ -152,7 +152,7 @@ Listen 80
 Listen 5000
 ```
 
-Apache will need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart` .
+Apache will need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart`
 
 You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
 
