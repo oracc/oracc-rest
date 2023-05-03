@@ -284,7 +284,7 @@ To upload the data into Elasticsearch, you can call the following utility functi
 python -m ingest.bulk_upload
 ```
 
-This will ingest the data contained in the `/neo` folder into the Elasticsearch database.
+This will ingest the data contained in the `/neo` folder into the Elasticsearch database. Note that we do not use `nano` in the above command, this is to make sure that the script reads from the virtual environment that was created earlier.
 
 The [ingest](ingest) folder also has some additional information and alternative ways of performing the indexing.
 
