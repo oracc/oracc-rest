@@ -220,7 +220,7 @@ Note that, after installing the plugin, if ElasticSearch was already running the
 To launch an instance of Elasticsearch accessible in its default port 9200:
 
 - OS X: `elasticsearch -d`
-- Ubuntu: `systemctl start elasticsearch`
+- Ubuntu: `sudo systemctl start elasticsearch`
 
 You can check Elasticsearch was successfully launched by running:
 
@@ -264,27 +264,27 @@ FRNKdvi analysis-icu 6.0.1   The ICU Analysis plugin integrates Lucene ICU modul
 To stop ElasticSearch:
 
 - OS X: `pkill -f elasticsearch`
-- Ubuntu: `systemctl stop elasticsearch`
+- Ubuntu: `sudo systemctl stop elasticsearch`
 
 ---
 
 ## Indexing data into Elasticsearch
 
-_\*\*NOTE this section currently only applies to the production environment. Future instructions will be added for setting this up locally._
+Now that Elasticsearch has been set up, you can start to upload glossary data into the Elasticsearch database.
 
-Now that Elasticsearch has been set up, you can start to upload data into the Elasticsearch database.
+A test dataset has been provided at: `ingest/assets/dev/gloss-test.json`, you can use this data to test out the elasticsearch functionality on your development environment (make sure you do not ingest this data on the production database).
 
-The upload process assumes that data exists inside a `/neo` folder at the top-level directory of this repo.
+The production glossary data is provided by the PI's in the correct format, so ask Steve Tinney or Eleanor Robson for more details.
 
-Note that the data in the `/neo` directory is currently only stored in the deployed production environment (i.e. on the Oracc Ubuntu server). The data can be provided in the correct format by Steve Tinney.
+To upload the data into the Elasticsearch database, you can call the following utility function from the top-level directory of this repo:
 
-To upload the data into Elasticsearch, you can call the following utility function from the top-level directory of this repo:
+Note the lack of `sudo` in the below command to make sure that the script reads from the virtual environment that was created earlier.
 
 ```
-python -m ingest.bulk_upload
+python -m ingest.bulk_upload <path-to-file>
 ```
 
-This will ingest the data contained in the `/neo` folder into the Elasticsearch database. Note that we do not use `nano` in the above command, this is to make sure that the script reads from the virtual environment that was created earlier.
+If no arguments are provided, then the function will try to upload the glossary files located in a `/neo` folder at the top-level directory of this repo.
 
 The [ingest](ingest) folder also has some additional information and alternative ways of performing the indexing.
 

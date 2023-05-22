@@ -42,6 +42,7 @@ if __name__ == "__main__":
 
     if len(sys.argv) > 1:
         files = sys.argv[1:]
+        print(files)
     else:
         files = glob.glob("neo/gloss-???.json")
     debug("Will index {}".format(",".join(files)))
