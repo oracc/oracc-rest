@@ -91,7 +91,7 @@ You may need to restart apache after running certain commands along the way, you
 The following software needs to be installed on the Ubuntu server:
 
 1. **Git** - for cloning the website repo: `sudo apt install git`
-2. **python3** - for running the Flask app: `sudo apt install python3.8`
+2. **python3** - for running the Flask app: `sudo apt install python3.10` (_note_ if python is already installed on the sever just use that version)
 3. **python3-pip** - for installing python modules: `sudo apt install python3-pip`
 4. **mod_wsgi** - tells apache how to host the Flask app: `sudo apt install libapache2-mod-wsgi-py3`
 5. **apache2** - the web server that will handle http requests: `sudo apt install apache2` (_note_ this should already be installed on the server, included here for documentation)
@@ -111,7 +111,8 @@ The production deployment should run from the `main` branch of this repo.
 First, create and activate a python virtual environment from the top-level directory of this repo:
 
 ```python
-python3 -m venv venv # run this if the environment does not already exist
+sudo apt install python3.10-venv
+python3 -m venv venv # run this if the environment does not already exist, note the lack of sudo here to avoid issues
 source venv/bin/activate # activates the environment
 ```
 
