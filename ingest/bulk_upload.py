@@ -1,6 +1,7 @@
 import glob
 import sys
 
+import elasticsearch
 from elasticsearch import Elasticsearch
 import elasticsearch.client
 import elasticsearch.helpers
@@ -33,7 +34,7 @@ def ICU_installed(es):
 
 
 if __name__ == "__main__":
-    es = Elasticsearch(hosts=["localhost"])
+    es = Elasticsearch()
     if not ICU_installed(es):
         debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
