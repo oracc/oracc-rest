@@ -34,7 +34,7 @@ def ICU_installed(es):
 
 
 if __name__ == "__main__":
-    es = Elasticsearch()
+    es = Elasticsearch(timeout=30)
     if not ICU_installed(es):
         debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
@@ -61,5 +61,6 @@ if __name__ == "__main__":
     create_index(es, INDEX_NAME)
 
     for file in files:
+        print(f"going to upload {file}")
         # Break down into individual entries and upload to ES using the bulk API
         upload_file(es, file)
