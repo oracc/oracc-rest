@@ -1,7 +1,7 @@
 import glob
 import sys
 
-import elasticsearch
+from elasticsearch import Elasticsearch
 import elasticsearch.client
 import elasticsearch.helpers
 
@@ -19,7 +19,7 @@ def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["completions"] = [entry["cf"], entry["gw"]]
-    elasticsearch.helpers.bulk(es, entries)
+    elasticsearch.helpers.bulk(es, entries, index=INDEX_NAME)
 
 
 def upload_file(es, input_file):
@@ -29,11 +29,11 @@ def upload_file(es, input_file):
 def ICU_installed(es):
     """Check whether the ICU Analysis plugin is installed locally."""
     cc = elasticsearch.client.CatClient(es)
-    return "analysis-icu" in [p["component"] for p in cc.plugins(format="json")]
+    return "analysis-icu" in [p["component"] for p in cc.plugins(h=None, format="json")]
 
 
 if __name__ == "__main__":
-    es = elasticsearch.Elasticsearch()
+    es = Elasticsearch(hosts=["localhost"])
     if not ICU_installed(es):
         debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
@@ -52,7 +52,7 @@ if __name__ == "__main__":
     if clear_database:
         try:
             debug("Will delete index " + INDEX_NAME)
-            client.delete(INDEX_NAME)
+            client.delete(index=INDEX_NAME)
         except elasticsearch.exceptions.NotFoundError:
             debug("Index not found, continuing")
 
