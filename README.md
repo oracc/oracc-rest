@@ -176,7 +176,17 @@ You can test that the API is running by making a request on the server to the te
 
 ### Troubleshooting
 
-If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering: `systemctl status apache2.service`. You can also check if ports are open with: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
+If there are any problems you can try the following steps:
+
+Check the status of apache: `systemctl status apache2.service`.
+
+Check apache error logs: `sudo nano /var/log/apache2/error.log`.
+
+Check that the necessary ports are open: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
+
+Check Flask error logs: `sudo nano /var/log/apache2/oracc-rest_error.log`
+
+Check Flask network requests: `sudo nano /var/log/apache2/oracc-rest_access.log`
 
 ---
 
@@ -213,6 +223,10 @@ To install the ICU Analysis Plugin:
 - OS X: `elasticsearch-plugin install analysis-icu`
 - Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per the link above)
 
+To remove the ICU Analysis Plugin:
+
+- Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin remove analysis-icu`
+
 Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted. If running as a service (like in the instructions below), all nodes can be restarted with one command:
 
 - OS X: `brew services restart elasticsearch`
@@ -235,18 +249,21 @@ The output should show something similar to this:
 {
   "name" : "build-oracc",
   "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "QnjkS8UATzCIIAil2HMAYQ",
+  "cluster_uuid" : "bb2yg_3zTuG3Zjbav4QlTg",
   "version" : {
-    "number" : "7.17.7",
-    "build_hash" : "bd92e7f",
-    "build_date" : "2017-12-17T20:23:25.338Z",
+    "number" : "7.17.11",
+    "build_flavor" : "default",
+    "build_type" : "deb",
+    "build_hash" : "eeedb98c60326ea3d46caef960fb4c77958fb885",
+    "build_date" : "2023-06-23T05:33:12.261262042Z",
     "build_snapshot" : false,
     "lucene_version" : "8.11.1",
     "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0"
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
   },
   "tagline" : "You Know, for Search"
 }
+
 ```
 
 You can verify that the ICU Analysis plugin has been installed by running:
@@ -259,13 +276,19 @@ This should show something like:
 
 ```
 name    component    version description
-FRNKdvi analysis-icu 6.0.1   The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components.
+oracc analysis-icu 7.17.11   The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components.
 ```
 
 To stop ElasticSearch:
 
 - OS X: `pkill -f elasticsearch`
 - Ubuntu: `sudo systemctl stop elasticsearch`
+
+### Troubleshooting
+
+If there are any issues, try examining the elasticsearch logs at `sudo nano /var/log/elasticsearch/elasticsearch.log`.
+
+Occasionally, Elasticsearch may get updated on Ubuntu. If this happens then the analysis-icu plugin may no longer be compatible. In this case, you will need to update the analysis-icu plugin using the following steps: 1. stop the current Elasticsearch service, 2. remove the analysis-icu plugin (see instructions above), 3. Reinstall the analysis-icu plugin (see instructions above), 4. Restart the Elasticsearch service.
 
 ---
 
