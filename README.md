@@ -286,9 +286,12 @@ To stop ElasticSearch:
 
 ### Troubleshooting
 
-If there are any issues, try examining the elasticsearch logs at `sudo nano /var/log/elasticsearch/elasticsearch.log`.
+If there are any issues, try the following:
 
-Occasionally, Elasticsearch may get updated on Ubuntu. If this happens then the analysis-icu plugin may no longer be compatible. In this case, you will need to update the analysis-icu plugin using the following steps: 1. stop the current Elasticsearch service, 2. remove the analysis-icu plugin (see instructions above), 3. Reinstall the analysis-icu plugin (see instructions above), 4. Restart the Elasticsearch service.
+Check Elasticsearch status: `systemctl status elasticsearch.service`
+Check Elasticsearch logs: `sudo nano /var/log/elasticsearch/elasticsearch.log`.
+
+Occasionally, Elasticsearch may get updated on Ubuntu. If this happens then the analysis-icu plugin may no longer be compatible. In this case, you will need to update the analysis-icu plugin using the following steps: 1. stop the current Elasticsearch service, 2. remove the analysis-icu plugin (see instructions above), 3. Reinstall the analysis-icu plugin (see instructions above), 4. Start the Elasticsearch service.
 
 ---
 
