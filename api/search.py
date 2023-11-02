@@ -26,7 +26,7 @@ class ESearch:
         # the other search modes), we sort by _doc, which is meaningless but
         # efficient, as suggested in the docs:
         # https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
-        results = search.sort("_doc").scan()
+        results = search.sort("_score").scan()
         return results
 
     def _execute_general(
