@@ -19,14 +19,16 @@ class ESearch:
         Given a word and a fieldname, return all matching entries in the local
         ElasticSearch DB.
         """
-        search = Search(using=self.client, index=self.index).query(
-            "match", **{fieldname: word}
+        search = (
+            Search(using=self.client, index=self.index)
+            .query("match", **{fieldname: word})
+            .sort({"_score": {"order": "desc"}})
         )
         # To ensure that each result has a "sort" value (for consistency with
         # the other search modes), we sort by _doc, which is meaningless but
         # efficient, as suggested in the docs:
         # https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
-        results = search.sort("_score").scan()
+        results = search.scan()
         return results
 
     def _execute_general(
