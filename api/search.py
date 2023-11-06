@@ -192,7 +192,11 @@ class ESearch:
                 "size": size,
             },  # TODO how to get all?
         )
-        completion_results = search.execute().suggest.to_dict()["sug_complete"]
+        completion_results = (
+            search.sort({"_score": {"order": "desc"}})
+            .execute()
+            .suggest.to_dict()["sug_complete"]
+        )
 
         all_completions = [
             option["text"] for option in completion_results[0]["options"]
