@@ -139,7 +139,7 @@ class FullList(Resource):
 
 class TestRoute(Resource):
     def get(self):
-        return "Hello world"
+        return "Hello world!!!!!"
 
 
 # Make the search API available at the "/search" and "/suggest" endpoints
