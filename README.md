@@ -100,15 +100,23 @@ The following software needs to be installed on the Ubuntu server:
 
 Once the above software has been installed, you then need to enable wsgi within apache: `sudo a2enmod wsgi`
 
+### Create a workspace folder and set access permissions
+
+On the Ubuntu server, our project code should be located in `/home/rits`. Go ahead and make this folder if it doesn't already exist.
+
+You may also need to set the appropriate access permissions. These should already be set up on the production server, but on a development environment you can simply run the following command: `sudo chmod a+rwx /home/rits`.
+
 ### Clone the repo
 
-On the Ubuntu server, our project code should be located at `/home/rits` so this is where you should clone the project into. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+Clone the repo into the `/rits` folder you just made. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+
+On a development machine, you may need to clone the repo over `https` instead of `ssh`.
 
 The production deployment should run from the `main` branch of this repo.
 
 ### Install python modules
 
-First, create and activate a python virtual environment from the top-level directory of this repo:
+First, create and activate a python virtual environment from the top-level directory of this repo `/home/rits/oracc-rest`:
 
 ```python
 sudo apt install python3.10-venv
@@ -140,7 +148,7 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
   ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
   CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
-  # remove these next three lines if you are not running the app over HTTPS
+  # remove these next three lines if you are not running the app over HTTPS (e.g. on a development environment)
   SSLEngine On
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
