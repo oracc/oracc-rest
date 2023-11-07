@@ -108,7 +108,7 @@ You may also need to set the appropriate access permissions. These should alread
 
 ### Clone the repo
 
-Clone the repo into the `/rits` folder you just made. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+Clone the repo into the `/home/rits` folder you just made. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
 
 On a development machine, you may need to clone the repo over `https` instead of `ssh`.
 
@@ -116,7 +116,7 @@ The production deployment should run from the `main` branch of this repo.
 
 ### Install python modules
 
-First, create and activate a python virtual environment from the top-level directory of this repo `/home/rits/oracc-rest`:
+First, create and activate a python virtual environment in `/home/rits/oracc-rest`:
 
 ```python
 sudo apt install python3.10-venv
@@ -124,9 +124,11 @@ python3 -m venv venv # run this if the environment does not already exist, note 
 source venv/bin/activate # activates the environment
 ```
 
-You may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+You can deactivate a virtual environment simply by entering `deactivate` in the terminal.
 
-Once your virtual environment is activated, run the following command from the top-level directory of this repo:
+If you run into an issue here, you may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+
+Once your virtual environment is activated, run the following command from `/home/rits/oracc-rest`:
 
 ```
 pip install -r requirements.txt
