@@ -247,6 +247,10 @@ To launch an instance of Elasticsearch accessible in its default port 9200:
 - OS X: `elasticsearch -d`
 - Ubuntu: `sudo systemctl start elasticsearch`
 
+To stop ElasticSearch automatically updating and becoming incompatible with the installed ICU plugin, run:
+
+- Ubuntu: `sudo apt-mark hold elasticsearch`
+
 You can check Elasticsearch was successfully launched by running:
 
 ```
