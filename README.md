@@ -247,10 +247,6 @@ To launch an instance of Elasticsearch accessible in its default port 9200:
 - OS X: `elasticsearch -d`
 - Ubuntu: `sudo systemctl start elasticsearch`
 
-To stop ElasticSearch automatically updating and becoming incompatible with the installed ICU plugin, run:
-
-- Ubuntu: `sudo apt-mark hold elasticsearch`
-
 You can check Elasticsearch was successfully launched by running:
 
 ```
@@ -298,14 +294,22 @@ To stop ElasticSearch:
 - OS X: `pkill -f elasticsearch`
 - Ubuntu: `sudo systemctl stop elasticsearch`
 
+### Prevent automatic updates of Elasticsearch on Ubuntu
+
+Occasionally, Elasticsearch may get updated on Ubuntu automatically.
+
+To stop ElasticSearch automatically updating and becoming incompatible with the installed ICU plugin, run:
+
+- Ubuntu: `sudo apt-mark hold elasticsearch`
+
+If you run into a situation where Elasticsearch has been updated on the server then the analysis-icu plugin may no longer be compatible. In this case, you will need to update the analysis-icu plugin using the following steps: 1. stop the current Elasticsearch service, 2. remove the analysis-icu plugin (see instructions above), 3. Reinstall the analysis-icu plugin (see instructions above), 4. Start the Elasticsearch service.
+
 ### Troubleshooting
 
 If there are any issues, try the following:
 
 Check Elasticsearch status: `systemctl status elasticsearch.service`
 Check Elasticsearch logs: `sudo nano /var/log/elasticsearch/elasticsearch.log`.
-
-Occasionally, Elasticsearch may get updated on Ubuntu. If this happens then the analysis-icu plugin may no longer be compatible. In this case, you will need to update the analysis-icu plugin using the following steps: 1. stop the current Elasticsearch service, 2. remove the analysis-icu plugin (see instructions above), 3. Reinstall the analysis-icu plugin (see instructions above), 4. Start the Elasticsearch service.
 
 ---
 
