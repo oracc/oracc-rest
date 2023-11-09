@@ -100,15 +100,23 @@ The following software needs to be installed on the Ubuntu server:
 
 Once the above software has been installed, you then need to enable wsgi within apache: `sudo a2enmod wsgi`
 
+### Create a workspace folder and set access permissions
+
+On the Ubuntu server, our project code should be located in `/home/rits`. Go ahead and make this folder if it doesn't already exist.
+
+You may also need to set the appropriate access permissions. These should already be set up on the production server, but on a development environment you can simply run the following command: `sudo chmod a+rwx /home/rits`.
+
 ### Clone the repo
 
-On the Ubuntu server, our project code should be located at `/home/rits` so this is where you should clone the project into. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+Clone the repo into the `/home/rits` folder you just made. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+
+On a development machine, you may need to clone the repo over `https` instead of `ssh`.
 
 The production deployment should run from the `main` branch of this repo.
 
 ### Install python modules
 
-First, create and activate a python virtual environment from the top-level directory of this repo:
+First, create and activate a python virtual environment in `/home/rits/oracc-rest`:
 
 ```python
 sudo apt install python3.10-venv
@@ -116,9 +124,11 @@ python3 -m venv venv # run this if the environment does not already exist, note 
 source venv/bin/activate # activates the environment
 ```
 
-You may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+You can deactivate a virtual environment simply by entering `deactivate` in the terminal.
 
-Once your virtual environment is activated, run the following command from the top-level directory of this repo:
+If you run into an issue here, you may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+
+Once your virtual environment is activated, run the following command from `/home/rits/oracc-rest`:
 
 ```
 pip install -r requirements.txt
@@ -140,7 +150,7 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
   ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
   CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
-  # remove these next three lines if you are not running the app over HTTPS
+  # remove these next three lines if you are not running the app over HTTPS (e.g. on a development environment)
   SSLEngine On
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
@@ -176,7 +186,17 @@ You can test that the API is running by making a request on the server to the te
 
 ### Troubleshooting
 
-If there are any problems, check errors here: `/var/log/apache2/error.log`. You can also check the status of apache by entering: `systemctl status apache2.service`. You can also check if ports are open with: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
+If there are any problems you can try the following steps:
+
+Check the status of apache: `systemctl status apache2.service`.
+
+Check apache error logs: `sudo nano /var/log/apache2/error.log`.
+
+Check that the necessary ports are open: `telnet localhost 5000`, if the port is not open you should get a failed to connect message.
+
+Check Flask error logs: `sudo nano /var/log/apache2/oracc-rest_error.log`
+
+Check Flask network requests: `sudo nano /var/log/apache2/oracc-rest_access.log`
 
 ---
 
@@ -213,6 +233,10 @@ To install the ICU Analysis Plugin:
 - OS X: `elasticsearch-plugin install analysis-icu`
 - Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin install analysis-icu` (as per the link above)
 
+To remove the ICU Analysis Plugin:
+
+- Ubuntu: `sudo /usr/share/elasticsearch/bin/elasticsearch-plugin remove analysis-icu`
+
 Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted. If running as a service (like in the instructions below), all nodes can be restarted with one command:
 
 - OS X: `brew services restart elasticsearch`
@@ -222,6 +246,10 @@ To launch an instance of Elasticsearch accessible in its default port 9200:
 
 - OS X: `elasticsearch -d`
 - Ubuntu: `sudo systemctl start elasticsearch`
+
+To stop ElasticSearch automatically updating and becoming incompatible with the installed ICU plugin, run:
+
+- Ubuntu: `sudo apt-mark hold elasticsearch`
 
 You can check Elasticsearch was successfully launched by running:
 
@@ -235,18 +263,21 @@ The output should show something similar to this:
 {
   "name" : "build-oracc",
   "cluster_name" : "elasticsearch",
-  "cluster_uuid" : "QnjkS8UATzCIIAil2HMAYQ",
+  "cluster_uuid" : "bb2yg_3zTuG3Zjbav4QlTg",
   "version" : {
-    "number" : "7.17.7",
-    "build_hash" : "bd92e7f",
-    "build_date" : "2017-12-17T20:23:25.338Z",
+    "number" : "7.17.11",
+    "build_flavor" : "default",
+    "build_type" : "deb",
+    "build_hash" : "eeedb98c60326ea3d46caef960fb4c77958fb885",
+    "build_date" : "2023-06-23T05:33:12.261262042Z",
     "build_snapshot" : false,
     "lucene_version" : "8.11.1",
     "minimum_wire_compatibility_version" : "6.8.0",
-    "minimum_index_compatibility_version" : "6.0.0"
+    "minimum_index_compatibility_version" : "6.0.0-beta1"
   },
   "tagline" : "You Know, for Search"
 }
+
 ```
 
 You can verify that the ICU Analysis plugin has been installed by running:
@@ -259,13 +290,22 @@ This should show something like:
 
 ```
 name    component    version description
-FRNKdvi analysis-icu 6.0.1   The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components.
+oracc analysis-icu 7.17.11   The ICU Analysis plugin integrates Lucene ICU module into elasticsearch, adding ICU relates analysis components.
 ```
 
 To stop ElasticSearch:
 
 - OS X: `pkill -f elasticsearch`
 - Ubuntu: `sudo systemctl stop elasticsearch`
+
+### Troubleshooting
+
+If there are any issues, try the following:
+
+Check Elasticsearch status: `systemctl status elasticsearch.service`
+Check Elasticsearch logs: `sudo nano /var/log/elasticsearch/elasticsearch.log`.
+
+Occasionally, Elasticsearch may get updated on Ubuntu. If this happens then the analysis-icu plugin may no longer be compatible. In this case, you will need to update the analysis-icu plugin using the following steps: 1. stop the current Elasticsearch service, 2. remove the analysis-icu plugin (see instructions above), 3. Reinstall the analysis-icu plugin (see instructions above), 4. Start the Elasticsearch service.
 
 ---
 
