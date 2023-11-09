@@ -273,7 +273,7 @@ To stop ElasticSearch:
 
 Now that Elasticsearch has been set up, you can start to upload glossary data into the Elasticsearch database.
 
-A test dataset has been provided at: `ingest/assets/dev/gloss-test.json`, you can use this data to test out the elasticsearch functionality on your development environment (make sure you do not ingest this data on the production database).
+Some test datasets have been provided at: `ingest/assets/dev/sample-glossaries`, you can use this data to test out the elasticsearch functionality on your development environment (make sure you do not ingest this data on the production database).
 
 The production glossary data is provided by the PI's in the correct format, so ask Steve Tinney or Eleanor Robson for more details.
 
@@ -282,7 +282,7 @@ To upload the data into the Elasticsearch database, you can call the following u
 Note the lack of `sudo` in the below command to make sure that the script reads from the virtual environment that was created earlier.
 
 ```
-python -m ingest.bulk_upload <path-to-file>
+python -m ingest.bulk_upload <path-to-directory-or-file>
 ```
 
 If no arguments are provided, then the function will try to upload the glossary files located in a `/neo` folder at the top-level directory of this repo.
