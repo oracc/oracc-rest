@@ -22,7 +22,7 @@ class ESearch:
         search = (
             Search(using=self.client, index=self.index)
             .query("match", **{fieldname: word})
-            .sort({"_score": {"order": "desc"}})
+            # .sort({"_score": {"order": "desc"}})
         )
         # To ensure that each result has a "sort" value (for consistency with
         # the other search modes), we sort by _doc, which is meaningless but
@@ -130,7 +130,7 @@ class ESearch:
             # contain non-ASCII characters, we use the X.sort field instead.
             # TODO Since the suffixes don't change, we can store them in a dict
             # instead of building them every time.
-            ".sort"
+            ".sort({'_score': {'order': 'desc'}})"
             if field in self.UNICODE_FIELDS
             else (".keyword" if field in self.TEXT_FIELDS else ""),
         )
