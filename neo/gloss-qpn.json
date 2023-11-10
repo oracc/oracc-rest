@@ -1,0 +1,1702 @@
+{
+	"type": "glossary",
+	"project": "neo",
+	"source": "http://oracc.org/neo",
+	"license": "This data is released under the CC0 license",
+	"license-url": "https://creativecommons.org/publicdomain/zero/1.0/",
+	"more-info": "http://oracc.org/doc/opendata/",
+	"UTC-timestamp": "2022-01-19T01:37:21",
+	"lang": "qpn",
+	"entries": [
+		{
+			"headword": "ʾAtaya[ʾAtean]EN",
+			"id": "x000060730",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "qpn.r019eb9",
+			"dc_title": "neo/qpn/ʾAtaya[ʾAtean]",
+			"cf": "ʾAtaya",
+			"gw": "ʾAtean",
+			"pos": "EN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00006073.1",
+					"n": "{KUR}ʾa-ta-a.a",
+					"c": "442",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r019eb9"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00006073.2",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r019eb9",
+					"n": "ʾAtaya",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00006073.3",
+							"ref": "x00006073.1",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r019eb9"
+						}
+					]
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00006073.4",
+					"n": "{KUR}ʾa-ta-a.a",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r019eb9"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00006073.5",
+					"n": "ʾAtaya[ʾAtean//ʾAtean]EN'EN",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r019eb9",
+					"num": "1.",
+					"pos": "EN",
+					"mng": "ʾAtean",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00006073.6",
+							"n": "{KUR}ʾa-ta-a.a",
+							"ref": "x00006073.1",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r019eb9"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00006073.7",
+							"n": "ʾAtaya",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r019eb9"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00006073.8",
+							"n": "{KUR}ʾa-ta-a.a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r019eb9"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00006073.9",
+							"sig": "@neo%akk:{KUR}ʾa-ta-a.a=ʾAtaya[ʾAtean//ʾAtean]EN'EN$ʾAtaya",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r019eb9"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Neo-Assyrian",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r019eb9.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "ʾA₃.za.ri₂.tum[00]PN",
+			"id": "x000571380",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "qpn.r019ebb",
+			"dc_title": "neo/qpn/ʾA₃.za.ri₂.tum[00]",
+			"cf": "ʾA₃.za.ri₂.tum",
+			"gw": "00",
+			"pos": "PN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00057138.1",
+					"n": "ʾa₃-za-ri₂-tum",
+					"c": "444",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00057138.2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb",
+					"n": "ʾA₃.za.ri₂.tum",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00057138.3",
+							"ref": "x00057138.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00057138.4",
+					"n": "ʾa₃-za-ri₂-tum",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00057138.5",
+					"n": "~",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00057138.6",
+					"n": "ʾa₃-za-ri₂-tum",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00057138.7",
+					"n": "ʾA₃.za.ri₂.tum[00//00]PN'PN",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb",
+					"num": "1.",
+					"pos": "PN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00057138.8",
+							"n": "ʾa₃-za-ri₂-tum",
+							"ref": "x00057138.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00057138.9",
+							"n": "ʾA₃.za.ri₂.tum",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00057138.10",
+							"n": "ʾa₃-za-ri₂-tum",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00057138.11",
+							"n": "~",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00057138.12",
+							"n": "ʾa₃-za-ri₂-tum",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00057138.13",
+							"sig": "@neo%sux:ʾa₃-za-ri₂-tum=ʾA₃.za.ri₂.tum[00//00]PN'PN$ʾA₃.za.ri₂.tum/ʾa₃-za-ri₂-tum#~",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebb"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Old Akkadian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebb.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "ʿṯtr[Aṯtar]DN",
+			"id": "x000572570",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "qpn.r019ebf",
+			"dc_title": "neo/qpn/ʿṯtr[Aṯtar]",
+			"cf": "ʿṯtr",
+			"gw": "Aṯtar",
+			"pos": "DN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00057257.1",
+					"n": "aš-ta-ru",
+					"c": "11971",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebf"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00057257.2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebf",
+					"n": "ʿaṯtaru",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00057257.3",
+							"ref": "x00057257.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebf"
+						}
+					]
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00057257.4",
+					"n": "aš-ta-ru",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebf"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00057257.5",
+					"n": "ʿṯtr[Aṯtar//Aṯtar]DN'DN",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebf",
+					"num": "1.",
+					"pos": "DN",
+					"mng": "Aṯtar",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00057257.6",
+							"n": "aš-ta-ru",
+							"ref": "x00057257.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebf"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00057257.7",
+							"n": "ʿaṯtaru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebf"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00057257.8",
+							"n": "aš-ta-ru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebf"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00057257.9",
+							"sig": "@neo%uga:aš-ta-ru=ʿṯtr[Aṯtar//Aṯtar]DN'DN$ʿaṯtaru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r019ebf"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r019ebf.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A[00]FN",
+			"id": "x000147350",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "qpn.r000d04",
+			"dc_title": "neo/qpn/A[00]",
+			"cf": "A",
+			"gw": "00",
+			"pos": "FN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00014735.1",
+					"n": "a-ka",
+					"c": "2503",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00014735.2",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04",
+					"n": "A,ak.a",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00014735.3",
+							"ref": "x00014735.1",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00014735.4",
+					"n": "a",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00014735.5",
+					"n": "~,ak.a",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00014735.6",
+					"n": "a-ka",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00014735.7",
+					"n": "A[00//00]FN'FN",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04",
+					"num": "1.",
+					"pos": "FN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00014735.8",
+							"n": "a-ka",
+							"ref": "x00014735.1",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00014735.9",
+							"n": "A,ak.a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00014735.10",
+							"n": "a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00014735.11",
+							"n": "~,ak.a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00014735.12",
+							"n": "a-ka",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00014735.13",
+							"sig": "@neo%sux:a-ka=A[00//00]FN'FN$A,ak.a/a#~,ak.a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000d04"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "ED IIIb",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000d04.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A.a.kal.a[00]PN",
+			"id": "x000134160",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "qpn.r0000b2",
+			"dc_title": "neo/qpn/A.a.kal.a[00]",
+			"cf": "A.a.kal.a",
+			"gw": "00",
+			"pos": "PN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00013416.1",
+					"n": "a-a-kal-a",
+					"c": "542",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00013416.2",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2",
+					"n": "A.a.kal.a",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013416.3",
+							"ref": "x00013416.1",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00013416.4",
+					"n": "a-a-kal-a",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00013416.5",
+					"n": "~",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013416.6",
+					"n": "a-a-kal-a",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00013416.7",
+					"n": "A.a.kal.a[00//00]PN'PN",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2",
+					"num": "1.",
+					"pos": "PN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00013416.8",
+							"n": "a-a-kal-a",
+							"ref": "x00013416.1",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00013416.9",
+							"n": "A.a.kal.a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00013416.10",
+							"n": "a-a-kal-a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00013416.11",
+							"n": "~",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00013416.12",
+							"n": "a-a-kal-a",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00013416.13",
+							"sig": "@neo%sux:a-a-kal-a=A.a.kal.a[00//00]PN'PN$A.a.kal.a/a-a-kal-a#~",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r0000b2"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Ur III",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r0000b2.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A.a[00]DN",
+			"id": "x000134150",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "qpn.r0000ef",
+			"dc_title": "neo/qpn/A.a[00]",
+			"cf": "A.a",
+			"gw": "00",
+			"pos": "DN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00013415.1",
+					"n": "a-a-ka-da",
+					"c": "541",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00013415.2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef",
+					"n": "A.a,ak.da",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013415.3",
+							"ref": "x00013415.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00013415.4",
+					"n": "a-a",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00013415.5",
+					"n": "~,ak.da",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013415.6",
+					"n": "a-a-ka-da",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00013415.7",
+					"n": "A.a[00//00]DN'DN",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef",
+					"num": "1.",
+					"pos": "DN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00013415.8",
+							"n": "a-a-ka-da",
+							"ref": "x00013415.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00013415.9",
+							"n": "A.a,ak.da",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00013415.10",
+							"n": "a-a",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00013415.11",
+							"n": "~,ak.da",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00013415.12",
+							"n": "a-a-ka-da",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00013415.13",
+							"sig": "@neo%sux:a-a-ka-da=A.a[00//00]DN'DN$A.a,ak.da/a-a#~,ak.da",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r0000ef"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Ur III",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r0000ef.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A.a[00]PN",
+			"id": "x000134460",
+			"icount": "3",
+			"ipct": "100",
+			"xis": "qpn.r0000f0",
+			"dc_title": "neo/qpn/A.a[00]",
+			"cf": "A.a",
+			"gw": "00",
+			"pos": "PN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00013446.1",
+					"n": "a-a-ra",
+					"c": "602",
+					"icount": "1",
+					"ipct": "33",
+					"xis": "qpn.r0000f1"
+				},
+				{
+					"type": "form",
+					"id": "x00013446.2",
+					"n": "a-a-še₃",
+					"c": "617",
+					"icount": "2",
+					"ipct": "67",
+					"xis": "qpn.r0000f2"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00013446.3",
+					"icount": "2",
+					"ipct": "67",
+					"xis": "qpn.r0000f2",
+					"n": "A.a,eše",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013446.4",
+							"ref": "x00013446.2",
+							"icount": "2",
+							"ipct": "67",
+							"xis": "qpn.r0000f2"
+						}
+					]
+				},
+				{
+					"id": "x00013446.5",
+					"icount": "1",
+					"ipct": "33",
+					"xis": "qpn.r0000f1",
+					"n": "A.a,ra",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013446.6",
+							"ref": "x00013446.1",
+							"icount": "1",
+							"ipct": "33",
+							"xis": "qpn.r0000f1"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00013446.7",
+					"n": "a-a",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "qpn.r0000f0"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00013446.8",
+					"n": "~,eše",
+					"icount": "2",
+					"ipct": "67",
+					"xis": "qpn.r0000f2"
+				},
+				{
+					"type": "morph",
+					"cbd_id": "x00013446.9",
+					"n": "~,ra",
+					"icount": "1",
+					"ipct": "33",
+					"xis": "qpn.r0000f1"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013446.10",
+					"n": "a-a-ra",
+					"icount": "1",
+					"ipct": "33",
+					"xis": "qpn.r0000f1"
+				},
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013446.11",
+					"n": "a-a-še₃",
+					"icount": "2",
+					"ipct": "67",
+					"xis": "qpn.r0000f2"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00013446.12",
+					"n": "A.a[00//00]PN'PN",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "qpn.r0000f0",
+					"num": "1.",
+					"pos": "PN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00013446.13",
+							"n": "a-a-ra",
+							"ref": "x00013446.1",
+							"icount": "1",
+							"ipct": "33",
+							"xis": "qpn.r0000f1"
+						},
+						{
+							"type": "form",
+							"cbd_id": "x00013446.14",
+							"n": "a-a-še₃",
+							"ref": "x00013446.2",
+							"icount": "2",
+							"ipct": "67",
+							"xis": "qpn.r0000f2"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00013446.15",
+							"n": "A.a,eše",
+							"icount": "2",
+							"ipct": "67",
+							"xis": "qpn.r0000f2"
+						},
+						{
+							"id": "x00013446.16",
+							"n": "A.a,ra",
+							"icount": "1",
+							"ipct": "33",
+							"xis": "qpn.r0000f1"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00013446.17",
+							"n": "a-a",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "qpn.r0000f0"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00013446.18",
+							"n": "~,eše",
+							"icount": "2",
+							"ipct": "67",
+							"xis": "qpn.r0000f2"
+						},
+						{
+							"type": "morph",
+							"id": "x00013446.19",
+							"n": "~,ra",
+							"icount": "1",
+							"ipct": "33",
+							"xis": "qpn.r0000f1"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00013446.20",
+							"n": "a-a-ra",
+							"icount": "1",
+							"ipct": "33",
+							"xis": "qpn.r0000f1"
+						},
+						{
+							"type": "form-sans",
+							"id": "x00013446.21",
+							"n": "a-a-še₃",
+							"icount": "2",
+							"ipct": "67",
+							"xis": "qpn.r0000f2"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00013446.22",
+							"sig": "@neo%sux:a-a-ra=A.a[00//00]PN'PN$A.a,ra/a-a#~,ra",
+							"icount": "1",
+							"ipct": "33",
+							"xis": "qpn.r0000f1"
+						},
+						{
+							"type": "sig",
+							"id": "x00013446.23",
+							"sig": "@neo%sux:a-a-še₃=A.a[00//00]PN'PN$A.a,eše/a-a#~,eše",
+							"icount": "2",
+							"ipct": "67",
+							"xis": "qpn.r0000f2"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Ur III",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "qpn.r0000f0.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A.A[00]SN",
+			"id": "x000117460",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "qpn.r00000f",
+			"dc_title": "neo/qpn/A.A[00]",
+			"cf": "A.A",
+			"gw": "00",
+			"pos": "SN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00011746.1",
+					"n": "A-A{ki}",
+					"c": "460",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00011746.2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f",
+					"n": "A.A",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00011746.3",
+							"ref": "x00011746.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00011746.4",
+					"n": "A-A{ki}",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00011746.5",
+					"n": "~",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00011746.6",
+					"n": "A-A{ki}",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00011746.7",
+					"n": "A.A[00//00]SN'PN",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f",
+					"num": "1.",
+					"pos": "PN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00011746.8",
+							"n": "A-A{ki}",
+							"ref": "x00011746.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00011746.9",
+							"n": "A.A",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00011746.10",
+							"n": "A-A{ki}",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00011746.11",
+							"n": "~",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00011746.12",
+							"n": "A-A{ki}",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00011746.13",
+							"sig": "@neo%sux:A-A{ki}=A.A[00//00]SN'PN$A.A/A-A{ki}#~",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r00000f"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "ED IIIa",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r00000f.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A.a.ab.ba[00]PN",
+			"id": "x000133790",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "qpn.r000084",
+			"dc_title": "neo/qpn/A.a.ab.ba[00]",
+			"cf": "A.a.ab.ba",
+			"gw": "00",
+			"pos": "PN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00013379.1",
+					"n": "a-a-ab-ba",
+					"c": "468",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000085"
+				},
+				{
+					"type": "form",
+					"id": "x00013379.2",
+					"n": "a-a-ab-ba-ta",
+					"c": "469",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000086"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00013379.3",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000085",
+					"n": "A.a.ab.ba",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013379.4",
+							"ref": "x00013379.1",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000085"
+						}
+					]
+				},
+				{
+					"id": "x00013379.5",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000086",
+					"n": "A.a.ab.ba,ta",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013379.6",
+							"ref": "x00013379.2",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000086"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00013379.7",
+					"n": "a-a-ab-ba",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000084"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00013379.8",
+					"n": "~",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000085"
+				},
+				{
+					"type": "morph",
+					"cbd_id": "x00013379.9",
+					"n": "~,ta",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000086"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013379.10",
+					"n": "a-a-ab-ba",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000085"
+				},
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013379.11",
+					"n": "a-a-ab-ba-ta",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "qpn.r000086"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00013379.12",
+					"n": "A.a.ab.ba[00//00]PN'PN",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000084",
+					"num": "1.",
+					"pos": "PN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00013379.13",
+							"n": "a-a-ab-ba",
+							"ref": "x00013379.1",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000085"
+						},
+						{
+							"type": "form",
+							"cbd_id": "x00013379.14",
+							"n": "a-a-ab-ba-ta",
+							"ref": "x00013379.2",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000086"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00013379.15",
+							"n": "A.a.ab.ba",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000085"
+						},
+						{
+							"id": "x00013379.16",
+							"n": "A.a.ab.ba,ta",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000086"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00013379.17",
+							"n": "a-a-ab-ba",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "qpn.r000084"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00013379.18",
+							"n": "~",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000085"
+						},
+						{
+							"type": "morph",
+							"id": "x00013379.19",
+							"n": "~,ta",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000086"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00013379.20",
+							"n": "a-a-ab-ba",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000085"
+						},
+						{
+							"type": "form-sans",
+							"id": "x00013379.21",
+							"n": "a-a-ab-ba-ta",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000086"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00013379.22",
+							"sig": "@neo%sux:a-a-ab-ba-ta=A.a.ab.ba[00//00]PN'PN$A.a.ab.ba,ta/a-a-ab-ba#~,ta",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000086"
+						},
+						{
+							"type": "sig",
+							"id": "x00013379.23",
+							"sig": "@neo%sux:a-a-ab-ba=A.a.ab.ba[00//00]PN'PN$A.a.ab.ba/a-a-ab-ba#~",
+							"icount": "1",
+							"ipct": "50",
+							"xis": "qpn.r000085"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Ur III",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "qpn.r000084.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "A.a.ar[00]DN",
+			"id": "x000133820",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "qpn.r000089",
+			"dc_title": "neo/qpn/A.a.ar[00]",
+			"cf": "A.a.ar",
+			"gw": "00",
+			"pos": "DN",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00013382.1",
+					"n": "a-a-ar",
+					"c": "473",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00013382.2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089",
+					"n": "A.a.ar",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00013382.3",
+							"ref": "x00013382.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "x00013382.4",
+					"n": "a-a-ar",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "x00013382.5",
+					"n": "~",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00013382.6",
+					"n": "a-a-ar",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00013382.7",
+					"n": "A.a.ar[00//00]DN'DN",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089",
+					"num": "1.",
+					"pos": "DN",
+					"mng": "00",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00013382.8",
+							"n": "a-a-ar",
+							"ref": "x00013382.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00013382.9",
+							"n": "A.a.ar",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "x00013382.10",
+							"n": "a-a-ar",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "x00013382.11",
+							"n": "~",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00013382.12",
+							"n": "a-a-ar",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00013382.13",
+							"sig": "@neo%sux:a-a-ar=A.a.ar[00//00]DN'DN$A.a.ar/a-a-ar#~",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r000089"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Ur III",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r000089.p.s000"
+				}
+			]
+		}
+	],
+	"instances": {
+		"qpn.r019eb9": ["saao/saa01:P313425.28.2", "saao/saa05:P334322.50.5"],
+		"qpn.r019eb9.p.s000": [
+			"saao/saa01:P313425.28.2",
+			"saao/saa05:P334322.50.5"
+		],
+		"qpn.r019ebb": ["epsd2/admin/oakk:P215034.17.2"],
+		"qpn.r019ebb.p.s000": ["epsd2/admin/oakk:P215034.17.2"],
+		"qpn.r019ebf": ["dcclt:P332950.161.3"],
+		"qpn.r019ebf.p.s000": ["dcclt:P332950.161.3"],
+		"qpn.r000d04": [
+			"epsd2/admin/ed3b:P220697.158.4",
+			"epsd2/admin/ed3b:P220955.16.4"
+		],
+		"qpn.r000d04.p.s000": [
+			"epsd2/admin/ed3b:P220697.158.4",
+			"epsd2/admin/ed3b:P220955.16.4"
+		],
+		"qpn.r0000b2": [
+			"epsd2/admin/ur3:P430502.3.1",
+			"epsd2/admin/ur3:P430506.4.1"
+		],
+		"qpn.r0000b2.p.s000": [
+			"epsd2/admin/ur3:P430502.3.1",
+			"epsd2/admin/ur3:P430506.4.1"
+		],
+		"qpn.r0000ef": ["epsd2/admin/ur3:P234968.8.5"],
+		"qpn.r0000ef.p.s000": ["epsd2/admin/ur3:P234968.8.5"],
+		"qpn.r0000f0": [
+			"epsd2/admin/ur3:P110957.10.1",
+			"epsd2/admin/ur3:P110957.4.3",
+			"epsd2/admin/ur3:P122284.8.1"
+		],
+		"qpn.r0000f0.p.s000": [
+			"epsd2/admin/ur3:P110957.4.3",
+			"epsd2/admin/ur3:P110957.10.1",
+			"epsd2/admin/ur3:P122284.8.1"
+		],
+		"qpn.r0000f1": ["epsd2/admin/ur3:P122284.8.1"],
+		"qpn.r0000f1.p.s000": ["epsd2/admin/ur3:P122284.8.1"],
+		"qpn.r0000f2": [
+			"epsd2/admin/ur3:P110957.10.1",
+			"epsd2/admin/ur3:P110957.4.3"
+		],
+		"qpn.r0000f2.p.s000": [
+			"epsd2/admin/ur3:P110957.4.3",
+			"epsd2/admin/ur3:P110957.10.1"
+		],
+		"qpn.r00000f": ["epsd2/admin/ed3a:P010899.5.3"],
+		"qpn.r00000f.p.s000": ["epsd2/admin/ed3a:P010899.5.3"],
+		"qpn.r000084": [
+			"epsd2/admin/ur3:P131521.79.1",
+			"epsd2/admin/ur3:P406647.11.1"
+		],
+		"qpn.r000084.p.s000": [
+			"epsd2/admin/ur3:P406647.11.1",
+			"epsd2/admin/ur3:P131521.79.1"
+		],
+		"qpn.r000085": ["epsd2/admin/ur3:P131521.79.1"],
+		"qpn.r000085.p.s000": ["epsd2/admin/ur3:P131521.79.1"],
+		"qpn.r000086": ["epsd2/admin/ur3:P406647.11.1"],
+		"qpn.r000086.p.s000": ["epsd2/admin/ur3:P406647.11.1"],
+		"qpn.r000089": ["epsd2/admin/ur3:P209809.6.2"],
+		"qpn.r000089.p.s000": ["epsd2/admin/ur3:P209809.6.2"]
+	},
+	"summaries": {
+		"x000060730": "<p class=\"summary\" id=\"x000060730\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000060730.html')\"><span class=\"cf\">ʾAtaya</span> [<span class=\"gw\">ʾATEAN</span>] <span class=\"cf\">EN</span></a> (2x) </span>Neo-Assyrian  \"ʾAtean\"</span></p>",
+
+		"x000571380": "<p class=\"summary\" id=\"x000571380\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000571380.html')\"><span class=\"cf\">ʾA₃.za.ri₂.tum</span> [<span class=\"gw\">00</span>] <span class=\"cf\">PN</span></a> (1x) </span>Old Akkadian  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ʾa₃</span>-<span x=\"3\" class=\"sux\">za</span>-<span x=\"3\" class=\"sux\">ri₂</span>-<span x=\"3\" class=\"sux\">tum</span></span></span> \"00\"</span></p>",
+
+		"x000572570": "<p class=\"summary\" id=\"x000572570\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000572570.html')\"><span class=\"cf\">ʿṯtr</span> [<span class=\"gw\">AṯTAR</span>] <span class=\"cf\">DN</span></a> (1x) </span>Middle Babylonian  \"Aṯtar\"</span></p>",
+
+		"x000147350": "<p class=\"summary\" id=\"x000147350\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000147350.html')\"><span class=\"cf\">A</span> [<span class=\"gw\">00</span>] <span class=\"cf\">FN</span></a> (2x) </span>ED IIIb  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span></span> \"00\"</span></p>",
+
+		"x000134160": "<p class=\"summary\" id=\"x000134160\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000134160.html')\"><span class=\"cf\">A.a.kal.a</span> [<span class=\"gw\">00</span>] <span class=\"cf\">PN</span></a> (2x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">kal</span>-<span x=\"3\" class=\"sux\">a</span></span></span> \"00\"</span></p>",
+
+		"x000134150": "<p class=\"summary\" id=\"x000134150\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000134150.html')\"><span class=\"cf\">A.a</span> [<span class=\"gw\">00</span>] <span class=\"cf\">DN</span></a> (1x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span></span></span> \"00\"</span></p>",
+
+		"x000134460": "<p class=\"summary\" id=\"x000134460\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000134460.html')\"><span class=\"cf\">A.a</span> [<span class=\"gw\">00</span>] <span class=\"cf\">PN</span></a> (3x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span></span></span> \"00\"</span></p>",
+
+		"x000117460": "<p class=\"summary\" id=\"x000117460\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000117460.html')\"><span class=\"cf\">A.A</span> [<span class=\"gw\">00</span>] <span class=\"cf\">SN</span></a> (1x) </span>ED IIIa  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span class=\"sign \">A</span>-<span class=\"sign \">A</span><sup class=\"sux\">ki</sup></span></span> \"00\"</span></p>",
+
+		"x000133790": "<p class=\"summary\" id=\"x000133790\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000133790.html')\"><span class=\"cf\">A.a.ab.ba</span> [<span class=\"gw\">00</span>] <span class=\"cf\">PN</span></a> (2x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">ab</span>-<span x=\"3\" class=\"sux\">ba</span></span></span> \"00\"</span></p>",
+
+		"x000133820": "<p class=\"summary\" id=\"x000133820\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000133820.html')\"><span class=\"cf\">A.a.ar</span> [<span class=\"gw\">00</span>] <span class=\"cf\">DN</span></a> (1x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">ar</span></span></span> \"00\"</span></p>"
+	}
+}

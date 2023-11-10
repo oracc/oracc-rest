@@ -1,0 +1,1147 @@
+{
+	"type": "glossary",
+	"project": "neo",
+	"source": "http://oracc.org/neo",
+	"license": "This data is released under the CC0 license",
+	"license-url": "https://creativecommons.org/publicdomain/zero/1.0/",
+	"more-info": "http://oracc.org/doc/opendata/",
+	"UTC-timestamp": "2022-01-19T01:37:00",
+	"lang": "akk",
+	"entries": [
+		{
+			"headword": "A.RI.A[semen]N",
+			"id": "x0016004",
+			"oid": "x0016004",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "akk.r000005",
+			"dc_title": "neo/akk/A.RI.A[semen]",
+			"cf": "A.RI.A",
+			"gw": "semen",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0016004.0",
+					"n": "A.RI.A-šu₂",
+					"c": "2415",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000005"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0016004.1",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000005",
+					"n": "A.RI.A-šu",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0016004.2",
+							"ref": "x0016004.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000005"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0016004.3",
+					"n": "A.RI.A[semen//semen]N'N",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000005",
+					"num": "1.",
+					"pos": "N",
+					"mng": "semen",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0016004.4",
+							"n": "A.RI.A-šu₂",
+							"ref": "x0016004.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000005"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0016004.5",
+							"n": "A.RI.A-šu",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000005"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0016004.6",
+							"sig": "@neo%akk:A.RI.A-šu₂=A.RI.A[semen//semen]N'N$A.RI.A-šu",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000005"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "unknown",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000005.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "abbušu[(meaning unknown)]N",
+			"id": "x0003061",
+			"oid": "x0003061",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "akk.r00015a",
+			"dc_title": "neo/akk/abbušu[(meaning unknown)]",
+			"cf": "abbušu",
+			"gw": "(meaning unknown)",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0003061.0",
+					"n": "ab-ba-ša",
+					"c": "3563",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00015a"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0003061.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00015a",
+					"n": "abbaša",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0003061.2",
+							"ref": "x0003061.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00015a"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0003061.3",
+					"n": "abbušu[(meaning unknown)//(meaning unknown)]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00015a",
+					"num": "1.",
+					"pos": "N",
+					"mng": "(meaning unknown)",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0003061.4",
+							"n": "ab-ba-ša",
+							"ref": "x0003061.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00015a"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0003061.5",
+							"n": "abbaša",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00015a"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0003061.6",
+							"sig": "@neo%akk:ab-ba-ša=abbušu[(meaning unknown)//(meaning unknown)]N'N$abbaša",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00015a"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Neo-Assyrian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00015a.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "abbuttānu[wearer of abbuttu hair-style]N",
+			"id": "x0021639",
+			"oid": "x0021639",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "akk.r000159",
+			"dc_title": "neo/akk/abbuttānu[wearer of abbuttu hair-style]",
+			"cf": "abbuttānu",
+			"gw": "wearer of abbuttu hair-style",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0021639.0",
+					"n": "a-bi-da-nu-um",
+					"c": "556",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000159"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0021639.1",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000159",
+					"n": "abbidānum",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0021639.2",
+							"ref": "x0021639.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000159"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0021639.3",
+					"n": "abbuttānu[wearer of abbuttu hair-style//(a fish)]N'N",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r000159",
+					"num": "1.",
+					"pos": "N",
+					"mng": "(a fish)",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0021639.4",
+							"n": "a-bi-da-nu-um",
+							"ref": "x0021639.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000159"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0021639.5",
+							"n": "abbidānum",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000159"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0021639.6",
+							"sig": "@neo%akk:a-bi-da-nu-um=abbuttānu[wearer of abbuttu hair-style//(a fish)]N'N$abbidānum",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r000159"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "akk.r000159.p.s000"
+				},
+				{
+					"p": "First Millennium",
+					"icount": "1",
+					"ipct": "50",
+					"xis": "akk.r000159.p.s001"
+				}
+			]
+		},
+		{
+			"headword": "aban dāmi[(a stone)]N",
+			"id": "x0017282",
+			"oid": "x0017282",
+			"icount": "3",
+			"ipct": "100",
+			"xis": "akk.r0000fd",
+			"dc_title": "neo/akk/aban dāmi[(a stone)]",
+			"cf": "aban dāmi",
+			"gw": "(a stone)",
+			"pos": "N",
+			"compound": [
+				{
+					"type": "cpd",
+					"primary": "1",
+					"partsig": "abnu[stone]N",
+					"ref": "x0020696",
+					"cf": "abnu",
+					"gw": "stone",
+					"mng": "stone",
+					"pos": "N",
+					"epos": "N"
+				},
+				{
+					"type": "cpd",
+					"partsig": "dāmu[blood]N",
+					"ref": "x0021868",
+					"cf": "dāmu",
+					"gw": "blood",
+					"mng": "blood",
+					"pos": "N",
+					"epos": "N"
+				}
+			],
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0017282.0",
+					"n": "NA₄.MUD",
+					"c": "48722",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "akk.r0000fd"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0017282.1",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "akk.r0000fd",
+					"n": "dāmi",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0017282.2",
+							"ref": "x0017282.0",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "akk.r0000fd"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0017282.3",
+					"n": "aban dāmi[(a stone)//(a stone)]N'N",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "akk.r0000fd",
+					"num": "1.",
+					"pos": "N",
+					"mng": "(a stone)",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0017282.4",
+							"n": "NA₄.MUD",
+							"ref": "x0017282.0",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "akk.r0000fd"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0017282.5",
+							"n": "aban dāmi",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "akk.r0000fd"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0017282.6",
+							"sig": "{aban dāmi[(a stone)//(a stone)]N'N}::@neo%akk:NA₄.MUD=abnu[stone//stone]N'N$aban++@neo%akk:=dāmu[blood//blood]N'N$dāmi",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "akk.r0000fd"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Seleucid",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "akk.r0000fd.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "aban šamê[hailstones]N",
+			"id": "x0000537",
+			"oid": "x0000537",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "akk.r000102",
+			"dc_title": "neo/akk/aban šamê[hailstones]",
+			"cf": "aban šamê",
+			"gw": "hailstones",
+			"pos": "N",
+			"compound": [
+				{
+					"type": "cpd",
+					"primary": "1",
+					"partsig": "abnu[stone]N",
+					"ref": "x0020696",
+					"cf": "abnu",
+					"gw": "stone",
+					"mng": "stone",
+					"pos": "N",
+					"epos": "N"
+				},
+				{
+					"type": "cpd",
+					"partsig": "šamû[heaven]N",
+					"ref": "x0011721",
+					"cf": "šamû",
+					"gw": "heaven",
+					"mng": "heaven",
+					"pos": "N",
+					"epos": "N"
+				}
+			],
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000537.0",
+					"n": "NA₄ AN",
+					"c": "48702",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000102"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000537.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000102",
+					"n": "šamê",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000537.2",
+							"ref": "x0000537.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000102"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000537.3",
+					"n": "aban šamê[hailstones//hailstones]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000102",
+					"num": "1.",
+					"pos": "N",
+					"mng": "hailstones",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000537.4",
+							"n": "NA₄ AN",
+							"ref": "x0000537.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000102"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000537.5",
+							"n": "aban šamê",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000102"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000537.6",
+							"sig": "{aban šamê[hailstones//hailstones]N'N}::@neo%akk:NA₄=abnu[stone//stone]N'N$aban++@neo%akk:AN=šamû[heaven//heaven]N'N$šamê",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000102"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Seleucid",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000102.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "aban-baḫrê[(a coral)]N",
+			"id": "x0012112",
+			"oid": "x0012112",
+			"icount": "5",
+			"ipct": "100",
+			"xis": "akk.r000103",
+			"dc_title": "neo/akk/aban-baḫrê[(a coral)]",
+			"cf": "aban-baḫrê",
+			"gw": "(a coral)",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0012112.0",
+					"n": "*",
+					"c": "2",
+					"icount": "2",
+					"ipct": "40",
+					"xis": "akk.r000104"
+				},
+				{
+					"type": "form",
+					"id": "x0012112.1",
+					"n": "{na₄}HAR.HU.BA.ŠIR",
+					"c": "20536",
+					"icount": "1",
+					"ipct": "20",
+					"xis": "akk.r000105"
+				},
+				{
+					"type": "form",
+					"id": "x0012112.2",
+					"n": "{na₄}HAR.HUM.BA.ŠIR",
+					"c": "20538",
+					"icount": "2",
+					"ipct": "40",
+					"xis": "akk.r000106"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0012112.3",
+					"icount": "5",
+					"ipct": "100",
+					"xis": "akk.r000103",
+					"n": "aban-baḫrê",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0012112.4",
+							"ref": "x0012112.0",
+							"icount": "2",
+							"ipct": "40",
+							"xis": "akk.r000104"
+						},
+						{
+							"type": "normform",
+							"cbd_id": "x0012112.5",
+							"ref": "x0012112.1",
+							"icount": "1",
+							"ipct": "20",
+							"xis": "akk.r000105"
+						},
+						{
+							"type": "normform",
+							"cbd_id": "x0012112.6",
+							"ref": "x0012112.2",
+							"icount": "2",
+							"ipct": "40",
+							"xis": "akk.r000106"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0012112.7",
+					"n": "aban-baḫrê[(a coral)//(a coral)]N'N",
+					"icount": "5",
+					"ipct": "100",
+					"xis": "akk.r000103",
+					"num": "1.",
+					"pos": "N",
+					"mng": "(a coral)",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0012112.8",
+							"n": "*",
+							"ref": "x0012112.0",
+							"icount": "2",
+							"ipct": "40",
+							"xis": "akk.r000104"
+						},
+						{
+							"type": "form",
+							"cbd_id": "x0012112.9",
+							"n": "{na₄}HAR.HU.BA.ŠIR",
+							"ref": "x0012112.1",
+							"icount": "1",
+							"ipct": "20",
+							"xis": "akk.r000105"
+						},
+						{
+							"type": "form",
+							"cbd_id": "x0012112.10",
+							"n": "{na₄}HAR.HUM.BA.ŠIR",
+							"ref": "x0012112.2",
+							"icount": "2",
+							"ipct": "40",
+							"xis": "akk.r000106"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0012112.11",
+							"n": "aban-baḫrê",
+							"icount": "5",
+							"ipct": "100",
+							"xis": "akk.r000103"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0012112.12",
+							"sig": "@neo%akk:*=aban-baḫrê[(a coral)//(a coral)]N'N$aban-baḫrê",
+							"icount": "2",
+							"ipct": "40",
+							"xis": "akk.r000104"
+						},
+						{
+							"type": "sig",
+							"id": "x0012112.13",
+							"sig": "@neo%akk:{na₄}HAR.HU.BA.ŠIR=aban-baḫrê[(a coral)//(a coral)]N'N$aban-baḫrê",
+							"icount": "1",
+							"ipct": "20",
+							"xis": "akk.r000105"
+						},
+						{
+							"type": "sig",
+							"id": "x0012112.14",
+							"sig": "@neo%akk:{na₄}HAR.HUM.BA.ŠIR=aban-baḫrê[(a coral)//(a coral)]N'N$aban-baḫrê",
+							"icount": "2",
+							"ipct": "40",
+							"xis": "akk.r000106"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "unknown",
+					"icount": "5",
+					"ipct": "100",
+					"xis": "akk.r000103.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "aban-râmi['love'-stone]N",
+			"id": "x0025787",
+			"oid": "x0025787",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "akk.r00010b",
+			"dc_title": "neo/akk/aban-râmi['love'-stone]",
+			"cf": "aban-râmi",
+			"gw": "'love'-stone",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0025787.0",
+					"n": "{NA₄}AG₂.GA₂",
+					"c": "3966",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00010b"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0025787.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00010b",
+					"n": "aban-rāmi",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0025787.2",
+							"ref": "x0025787.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00010b"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0025787.3",
+					"n": "aban-râmi['love'-stone//'love'-stone]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00010b",
+					"num": "1.",
+					"pos": "N",
+					"mng": "'love'-stone",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0025787.4",
+							"n": "{NA₄}AG₂.GA₂",
+							"ref": "x0025787.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00010b"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0025787.5",
+							"n": "aban-rāmi",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00010b"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0025787.6",
+							"sig": "@neo%akk:{NA₄}AG₂.GA₂=aban-râmi['love'-stone//'love'-stone]N'N$aban-rāmi",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00010b"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Neo-Assyrian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00010b.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "abarikku[divine title]N",
+			"id": "x0016839",
+			"oid": "x0016839",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "akk.r000120",
+			"dc_title": "neo/akk/abarikku[divine title]",
+			"cf": "abarikku",
+			"gw": "divine title",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0016839.0",
+					"n": "ab-ri-ik-kum",
+					"c": "3648",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000120"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0016839.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000120",
+					"n": "abrikkum",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0016839.2",
+							"ref": "x0016839.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000120"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0016839.3",
+					"n": "abarikku[divine title//priest]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000120",
+					"num": "1.",
+					"pos": "N",
+					"mng": "priest",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0016839.4",
+							"n": "ab-ri-ik-kum",
+							"ref": "x0016839.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000120"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0016839.5",
+							"n": "abrikkum",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000120"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0016839.6",
+							"sig": "@neo%akk:ab-ri-ik-kum=abarikku[divine title//priest]N'N$abrikkum",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r000120"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Old Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r000120.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "abarša[truly]AV",
+			"id": "x0010888",
+			"oid": "x0010888",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "akk.r00012e",
+			"dc_title": "neo/akk/abarša[truly]",
+			"cf": "abarša",
+			"gw": "truly",
+			"pos": "AV",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0010888.0",
+					"n": "a-bar-ša₂",
+					"c": "512",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00012e"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0010888.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00012e",
+					"n": "abarša",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0010888.2",
+							"ref": "x0010888.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00012e"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0010888.3",
+					"n": "abarša[truly//truly]AV'AV",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00012e",
+					"num": "1.",
+					"pos": "AV",
+					"mng": "truly",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0010888.4",
+							"n": "a-bar-ša₂",
+							"ref": "x0010888.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00012e"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0010888.5",
+							"n": "abarša",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00012e"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0010888.6",
+							"sig": "@neo%akk:a-bar-ša₂=abarša[truly//truly]AV'AV$abarša",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "akk.r00012e"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Neo-Assyrian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "akk.r00012e.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "abāru[embrace]N",
+			"id": "x0013821",
+			"oid": "x0013821",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "akk.r0004fc",
+			"dc_title": "neo/akk/abāru[embrace]",
+			"cf": "abāru",
+			"gw": "embrace",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0013821.0",
+					"n": "a-ba-ri",
+					"c": "478",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r0004fc"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0013821.1",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r0004fc",
+					"n": "abāri",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0013821.2",
+							"ref": "x0013821.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r0004fc"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0013821.3",
+					"n": "abāru[embrace//embrace]N'N",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r0004fc",
+					"num": "1.",
+					"pos": "N",
+					"mng": "embrace",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0013821.4",
+							"n": "a-ba-ri",
+							"ref": "x0013821.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r0004fc"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0013821.5",
+							"n": "abāri",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r0004fc"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0013821.6",
+							"sig": "@neo%akk:a-ba-ri=abāru[embrace//embrace]N'N$abāri",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "akk.r0004fc"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Neo-Assyrian",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "akk.r0004fc.p.s000"
+				}
+			]
+		}
+	],
+	"instances": {
+		"akk.r000005": [
+			"cmawro/cmawr2:Q005039.9.1",
+			"cmawro/cmawr2:Q005039.9.1001"
+		],
+		"akk.r000005.p.s000": [
+			"cmawro/cmawr2:Q005039.9.1",
+			"cmawro/cmawr2:Q005039.9.1001"
+		],
+		"akk.r00015a": ["saao/saa20:P282609.48.2"],
+		"akk.r00015a.p.s000": ["saao/saa20:P282609.48.2"],
+		"akk.r000159": [
+			"dcclt/signlists:P342645.20.5",
+			"dcclt/signlists:Q000159.17.4"
+		],
+		"akk.r000159.p.s000": ["dcclt/signlists:P342645.20.5"],
+		"akk.r000159.p.s001": ["dcclt/signlists:Q000159.17.4"],
+		"akk.r0000fd": [
+			"cams/gkab:P348627.14.2",
+			"cams/gkab:P348627.8.4",
+			"cams/gkab:P363685.58.43"
+		],
+		"akk.r0000fd.p.s000": [
+			"cams/gkab:P348627.8.4",
+			"cams/gkab:P348627.14.2",
+			"cams/gkab:P363685.58.43"
+		],
+		"akk.r000102": ["cams/gkab:P348646.56.4+P348646.56.5"],
+		"akk.r000102.p.s000": ["cams/gkab:P348646.56.4+P348646.56.5"],
+		"akk.r000103": [
+			"cmawro/cmawr2:Q005114.50.1003",
+			"cmawro/cmawr2:Q005114.50.3",
+			"cmawro/cmawr3:Q007432.128.1001",
+			"cmawro/cmawr3:Q007432.128.2",
+			"cmawro/cmawr3:Q007432.128.2002"
+		],
+		"akk.r000103.p.s000": [
+			"cmawro/cmawr3:Q007432.128.1001",
+			"cmawro/cmawr3:Q007432.128.2",
+			"cmawro/cmawr3:Q007432.128.2002",
+			"cmawro/cmawr2:Q005114.50.1003",
+			"cmawro/cmawr2:Q005114.50.3"
+		],
+		"akk.r000104": [
+			"cmawro/cmawr2:Q005114.50.3",
+			"cmawro/cmawr3:Q007432.128.2"
+		],
+		"akk.r000104.p.s000": [
+			"cmawro/cmawr3:Q007432.128.2",
+			"cmawro/cmawr2:Q005114.50.3"
+		],
+		"akk.r000105": ["cmawro/cmawr3:Q007432.128.1001"],
+		"akk.r000105.p.s000": ["cmawro/cmawr3:Q007432.128.1001"],
+		"akk.r000106": [
+			"cmawro/cmawr2:Q005114.50.1003",
+			"cmawro/cmawr3:Q007432.128.2002"
+		],
+		"akk.r000106.p.s000": [
+			"cmawro/cmawr3:Q007432.128.2002",
+			"cmawro/cmawr2:Q005114.50.1003"
+		],
+		"akk.r00010b": ["saao/saa07:P335815.54.2"],
+		"akk.r00010b.p.s000": ["saao/saa07:P335815.54.2"],
+		"akk.r000120": ["dcclt:Q000057.406.3"],
+		"akk.r000120.p.s000": ["dcclt:Q000057.406.3"],
+		"akk.r00012e": ["saao/saa03:P336130.11.1"],
+		"akk.r00012e.p.s000": ["saao/saa03:P336130.11.1"],
+		"akk.r0004fc": ["ccpo:P394923.73.3", "ccpo:P394923.74.1"],
+		"akk.r0004fc.p.s000": ["ccpo:P394923.73.3", "ccpo:P394923.74.1"]
+	},
+	"summaries": {
+		"x0016004": "<p class=\"summary\" id=\"x0016004\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0016004.html')\"><span class=\"cf\">A.RI.A</span> [<span class=\"gw\">SEMEN</span>] <span class=\"cf\">N</span></a> (2x) </span>unknown  \"semen\"</span></p>",
+		"x0003061": "<p class=\"summary\" id=\"x0003061\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0003061.html')\"><span class=\"cf\">abbušu</span> [<span class=\"gw\">(MEANING UNKNOWN)</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"(meaning unknown)\"</span></p>",
+		"x0021639": "<p class=\"summary\" id=\"x0021639\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0021639.html')\"><span class=\"cf\">abbuttānu</span> [<span class=\"gw\">WEARER OF ABBUTTU HAIR-STYLE</span>] <span class=\"cf\">N</span></a> (2x) </span>Middle Babylonian, First Millennium  \"(a fish)\"</span></p>",
+		"x0017282": "<p class=\"summary\" id=\"x0017282\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0017282.html')\"><span class=\"cf\">aban dāmi</span> [<span class=\"gw\">(A STONE)</span>] <span class=\"cf\">N</span></a> (3x) </span>Seleucid  \"(a stone)\"</span></p>",
+		"x0020696": "<p class=\"summary\" id=\"x0020696\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0020696.html')\"><span class=\"cf\">abnu</span> [<span class=\"gw\">STONE</span>] <span class=\"cf\">N</span></a> (972x) </span>Old Assyrian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, Achaemenid, Seleucid, Hellenistic, Uncertain, First Millennium, unknown  \"bead; hail; hailstone; jewel; kernel; kernels of fruits; stone (in the body); stone bead; stone\"</span></p>",
+		"x0021868": "<p class=\"summary\" id=\"x0021868\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0021868.html')\"><span class=\"cf\">dāmu</span> [<span class=\"gw\">BLOOD</span>] <span class=\"cf\">N</span></a> (337x) </span>Old Assyrian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, Achaemenid, Seleucid, Hellenistic, Uncertain, uncertain, First Millennium, unknown  \"'blood stone'; bleeding; blood money; blood; cedar-resin; red wine; resin; sap\"</span></p>",
+		"x0011721": "<p class=\"summary\" id=\"x0011721\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0011721.html')\"><span class=\"cf\">šamû</span> [<span class=\"gw\">HEAVEN</span>] <span class=\"cf\">N</span></a> (756x) </span>Old Assyrian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, Achaemenid, Seleucid, Hellenistic, Uncertain, First Millennium, Standard Babylonian, unknown  \"baldachin; heaven; rain; sky\"</span></p>",
+		"x0000537": "<p class=\"summary\" id=\"x0000537\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0000537.html')\"><span class=\"cf\">aban šamê</span> [<span class=\"gw\">HAILSTONES</span>] <span class=\"cf\">N</span></a> (1x) </span>Seleucid  \"hailstones\"</span></p>",
+		"x0012112": "<p class=\"summary\" id=\"x0012112\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0012112.html')\"><span class=\"cf\">aban-baḫrê</span> [<span class=\"gw\">(A CORAL)</span>] <span class=\"cf\">N</span></a> (5x) </span>unknown  \"(a coral)\"</span></p>",
+		"x0025787": "<p class=\"summary\" id=\"x0025787\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0025787.html')\"><span class=\"cf\">aban-râmi</span> [<span class=\"gw\">'LOVE'-STONE</span>] <span class=\"cf\">N</span></a> (1x) </span>Neo-Assyrian  \"'love'-stone\"</span></p>",
+		"x0016839": "<p class=\"summary\" id=\"x0016839\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0016839.html')\"><span class=\"cf\">abarikku</span> [<span class=\"gw\">DIVINE TITLE</span>] <span class=\"cf\">N</span></a> (1x) </span>Old Babylonian  \"priest\"</span></p>",
+		"x0010888": "<p class=\"summary\" id=\"x0010888\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0010888.html')\"><span class=\"cf\">abarša</span> [<span class=\"gw\">TRULY</span>] <span class=\"cf\">AV</span></a> (1x) </span>Neo-Assyrian  \"truly\"</span></p>",
+		"x0013821": "<p class=\"summary\" id=\"x0013821\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/akk/x0013821.html')\"><span class=\"cf\">abāru</span> [<span class=\"gw\">EMBRACE</span>] <span class=\"cf\">N</span></a> (2x) </span>Neo-Assyrian  \"embrace\"</span></p>"
+	}
+}

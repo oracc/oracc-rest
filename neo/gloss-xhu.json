@@ -1,0 +1,976 @@
+{
+	"type": "glossary",
+	"project": "neo",
+	"source": "http://oracc.org/neo",
+	"license": "This data is released under the CC0 license",
+	"license-url": "https://creativecommons.org/publicdomain/zero/1.0/",
+	"more-info": "http://oracc.org/doc/opendata/",
+	"UTC-timestamp": "2022-01-19T01:38:50",
+	"lang": "xhu",
+	"entries": [
+		{
+			"headword": "abušk[save]V",
+			"id": "x0027124",
+			"oid": "x0027124",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000001",
+			"dc_title": "neo/xhu/abušk[save]",
+			"cf": "abušk",
+			"gw": "save",
+			"pos": "V",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027124.0",
+					"n": "a-bu-uš-ku-me",
+					"c": "1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000001"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027124.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000001",
+					"n": "abušk=umme",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027124.2",
+							"ref": "x0027124.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000001"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027124.3",
+					"n": "abušk[save//saving]V'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000001",
+					"num": "1.",
+					"pos": "N",
+					"mng": "saving",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027124.4",
+							"n": "a-bu-uš-ku-me",
+							"ref": "x0027124.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000001"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027124.5",
+							"n": "abušk=umme",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000001"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027124.6",
+							"sig": "@neo%xhu:a-bu-uš-ku-me=abušk[save//saving]V'N$abušk=umme",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000001"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000001.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "alad[pay]V",
+			"id": "x0027048",
+			"oid": "x0027048",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000002",
+			"dc_title": "neo/xhu/alad[pay]",
+			"cf": "alad",
+			"gw": "pay",
+			"pos": "V",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027048.0",
+					"n": "a-la-da-mi-ni-we",
+					"c": "3",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000002"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027048.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000002",
+					"n": "alad=umme=ni-fe",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027048.2",
+							"ref": "x0027048.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000002"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027048.3",
+					"n": "alad[pay//paying]V'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000002",
+					"num": "1.",
+					"pos": "N",
+					"mng": "paying",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027048.4",
+							"n": "a-la-da-mi-ni-we",
+							"ref": "x0027048.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000002"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027048.5",
+							"n": "alad=umme=ni-fe",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000002"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027048.6",
+							"sig": "@neo%xhu:a-la-da-mi-ni-we=alad[pay//paying]V'N$alad=umme=ni-fe",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000002"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000002.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "alla[queen]N",
+			"id": "x0026994",
+			"oid": "x0026994",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000003",
+			"dc_title": "neo/xhu/alla[queen]",
+			"cf": "alla",
+			"gw": "queen",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0026994.0",
+					"n": "al-la-ni",
+					"c": "9",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000003"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0026994.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000003",
+					"n": "alla=ni",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0026994.2",
+							"ref": "x0026994.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000003"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0026994.3",
+					"n": "alla[queen//queen]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000003",
+					"num": "1.",
+					"pos": "N",
+					"mng": "queen",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0026994.4",
+							"n": "al-la-ni",
+							"ref": "x0026994.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000003"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0026994.5",
+							"n": "alla=ni",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000003"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0026994.6",
+							"sig": "@neo%xhu:al-la-ni=alla[queen//queen]N'N$alla=ni",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000003"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000003.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "amumiašše[dignity]N",
+			"id": "x0027084",
+			"oid": "x0027084",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000004",
+			"dc_title": "neo/xhu/amumiašše[dignity]",
+			"cf": "amumiašše",
+			"gw": "dignity",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027084.0",
+					"n": "a-mu-mi-ia-aš-še",
+					"c": "4",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000004"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027084.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000004",
+					"n": "amumiašše",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027084.2",
+							"ref": "x0027084.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000004"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027084.3",
+					"n": "amumiašše[dignity//dignity]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000004",
+					"num": "1.",
+					"pos": "N",
+					"mng": "dignity",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027084.4",
+							"n": "a-mu-mi-ia-aš-še",
+							"ref": "x0027084.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000004"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027084.5",
+							"n": "amumiašše",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000004"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027084.6",
+							"sig": "@neo%xhu:a-mu-mi-ia-aš-še=amumiašše[dignity//dignity]N'N$amumiašše",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000004"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000004.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "aphe[insect]N",
+			"id": "x0027075",
+			"oid": "x0027075",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000005",
+			"dc_title": "neo/xhu/aphe[insect]",
+			"cf": "aphe",
+			"gw": "insect",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027075.0",
+					"n": "ap-he₂",
+					"c": "10",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000005"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027075.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000005",
+					"n": "aphe",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027075.2",
+							"ref": "x0027075.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000005"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027075.3",
+					"n": "aphe[insect//insect]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000005",
+					"num": "1.",
+					"pos": "N",
+					"mng": "insect",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027075.4",
+							"n": "ap-he₂",
+							"ref": "x0027075.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000005"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027075.5",
+							"n": "aphe",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000005"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027075.6",
+							"sig": "@neo%xhu:ap-he₂=aphe[insect//insect]N'N$aphe",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000005"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000005.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "ar[give]V",
+			"id": "x0027101",
+			"oid": "x0027101",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000009",
+			"dc_title": "neo/xhu/ar[give]",
+			"cf": "ar",
+			"gw": "give",
+			"pos": "V",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027101.0",
+					"n": "a-ru-um-me",
+					"c": "5",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000009"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027101.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000009",
+					"n": "ar=umme",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027101.2",
+							"ref": "x0027101.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000009"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027101.3",
+					"n": "ar[give//giving]V'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000009",
+					"num": "1.",
+					"pos": "N",
+					"mng": "giving",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027101.4",
+							"n": "a-ru-um-me",
+							"ref": "x0027101.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000009"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027101.5",
+							"n": "ar=umme",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000009"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027101.6",
+							"sig": "@neo%xhu:a-ru-um-me=ar[give//giving]V'N$ar=umme",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000009"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000009.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "arde[town]N",
+			"id": "x0027096",
+			"oid": "x0027096",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r00000a",
+			"dc_title": "neo/xhu/arde[town]",
+			"cf": "arde",
+			"gw": "town",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027096.0",
+					"n": "ar-de-na",
+					"c": "13",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r00000a"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027096.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r00000a",
+					"n": "arde=na",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027096.2",
+							"ref": "x0027096.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r00000a"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027096.3",
+					"n": "arde[town//town]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r00000a",
+					"num": "1.",
+					"pos": "N",
+					"mng": "town",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027096.4",
+							"n": "ar-de-na",
+							"ref": "x0027096.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r00000a"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027096.5",
+							"n": "arde=na",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r00000a"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027096.6",
+							"sig": "@neo%xhu:ar-de-na=arde[town//town]N'N$arde=na",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r00000a"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r00000a.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "ašhe[skin]N",
+			"id": "x0026981",
+			"oid": "x0026981",
+			"icount": "2",
+			"ipct": "100",
+			"xis": "xhu.r000011",
+			"dc_title": "neo/xhu/ašhe[skin]",
+			"cf": "ašhe",
+			"gw": "skin",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0026981.0",
+					"n": "aš-he₂",
+					"c": "14",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "xhu.r000011"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0026981.1",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "xhu.r000011",
+					"n": "ašhe",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0026981.2",
+							"ref": "x0026981.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "xhu.r000011"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0026981.3",
+					"n": "ašhe[skin//skin]N'N",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "xhu.r000011",
+					"num": "1.",
+					"pos": "N",
+					"mng": "skin",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0026981.4",
+							"n": "aš-he₂",
+							"ref": "x0026981.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "xhu.r000011"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0026981.5",
+							"n": "ašhe",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "xhu.r000011"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0026981.6",
+							"sig": "@neo%xhu:aš-he₂=ašhe[skin//skin]N'N$ašhe",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "xhu.r000011"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "2",
+					"ipct": "100",
+					"xis": "xhu.r000011.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "ašhu[upper part]N",
+			"id": "x0026982",
+			"oid": "x0026982",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000012",
+			"dc_title": "neo/xhu/ašhu[upper part]",
+			"cf": "ašhu",
+			"gw": "upper part",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0026982.0",
+					"n": "aš-hu-we",
+					"c": "15",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000012"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0026982.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000012",
+					"n": "ašhu=fe",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0026982.2",
+							"ref": "x0026982.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000012"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0026982.3",
+					"n": "ašhu[upper part//upper part]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000012",
+					"num": "1.",
+					"pos": "N",
+					"mng": "upper part",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0026982.4",
+							"n": "aš-hu-we",
+							"ref": "x0026982.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000012"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0026982.5",
+							"n": "ašhu=fe",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000012"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0026982.6",
+							"sig": "@neo%xhu:aš-hu-we=ašhu[upper part//upper part]N'N$ašhu=fe",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000012"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000012.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "aštugari[correspondence]N",
+			"id": "x0027125",
+			"oid": "x0027125",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "xhu.r000016",
+			"dc_title": "neo/xhu/aštugari[correspondence]",
+			"cf": "aštugari",
+			"gw": "correspondence",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0027125.0",
+					"n": "aš-tu-ga-ri",
+					"c": "17",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000016"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0027125.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000016",
+					"n": "aštugari",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0027125.2",
+							"ref": "x0027125.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000016"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0027125.3",
+					"n": "aštugari[correspondence//correspondence]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000016",
+					"num": "1.",
+					"pos": "N",
+					"mng": "correspondence",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0027125.4",
+							"n": "aš-tu-ga-ri",
+							"ref": "x0027125.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000016"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0027125.5",
+							"n": "aštugari",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000016"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0027125.6",
+							"sig": "@neo%xhu:aš-tu-ga-ri=aštugari[correspondence//correspondence]N'N$aštugari",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "xhu.r000016"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "xhu.r000016.p.s000"
+				}
+			]
+		}
+	],
+	"instances": {
+		"xhu.r000001": ["dcclt:P332950.51.3"],
+		"xhu.r000001.p.s000": ["dcclt:P332950.51.3"],
+		"xhu.r000002": ["dcclt:P332932.66.4"],
+		"xhu.r000002.p.s000": ["dcclt:P332932.66.4"],
+		"xhu.r000003": ["dcclt:P332928.96.3"],
+		"xhu.r000003.p.s000": ["dcclt:P332928.96.3"],
+		"xhu.r000004": ["dcclt:P332928.114.3"],
+		"xhu.r000004.p.s000": ["dcclt:P332928.114.3"],
+		"xhu.r000005": ["dcclt:P332928.12.3"],
+		"xhu.r000005.p.s000": ["dcclt:P332928.12.3"],
+		"xhu.r000009": ["dcclt:P332948.35.3"],
+		"xhu.r000009.p.s000": ["dcclt:P332948.35.3"],
+		"xhu.r00000a": ["dcclt:P332946.39.3"],
+		"xhu.r00000a.p.s000": ["dcclt:P332946.39.3"],
+		"xhu.r000011": ["dcclt:P332833.19.3", "dcclt:P332946.11.3"],
+		"xhu.r000011.p.s000": ["dcclt:P332833.19.3", "dcclt:P332946.11.3"],
+		"xhu.r000012": ["dcclt:P332932.127.2"],
+		"xhu.r000012.p.s000": ["dcclt:P332932.127.2"],
+		"xhu.r000016": ["dcclt:P332928.125.3"],
+		"xhu.r000016.p.s000": ["dcclt:P332928.125.3"]
+	},
+	"summaries": {
+		"x0027124": "<p class=\"summary\" id=\"x0027124\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027124.html')\"><span class=\"cf\">abušk</span> [<span class=\"gw\">SAVE</span>] <span class=\"cf\">V</span></a> (1x) </span>Middle Babylonian  \"saving\"</span></p>",
+		"x0027048": "<p class=\"summary\" id=\"x0027048\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027048.html')\"><span class=\"cf\">alad</span> [<span class=\"gw\">PAY</span>] <span class=\"cf\">V</span></a> (1x) </span>Middle Babylonian  \"paying\"</span></p>",
+		"x0026994": "<p class=\"summary\" id=\"x0026994\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0026994.html')\"><span class=\"cf\">alla</span> [<span class=\"gw\">QUEEN</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"queen\"</span></p>",
+		"x0027084": "<p class=\"summary\" id=\"x0027084\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027084.html')\"><span class=\"cf\">amumiašše</span> [<span class=\"gw\">DIGNITY</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"dignity\"</span></p>",
+		"x0027075": "<p class=\"summary\" id=\"x0027075\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027075.html')\"><span class=\"cf\">aphe</span> [<span class=\"gw\">INSECT</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"insect\"</span></p>",
+		"x0027101": "<p class=\"summary\" id=\"x0027101\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027101.html')\"><span class=\"cf\">ar</span> [<span class=\"gw\">GIVE</span>] <span class=\"cf\">V</span></a> (1x) </span>Middle Babylonian  \"giving\"</span></p>",
+		"x0027096": "<p class=\"summary\" id=\"x0027096\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027096.html')\"><span class=\"cf\">arde</span> [<span class=\"gw\">TOWN</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"town\"</span></p>",
+		"x0026981": "<p class=\"summary\" id=\"x0026981\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0026981.html')\"><span class=\"cf\">ašhe</span> [<span class=\"gw\">SKIN</span>] <span class=\"cf\">N</span></a> (2x) </span>Middle Babylonian  \"skin\"</span></p>",
+		"x0026982": "<p class=\"summary\" id=\"x0026982\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0026982.html')\"><span class=\"cf\">ašhu</span> [<span class=\"gw\">UPPER PART</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"upper part\"</span></p>",
+		"x0027125": "<p class=\"summary\" id=\"x0027125\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/xhu/x0027125.html')\"><span class=\"cf\">aštugari</span> [<span class=\"gw\">CORRESPONDENCE</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"correspondence\"</span></p>"
+	}
+}

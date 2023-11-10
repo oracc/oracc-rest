@@ -100,15 +100,23 @@ The following software needs to be installed on the Ubuntu server:
 
 Once the above software has been installed, you then need to enable wsgi within apache: `sudo a2enmod wsgi`
 
+### Create a workspace folder and set access permissions
+
+On the Ubuntu server, our project code should be located in `/home/rits`. Go ahead and make this folder if it doesn't already exist.
+
+You may also need to set the appropriate access permissions. These should already be set up on the production server, but on a development environment you can simply run the following command: `sudo chmod a+rwx /home/rits`.
+
 ### Clone the repo
 
-On the Ubuntu server, our project code should be located at `/home/rits` so this is where you should clone the project into. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+Clone the repo into the `/home/rits` folder you just made. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
+
+On a development machine, you may need to clone the repo over `https` instead of `ssh`.
 
 The production deployment should run from the `main` branch of this repo.
 
 ### Install python modules
 
-First, create and activate a python virtual environment from the top-level directory of this repo:
+First, create and activate a python virtual environment in `/home/rits/oracc-rest`:
 
 ```python
 sudo apt install python3.10-venv
@@ -116,9 +124,11 @@ python3 -m venv venv # run this if the environment does not already exist, note 
 source venv/bin/activate # activates the environment
 ```
 
-You may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+You can deactivate a virtual environment simply by entering `deactivate` in the terminal.
 
-Once your virtual environment is activated, run the following command from the top-level directory of this repo:
+If you run into an issue here, you may need to set the appropriate permissions on some directories if you are getting a 'permission denied error', ask Steve Tinney to do this. Also see [this thread](https://stackoverflow.com/questions/19471972/how-to-avoid-permission-denied-when-using-pip-with-virtualenv) for fixing a common issue when setting up a virtual environment.
+
+Once your virtual environment is activated, run the following command from `/home/rits/oracc-rest`:
 
 ```
 pip install -r requirements.txt
@@ -140,7 +150,7 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
   ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
   CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
-  # remove these next three lines if you are not running the app over HTTPS
+  # remove these next three lines if you are not running the app over HTTPS (e.g. on a development environment)
   SSLEngine On
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
@@ -237,6 +247,10 @@ To launch an instance of Elasticsearch accessible in its default port 9200:
 - OS X: `elasticsearch -d`
 - Ubuntu: `sudo systemctl start elasticsearch`
 
+To stop ElasticSearch automatically updating and becoming incompatible with the installed ICU plugin, run:
+
+- Ubuntu: `sudo apt-mark hold elasticsearch`
+
 You can check Elasticsearch was successfully launched by running:
 
 ```
@@ -299,7 +313,7 @@ Occasionally, Elasticsearch may get updated on Ubuntu. If this happens then the 
 
 Now that Elasticsearch has been set up, you can start to upload glossary data into the Elasticsearch database.
 
-A test dataset has been provided at: `ingest/assets/dev/gloss-test.json`, you can use this data to test out the elasticsearch functionality on your development environment (make sure you do not ingest this data on the production database).
+Some test datasets have been provided at: `ingest/assets/dev/sample-glossaries`, you can use this data to test out the elasticsearch functionality on your development environment (make sure you do not ingest this data on the production database).
 
 The production glossary data is provided by the PI's in the correct format, so ask Steve Tinney or Eleanor Robson for more details.
 
@@ -308,7 +322,7 @@ To upload the data into the Elasticsearch database, you can call the following u
 Note the lack of `sudo` in the below command to make sure that the script reads from the virtual environment that was created earlier.
 
 ```
-python -m ingest.bulk_upload <path-to-file>
+python -m ingest.bulk_upload ingest/assets/dev/sample-glossaries/*
 ```
 
 If no arguments are provided, then the function will try to upload the glossary files located in a `/neo` folder at the top-level directory of this repo.
