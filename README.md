@@ -31,70 +31,79 @@ This is the directory structure in the project root:
 
 ## Setting up the project
 
-This application needs both Flask and Elasticsearch to be installed to run correctly. Therefore, this guide will take you through the following steps:
+The Oracc project needs both Flask and Elasticsearch to be installed to run correctly. Therefore, this guide will take you through the following steps:
 
-1. Setting up Flask on a development and/or production environment.
+1. Setting up the Oracc project on a development and/or production environment.
 2. Installing elasticsearch on each environment.
 
-We will first take you through setting up your environments and spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
+We will first take you through setting up your development and production environments by spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
 
 It is also best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure not to commit your virtual environment folder to this repo.
 
 ---
 
-## Development environment
+## Prerequisit for local development: Setting up a virtual Ubuntu instance
 
-While you can run this application directly on your local machine, you may wish to set up a virtual Ubuntu server for testing the application locally during development. This is preferable as it mimics the production environment more closely (see below). You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/), although its usage is beyond the scope of this readme.
+We recommend that you set up a virtual Ubuntu server for testing this application locally during development (an alternative, but not recommended, approach is described at the very bottom of this README). This is preferable as it mimics the production environment more closely (since the production server also runs on Ubuntu). You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/). Multipass is a piece of software used specifically for creating local virtual instances of Ubuntu. To get started with this, follow the steps below:
 
-To start, clone the repo to your local machine or virtual Ubuntu server (you will need Git and Python3 installed at the very least).
+### Install Multipass
 
-### Install python modules
+Install Multipass on your local machine using the [instructions](https://multipass.run/) on their website.
 
-Within your own python virtual environment, run the following command from the top-level directory of this repo:
+You should now have access to the Multipass commands in your terminal. To check that it is installed correctly, open a terminal and run: `multipass version`
 
-```
-pip install -r requirements.txt
-```
+### Create a new virtual Ubuntu instance
 
-This will install modules related to both Flask and Elasticsearch.
+To create a virtual Ubuntu instance on your local machine, use the below commands in your terminal:
 
-### Spin up the Flask API in dev mode
+1. `multipass launch --name <your-instance-name>` - creates a new Multipass virtual Ubuntu instance.
+2. `multipass shell <your-instance-name>` - opens a shell inside your Ubuntu instance so you can start interacting with it.
 
-To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory run:
+You can now do whatever you need to inside the virtual Ubuntu instance such as installing the software needed to get the Oracc development environment set up (see instructions below).
 
-```
-flask --app app --debug run --port 8000
-```
+### Useful Multipass commands
 
-This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
+`multipass list` - returns the list of virtual Ubuntu instances that you have activated (see below for instructions on how to make new virtual environments).
 
-You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world" response.
+`multipass info <instance-name>` - Returns information about a specific instance.
 
-Any changes to the code should be picked up automatically and make the server restart.
+`multipass suspend <instance-name>` - Suspend an instance and keep its current state.
 
-You can stop the server with `ctrl+c`
+`multipass stop <instance-name>` - Stops an instance without preserving its state.
 
-Do not use the development server when deploying to production. It is intended for use only during local development.
+`multipass delete <instance-name>` - Deletes a stopped instance.
+
+`multipass purge` - Completely removes deleted instances.
 
 ---
 
-## Production environment
+## Setting up the Oracc project on your development and production environments
 
-The application is currently deployed for production to the Oracc build server (more details on the [ORACC Server wiki](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
+When setting up the Oracc project, the steps are the same on both the development and production environments.
 
-Once you are connected to the server it's always a good idea to update the packages as a first step: `sudo apt-get update && sudo apt-get upgrade -y`
+For development, the application should be deployed on a Multipass virtual Ubuntu instance as recommended above.
 
-You may need to restart apache after running certain commands along the way, you can do this with: `sudo service apache2 restart`
+For production, the application is currently deployed to the Oracc build server (more details on the [ORACC Server wiki](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
+
+### Connect to the server
+
+For development, you should open a new shell into your Multipass instance.
+
+For production, you should SSH into the Oracc server, ask a senior team member how to do this.
+
+Once you are connected, it's always a good idea to update packages as a first step: `sudo apt-get update && sudo apt-get upgrade -y`
 
 ### Install software
 
-The following software needs to be installed on the Ubuntu server:
+The following software needs to be installed on Ubuntu:
 
 1. **Git** - for cloning the website repo: `sudo apt install git`
 2. **python3** - for running the Flask app: `sudo apt install python3.10` (_note_ if python is already installed on the sever just use that version)
 3. **python3-pip** - for installing python modules: `sudo apt install python3-pip`
 4. **mod_wsgi** - tells apache how to host the Flask app: `sudo apt install libapache2-mod-wsgi-py3`
-5. **apache2** - the web server that will handle http requests: `sudo apt install apache2` (_note_ this should already be installed on the server, included here for documentation)
+5. **apache2** - the web server that will handle http requests: `sudo apt install apache2`
+
+As soon as apache is installed, a web server should now be exposed and accessible via the IP address of the host server. During development, the IP address of your Multipass virtual Ubuntu server can be found by running `multipass list` in a local terminal. If its working, you should get the default apache web page when accessing the IP address in a web browser.
 
 ### Enable wsgi on apache
 
@@ -102,15 +111,15 @@ Once the above software has been installed, you then need to enable wsgi within 
 
 ### Create a workspace folder and set access permissions
 
-On the Ubuntu server, our project code should be located in `/home/rits`. Go ahead and make this folder if it doesn't already exist.
+Our project code should be located in `/home/rits`. Go ahead and make this folder if it doesn't already exist.
 
-You may also need to set the appropriate access permissions. These should already be set up on the production server, but on a development environment you can simply run the following command: `sudo chmod a+rwx /home/rits`.
+You may also need to set the appropriate access permissions. On your development environment you can simply run the following command: `sudo chmod a+rwx /home/rits`. But on production you should ask a senior member (e.g. Steve Tinney) to do this for you.
 
 ### Clone the repo
 
 Clone the repo into the `/home/rits` folder you just made. You should end up with the Flask code inside the `/home/rits/oracc-rest` directory.
 
-On a development machine, you may need to clone the repo over `https` instead of `ssh`.
+For a development environment, you may need to clone the repo over `https` instead of `ssh`. For production, `ssh` should be fine as long as your ssh keys have been properly configured.
 
 The production deployment should run from the `main` branch of this repo.
 
@@ -150,7 +159,7 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
   ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
   CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
-  # remove these next three lines if you are not running the app over HTTPS (e.g. on a development environment)
+  # remove these next three lines if you are setting this up on a local development machine (i.e. not running the app over HTTPS)
   SSLEngine On
   SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
   SSLCertificateFile /etc/ssl/certs/build-oracc.pem
@@ -182,7 +191,13 @@ Listen 5000
 
 Apache will need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart`
 
-You can test that the API is running by making a request on the server to the test endpoint: `curl -k https://localhost:5000/test`. You should get a "Hello world" response.
+You can test that the API is running by making a request on the server to the test endpoint:
+
+During local development, run: `curl http://localhost:5000/test`.
+
+During production, run: `curl -k https://localhost:5000/test`.
+
+You should get a "Hello world" response.
 
 ### Troubleshooting
 
@@ -345,8 +360,12 @@ Once the data is indexed, it can be queried with Elasticsearch directly (either 
 
 The search can be accessed at the `/search` endpoint of a server running Elasticsearch and the Oracc web server in this repo, e.g.:
 
-```
+```shell
+# during production
 curl -k https://localhost:5000/search/water-skin
+
+# during development
+curl http://localhost:5000/search/water-skin
 ```
 
 This searches multiple fields for the given query word and returns all results. The list of fields currently searched is: `gw` (guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n` (lemmatisations).
@@ -420,3 +439,25 @@ To run the tests after making changes, execute the following from the top-level 
 ```
 python -m pytest tests
 ```
+
+---
+
+## Alternative approach to spinning up the Flask API in dev mode
+
+This approach can be used if you just want to activate the Flask API directly on your local machine without using a virtual environment. Note that if you take this approach, you would also have to install Elasticsearch on your local machine too which may not be desirable.
+
+To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory run:
+
+```
+flask --app app --debug run --port 8000
+```
+
+This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
+
+You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world" response.
+
+Any changes to the code should be picked up automatically and make the server restart.
+
+You can stop the server with `ctrl+c`
+
+Do not use the development server when deploying to production. It is intended for use only during local development.
