@@ -341,7 +341,7 @@ To upload the data into the Elasticsearch database, you can call the following u
 Note the lack of `sudo` in the below command to make sure that the script reads from the virtual environment that was created earlier.
 
 ```
-python -m ingest.bulk_upload ingest/assets/dev/sample-glossaries/*
+python3 -m ingest.bulk_upload ingest/assets/dev/sample-glossaries/*
 ```
 
 If no arguments are provided, then the function will try to upload the glossary files located in a `/neo` folder at the top-level directory of this repo.
