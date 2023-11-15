@@ -239,7 +239,7 @@ To store Oracc's texts and their related metadata, we use [Elasticsearch](https:
 To install ElasticSearch:
 
 - OS X: `brew install elasticsearch`
-- Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/install-elasticsearch.html).
+- Ubuntu: see [this link with instructions](https://www.elastic.co/guide/en/elasticsearch/reference/7.17/deb.html).
 
 This API also requires the [ICU Analysis plugin](https://www.elastic.co/guide/en/elasticsearch/plugins/current/analysis-icu.html).
 
