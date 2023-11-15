@@ -1,0 +1,984 @@
+{
+	"type": "glossary",
+	"project": "neo",
+	"source": "http://oracc.org/neo",
+	"license": "This data is released under the CC0 license",
+	"license-url": "https://creativecommons.org/publicdomain/zero/1.0/",
+	"more-info": "http://oracc.org/doc/opendata/",
+	"UTC-timestamp": "2022-01-19T01:38:50",
+	"lang": "uga",
+	"entries": [
+		{
+			"headword": "\u02bfbd[servant]N",
+			"id": "x0000098",
+			"oid": "x0000098",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r000063",
+			"dc_title": "neo/uga/\u02bfbd[servant]",
+			"cf": "\u02bfbd",
+			"gw": "servant",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000098.0",
+					"n": "ab-du",
+					"c": "7",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000063"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000098.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000063",
+					"n": "\u02bfabdu",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000098.2",
+							"ref": "x0000098.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000063"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000098.3",
+					"n": "\u02bfbd[servant//servant]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000063",
+					"num": "1.",
+					"pos": "N",
+					"mng": "servant",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000098.4",
+							"n": "ab-du",
+							"ref": "x0000098.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000063"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000098.5",
+							"n": "\u02bfabdu",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000063"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000098.6",
+							"sig": "@neo%uga:ab-du=\u02bfbd[servant//servant]N'N$\u02bfabdu",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000063"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000063.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "\u02bfwr[skin]N",
+			"id": "x0000064",
+			"oid": "x0000064",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r000065",
+			"dc_title": "neo/uga/\u02bfwr[skin]",
+			"cf": "\u02bfwr",
+			"gw": "skin",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000064.0",
+					"n": "u\u2082-ru",
+					"c": "100",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000065"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000064.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000065",
+					"n": "\u02bf\u014dru",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000064.2",
+							"ref": "x0000064.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000065"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000064.3",
+					"n": "\u02bfwr[skin//skin]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000065",
+					"num": "1.",
+					"pos": "N",
+					"mng": "skin",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000064.4",
+							"n": "u\u2082-ru",
+							"ref": "x0000064.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000065"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000064.5",
+							"n": "\u02bf\u014dru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000065"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000064.6",
+							"sig": "@neo%uga:u\u2082-ru=\u02bfwr[skin//skin]N'N$\u02bf\u014dru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000065"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000065.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "adr[wonderful]AJ",
+			"id": "x0000004",
+			"oid": "x0000004",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r000002",
+			"dc_title": "neo/uga/adr[wonderful]",
+			"cf": "adr",
+			"gw": "wonderful",
+			"pos": "AJ",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000004.0",
+					"n": "a-du-rum",
+					"c": "2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000002"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000004.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000002",
+					"n": "aduru",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000004.2",
+							"ref": "x0000004.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000002"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000004.3",
+					"n": "adr[wonderful//mighty]AJ'AJ",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000002",
+					"num": "1.",
+					"pos": "AJ",
+					"mng": "mighty",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000004.4",
+							"n": "a-du-rum",
+							"ref": "x0000004.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000002"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000004.5",
+							"n": "aduru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000002"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000004.6",
+							"sig": "@neo%uga:a-du-rum=adr[wonderful//mighty]AJ'AJ$aduru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000002"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000002.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "apy[baker]N",
+			"id": "x0000003",
+			"oid": "x0000003",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r000005",
+			"dc_title": "neo/uga/apy[baker]",
+			"cf": "apy",
+			"gw": "baker",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000003.0",
+					"n": "a-pi-yu",
+					"c": "6",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000005"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000003.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000005",
+					"n": "\u0101piyu",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000003.2",
+							"ref": "x0000003.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000005"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000003.3",
+					"n": "apy[baker//baker]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000005",
+					"num": "1.",
+					"pos": "N",
+					"mng": "baker",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000003.4",
+							"n": "a-pi-yu",
+							"ref": "x0000003.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000005"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000003.5",
+							"n": "\u0101piyu",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000005"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000003.6",
+							"sig": "@neo%uga:a-pi-yu=apy[baker//baker]N'N$\u0101piyu",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000005"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000005.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "b[in]PRP",
+			"id": "x0000002",
+			"oid": "x0000002",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r00000a",
+			"dc_title": "neo/uga/b[in]",
+			"cf": "b",
+			"gw": "in",
+			"pos": "PRP",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000002.0",
+					"n": "bi-i",
+					"c": "16",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000a"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000002.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000a",
+					"n": "bi",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000002.2",
+							"ref": "x0000002.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000a"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000002.3",
+					"n": "b[in//in]PRP'PRP",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000a",
+					"num": "1.",
+					"pos": "PRP",
+					"mng": "in",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000002.4",
+							"n": "bi-i",
+							"ref": "x0000002.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000a"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000002.5",
+							"n": "bi",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000a"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000002.6",
+							"sig": "@neo%uga:bi-i=b[in//in]PRP'PRP$bi",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000a"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000a.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "brk[knee]N",
+			"id": "x0000031",
+			"oid": "x0000031",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r00000c",
+			"dc_title": "neo/uga/brk[knee]",
+			"cf": "brk",
+			"gw": "knee",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000031.0",
+					"n": "bi-ir-ku",
+					"c": "17",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000c"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000031.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000c",
+					"n": "birku",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000031.2",
+							"ref": "x0000031.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000c"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000031.3",
+					"n": "brk[knee//knee]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000c",
+					"num": "1.",
+					"pos": "N",
+					"mng": "knee",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000031.4",
+							"n": "bi-ir-ku",
+							"ref": "x0000031.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000c"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000031.5",
+							"n": "birku",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000c"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000031.6",
+							"sig": "@neo%uga:bi-ir-ku=brk[knee//knee]N'N$birku",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00000c"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00000c.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "dkr[male]AJ",
+			"id": "x0000022",
+			"oid": "x0000022",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r000017",
+			"dc_title": "neo/uga/dkr[male]",
+			"cf": "dkr",
+			"gw": "male",
+			"pos": "AJ",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000022.0",
+					"n": "da-ka-ru\u2083",
+					"c": "22",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000017"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000022.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000017",
+					"n": "dakaru",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000022.2",
+							"ref": "x0000022.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000017"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000022.3",
+					"n": "dkr[male//male]AJ'AJ",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000017",
+					"num": "1.",
+					"pos": "AJ",
+					"mng": "male",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000022.4",
+							"n": "da-ka-ru\u2083",
+							"ref": "x0000022.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000017"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000022.5",
+							"n": "dakaru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000017"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000022.6",
+							"sig": "@neo%uga:da-ka-ru\u2083=dkr[male//male]AJ'AJ$dakaru",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000017"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000017.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "g\u1e6fr[strong]AJ",
+			"id": "x0000090",
+			"oid": "x0000090",
+			"icount": "3",
+			"ipct": "100",
+			"xis": "uga.r00001b",
+			"dc_title": "neo/uga/g\u1e6fr[strong]",
+			"cf": "g\u1e6fr",
+			"gw": "strong",
+			"pos": "AJ",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000090.0",
+					"n": "ga-\u0161a-ru",
+					"c": "27",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "uga.r00001b"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000090.1",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "uga.r00001b",
+					"n": "ga\u1e6faru",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000090.2",
+							"ref": "x0000090.0",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "uga.r00001b"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000090.3",
+					"n": "g\u1e6fr[strong//Ga\u1e6faru]AJ'DN",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "uga.r00001b",
+					"num": "1.",
+					"pos": "DN",
+					"mng": "Ga\u1e6faru",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000090.4",
+							"n": "ga-\u0161a-ru",
+							"ref": "x0000090.0",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "uga.r00001b"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000090.5",
+							"n": "ga\u1e6faru",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "uga.r00001b"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000090.6",
+							"sig": "@neo%uga:ga-\u0161a-ru=g\u1e6fr[strong//Ga\u1e6faru]AJ'DN$ga\u1e6faru",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "uga.r00001b"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "uga.r00001b.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "hpk[overturn]V",
+			"id": "x0000073",
+			"oid": "x0000073",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r00001d",
+			"dc_title": "neo/uga/hpk[overturn]",
+			"cf": "hpk",
+			"gw": "overturn",
+			"pos": "V",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000073.0",
+					"n": "tu-a-pi\u2082-ku",
+					"c": "96",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00001d"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000073.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00001d",
+					"n": "tuhappiku",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000073.2",
+							"ref": "x0000073.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00001d"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000073.3",
+					"n": "hpk[overturn//rebelling]V'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00001d",
+					"num": "1.",
+					"pos": "N",
+					"mng": "rebelling",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000073.4",
+							"n": "tu-a-pi\u2082-ku",
+							"ref": "x0000073.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00001d"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000073.5",
+							"n": "tuhappiku",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00001d"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000073.6",
+							"sig": "@neo%uga:tu-a-pi\u2082-ku=hpk[overturn//rebelling]V'N$tuhappiku",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r00001d"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r00001d.p.s000"
+				}
+			]
+		},
+		{
+			"headword": "\u1e2br\u1e63[gold]N",
+			"id": "x0000085",
+			"oid": "x0000085",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "uga.r000072",
+			"dc_title": "neo/uga/\u1e2br\u1e63[gold]",
+			"cf": "\u1e2br\u1e63",
+			"gw": "gold",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "x0000085.0",
+					"n": "hu-ra-\u1e63u",
+					"c": "37",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000072"
+				}
+			],
+			"norms": [
+				{
+					"id": "x0000085.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000072",
+					"n": "\u1e2bur\u0101\u1e63u",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x0000085.2",
+							"ref": "x0000085.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000072"
+						}
+					]
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x0000085.3",
+					"n": "\u1e2br\u1e63[gold//gold]N'N",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000072",
+					"num": "1.",
+					"pos": "N",
+					"mng": "gold",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x0000085.4",
+							"n": "hu-ra-\u1e63u",
+							"ref": "x0000085.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000072"
+						}
+					],
+					"norms": [
+						{
+							"id": "x0000085.5",
+							"n": "\u1e2bur\u0101\u1e63u",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000072"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x0000085.6",
+							"sig": "@neo%uga:hu-ra-\u1e63u=\u1e2br\u1e63[gold//gold]N'N$\u1e2bur\u0101\u1e63u",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "uga.r000072"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "uga.r000072.p.s000"
+				}
+			]
+		}
+	],
+	"instances": {
+		"uga.r000063": ["dcclt:P332950.90.4"],
+		"uga.r000063.p.s000": ["dcclt:P332950.90.4"],
+		"uga.r000065": ["dcclt:P332946.11.4"],
+		"uga.r000065.p.s000": ["dcclt:P332946.11.4"],
+		"uga.r000002": ["dcclt:P332950.65.4"],
+		"uga.r000002.p.s000": ["dcclt:P332950.65.4"],
+		"uga.r000005": ["dcclt:P332946.25.4"],
+		"uga.r000005.p.s000": ["dcclt:P332946.25.4"],
+		"uga.r00000a": ["dcclt:P332946.27.4"],
+		"uga.r00000a.p.s000": ["dcclt:P332946.27.4"],
+		"uga.r00000c": ["dcclt:P332950.115.4"],
+		"uga.r00000c.p.s000": ["dcclt:P332950.115.4"],
+		"uga.r000017": ["dcclt:P332950.91.4"],
+		"uga.r000017.p.s000": ["dcclt:P332950.91.4"],
+		"uga.r00001b": [
+			"dcclt:P332950.143.3",
+			"dcclt:P332950.156.3",
+			"dcclt:P332950.158.3"
+		],
+		"uga.r00001b.p.s000": [
+			"dcclt:P332950.143.3",
+			"dcclt:P332950.156.3",
+			"dcclt:P332950.158.3"
+		],
+		"uga.r00001d": ["dcclt:P332950.54.4"],
+		"uga.r00001d.p.s000": ["dcclt:P332950.54.4"],
+		"uga.r000072": ["dcclt:P332950.36.4"],
+		"uga.r000072.p.s000": ["dcclt:P332950.36.4"]
+	},
+	"summaries": {
+		"x0000098": "<p class=\"summary\" id=\"x0000098\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000098.html')\"><span class=\"cf\">\u02bfbd</span> [<span class=\"gw\">SERVANT</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"servant\"</span></p>",
+		"x0000064": "<p class=\"summary\" id=\"x0000064\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000064.html')\"><span class=\"cf\">\u02bfwr</span> [<span class=\"gw\">SKIN</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"skin\"</span></p>",
+		"x0000004": "<p class=\"summary\" id=\"x0000004\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000004.html')\"><span class=\"cf\">adr</span> [<span class=\"gw\">WONDERFUL</span>] <span class=\"cf\">AJ</span></a> (1x) </span>Middle Babylonian  \"mighty\"</span></p>",
+		"x0000003": "<p class=\"summary\" id=\"x0000003\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000003.html')\"><span class=\"cf\">apy</span> [<span class=\"gw\">BAKER</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"baker\"</span></p>",
+		"x0000002": "<p class=\"summary\" id=\"x0000002\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000002.html')\"><span class=\"cf\">b</span> [<span class=\"gw\">IN</span>] <span class=\"cf\">PRP</span></a> (1x) </span>Middle Babylonian  \"in\"</span></p>",
+		"x0000031": "<p class=\"summary\" id=\"x0000031\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000031.html')\"><span class=\"cf\">brk</span> [<span class=\"gw\">KNEE</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"knee\"</span></p>",
+		"x0000022": "<p class=\"summary\" id=\"x0000022\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000022.html')\"><span class=\"cf\">dkr</span> [<span class=\"gw\">MALE</span>] <span class=\"cf\">AJ</span></a> (1x) </span>Middle Babylonian  \"male\"</span></p>",
+		"x0000090": "<p class=\"summary\" id=\"x0000090\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000090.html')\"><span class=\"cf\">g\u1e6fr</span> [<span class=\"gw\">STRONG</span>] <span class=\"cf\">AJ</span></a> (3x) </span>Middle Babylonian  \"Ga\u1e6faru\"</span></p>",
+		"x0000073": "<p class=\"summary\" id=\"x0000073\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000073.html')\"><span class=\"cf\">hpk</span> [<span class=\"gw\">OVERTURN</span>] <span class=\"cf\">V</span></a> (1x) </span>Middle Babylonian  \"rebelling\"</span></p>",
+		"x0000085": "<p class=\"summary\" id=\"x0000085\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/uga/x0000085.html')\"><span class=\"cf\">\u1e2br\u1e63</span> [<span class=\"gw\">GOLD</span>] <span class=\"cf\">N</span></a> (1x) </span>Middle Babylonian  \"gold\"</span></p>"
+	}
+}
