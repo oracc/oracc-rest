@@ -324,6 +324,7 @@ If you run into a situation where Elasticsearch has been updated on the server t
 If there are any issues, try the following:
 
 Check Elasticsearch status: `systemctl status elasticsearch.service`
+
 Check Elasticsearch logs: `sudo nano /var/log/elasticsearch/elasticsearch.log`.
 
 ---
