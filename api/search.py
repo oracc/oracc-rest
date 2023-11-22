@@ -189,20 +189,20 @@ class ESearch:
                 "size": size,
             },  # TODO how to get all?
         )
-        logging.debug("searching for....")
-        logging.debug(search)
+        logging.warning("searching for....")
+        logging.warning(search)
         completion_results = (
             search
             # .sort({"_score": {"order": "desc"}})
             .execute().suggest.to_dict()["sug_complete"]
         )
-        logging.debug("completion results")
-        logging.debug(completion_results)
+        logging.warning("completion results")
+        logging.warning(completion_results)
 
         all_completions = [
             option["text"] for option in completion_results[0]["options"]
         ]
-        logging.debug("ALL COMPLETIONS:")
-        logging.debug(all_completions)
+        logging.warning("ALL COMPLETIONS:")
+        logging.warning(all_completions)
 
         return all_completions
