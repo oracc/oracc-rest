@@ -117,7 +117,7 @@ class CombinedSuggestions(Resource):
             c_size = 200
             s_size = 100
         search = ESearch()
-        logger.warning("testing logger")
+        logger.debug("testing logger")
 
         completions = search.complete(word, c_size)
         suggestions = search.suggest(word, s_size)
