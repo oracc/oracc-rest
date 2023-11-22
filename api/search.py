@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 import itertools
+import logging
 
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
@@ -188,17 +189,17 @@ class ESearch:
                 "size": size,
             },  # TODO how to get all?
         )
-        print(search)
+        logging.debug(search)
         completion_results = (
             search
             # .sort({"_score": {"order": "desc"}})
             .execute().suggest.to_dict()["sug_complete"]
         )
-        print(completion_results)
+        logging.debug(completion_results)
 
         all_completions = [
             option["text"] for option in completion_results[0]["options"]
         ]
-        print(all_completions)
+        logging.debug(all_completions)
 
         return all_completions
