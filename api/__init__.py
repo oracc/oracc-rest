@@ -3,9 +3,11 @@ from urllib.parse import unquote
 from flask import abort, Flask, request
 from flask_cors import CORS
 from flask_restful import Api, Resource
+import logging
 
 from .search import ESearch
 
+logger = logging.getLogger(__name__)
 app = Flask(__name__)
 CORS(app)
 api = Api(app)
@@ -115,6 +117,7 @@ class CombinedSuggestions(Resource):
             c_size = 200
             s_size = 100
         search = ESearch()
+        logger.warning("testing logger")
 
         completions = search.complete(word, c_size)
         suggestions = search.suggest(word, s_size)
