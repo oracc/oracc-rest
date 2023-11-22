@@ -1,0 +1,12 @@
+version: "3.8"
+services:
+  api:
+    container_name: api-dev
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: ./compose/Dockerfile
+    ports:
+      - "8000:5000"
+    stdin_open: true
+    tty: true

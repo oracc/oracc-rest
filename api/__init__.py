@@ -139,6 +139,9 @@ class FullList(Resource):
 
 class TestRoute(Resource):
     def get(self):
+        search = ESearch()
+        print('testing')
+        search.test_connection()
         return "Hello world"
 
 
