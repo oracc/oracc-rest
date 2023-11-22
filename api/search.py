@@ -5,6 +5,8 @@ import logging
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
 
+logger = logging.getLogger(__name__)
+
 
 class ESearch:
     FIELDNAMES = ["gw", "cf", "forms_n", "norms_n", "senses_mng"]
@@ -189,20 +191,20 @@ class ESearch:
                 "size": size,
             },  # TODO how to get all?
         )
-        logging.warning("searching for....")
-        logging.warning(search)
+        logger.warning("searching for....")
+        logger.warning(search)
         completion_results = (
             search
             # .sort({"_score": {"order": "desc"}})
             .execute().suggest.to_dict()["sug_complete"]
         )
-        logging.warning("completion results")
-        logging.warning(completion_results)
+        logger.warning("completion results")
+        logger.warning(completion_results)
 
         all_completions = [
             option["text"] for option in completion_results[0]["options"]
         ]
-        logging.warning("ALL COMPLETIONS:")
-        logging.warning(all_completions)
+        logger.warning("ALL COMPLETIONS:")
+        logger.warning(all_completions)
 
         return all_completions
