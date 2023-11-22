@@ -1,10 +1,8 @@
 from api import app
 import logging
-import sys
 
 # logging.basicConfig(filename="/home/rits/logging-output.log", level=logging.DEBUG)
 logging.basicConfig(
-    stream=sys.stdout,
     filename="/home/rits/logging-output.log",
     level=logging.DEBUG,
     format="%(levelname)8s | [%(asctime)s] | %(name)s | %(lineno)d | %(message)s",
