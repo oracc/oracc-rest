@@ -19,15 +19,11 @@ class ESearch:
         Given a word and a fieldname, return all matching entries in the local
         ElasticSearch DB.
         """
-        search = (
-            Search(using=self.client, index=self.index)
-            .query("match", **{fieldname: word})
-            # .sort({"_score": {"order": "desc"}})
+        search = Search(using=self.client, index=self.index).query(
+            "match", **{fieldname: word}
         )
-        # To ensure that each result has a "sort" value (for consistency with
-        # the other search modes), we sort by _doc, which is meaningless but
-        # efficient, as suggested in the docs:
-        # https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
+        # Sorting of results should be done by "_score" by default
+        # This is based on relevance to the query string
         results = search.scan()
         return results
 
@@ -192,14 +188,17 @@ class ESearch:
                 "size": size,
             },  # TODO how to get all?
         )
+        print(search)
         completion_results = (
-            search.sort({"_score": {"order": "desc"}})
-            .execute()
-            .suggest.to_dict()["sug_complete"]
+            search
+            # .sort({"_score": {"order": "desc"}})
+            .execute().suggest.to_dict()["sug_complete"]
         )
+        print(completion_results)
 
         all_completions = [
             option["text"] for option in completion_results[0]["options"]
         ]
+        print(all_completions)
 
         return all_completions
