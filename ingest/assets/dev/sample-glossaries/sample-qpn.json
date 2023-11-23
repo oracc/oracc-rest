@@ -1611,6 +1611,141 @@
 					"xis": "qpn.r000089.p.s000"
 				}
 			]
+		},
+		{
+			"headword": "Harri Bit-Dakkuri[1]WN",
+			"id": "x000590310",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "qpn.r008de3",
+			"dc_title": "neo/qpn/Harri Bit-Dakkuri[1]",
+			"cf": "Harri Bit-Dakkuri",
+			"gw": "1",
+			"pos": "WN",
+			"compound": [
+				{
+					"type": "cpd",
+					"primary": "1",
+					"partsig": "harru[water channel]N",
+					"ref": "#akk:harru[water channel]N",
+					"cf": "harru",
+					"gw": "water channel",
+					"mng": "water channel",
+					"pos": "N",
+					"epos": "N"
+				},
+				{
+					"type": "cpd",
+					"partsig": "Bit-Dakkuri[1]GN",
+					"ref": "x000004520",
+					"cf": "Bit-Dakkuri",
+					"gw": "1",
+					"mng": "1",
+					"pos": "GN",
+					"epos": "GN"
+				}
+			],
+			"forms": [
+				{
+					"type": "form",
+					"id": "x00059031.1",
+					"n": "har-ri E₂-dak-ku-ri",
+					"c": "31330",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r008de3"
+				}
+			],
+			"norms": [
+				{
+					"id": "x00059031.2",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r008de3",
+					"n": "Bit-Dakkuri",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "x00059031.3",
+							"ref": "x00059031.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r008de3"
+						}
+					]
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "x00059031.4",
+					"n": "har-ri E₂-dak-ku-ri",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r008de3"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "x00059031.5",
+					"n": "Harri Bit-Dakkuri[1//1]WN'WN",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r008de3",
+					"num": "1.",
+					"pos": "WN",
+					"mng": "1",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "x00059031.6",
+							"n": "har-ri E₂-dak-ku-ri",
+							"ref": "x00059031.1",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r008de3"
+						}
+					],
+					"norms": [
+						{
+							"id": "x00059031.7",
+							"n": "harri Bit-Dakkuri",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r008de3"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "x00059031.8",
+							"n": "har-ri E₂-dak-ku-ri",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r008de3"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "x00059031.9",
+							"sig": "{Harri Bit-Dakkuri[1//1]WN'WN}::@neo%akk:har-ri=harru[water channel//water channel]N'N$harri++@neo%akk:E₂-dak-ku-ri=Bit-Dakkuri[1//1]GN'GN$Bit-Dakkuri",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "qpn.r008de3"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Neo-Assyrian",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "qpn.r008de3.p.s000"
+				}
+			]
 		}
 	],
 	"instances": {
@@ -1623,6 +1758,8 @@
 		"qpn.r019ebb.p.s000": ["epsd2/admin/oakk:P215034.17.2"],
 		"qpn.r019ebf": ["dcclt:P332950.161.3"],
 		"qpn.r019ebf.p.s000": ["dcclt:P332950.161.3"],
+		"qpn.r008de3": ["rinap/rinap3:Q003520.64.3+Q003520.64.4"],
+		"qpn.r008de3.p.s000": ["rinap/rinap3:Q003520.64.3+Q003520.64.4"],
 		"qpn.r000d04": [
 			"epsd2/admin/ed3b:P220697.158.4",
 			"epsd2/admin/ed3b:P220955.16.4"
@@ -1688,6 +1825,8 @@
 		"x000134460": "<p class=\"summary\" id=\"x000134460\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000134460.html')\"><span class=\"cf\">A.a</span> [<span class=\"gw\">00</span>] <span class=\"cf\">PN</span></a> (3x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span></span></span> \"00\"</span></p>",
 		"x000117460": "<p class=\"summary\" id=\"x000117460\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000117460.html')\"><span class=\"cf\">A.A</span> [<span class=\"gw\">00</span>] <span class=\"cf\">SN</span></a> (1x) </span>ED IIIa  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span class=\"sign \">A</span>-<span class=\"sign \">A</span><sup class=\"sux\">ki</sup></span></span> \"00\"</span></p>",
 		"x000133790": "<p class=\"summary\" id=\"x000133790\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000133790.html')\"><span class=\"cf\">A.a.ab.ba</span> [<span class=\"gw\">00</span>] <span class=\"cf\">PN</span></a> (2x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">ab</span>-<span x=\"3\" class=\"sux\">ba</span></span></span> \"00\"</span></p>",
-		"x000133820": "<p class=\"summary\" id=\"x000133820\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000133820.html')\"><span class=\"cf\">A.a.ar</span> [<span class=\"gw\">00</span>] <span class=\"cf\">DN</span></a> (1x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">ar</span></span></span> \"00\"</span></p>"
+		"x000133820": "<p class=\"summary\" id=\"x000133820\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000133820.html')\"><span class=\"cf\">A.a.ar</span> [<span class=\"gw\">00</span>] <span class=\"cf\">DN</span></a> (1x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">ar</span></span></span> \"00\"</span></p>",
+		"x000004520": "<p class=\"summary\" id=\"x000004520\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000004520.html')\"><span class=\"cf\">Bit-Dakkuri</span> [<span class=\"gw\">1</span>] <span class=\"cf\">GN</span></a> (56x) </span>Neo-Assyrian, Neo-Babylonian  \"1; 1; 1; Dakkuru\"</span></p>",
+		"x000590310": "<p class=\"summary\" id=\"x000590310\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/qpn/x000590310.html')\"><span class=\"cf\">Harri Bit-Dakkuri</span> [<span class=\"gw\">1</span>] <span class=\"cf\">WN</span></a> (1x) </span>Neo-Assyrian  \"1\"</span></p>"
 	}
 }

@@ -2486,6 +2486,866 @@
 					"xis": "sux.r000587.p.s003"
 				}
 			]
+		},
+		{
+			"headword": "zubi[watercourse]N",
+			"id": "o0042959",
+			"oid": "o0042959",
+			"icount": "7",
+			"ipct": "100",
+			"xis": "sux.r01a523",
+			"dc_title": "neo/sux/zubi[watercourse]",
+			"cf": "zubi",
+			"gw": "watercourse",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "o0042959.0",
+					"n": "{id₂}zubi",
+					"c": "74346",
+					"icount": "2",
+					"ipct": "29",
+					"xis": "sux.r01a524"
+				},
+				{
+					"type": "form",
+					"id": "o0042959.1",
+					"n": "{id₂}{+zu-bi}zubi",
+					"c": "74347",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a525"
+				},
+				{
+					"type": "form",
+					"id": "o0042959.2",
+					"n": "zubi",
+					"c": "74349",
+					"icount": "2",
+					"ipct": "29",
+					"xis": "sux.r01a526"
+				},
+				{
+					"type": "form",
+					"id": "o0042959.3",
+					"n": "zubi-ka-da",
+					"c": "74350",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a527"
+				},
+				{
+					"type": "form",
+					"id": "o0042959.4",
+					"n": "zubi-ka-kam",
+					"c": "74351",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a528"
+				}
+			],
+			"norms": [
+				{
+					"id": "o0042959.5",
+					"icount": "5",
+					"ipct": "71",
+					"xis": "sux.r01a529",
+					"n": "zubi",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "o0042959.6",
+							"ref": "o0042959.2",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a526"
+						},
+						{
+							"type": "normform",
+							"cbd_id": "o0042959.7",
+							"ref": "o0042959.0",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a524"
+						},
+						{
+							"type": "normform",
+							"cbd_id": "o0042959.8",
+							"ref": "o0042959.1",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a525"
+						}
+					]
+				},
+				{
+					"id": "o0042959.9",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a528",
+					"n": "zubi,ak.ak.am",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "o0042959.10",
+							"ref": "o0042959.4",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a528"
+						}
+					]
+				},
+				{
+					"id": "o0042959.11",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a527",
+					"n": "zubi,ak.ak.da",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "o0042959.12",
+							"ref": "o0042959.3",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a527"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "o0042959.13",
+					"n": "zubi",
+					"icount": "4",
+					"ipct": "57",
+					"xis": "sux.r01a52a"
+				},
+				{
+					"type": "base",
+					"cbd_id": "o0042959.14",
+					"n": "{id₂}zubi",
+					"icount": "2",
+					"ipct": "29",
+					"xis": "sux.r01a524"
+				},
+				{
+					"type": "base",
+					"cbd_id": "o0042959.15",
+					"n": "{id₂}{+zu-bi}zubi",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a525"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "o0042959.16",
+					"n": "~",
+					"icount": "5",
+					"ipct": "71",
+					"xis": "sux.r01a529"
+				},
+				{
+					"type": "morph",
+					"cbd_id": "o0042959.17",
+					"n": "~,ak.ak.am",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a528"
+				},
+				{
+					"type": "morph",
+					"cbd_id": "o0042959.18",
+					"n": "~,ak.ak.da",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a527"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "o0042959.19",
+					"n": "zubi",
+					"icount": "2",
+					"ipct": "29",
+					"xis": "sux.r01a526"
+				},
+				{
+					"type": "form-sans",
+					"cbd_id": "o0042959.20",
+					"n": "zubi-ka-da",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a527"
+				},
+				{
+					"type": "form-sans",
+					"cbd_id": "o0042959.21",
+					"n": "zubi-ka-kam",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a528"
+				},
+				{
+					"type": "form-sans",
+					"cbd_id": "o0042959.22",
+					"n": "{id₂}zubi",
+					"icount": "2",
+					"ipct": "29",
+					"xis": "sux.r01a524"
+				},
+				{
+					"type": "form-sans",
+					"cbd_id": "o0042959.23",
+					"n": "{id₂}{+zu-bi}zubi",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a525"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "sux.x00709796",
+					"n": "zubi[watercourse//watercourse, canal]N'N",
+					"oid": "o0014372",
+					"icount": "7",
+					"ipct": "100",
+					"xis": "sux.r01a523",
+					"num": "1.",
+					"pos": "N",
+					"mng": "watercourse, canal",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "o0014372.0",
+							"n": "zubi",
+							"ref": "o0042959.2",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a526"
+						},
+						{
+							"type": "form",
+							"cbd_id": "o0014372.1",
+							"n": "zubi-ka-da",
+							"ref": "o0042959.3",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a527"
+						},
+						{
+							"type": "form",
+							"cbd_id": "o0014372.2",
+							"n": "zubi-ka-kam",
+							"ref": "o0042959.4",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a528"
+						},
+						{
+							"type": "form",
+							"cbd_id": "o0014372.3",
+							"n": "{id₂}zubi",
+							"ref": "o0042959.0",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a524"
+						},
+						{
+							"type": "form",
+							"cbd_id": "o0014372.4",
+							"n": "{id₂}{+zu-bi}zubi",
+							"ref": "o0042959.1",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a525"
+						}
+					],
+					"norms": [
+						{
+							"id": "o0014372.5",
+							"n": "zubi",
+							"icount": "5",
+							"ipct": "71",
+							"xis": "sux.r01a529"
+						},
+						{
+							"id": "o0014372.6",
+							"n": "zubi,ak.ak.am",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a528"
+						},
+						{
+							"id": "o0014372.7",
+							"n": "zubi,ak.ak.da",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a527"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "o0014372.8",
+							"n": "zubi",
+							"icount": "4",
+							"ipct": "57",
+							"xis": "sux.r01a52a"
+						},
+						{
+							"type": "base",
+							"id": "o0014372.9",
+							"n": "{id₂}zubi",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a524"
+						},
+						{
+							"type": "base",
+							"id": "o0014372.10",
+							"n": "{id₂}{+zu-bi}zubi",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a525"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "o0014372.11",
+							"n": "~",
+							"icount": "5",
+							"ipct": "71",
+							"xis": "sux.r01a529"
+						},
+						{
+							"type": "morph",
+							"id": "o0014372.12",
+							"n": "~,ak.ak.am",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a528"
+						},
+						{
+							"type": "morph",
+							"id": "o0014372.13",
+							"n": "~,ak.ak.da",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a527"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "o0014372.14",
+							"n": "zubi",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a526"
+						},
+						{
+							"type": "form-sans",
+							"id": "o0014372.15",
+							"n": "zubi-ka-da",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a527"
+						},
+						{
+							"type": "form-sans",
+							"id": "o0014372.16",
+							"n": "zubi-ka-kam",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a528"
+						},
+						{
+							"type": "form-sans",
+							"id": "o0014372.17",
+							"n": "{id₂}zubi",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a524"
+						},
+						{
+							"type": "form-sans",
+							"id": "o0014372.18",
+							"n": "{id₂}{+zu-bi}zubi",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a525"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "o0014372.19",
+							"sig": "@neo%sux:zubi-ka-da=zubi[watercourse//watercourse, canal]N'N$zubi,ak.ak.da/zubi#~,ak.ak.da",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a527"
+						},
+						{
+							"type": "sig",
+							"id": "o0014372.20",
+							"sig": "@neo%sux:zubi-ka-kam=zubi[watercourse//watercourse, canal]N'N$zubi,ak.ak.am/zubi#~,ak.ak.am",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a528"
+						},
+						{
+							"type": "sig",
+							"id": "o0014372.21",
+							"sig": "@neo%sux:zubi=zubi[watercourse//watercourse, canal]N'N$zubi/zubi#~",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a526"
+						},
+						{
+							"type": "sig",
+							"id": "o0014372.22",
+							"sig": "@neo%sux:{id₂}zubi=zubi[watercourse//watercourse, canal]N'N$zubi/{id₂}zubi#~",
+							"icount": "2",
+							"ipct": "29",
+							"xis": "sux.r01a524"
+						},
+						{
+							"type": "sig",
+							"id": "o0014372.23",
+							"sig": "@neo%sux:{id₂}{+zu-bi}zubi=zubi[watercourse//watercourse, canal]N'N$zubi/{id₂}{+zu-bi}zubi#~",
+							"icount": "1",
+							"ipct": "14",
+							"xis": "sux.r01a525"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "ED IIIb",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a523.p.s000"
+				},
+				{
+					"p": "Ur III",
+					"icount": "1",
+					"ipct": "14",
+					"xis": "sux.r01a523.p.s001"
+				},
+				{
+					"p": "Neo-Assyrian",
+					"icount": "3",
+					"ipct": "43",
+					"xis": "sux.r01a523.p.s002"
+				},
+				{
+					"p": "First Millennium",
+					"icount": "2",
+					"ipct": "29",
+					"xis": "sux.r01a523.p.s003"
+				}
+			]
+		},
+		{
+			"headword": "uhpu[foam]N",
+			"id": "o0041278",
+			"oid": "o0041278",
+			"icount": "8",
+			"ipct": "100",
+			"xis": "sux.r018133",
+			"dc_title": "neo/sux/uhpu[foam]",
+			"cf": "uhpu",
+			"gw": "foam",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "o0041278.0",
+					"n": "uh₂-pu₂",
+					"c": "70433",
+					"icount": "8",
+					"ipct": "100",
+					"xis": "sux.r018133"
+				}
+			],
+			"norms": [
+				{
+					"id": "o0041278.1",
+					"icount": "8",
+					"ipct": "100",
+					"xis": "sux.r018133",
+					"n": "uhpu",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "o0041278.2",
+							"ref": "o0041278.0",
+							"icount": "8",
+							"ipct": "100",
+							"xis": "sux.r018133"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "o0041278.3",
+					"n": "uh₂-pu₂",
+					"icount": "8",
+					"ipct": "100",
+					"xis": "sux.r018133"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "o0041278.4",
+					"n": "~",
+					"icount": "8",
+					"ipct": "100",
+					"xis": "sux.r018133"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "o0041278.5",
+					"n": "uh₂-pu₂",
+					"icount": "8",
+					"ipct": "100",
+					"xis": "sux.r018133"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "sux.x00651417",
+					"n": "uhpu[foam//foam]N'N",
+					"oid": "o0013408",
+					"icount": "2",
+					"ipct": "25",
+					"xis": "sux.r018134",
+					"num": "1.",
+					"pos": "N",
+					"mng": "foam",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "o0013408.0",
+							"n": "uh₂-pu₂",
+							"ref": "o0041278.0",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "sux.r018134"
+						}
+					],
+					"norms": [
+						{
+							"id": "o0013408.1",
+							"n": "uhpu",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "sux.r018134"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "o0013408.2",
+							"n": "uh₂-pu₂",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "sux.r018134"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "o0013408.3",
+							"n": "~",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "sux.r018134"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "o0013408.4",
+							"n": "uh₂-pu₂",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "sux.r018134"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "o0013408.5",
+							"sig": "@neo%sux:uh₂-pu₂=uhpu[foam//foam]N'N$uhpu/uh₂-pu₂#~",
+							"icount": "2",
+							"ipct": "100",
+							"xis": "sux.r018134"
+						}
+					]
+				},
+				{
+					"type": "sense",
+					"id": "sux.x00651424",
+					"n": "uhpu[foam//standing water]N'N",
+					"oid": "o0013409",
+					"icount": "6",
+					"ipct": "75",
+					"xis": "sux.r018135",
+					"num": "2.",
+					"pos": "N",
+					"mng": "standing water",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "o0013409.0",
+							"n": "uh₂-pu₂",
+							"ref": "o0041278.0",
+							"icount": "6",
+							"ipct": "100",
+							"xis": "sux.r018135"
+						}
+					],
+					"norms": [
+						{
+							"id": "o0013409.1",
+							"n": "uhpu",
+							"icount": "6",
+							"ipct": "100",
+							"xis": "sux.r018135"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "o0013409.2",
+							"n": "uh₂-pu₂",
+							"icount": "6",
+							"ipct": "100",
+							"xis": "sux.r018135"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "o0013409.3",
+							"n": "~",
+							"icount": "6",
+							"ipct": "100",
+							"xis": "sux.r018135"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "o0013409.4",
+							"n": "uh₂-pu₂",
+							"icount": "6",
+							"ipct": "100",
+							"xis": "sux.r018135"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "o0013409.5",
+							"sig": "@neo%sux:uh₂-pu₂=uhpu[foam//standing water]N'N$uhpu/uh₂-pu₂#~",
+							"icount": "6",
+							"ipct": "100",
+							"xis": "sux.r018135"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Old Babylonian",
+					"icount": "7",
+					"ipct": "88",
+					"xis": "sux.r018133.p.s000"
+				},
+				{
+					"p": "Hellenistic",
+					"icount": "1",
+					"ipct": "13",
+					"xis": "sux.r018133.p.s001"
+				}
+			]
+		},
+		{
+			"headword": "ugu[watering place]N",
+			"id": "o0041188",
+			"oid": "o0041188",
+			"icount": "3",
+			"ipct": "100",
+			"xis": "sux.r018068",
+			"dc_title": "neo/sux/ugu[watering place]",
+			"cf": "ugu",
+			"gw": "watering place",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "o0041188.0",
+					"n": "ugu₂",
+					"c": "70317",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "sux.r018068"
+				}
+			],
+			"norms": [
+				{
+					"id": "o0041188.1",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "sux.r018068",
+					"n": "ugu",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "o0041188.2",
+							"ref": "o0041188.0",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "o0041188.3",
+					"n": "ugu₂",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "sux.r018068"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "o0041188.4",
+					"n": "~",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "sux.r018068"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "o0041188.5",
+					"n": "ugu₂",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "sux.r018068"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "sux.x00650067",
+					"n": "ugu[watering place//watering place]N'N",
+					"oid": "o0013359",
+					"icount": "3",
+					"ipct": "100",
+					"xis": "sux.r018068",
+					"num": "1.",
+					"pos": "N",
+					"mng": "watering place",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "o0013359.0",
+							"n": "ugu₂",
+							"ref": "o0041188.0",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					],
+					"norms": [
+						{
+							"id": "o0013359.1",
+							"n": "ugu",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "o0013359.2",
+							"n": "ugu₂",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "o0013359.3",
+							"n": "~",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "o0013359.4",
+							"n": "ugu₂",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "o0013359.5",
+							"sig": "@neo%sux:ugu₂=ugu[watering place//watering place]N'N$ugu/ugu₂#~",
+							"icount": "3",
+							"ipct": "100",
+							"xis": "sux.r018068"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Middle Babylonian",
+					"icount": "2",
+					"ipct": "67",
+					"xis": "sux.r018068.p.s000"
+				},
+				{
+					"p": "Neo-Assyrian",
+					"icount": "1",
+					"ipct": "33",
+					"xis": "sux.r018068.p.s001"
+				}
+			]
 		}
 	],
 	"instances": {
@@ -2793,7 +3653,54 @@
 			"epsd2/literary:Q000333.69.3+Q000333.69.4",
 			"epsd2/literary:Q000333.70.3+Q000333.70.4",
 			"epsd2/literary:Q000333.107.2+Q000333.107.3"
-		]
+		],
+		"sux.r01a523": [
+			"dcclt/nineveh:P365227.97.1",
+			"dcclt/nineveh:P365384.36.1",
+			"dcclt/nineveh:P385942.12.1",
+			"dcclt/signlists:Q000160.28.1",
+			"dcclt/signlists:Q000160.28.5",
+			"epsd2/admin/ed3b:P020168.13.3",
+			"epsd2/admin/ur3:P144889.4.4"
+		],
+		"sux.r01a523.p.s000": ["epsd2/admin/ed3b:P020168.13.3"],
+		"sux.r01a523.p.s001": ["epsd2/admin/ur3:P144889.4.4"],
+		"sux.r01a523.p.s002": [
+			"dcclt/nineveh:P365227.97.1",
+			"dcclt/nineveh:P365384.36.1",
+			"dcclt/nineveh:P385942.12.1"
+		],
+		"sux.r01a523.p.s003": [
+			"dcclt/signlists:Q000160.28.1",
+			"dcclt/signlists:Q000160.28.5"
+		],
+		"sux.r018133": [
+			"blms:P414295.57.2",
+			"dcclt:P228632.20.1",
+			"dcclt:P228632.26.1",
+			"dcclt:Q000050.447.1",
+			"dcclt:Q000050.448.1",
+			"dcclt:Q000050.449.2",
+			"dcclt:Q000050.460.2",
+			"epsd2/literary:Q000750.278.1"
+		],
+		"sux.r018133.p.s000": [
+			"dcclt:Q000050.447.1",
+			"dcclt:Q000050.448.1",
+			"dcclt:Q000050.449.2",
+			"dcclt:Q000050.460.2",
+			"epsd2/literary:Q000750.278.1",
+			"dcclt:P228632.20.1",
+			"dcclt:P228632.26.1"
+		],
+		"sux.r018133.p.s001": ["blms:P414295.57.2"],
+		"sux.r018068": [
+			"dcclt/nineveh:P373932.26.1",
+			"dcclt:P443828.31.1",
+			"dcclt:P443828.32.1"
+		],
+		"sux.r018068.p.s000": ["dcclt:P443828.31.1", "dcclt:P443828.32.1"],
+		"sux.r018068.p.s001": ["dcclt/nineveh:P373932.26.1"]
 	},
 	"summaries": {
 		"x000007680": "<p class=\"summary\" id=\"x000007680\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/x000007680.html')\"><span class=\"cf\">a</span> [<span class=\"gw\">INSTRUCTION</span>] <span class=\"cf\">N</span></a> (3x) </span>unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span></span> \"instruction\"</span></p>",
@@ -2809,6 +3716,10 @@
 		"o0023180": "<p class=\"summary\" id=\"o0023180\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0023180.html')\"><span class=\"cf\">a sur</span> [<span class=\"gw\">KEEP WATER AWAY</span>] <span class=\"cf\">V/t</span></a> (18x) </span>Old Babylonian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span> <span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span> <span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur</span>-<span x=\"3\" class=\"sux\">sur</span></span></span> \"to keep water away\"</span></p>",
 		"o0023102": "<p class=\"summary\" id=\"o0023102\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0023102.html')\"><span class=\"cf\">a</span> [<span class=\"gw\">WATER</span>] <span class=\"cf\">N</span></a> (4966x) </span>ED IIIa, ED IIIb, Early Dynastic IIIa, Early Dynastic IIIb, Early Dynastic, Ebla, Old Akkadian, Lagash II, Laga\u0161 II, Ur III, Early Old Babylonian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, Seleucid, Hellenistic, First Millennium, unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span>-<span x=\"3\" class=\"sux\">a</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a\u2082</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">e</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">en</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ga</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">u</span></span></span> \"progeny; semen, sperm; water\"</span></p>",
 		"o0024843": "<p class=\"summary\" id=\"o0024843\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0024843.html')\"><span class=\"cf\">bal</span> [<span class=\"gw\">DIG</span>] <span class=\"cf\">V/t</span></a> (902x) </span>ED IIIb, Early Dynastic, Old Akkadian, Lagash II, Laga\u0161 II, Ur III, Early Old Babylonian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, First Millennium, unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ba</span>-<span x=\"3\" class=\"sux\">ab</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ba</span>-<span x=\"3\" class=\"sux\">al</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ba</span>-<span x=\"3\" class=\"sux\">al</span>-<span x=\"3\" class=\"sux\">ba</span>-<span x=\"3\" class=\"sux\">al</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ba</span>-<span x=\"3\" class=\"sux\">la</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ba</span>-<span x=\"3\" class=\"sux\">la\u2082</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bal</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bal</span>-<span x=\"3\" class=\"sux\">bal</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bala</span>-<span x=\"3\" class=\"sux\">a</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bala</span>-<span x=\"3\" class=\"sux\">e</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bal</span><sup class=\"sux\">zabar</sup></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bal\u2082</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">bal\u2084</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ib\u2082</span>-<span x=\"3\" class=\"sux\">al</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">pe</span>-<span x=\"3\" class=\"sux\">el</span></span></span> \"dig; to dig, excavate; to recover, to find back\"</span></p>",
-		"o0038490": "<p class=\"summary\" id=\"o0038490\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0038490.html')\"><span class=\"cf\">sur</span> [<span class=\"gw\">PRESS</span>] <span class=\"cf\">V/t</span></a> (393x) </span>ED IIIa, ED IIIb, Early Dynastic, Old Akkadian, Ur III, Early Old Babylonian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, Hellenistic, First Millennium, unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">su</span>-<span x=\"3\" class=\"sux\">re</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">su</span>-<span x=\"3\" class=\"sux\">ur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur</span>-<span x=\"3\" class=\"sux\">sur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur\u2088</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur\u2088</span>-<span x=\"3\" class=\"sux\">sur\u2088</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">su\u2087</span></span></span> \"to break; to clean (clothes); to drip; to flash; to press, squeeze; to rain; to sift\"</span></p>"
+		"o0038490": "<p class=\"summary\" id=\"o0038490\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0038490.html')\"><span class=\"cf\">sur</span> [<span class=\"gw\">PRESS</span>] <span class=\"cf\">V/t</span></a> (393x) </span>ED IIIa, ED IIIb, Early Dynastic, Old Akkadian, Ur III, Early Old Babylonian, Old Babylonian, Middle Assyrian, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, Hellenistic, First Millennium, unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">su</span>-<span x=\"3\" class=\"sux\">re</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">su</span>-<span x=\"3\" class=\"sux\">ur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur</span>-<span x=\"3\" class=\"sux\">sur</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur\u2088</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">sur\u2088</span>-<span x=\"3\" class=\"sux\">sur\u2088</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">su\u2087</span></span></span> \"to break; to clean (clothes); to drip; to flash; to press, squeeze; to rain; to sift\"</span></p>",
+
+		"o0042959": "<p class=\"summary\" id=\"o0042959\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0042959.html')\"><span class=\"cf\">zubi</span> [<span class=\"gw\">WATERCOURSE</span>] <span class=\"cf\">N</span></a> (7x) </span>ED IIIb, Ur III, Neo-Assyrian, First Millennium  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">zubi</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">id₂</sup><span x=\"3\" class=\"sux\">zubi</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">id₂</sup>  <sup class=\"sux\">zu</sup>-<sup class=\"sux\">bi</sup><span x=\"3\" class=\"sux\">zubi</span></span></span> \"watercourse, canal\"</span></p>",
+		"o0041278": "<p class=\"summary\" id=\"o0041278\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0041278.html')\"><span class=\"cf\">uhpu</span> [<span class=\"gw\">FOAM</span>] <span class=\"cf\">N</span></a> (8x) </span>Old Babylonian, Hellenistic  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">uḫ₂</span>-<span x=\"3\" class=\"sux\">pu₂</span></span></span> \"foam; standing water\"</span></p>",
+		"o0041188": "<p class=\"summary\" id=\"o0041188\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0041188.html')\"><span class=\"cf\">ugu</span> [<span class=\"gw\">WATERING PLACE</span>] <span class=\"cf\">N</span></a> (3x) </span>Middle Babylonian, Neo-Assyrian  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ugu₂</span></span></span> \"watering place\"</span></p>"
 	}
 }
