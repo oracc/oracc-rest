@@ -3346,6 +3346,160 @@
 					"xis": "sux.r018068.p.s001"
 				}
 			]
+		},
+		{
+			"headword": "ŋirikin[sickle]N",
+			"id": "o0029725",
+			"oid": "o0029725",
+			"icount": "1",
+			"ipct": "100",
+			"xis": "sux.r01bab4",
+			"dc_title": "neo/sux/ŋirikin[sickle]",
+			"cf": "ŋirikin",
+			"gw": "sickle",
+			"pos": "N",
+			"forms": [
+				{
+					"type": "form",
+					"id": "o0029725.0",
+					"n": "gir₂-kin-še₃",
+					"c": "20951",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4"
+				}
+			],
+			"norms": [
+				{
+					"id": "o0029725.1",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4",
+					"n": "ŋirikin,eše",
+					"forms": [
+						{
+							"type": "normform",
+							"cbd_id": "o0029725.2",
+							"ref": "o0029725.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					]
+				}
+			],
+			"bases": [
+				{
+					"type": "base",
+					"cbd_id": "o0029725.3",
+					"n": "ŋiri₂-kin",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4"
+				}
+			],
+			"morphs": [
+				{
+					"type": "morph",
+					"cbd_id": "o0029725.4",
+					"n": "~,eše",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4"
+				}
+			],
+			"form-sanss": [
+				{
+					"type": "form-sans",
+					"cbd_id": "o0029725.5",
+					"n": "gir₂-kin-še₃",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4"
+				}
+			],
+			"senses": [
+				{
+					"type": "sense",
+					"id": "sux.x00745064",
+					"n": "ŋirikin[sickle//a small harvesting knife or sickle]N'N",
+					"oid": "o0006750",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4",
+					"num": "1.",
+					"pos": "N",
+					"mng": "a small harvesting knife or sickle",
+					"forms": [
+						{
+							"type": "form",
+							"cbd_id": "o0006750.0",
+							"n": "gir₂-kin-še₃",
+							"ref": "o0029725.0",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					],
+					"norms": [
+						{
+							"id": "o0006750.1",
+							"n": "ŋirikin,eše",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					],
+					"bases": [
+						{
+							"type": "base",
+							"id": "o0006750.2",
+							"n": "ŋiri₂-kin",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					],
+					"morphs": [
+						{
+							"type": "morph",
+							"id": "o0006750.3",
+							"n": "~,eše",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					],
+					"form-sanss": [
+						{
+							"type": "form-sans",
+							"id": "o0006750.4",
+							"n": "gir₂-kin-še₃",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					],
+					"sigs": [
+						{
+							"type": "sig",
+							"id": "o0006750.5",
+							"sig": "@neo%sux:gir₂-kin-še₃=ŋirikin[sickle//a small harvesting knife or sickle]N'N$ŋirikin,eše/ŋiri₂-kin#~,eše",
+							"icount": "1",
+							"ipct": "100",
+							"xis": "sux.r01bab4"
+						}
+					]
+				}
+			],
+			"periods": [
+				{
+					"p": "Ur III",
+					"icount": "1",
+					"ipct": "100",
+					"xis": "sux.r01bab4.p.s000"
+				}
+			]
 		}
 	],
 	"instances": {
@@ -3700,8 +3854,11 @@
 			"dcclt:P443828.32.1"
 		],
 		"sux.r018068.p.s000": ["dcclt:P443828.31.1", "dcclt:P443828.32.1"],
-		"sux.r018068.p.s001": ["dcclt/nineveh:P373932.26.1"]
+		"sux.r018068.p.s001": ["dcclt/nineveh:P373932.26.1"],
+		"sux.r01bab4": ["epsd2/admin/ur3:P136859.4.1"],
+		"sux.r01bab4.p.s000": ["epsd2/admin/ur3:P136859.4.1"]
 	},
+
 	"summaries": {
 		"x000007680": "<p class=\"summary\" id=\"x000007680\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/x000007680.html')\"><span class=\"cf\">a</span> [<span class=\"gw\">INSTRUCTION</span>] <span class=\"cf\">N</span></a> (3x) </span>unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span></span> \"instruction\"</span></p>",
 		"x000007690": "<p class=\"summary\" id=\"x000007690\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/x000007690.html')\"><span class=\"cf\">a</span> [<span class=\"gw\">SON</span>] <span class=\"cf\">N</span></a> (2x) </span>Neo-Assyrian, Neo-Babylonian  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">a</span></span></span> \"son\"</span></p>",
@@ -3720,6 +3877,8 @@
 
 		"o0042959": "<p class=\"summary\" id=\"o0042959\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0042959.html')\"><span class=\"cf\">zubi</span> [<span class=\"gw\">WATERCOURSE</span>] <span class=\"cf\">N</span></a> (7x) </span>ED IIIb, Ur III, Neo-Assyrian, First Millennium  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">zubi</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">id₂</sup><span x=\"3\" class=\"sux\">zubi</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">id₂</sup>  <sup class=\"sux\">zu</sup>-<sup class=\"sux\">bi</sup><span x=\"3\" class=\"sux\">zubi</span></span></span> \"watercourse, canal\"</span></p>",
 		"o0041278": "<p class=\"summary\" id=\"o0041278\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0041278.html')\"><span class=\"cf\">uhpu</span> [<span class=\"gw\">FOAM</span>] <span class=\"cf\">N</span></a> (8x) </span>Old Babylonian, Hellenistic  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">uḫ₂</span>-<span x=\"3\" class=\"sux\">pu₂</span></span></span> \"foam; standing water\"</span></p>",
-		"o0041188": "<p class=\"summary\" id=\"o0041188\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0041188.html')\"><span class=\"cf\">ugu</span> [<span class=\"gw\">WATERING PLACE</span>] <span class=\"cf\">N</span></a> (3x) </span>Middle Babylonian, Neo-Assyrian  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ugu₂</span></span></span> \"watering place\"</span></p>"
+		"o0041188": "<p class=\"summary\" id=\"o0041188\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0041188.html')\"><span class=\"cf\">ugu</span> [<span class=\"gw\">WATERING PLACE</span>] <span class=\"cf\">N</span></a> (3x) </span>Middle Babylonian, Neo-Assyrian  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ugu₂</span></span></span> \"watering place\"</span></p>",
+		"o0023594": "<p class=\"summary\" id=\"o0023594\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0023594.html')\"><span class=\"cf\">adkin</span> [<span class=\"gw\">MEAT</span>] <span class=\"cf\">N</span></a> (47x) </span>Early Dynastic IIIa, Early Dynastic IIIb, Middle Babylonian, Neo-Assyrian, Neo-Babylonian, First Millennium, unknown  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">adkin</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">adkinₓ</span>(<span class=\"sign \">ŠEŠ₂</span>)</span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">ad</sup>-<sup class=\"sux\">kin</sup><span x=\"3\" class=\"sux\">adkin</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">dug</sup>  <sup class=\"sux\">ad</sup>-<sup class=\"sux\">kin</sup><span x=\"3\" class=\"sux\">adkin</span></span></span>; <span class=\"wr\"><span class=\"w sux \" id=\"\"><sup class=\"sux\">ŋeš</sup><span x=\"3\" class=\"sux\">adkin</span></span></span> \"preserved meat; vessel\"</span></p>",
+		"o0029725": "<p class=\"summary\" id=\"o0029725\"><span class=\"summary\"><span class=\"summary-headword\"><a href=\"javascript:p3Article('/neo/cbd/sux/o0029725.html')\"><span class=\"cf\">ŋirikin</span> [<span class=\"gw\">SICKLE</span>] <span class=\"cf\">N</span></a> (1x) </span>Ur III  wr. <span class=\"wr\"><span class=\"w sux \" id=\"\"><span x=\"3\" class=\"sux\">ŋiri₂</span>-<span x=\"3\" class=\"sux\">kin</span></span></span> \"a small harvesting knife or sickle\"</span></p>"
 	}
 }
