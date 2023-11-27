@@ -275,7 +275,7 @@ Make sure you have Docker installed on your local machine first.
 Then you can simply get elasticsearch up and running with the following command from the top-level directory of this repo:
 
 ```
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 This will expose elasticsearch on `localhost:9200`. You can then interact with elasticsearch as normal.
