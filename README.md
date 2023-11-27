@@ -38,13 +38,62 @@ The Oracc project needs both Flask and Elasticsearch to be installed to run corr
 
 We will first take you through setting up your development and production environments by spinning up the Flask API. Once this has been done you can proceed to the section describing how to set up Elasticsearch.
 
-It is also best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure not to commit your virtual environment folder to this repo.
+### Using a python virtual environment
+
+It is best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure not to commit your virtual environment folder to this repo. Here is an example using the built-in python virtual environment manager:
+
+```python
+# run the following from the top-level directory of your python project
+python3 -m venv env-name # creates the environment
+source venv/bin/activate # activates the environment
+deactivate # deactivates the environment
+```
+
+Once you have created and activated your virtual environment, you can install pip packages and do all other tasks as normal.
 
 ---
 
-## Prerequisit for local development: Setting up a virtual Ubuntu instance
+## Spinning up Flask for development on your local machine
 
-We recommend that you set up a virtual Ubuntu server for testing this application locally during development (an alternative, but not recommended, approach is described at the very bottom of this README). This is preferable as it mimics the production environment more closely (since the production server also runs on Ubuntu). You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/). Multipass is a piece of software used specifically for creating local virtual instances of Ubuntu. To get started with this, follow the steps below:
+This approach can be used if you want to activate the Flask API directly on your local machine. This is usually the quickest and easiest method for getting started. But if you also want the Flask API to communicate with elasticsearch on your local development machine then please follow the instructions further below for [Exposing a Dockerised instance of elasticsearch](#option-1-expose-a-dockerised-instance-of-elasticsearch).
+
+### Install dependencies
+
+Run the following command from the top level directory of this repo (preferably within a virtual python environment):
+
+```
+pip install -r requirements.txt
+```
+
+This will install modules related to both Flask and Elasticsearch.
+
+### Activate Flask in debug mode
+
+From the top-level directory of this repo, run:
+
+```
+flask --app app --debug run --port 8000
+```
+
+This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
+
+You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world" response.
+
+Any changes to the code should be picked up automatically and make the server restart.
+
+You can stop the server with `ctrl+c`
+
+Do not use the development server when deploying to production. It is intended for use only during local development.
+
+---
+
+## Setting up the project on Ubuntu (for either development or production)
+
+The production version of this project is deployed on Ubuntu on a remote server. However, we recommend setting up a virtual instance of Ubuntu on your local machine first (using Multipass) as this will allow you to test out the entire deployment process and learn how it works before doing it for real on prod. It's up to you if you want to do this or not, so if you just want to skip ahead to the main production deployment instructions you can go to [Spinning up Flask on Ubuntu](#spinning-up-flask-on-ubuntu).
+
+### Setting up a virtual Ubuntu instance on your local machine using Multipass
+
+You can easily spin up a local virtual Ubuntu server using [Multipass](https://multipass.run/). Multipass is a piece of software used specifically for creating local virtual instances of Ubuntu. To get started with this, follow the steps below:
 
 ### Install Multipass
 
@@ -77,11 +126,9 @@ You can now do whatever you need to inside the virtual Ubuntu instance such as i
 
 ---
 
-## Setting up the Oracc project on your development and production environments
+## Spinning up Flask on Ubuntu
 
-When setting up the Oracc project, the steps are the same on both the development and production environments.
-
-For development, the application should be deployed on a Multipass virtual Ubuntu instance as recommended above.
+During development, the application can be deployed on a Multipass virtual Ubuntu instance as suggested above.
 
 For production, the application is currently deployed to the Oracc build server (more details on the [ORACC Server wiki](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
 
@@ -219,7 +266,27 @@ Check Flask network requests: `sudo nano /var/log/apache2/oracc-rest_access.log`
 
 Now that the API is up and running in either development or production mode, you can install Elasticsearch so that you can hit the `/search` API endpoints to return the Oracc data.
 
-To set up Elasticsearch, the following software needs to be installed on your current development or production environment.
+### Option 1: Expose a Dockerised instance of elasticsearch
+
+Use this option if you are spinning up a completely local instance of the project for development. This option works well if you are spinning up the Flask app in debug mode as described in the section above: [Activate Flask in debug mode](#activate-flask-in-debug-mode).
+
+Make sure you have Docker installed on your local machine first.
+
+Then you can simply get elasticsearch up and running with the following command from the top-level directory of this repo:
+
+```
+docker-compose up --build
+```
+
+This will expose elasticsearch on `localhost:9200`. You can then interact with elasticsearch as normal.
+
+To stop the Docker container press `ctrl+c` in the terminal where the elasticsearch instance is running.
+
+### Option 2: Install elasticsearch on Ubuntu
+
+Use this option if you are deploying to production, or are testing out the application using Multipass as described above.
+
+To get elasticsearch up and running directly on Ubuntu follow the below instructions:
 
 ### Installing jq
 
@@ -331,7 +398,7 @@ Check Elasticsearch logs: `sudo nano /var/log/elasticsearch/elasticsearch.log`.
 
 ## Indexing data into Elasticsearch
 
-Now that Elasticsearch has been set up, you can start to upload glossary data into the Elasticsearch database.
+Now that Elasticsearch has been set up either using Docker (for development) or Ubuntu, you can start to upload glossary data into the Elasticsearch database.
 
 Some test datasets have been provided at: `ingest/assets/dev/sample-glossaries`, you can use this data to test out the elasticsearch functionality on your development environment (make sure you do not ingest this data on the production database).
 
@@ -440,25 +507,3 @@ To run the tests after making changes, execute the following from the top-level 
 ```
 python -m pytest tests
 ```
-
----
-
-## Alternative approach to spinning up the Flask API in dev mode
-
-This approach can be used if you just want to activate the Flask API directly on your local machine without using a virtual environment. Note that if you take this approach, you would also have to install Elasticsearch on your local machine too which may not be desirable.
-
-To enable the search endpoints described below, the Flask server must be started. To do this, from the top-level directory run:
-
-```
-flask --app app --debug run --port 8000
-```
-
-This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
-
-You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world" response.
-
-Any changes to the code should be picked up automatically and make the server restart.
-
-You can stop the server with `ctrl+c`
-
-Do not use the development server when deploying to production. It is intended for use only during local development.
