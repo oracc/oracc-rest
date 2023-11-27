@@ -50,6 +50,7 @@ class ESearch:
         ]
         # To combine, we pass these subqueries as "must" arguments to a bool
         # query. This essentially gets the intersection of their results.
+        print("q=", phrase, "SB", sort_by, "DIRECTION", direction)
         search = (
             Search(using=self.client, index=self.index)
             .query("bool", must=subqueries)

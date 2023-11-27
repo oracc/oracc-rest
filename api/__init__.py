@@ -18,7 +18,7 @@ def _parse_request_args(args):
     Unexpected parameters are simply ignored.
     """
     out_args = {}
-    string_options = ["sort_by", "dir", "after"]
+    string_options = ["sort_by", "direction", "after"]
     for option in string_options:
         if option in args:
             # TODO Throw an error if invalid values are given? Be more flexible?
@@ -67,6 +67,7 @@ class GeneralSearch(Resource):
     def get(self, word):
         """Search "all" fields in the database for the given word."""
         args = _parse_request_args(request.args)
+        print("ARGS", args)
         # Pass to ElasticSearch
         search = ESearch()
         results = search.run(word, **args)
@@ -130,6 +131,7 @@ class FullList(Resource):
         starting index (start) and the desired number of results (count).
         """
         args = _parse_request_args(request.args)
+        print("ARGS", args)
         # Pass to ElasticSearch
         search = ESearch()
         results = search.list_all(**args)
