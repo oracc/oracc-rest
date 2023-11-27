@@ -17,6 +17,9 @@ class ESearch:
         self.client = Elasticsearch()
         self.index = index_name
 
+    def test_connection(self):
+        print('test search connection')
+
     def _execute(self, word, fieldname):
         """
         Given a word and a fieldname, return all matching entries in the local

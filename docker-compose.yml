@@ -1,0 +1,38 @@
+version: "3.8"
+services:
+  # api:
+  #   container_name: api-dev
+  #   restart: on-failure
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/api/Dockerfile
+  #   ports:
+  #     - "8000:8000"
+  #   stdin_open: true
+  #   tty: true
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - mynetwork
+
+  elasticsearch:
+    build:
+      dockerfile: ./compose/elasticsearch/Dockerfile
+    environment:
+      - discovery.type=single-node # this is for development only
+      - xpack.security.enabled=false # this should be set to true in production
+    ports:
+      - "9200:9200"
+      - "9300:9300"
+
+  # ingest-service:
+  #   build:
+  #     context: .
+  #     dockerfile: ./compose/ingest/Dockerfile
+  #   depends_on:
+  #     - elasticsearch
+  #   networks:
+  #     - mynetwork
+# networks:
+#   mynetwork:
+#     driver: bridge
