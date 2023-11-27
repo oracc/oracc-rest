@@ -1,11 +1,8 @@
 # -*- coding: utf-8 -*-
 import itertools
-import logging
 
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
-
-logger = logging.getLogger(__name__)
 
 
 class ESearch:
@@ -18,7 +15,7 @@ class ESearch:
         self.index = index_name
 
     def test_connection(self):
-        print('test search connection')
+        print("test search connection")
 
     def _execute(self, word, fieldname):
         """
@@ -194,20 +191,20 @@ class ESearch:
                 "size": size,
             },  # TODO how to get all?
         )
-        logger.debug("searching for....")
-        logger.debug(search)
+        print("searching for....")
+        print(search)
         completion_results = (
             search
             # .sort({"_score": {"order": "desc"}})
             .execute().suggest.to_dict()["sug_complete"]
         )
-        logger.debug("completion results")
-        logger.debug(completion_results)
+        print("completion results")
+        print(completion_results)
 
         all_completions = [
             option["text"] for option in completion_results[0]["options"]
         ]
-        logger.debug("ALL COMPLETIONS:")
-        logger.debug(all_completions)
+        print("ALL COMPLETIONS:")
+        print(all_completions)
 
         return all_completions
