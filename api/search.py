@@ -129,7 +129,7 @@ class ESearch:
             # contain non-ASCII characters, we use the X.sort field instead.
             # TODO Since the suffixes don't change, we can store them in a dict
             # instead of building them every time.
-            ".sort({'_score': {'order': 'desc'}})"
+            ".sort"
             if field in self.UNICODE_FIELDS
             else (".keyword" if field in self.TEXT_FIELDS else ""),
         )
