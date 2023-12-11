@@ -78,7 +78,7 @@ class ESearch:
             dict(
                 **hit.to_dict(),
                 sort=str(hit.meta.sort),
-                instances_count=len(hit.instances)
+                instances_count=len(hit.instances),
             )
             for hit in results
         ]
@@ -192,16 +192,23 @@ class ESearch:
                 },  # TODO how to get all?
             )
         suggestion_results = search.execute().suggest.to_dict().values()
-        # print("SUGGESTIONS:", suggestion_results)
+        sorted_suggestions = sorted(
+            suggestion_results,
+            key=lambda x: (
+                x[0]["options"][0]["score"] if x[0]["options"] else 0,
+                -x[0]["options"][0]["freq"] if x[0]["options"] else 0,
+                len(x[0]["text"]),
+            ),
+        )
+
         # The format of the response is a little involved: the results for each
         # suggester are in a list of lists (to account for multiple query terms,
         # even thougth we're not allowing that). Therefore, we need two steps
         # of flattening to get a single results list.
         all_suggestions = [
             option["text"]
-            for option in itertools.chain.from_iterable(
-                result["options"] for sr in suggestion_results for result in sr
-            )
+            for suggestion in sorted_suggestions
+            for option in suggestion[0]["options"]
         ]
         # Remove duplicate results (use a dictionary vs a set to preserve order)
         return list(dict.fromkeys(all_suggestions))
@@ -225,18 +232,16 @@ class ESearch:
             },  # TODO how to get all?
         )
         completion_results = search.execute().suggest.to_dict()["sug_complete"]
+
         sorted_results = sorted(
             completion_results[0]["options"],
             key=lambda x: (
                 x["_score"],
-                len(x["_source"].get("instances", [])),
                 len(x["text"]),
+                -len(x["_source"].get("instances", [])),
             ),
         )
 
-        # print("SORTED", sorted_results)
         all_completions = [option["text"] for option in sorted_results]
-        # print("ALL COMPLETIONS:")
-        # print(all_completions)
 
         return all_completions
