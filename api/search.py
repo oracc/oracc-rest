@@ -67,7 +67,8 @@ class ESearch:
 
         Currently returns the whole result document along with the sort score.
 
-        This method effectively sorts by _score but done this way since we need to be within a search query to use .sort() for ES
+        This method effectively sorts by _score but is done this way since we need
+        to be within a search query to use .sort() for ES
         """
 
         result_list = [
@@ -164,7 +165,8 @@ class ESearch:
         search = Search(using=self.client, index=self.index)
         # Use one term suggester per searchable field, as we can't have multiple
         # fields in each suggester
-        # we currently don't get all but it's unlikely that beyond the first 200 suggestions/completions will be helpful
+        # we currently don't get all
+        # but it's unlikely that beyond the first 200 suggestions/completions will be helpful
         for field_name in self.FIELDNAMES:
             search = search.suggest(
                 "sug_{}".format(field_name),
