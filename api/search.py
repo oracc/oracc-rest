@@ -22,12 +22,9 @@ class ESearch:
         Given a word and a fieldname, return all matching entries in the local
         ElasticSearch DB.
         """
-        print("EXECUTING")
         search = Search(using=self.client, index=self.index).query(
             "match", **{fieldname: word}
         )
-        # Sorting of results should be done by "_score" by default
-        # This is based on relevance to the query string
         results = search.scan()
         return results
 
@@ -82,21 +79,11 @@ class ESearch:
             )
             for hit in results
         ]
-        for hit in result_list:
-            print("HIT:", hit["gw"], "|", hit["cf"], hit["instances_count"])
-        print("\n")
-
+        # this sorts the results by number of hits (after the search has been done)
         sorted_result_list = sorted(
             result_list,
-            key=lambda x: (
-                x[
-                    "sort"
-                ],  # this could probably be left out since it's repeating the earlier step
-                -x["instances_count"],
-            ),
+            key=lambda x: (-x["instances_count"],),
         )
-        for hit in sorted_result_list:
-            print("SORTED:", hit["gw"], "|", hit["cf"], hit["instances_count"])
 
         # This is probably better as a comprehension at the moment,
         # but in the future we might want some more elaborate processing
@@ -106,7 +93,7 @@ class ESearch:
         #                        'gw': hit.gw if hasattr(hit, "gw") else None,
         #                        'cf': hit.cf if hasattr(hit, "cf") else None})
         #    result_list.append(hit.to_dict())
-        return result_list
+        return sorted_result_list
 
     def run(self, word, fieldname=None, **args):
         """Find matches for the given word (optionally in a specified field)."""
@@ -118,8 +105,8 @@ class ESearch:
     def list_all(self, sort_by="gw", direction="asc", count=None, after=None):
         """Get a list of all entries."""
         search = (
-            Search(using=self.client, index=self.index).query("match_all")
-            # TODO We should maybe sort on a tie-breaker field (eg _id) too... instances maybe
+            Search(using=self.client, index=self.index)
+            .query("match_all")
             .sort(
                 self._sort_field_name(sort_by, direction),
             )
@@ -177,9 +164,7 @@ class ESearch:
         search = Search(using=self.client, index=self.index)
         # Use one term suggester per searchable field, as we can't have multiple
         # fields in each suggester
-        # TODO We are mostly using the default values for the term suggester.
-        #      We may want to tweak it a bit, or expose some options as request
-        #      arguments.
+        # we currently don't get all but it's unlikely that beyond the first 200 suggestions/completions will be helpful
         for field_name in self.FIELDNAMES:
             search = search.suggest(
                 "sug_{}".format(field_name),
@@ -189,7 +174,7 @@ class ESearch:
                     # so small words match:
                     "min_word_length": 3,
                     "size": size,
-                },  # TODO how to get all?
+                },
             )
         suggestion_results = search.execute().suggest.to_dict().values()
         sorted_suggestions = sorted(
@@ -229,7 +214,7 @@ class ESearch:
                 "field": "completions",
                 "skip_duplicates": True,
                 "size": size,
-            },  # TODO how to get all?
+            },
         )
         completion_results = search.execute().suggest.to_dict()["sug_complete"]
 

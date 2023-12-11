@@ -95,6 +95,7 @@ def prepare_index_mapping():
     for field in ["forms_n", "norms_n"]:
         # TODO Do we lose anything by making this mapping explicit? (compared
         # to the dynamic mapping created by Elasticsearch automatically)
+        # potentially - we can't use _score for sorting but we have a pythonic way of achieving what seems to be the same results.
         mappings.field(field, "text", analyzer=ANALYZER_NAME)
     # Add completions field to index
     mappings.field("completions", "completion")
