@@ -15,7 +15,7 @@ class ESearch:
         self.index = index_name
 
     def test_connection(self):
-        print('test search connection')
+        print("test search connection")
 
     def _execute(self, word, fieldname):
         """
@@ -25,15 +25,11 @@ class ESearch:
         search = Search(using=self.client, index=self.index).query(
             "match", **{fieldname: word}
         )
-        # To ensure that each result has a "sort" value (for consistency with
-        # the other search modes), we sort by _doc, which is meaningless but
-        # efficient, as suggested in the docs:
-        # https://www.elastic.co/guide/en/elasticsearch/reference/current/search-request-sort.html
-        results = search.sort("_doc").scan()
+        results = search.scan()
         return results
 
     def _execute_general(
-        self, phrase, sort_by="cf", direction="asc", count=None, after=None
+        self, phrase, sort_by="gw", direction="asc", count=None, after=None
     ):
         """
         Given a phrase of space-separated words, return all matching entries in
@@ -50,12 +46,18 @@ class ESearch:
             Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase_prefix")
             for word in phrase.split()
         ]
+
         # To combine, we pass these subqueries as "must" arguments to a bool
         # query. This essentially gets the intersection of their results.
         search = (
             Search(using=self.client, index=self.index)
-            .query("bool", must=subqueries)
-            .sort(self._sort_field_name(sort_by, direction))
+            .query(
+                "bool",
+                must=subqueries,
+            )
+            .sort(
+                self._sort_field_name(sort_by, direction),
+            )
         )
         return self._customise_and_run(search, count, after)
 
@@ -64,12 +66,26 @@ class ESearch:
         Get the required information from each result and compile it in a list.
 
         Currently returns the whole result document along with the sort score.
+
+        This method effectively sorts by _score but is done this way since we need
+        to be within a search query to use .sort() for ES
         """
+
         result_list = [
             # Add a key called "sort" to each hit, containing its sort "score"
-            dict(**hit.to_dict(), sort=str(hit.meta.sort))
+            dict(
+                **hit.to_dict(),
+                sort=str(hit.meta.sort),
+                instances_count=len(hit.instances),
+            )
             for hit in results
         ]
+        # this sorts the results by number of hits (after the search has been done)
+        sorted_result_list = sorted(
+            result_list,
+            key=lambda x: (-x["instances_count"],),
+        )
+
         # This is probably better as a comprehension at the moment,
         # but in the future we might want some more elaborate processing
         # result_list = []
@@ -78,7 +94,7 @@ class ESearch:
         #                        'gw': hit.gw if hasattr(hit, "gw") else None,
         #                        'cf': hit.cf if hasattr(hit, "cf") else None})
         #    result_list.append(hit.to_dict())
-        return result_list
+        return sorted_result_list
 
     def run(self, word, fieldname=None, **args):
         """Find matches for the given word (optionally in a specified field)."""
@@ -87,12 +103,14 @@ class ESearch:
         else:
             return self._get_results(self._execute(word, fieldname))
 
-    def list_all(self, sort_by="cf", direction="asc", count=None, after=None):
+    def list_all(self, sort_by="gw", direction="asc", count=None, after=None):
         """Get a list of all entries."""
         search = (
-            Search(using=self.client, index=self.index).query("match_all")
-            # TODO We should maybe sort on a tie-breaker field (eg _id) too...
-            .sort(self._sort_field_name(sort_by, direction))
+            Search(using=self.client, index=self.index)
+            .query("match_all")
+            .sort(
+                self._sort_field_name(sort_by, direction),
+            )
         )
         results = self._customise_and_run(search, count, after)
         return self._get_results(results)
@@ -147,9 +165,8 @@ class ESearch:
         search = Search(using=self.client, index=self.index)
         # Use one term suggester per searchable field, as we can't have multiple
         # fields in each suggester
-        # TODO We are mostly using the default values for the term suggester.
-        #      We may want to tweak it a bit, or expose some options as request
-        #      arguments.
+        # we currently don't get all
+        # but it's unlikely that beyond the first 200 suggestions/completions will be helpful
         for field_name in self.FIELDNAMES:
             search = search.suggest(
                 "sug_{}".format(field_name),
@@ -159,18 +176,26 @@ class ESearch:
                     # so small words match:
                     "min_word_length": 3,
                     "size": size,
-                },  # TODO how to get all?
+                },
             )
         suggestion_results = search.execute().suggest.to_dict().values()
+        sorted_suggestions = sorted(
+            suggestion_results,
+            key=lambda x: (
+                x[0]["options"][0]["score"] if x[0]["options"] else 0,
+                -x[0]["options"][0]["freq"] if x[0]["options"] else 0,
+                len(x[0]["text"]),
+            ),
+        )
+
         # The format of the response is a little involved: the results for each
         # suggester are in a list of lists (to account for multiple query terms,
         # even thougth we're not allowing that). Therefore, we need two steps
         # of flattening to get a single results list.
         all_suggestions = [
             option["text"]
-            for option in itertools.chain.from_iterable(
-                result["options"] for sr in suggestion_results for result in sr
-            )
+            for suggestion in sorted_suggestions
+            for option in suggestion[0]["options"]
         ]
         # Remove duplicate results (use a dictionary vs a set to preserve order)
         return list(dict.fromkeys(all_suggestions))
@@ -191,12 +216,19 @@ class ESearch:
                 "field": "completions",
                 "skip_duplicates": True,
                 "size": size,
-            },  # TODO how to get all?
+            },
         )
         completion_results = search.execute().suggest.to_dict()["sug_complete"]
 
-        all_completions = [
-            option["text"] for option in completion_results[0]["options"]
-        ]
+        sorted_results = sorted(
+            completion_results[0]["options"],
+            key=lambda x: (
+                x["_score"],
+                len(x["text"]),
+                -len(x["_source"].get("instances", [])),
+            ),
+        )
+
+        all_completions = [option["text"] for option in sorted_results]
 
         return all_completions

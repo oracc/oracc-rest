@@ -12,8 +12,8 @@ def test_sort_field_name():
         ("icount", "asc", "icount"),
         ("icount", "desc", "-icount"),
     ]
-    for field, dir, expected in combinations:
-        assert search._sort_field_name(field, dir) == expected
+    for field, direction, expected in combinations:
+        assert search._sort_field_name(field, direction) == expected
 
 
 def test_list_all(uploaded_entries, test_index_name):

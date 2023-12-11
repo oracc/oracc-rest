@@ -275,12 +275,12 @@ Make sure you have Docker installed on your local machine first.
 Then you can simply get elasticsearch up and running with the following command from the top-level directory of this repo:
 
 ```
-docker-compose up --build
+docker-compose up --build -d
 ```
 
 This will expose elasticsearch on `localhost:9200`. You can then interact with elasticsearch as normal.
 
-To stop the Docker container press `ctrl+c` in the terminal where the elasticsearch instance is running.
+To stop the Docker container run `docker-compose down`
 
 ### Option 2: Install elasticsearch on Ubuntu
 
@@ -461,7 +461,7 @@ You can customise the search by optionally specifying additional parameters.
 These are:
 
 - `sort_by`: the field on which to sort (`gw`, `cf` or `icount`)
-- `dir`: the sorting order, ascending (`asc`) or descending (`desc`)
+- `direction`: the sorting order, ascending (`asc`) or descending (`desc`)
 - `count`: the maximum number of results
 
 For example, if you want to retrieve the 20 entries that appear most frequently in the indexed corpus, you can request this at:
