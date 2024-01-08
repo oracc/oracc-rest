@@ -17,7 +17,8 @@ services:
 
   elasticsearch:
     build:
-      dockerfile: ./compose/elasticsearch/Dockerfile
+      context: ./compose/elasticsearch
+      dockerfile: Dockerfile
     environment:
       - discovery.type=single-node # this is for development only
       - xpack.security.enabled=false # this should be set to true in production
