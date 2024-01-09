@@ -42,7 +42,7 @@ We will first take you through setting up your development and production enviro
 
 It is best practice to work within a python virtual environment for both development and production. This keeps any packages you install isolated from any system-wide installations. You can use any virtual environment manager of your choice, but make sure not to commit your virtual environment folder to this repo. Here is an example using the built-in python virtual environment manager:
 
-```python
+```sh
 # run the following from the top-level directory of your python project
 python3 -m venv env-name # creates the environment
 source venv/bin/activate # activates the environment
@@ -61,7 +61,7 @@ This approach can be used if you want to activate the Flask API directly on your
 
 Run the following command from the top level directory of this repo (preferably within a virtual python environment):
 
-```
+```sh
 pip install -r requirements.txt
 ```
 
@@ -71,13 +71,13 @@ This will install modules related to both Flask and Elasticsearch.
 
 From the top-level directory of this repo, run:
 
-```
+```sh
 flask --app app --debug run --port 8000
 ```
 
 This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
 
-You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world" response.
+You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world!!!!!" response.
 
 Any changes to the code should be picked up automatically and make the server restart.
 
@@ -174,7 +174,7 @@ The production deployment should run from the `main` branch of this repo.
 
 First, create and activate a python virtual environment in `/home/rits/oracc-rest`:
 
-```python
+```sh
 sudo apt install python3.10-venv
 python3 -m venv venv # run this if the environment does not already exist, note the lack of sudo here to avoid issues
 source venv/bin/activate # activates the environment
@@ -186,7 +186,7 @@ If you run into an issue here, you may need to set the appropriate permissions o
 
 Once your virtual environment is activated, run the following command from `/home/rits/oracc-rest`:
 
-```
+```sh
 pip install -r requirements.txt
 ```
 
@@ -206,10 +206,10 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
   ErrorLog ${APACHE_LOG_DIR}/oracc-rest_error.log
   CustomLog ${APACHE_LOG_DIR}/oracc-rest_access.log combined
 
-  # remove these next three lines if you are setting this up on a local development machine (i.e. not running the app over HTTPS)
-  SSLEngine On
-  SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
-  SSLCertificateFile /etc/ssl/certs/build-oracc.pem
+  # These next 3 lines are only needed (uncommented) on the production machine
+  #SSLEngine On
+  #SSLCertificateKeyFile /etc/ssl/private/build-oracc.key
+  #SSLCertificateFile /etc/ssl/certs/build-oracc.pem
 
   WSGIDaemonProcess oracc-rest threads=5 python-home=/var/www/oracc-rest/venv
   WSGIScriptAlias / /var/www/oracc-rest/oracc-rest.wsgi
@@ -223,20 +223,26 @@ Then, add the following Apache config file by running: `sudo nano /etc/apache2/s
 </VirtualHost>
 ```
 
-Then, to enable the config you need to run: `sudo a2ensite oracc-rest.conf`
+Then, to enable the config you need to run:
+
+```sh
+sudo a2enmod ssl
+sudo a2ensite oracc-rest.conf
+```
 
 This configuration will allow the mod_wsgi package to talk to apache and expose the Flask API endpoints on port 5000. The config is read automatically as apache starts up, so any changes will require you to restart apache.
 
 ### Open the necessary ports in apache
 
-The application is now set up to respond to requests at port 5000, but you still need to open the port to let the requests come through in apache. You can ask Steve Tinney to open the necessary ports, or add the following code to the file `/etc/apache2/ports.conf`:
+The application is now set up to respond to requests at port 5000, but you still need to open the port to let the requests come through in apache. You can ask Steve Tinney to open the necessary ports, or ensure that the following code is present in
+the file `/etc/apache2/ports.conf`:
 
 ```apacheconf
 Listen 80
 Listen 5000
 ```
 
-Apache will need to be restarted following any config modifications. You can restart Apache with the following: `sudo service apache2 restart`
+Apache will need to be restarted following any config modifications. You can restart Apache with the following: `sudo systemctl restart apache2`
 
 You can test that the API is running by making a request on the server to the test endpoint:
 
@@ -272,13 +278,16 @@ Use this option if you are spinning up a completely local instance of the projec
 
 Make sure you have Docker installed on your local machine first.
 
-Then you can simply get elasticsearch up and running with the following command from the top-level directory of this repo:
+Then you can simply get elasticsearch and the api server up and running with the following command from the top-level directory of this repo:
 
 ```
 docker-compose up --build -d
 ```
 
-This will expose elasticsearch on `localhost:9200`. You can then interact with elasticsearch as normal.
+This will expose the api server on `localhost:8000`. The elasticsearch
+server will be populated with the glossaries, and the api server will
+be connected with elasticsearch. Elasticsearch will not be available
+from outside the docker network.
 
 To stop the Docker container run `docker-compose down`
 

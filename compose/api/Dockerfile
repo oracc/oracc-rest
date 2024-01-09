@@ -6,11 +6,7 @@ COPY ./requirements.txt /app
 
 RUN pip install -r requirements.txt
 
-COPY . .
-
-EXPOSE 8000
-
-ENV FLASK_APP=app.py
+COPY app.py /app/
+COPY api/ /app/api/
 
 CMD ["flask", "--app", "app", "--debug", "run", "--host", "0.0.0.0", "--port", "8000"]
-

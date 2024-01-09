@@ -1,4 +1,6 @@
+import argparse
 import glob
+import os
 import sys
 
 import elasticsearch
@@ -34,18 +36,39 @@ def ICU_installed(es):
 
 
 if __name__ == "__main__":
-    es = Elasticsearch(timeout=30)
+    parser = argparse.ArgumentParser(
+        prog=__file__,
+        description="Upload glossaries to ElasticSearch"
+    )
+    parser.add_argument(
+        "--glob",
+        "-g",
+        help="Expand wildcards in filenames",
+        action="store_true",
+    )
+    parser.add_argument(
+        "filenames",
+        type=str,
+        nargs="*",
+        help="Glossaries to upload",
+    )
+    host = os.environ.get("ELASTICSEARCH_HOST")
+    es = Elasticsearch(host, timeout=30)
     if not ICU_installed(es):
         debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
 
     clear_database = True
 
-    if len(sys.argv) > 1:
-        files = sys.argv[1:]
-        print(files)
-    else:
+    args = parser.parse_args()
+    files = args.filenames
+    if len(files) == 0:
         files = glob.glob("neo/gloss-???.json")
+    elif args.glob:
+        files = []
+        for fn in args.filenames:
+            files += glob.glob(fn)
+
     debug("Will index {}".format(",".join(files)))
 
     # Clear ES database if desired

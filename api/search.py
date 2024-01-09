@@ -1,9 +1,9 @@
 # -*- coding: utf-8 -*-
-import itertools
+import logging
+import os
 
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
-
 
 class ESearch:
     FIELDNAMES = ["gw", "cf", "forms_n", "norms_n", "senses_mng"]
@@ -11,7 +11,8 @@ class ESearch:
     UNICODE_FIELDS = ["cf"]  # fields which may contain non-ASCII characters
 
     def __init__(self, index_name="oracc"):
-        self.client = Elasticsearch()
+        host = os.environ.get("ELASTICSEARCH_HOST")
+        self.client = Elasticsearch(host)
         self.index = index_name
 
     def test_connection(self):
