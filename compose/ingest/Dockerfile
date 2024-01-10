@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ingest/ ./ingest/
 
-CMD ["python3", "-m", "ingest.bulk_upload", "--glob", "ingest/assets/dev/sample-glossaries/*"]
+CMD ["python3", "-m", "ingest.bulk_upload", "--host", "http://elasticsearch:9200", "--glob", "ingest/assets/dev/sample-glossaries/*"]

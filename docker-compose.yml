@@ -23,12 +23,18 @@ services:
       - discovery.type=single-node # this is for development only
       - xpack.security.enabled=false # this should be set to true in production
       - http.cors.enabled=true
-      - http.cors.allow-origin=http://elasticsearch:9200
+      - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=3s"]
+      interval: 4s
+      timeout: 4s
+      retries: 5
+      start_period: 5s
+
   ingest-service:
     build:
       context: .
       dockerfile: ./compose/ingest/Dockerfile
-    environment:
-      - ELASTICSEARCH_HOST=http://elasticsearch:9200
     depends_on:
-      - elasticsearch
+      elasticsearch:
+        condition: service_healthy

@@ -5,6 +5,7 @@ import os
 from elasticsearch import Elasticsearch
 from elasticsearch_dsl import Q, Search
 
+
 class ESearch:
     FIELDNAMES = ["gw", "cf", "forms_n", "norms_n", "senses_mng"]
     TEXT_FIELDS = ["gw"]  # fields with text content on which we can sort

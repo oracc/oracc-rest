@@ -41,6 +41,12 @@ if __name__ == "__main__":
         description="Upload glossaries to ElasticSearch"
     )
     parser.add_argument(
+        "--host",
+        type=str,
+        default="http://localhost:9200",
+        help="Specify elasticsearch host (default http://localhost:9200)",
+    )
+    parser.add_argument(
         "--glob",
         "-g",
         help="Expand wildcards in filenames",
@@ -52,15 +58,15 @@ if __name__ == "__main__":
         nargs="*",
         help="Glossaries to upload",
     )
-    host = os.environ.get("ELASTICSEARCH_HOST")
-    es = Elasticsearch(host, timeout=30)
+    args = parser.parse_args()
+
+    es = Elasticsearch(args.host, timeout=30)
     if not ICU_installed(es):
         debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
 
     clear_database = True
 
-    args = parser.parse_args()
     files = args.filenames
     if len(files) == 0:
         files = glob.glob("neo/gloss-???.json")
