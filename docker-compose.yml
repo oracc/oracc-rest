@@ -1,19 +1,19 @@
 version: "3.8"
 services:
-  # api:
-  #   container_name: api-dev
-  #   restart: on-failure
-  #   build:
-  #     context: .
-  #     dockerfile: ./compose/api/Dockerfile
-  #   ports:
-  #     - "8000:8000"
-  #   stdin_open: true
-  #   tty: true
-  #   depends_on:
-  #     - elasticsearch
-  #   networks:
-  #     - mynetwork
+  api:
+    container_name: api
+    restart: on-failure
+    build:
+      context: .
+      dockerfile: ./compose/api/Dockerfile
+    ports:
+      - "8000:8000"
+    stdin_open: true
+    tty: true
+    environment:
+      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    depends_on:
+      - elasticsearch
 
   elasticsearch:
     build:
@@ -22,18 +22,19 @@ services:
     environment:
       - discovery.type=single-node # this is for development only
       - xpack.security.enabled=false # this should be set to true in production
-    ports:
-      - "9200:9200"
-      - "9300:9300"
+      - http.cors.enabled=true
+      - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=3s"]
+      interval: 4s
+      timeout: 4s
+      retries: 5
+      start_period: 5s
 
-  # ingest-service:
-  #   build:
-  #     context: .
-  #     dockerfile: ./compose/ingest/Dockerfile
-  #   depends_on:
-  #     - elasticsearch
-  #   networks:
-  #     - mynetwork
-# networks:
-#   mynetwork:
-#     driver: bridge
+  ingest-service:
+    build:
+      context: .
+      dockerfile: ./compose/ingest/Dockerfile
+    depends_on:
+      elasticsearch:
+        condition: service_healthy
