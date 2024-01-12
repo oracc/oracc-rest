@@ -1,13 +1,13 @@
 version: "3.8"
 services:
   api:
-    container_name: api
+    container_name: oracc-api
     restart: on-failure
     build:
       context: .
       dockerfile: ./compose/api/Dockerfile
     ports:
-      - "8000:8000"
+      - ${ORACC_PORT:-8000}:8000
     stdin_open: true
     tty: true
     environment:
@@ -24,17 +24,25 @@ services:
       - xpack.security.enabled=false # this should be set to true in production
       - http.cors.enabled=true
       - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
+    volumes:
+      - es_data:/usr/share/elasticsearch/data:rw
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=3s"]
       interval: 4s
       timeout: 4s
-      retries: 5
+      retries: 15
       start_period: 5s
 
   ingest-service:
+    container_name: oracc-ingest
     build:
       context: .
       dockerfile: ./compose/ingest/Dockerfile
+    environment:
+      - ORACC_INGEST_DIRECTORY=${ORACC_INGEST_DIRECTORY}
     depends_on:
       elasticsearch:
         condition: service_healthy
+
+volumes:
+  es_data:

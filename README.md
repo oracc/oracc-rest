@@ -291,6 +291,33 @@ from outside the docker network.
 
 To stop the Docker container run `docker-compose down`
 
+#### Using docker-compose in production
+
+The docker-compose deployment uses gunicorn and is production-ready.
+However, you need to change the port to 5000 and the ingest directory
+(from the root of the source directory):
+
+```sh
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
+Ingest from the same directory again, and get logs from that (from any directory):
+
+```sh
+docker restart oracc-ingest
+docker logs -t oracc-ingest
+```
+
+Run the `docker-compose up` again if you want to change the ingest directory.
+
+The elastic search data is persistent across restarts. To remove it (again from
+the source directory):
+
+```sh
+docker-compose down -v
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
 ### Option 2: Install elasticsearch on Ubuntu
 
 Use this option if you are deploying to production, or are testing out the application using Multipass as described above.

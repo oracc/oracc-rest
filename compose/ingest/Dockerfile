@@ -1,4 +1,4 @@
-FROM python:3.8
+FROM python:3.12-slim
 
 WORKDIR /app
 
@@ -10,4 +10,4 @@ RUN pip install --no-cache-dir -r requirements.txt
 
 COPY ingest/ ./ingest/
 
-CMD ["python3", "-m", "ingest.bulk_upload", "--host", "http://elasticsearch:9200", "--glob", "ingest/assets/dev/sample-glossaries/*"]
+CMD python3 -m ingest.bulk_upload --host http://elasticsearch:9200 ${ORACC_INGEST_DIRECTORY:-ingest/assets/dev/sample-glossaries}/*
