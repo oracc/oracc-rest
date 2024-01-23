@@ -7,31 +7,25 @@ services:
       context: .
       dockerfile: ./compose/api/Dockerfile
     ports:
-      - ${ORACC_PORT:-8000}:8000
+    - ${ORACC_PORT:-8000}:8000
     stdin_open: true
     tty: true
     environment:
-      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    - ELASTICSEARCH_HOST=http://elasticsearch:9200
     depends_on:
-      - elasticsearch
+    - elasticsearch
 
   elasticsearch:
     build:
       context: ./compose/elasticsearch
       dockerfile: Dockerfile
     environment:
-      - discovery.type=single-node # this is for development only
-      - xpack.security.enabled=false # this should be set to true in production
-      - http.cors.enabled=true
-      - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
+    - discovery.type=single-node # this is for development only
+    - xpack.security.enabled=false # this should be set to true in production
+    - http.cors.enabled=true
+    - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
     volumes:
-      - es_data:/usr/share/elasticsearch/data:rw
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=3s"]
-      interval: 4s
-      timeout: 4s
-      retries: 15
-      start_period: 5s
+    - es_data:/usr/share/elasticsearch/data:rw
 
   ingest-service:
     container_name: oracc-ingest
@@ -39,10 +33,9 @@ services:
       context: .
       dockerfile: ./compose/ingest/Dockerfile
     environment:
-      - ORACC_INGEST_DIRECTORY=${ORACC_INGEST_DIRECTORY}
+    - ORACC_INGEST_DIRECTORY=${ORACC_INGEST_DIRECTORY}
     depends_on:
-      elasticsearch:
-        condition: service_healthy
+    - elasticsearch
 
 volumes:
   es_data:
