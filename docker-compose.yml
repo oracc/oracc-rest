@@ -1,6 +1,6 @@
 version: "3.8"
 services:
-  api:
+  oracc-api:
     container_name: oracc-api
     restart: on-failure
     build:
@@ -27,7 +27,7 @@ services:
     volumes:
     - es_data:/usr/share/elasticsearch/data:rw
 
-  ingest-service:
+  oracc-ingest:
     container_name: oracc-ingest
     build:
       context: .
