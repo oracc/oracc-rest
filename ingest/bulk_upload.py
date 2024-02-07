@@ -17,6 +17,7 @@ INDEX_NAME = "oracc"
 
 LOGGER = logging.getLogger("bulk_upload")
 
+
 def upload_entries(es, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
@@ -32,6 +33,7 @@ def ICU_installed(es):
     """Check whether the ICU Analysis plugin is installed locally."""
     cc = elasticsearch.client.CatClient(es)
     return "analysis-icu" in [p["component"] for p in cc.plugins(h=None, format="json")]
+
 
 def wait_for_elasticsearch(host: str, wait: int) -> None:
     """
