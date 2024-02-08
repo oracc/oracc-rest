@@ -308,7 +308,21 @@ docker restart oracc-ingest
 docker logs -t oracc-ingest
 ```
 
-Run the `docker-compose up` again if you want to change the ingest directory.
+If you want to change the ingest directory, you must remove the old volume and restart. The easiest way would be:
+
+```sh
+docker-compose down -v
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
+This will destroy all the existing elasticsearch data and recreate it. If you would rather not recreate all the data, do this:
+
+```sh
+docker-compose down
+docker rm oracc-ingest
+docker volume rm oracc-rest_ingest
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
 
 The elastic search data is persistent across restarts. To remove it (again from
 the source directory):
