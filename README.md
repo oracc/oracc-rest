@@ -301,11 +301,13 @@ However, you need to change the port to 5000 and the ingest directory
 ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
 ```
 
+Of course it is better to set `ORACC_PORT` and `ORACC_INGEST_DIRECTORY` in your `~/bash.rc` or wherever you prefer, rather than having to set them on the command line each time. I will continue to show them on the command line, however.
+
 Ingest from the same directory again, and get logs from that (from any directory):
 
 ```sh
 docker restart oracc-ingest
-docker logs -t oracc-ingest
+docker logs --tail=30 -t oracc-ingest
 ```
 
 If you want to change the ingest directory, you must remove the old volume and restart. The easiest way would be:
