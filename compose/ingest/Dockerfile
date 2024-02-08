@@ -12,4 +12,4 @@ COPY ingest/ ./ingest/
 
 USER oracc
 
-CMD python3 -m ingest.bulk_upload --wait 45 --host http://elasticsearch:9200 ${ORACC_INGEST_DIRECTORY:-ingest/assets/dev/sample-glossaries}/*
+CMD python3 -m ingest.bulk_upload --wait 45 --host http://elasticsearch:9200 /glossaries/*.json

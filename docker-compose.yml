@@ -20,8 +20,8 @@ services:
       context: ./compose/elasticsearch
       dockerfile: Dockerfile
     environment:
-    - discovery.type=single-node # this is for development only
-    - xpack.security.enabled=false # this should be set to true in production
+    - discovery.type=single-node
+    - xpack.security.enabled=false
     - http.cors.enabled=true
     - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
     volumes:
@@ -32,10 +32,16 @@ services:
     build:
       context: .
       dockerfile: ./compose/ingest/Dockerfile
-    environment:
-    - ORACC_INGEST_DIRECTORY=${ORACC_INGEST_DIRECTORY}
+    volumes:
+    - ingest:/glossaries:ro
     depends_on:
     - elasticsearch
 
 volumes:
   es_data:
+  ingest:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${ORACC_INGEST_DIRECTORY:-ingest/assets/dev/sample-glossaries}

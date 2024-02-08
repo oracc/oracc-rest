@@ -358,7 +358,7 @@ To remove the ICU Analysis Plugin:
 Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted. If running as a service (like in the instructions below), all nodes can be restarted with one command:
 
 - OS X: `brew services restart elasticsearch`
-- Ubuntu: `sudo service elasticsearch restart`
+- Ubuntu: `sudo systemctl restart elasticsearch`
 
 To launch an instance of Elasticsearch accessible in its default port 9200:
 
