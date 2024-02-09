@@ -35,37 +35,28 @@ def ICU_installed(es):
     return "analysis-icu" in [p["component"] for p in cc.plugins(h=None, format="json")]
 
 
-def wait_for_elasticsearch(host: str, wait: int) -> None:
+def await_healthy(es: Elasticsearch, wait: int) -> None:
     """
-    Wait for elasticsearch to be available and healthy.
+    Wait for an Elasticsearch instance to become healthy.
 
-    :param host: Host at which elasticsearch resides, for example
-    "http://localhost:9200".
-    :param wait: Number of seconds to wait before giving up and
-    throwing an exception.
-    :return: A non-exceptional return indicates that elasticsearch is healthy.
+    :param es: The Elasticsearch instance.
+    :param wait: How many seconds to wait.
+
+    :raises: Exception if health check does not return 'green' or 'yellow'
+    within the time allowed.
     """
-    url = f"{host}/_cluster/health?wait_for_status=yellow&timeout=3s"
-    http = urllib3.PoolManager(num_pools=2)
-    now = time.monotonic()
-    end = now + wait
-    attempt = 0
-    while now < end:
-        attempt += 1
+    end_time = time.monotonic() + wait
+    while True:
         try:
-            resp = http.request("GET", url, timeout=4)
-            if resp.status == 200:
-                LOGGER.debug("elasticsearch is ready")
+            health_result = es.cat.health(h=['status']).strip()
+            LOGGER.info("Health result: >%s<", health_result)
+            if health_result in ['green', 'yellow']:
                 return
-            LOGGER.debug("elasticsearch is not ready %d", attempt)
-        except urllib3.exceptions.MaxRetryError:
-            LOGGER.debug("elasticsearch is not available")
+        except elasticsearch.exceptions.ConnectionError as e:
+            pass
         time.sleep(3)
-        next = time.monotonic()
-        time.sleep(max(0.5, min((end - next) * 0.7, 5)))
-        now = time.monotonic()
-
-    raise Exception("Elasticsearch is down")
+        if end_time < time.monotonic():
+            raise Exception("Elasticsearch unhealthy")
 
 
 if __name__ == "__main__":
@@ -101,9 +92,9 @@ if __name__ == "__main__":
 
     logging.basicConfig(level=logging.DEBUG)
 
+    es = Elasticsearch(args.host)
     if args.wait:
-        wait_for_elasticsearch(args.host, args.wait)
-    es = Elasticsearch(args.host, timeout=30)
+        await_healthy(es, args.wait)
     if not ICU_installed(es):
         LOGGER.debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
