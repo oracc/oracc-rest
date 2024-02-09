@@ -1,12 +1,14 @@
-FROM python:3.9-slim-buster
+FROM python:3.12-slim
 
 WORKDIR /app
 
 COPY ./requirements.txt /app
 
-RUN pip install -r requirements.txt
+RUN pip install -r requirements.txt && useradd -M oracc
 
 COPY app.py /app/
 COPY api/ /app/api/
 
-CMD ["flask", "--app", "app", "--debug", "run", "--host", "0.0.0.0", "--port", "8000"]
+USER oracc
+
+CMD ["gunicorn", "--log-file=-", "--worker-tmp-dir", "/dev/shm", "--workers=5", "--threads=4", "--worker-class=gthread", "-b", "0.0.0.0:8000", "api:app"]

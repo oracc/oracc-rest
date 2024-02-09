@@ -6,7 +6,6 @@ import ingest.bulk_upload
 from ingest.prepare_index import (
     ANALYZER_NAME,
     create_index,
-    prepare_index_mapping,
     prepare_cuneiform_analyzer,
 )
 

@@ -291,6 +291,49 @@ from outside the docker network.
 
 To stop the Docker container run `docker-compose down`
 
+#### Using docker-compose in production
+
+The docker-compose deployment uses gunicorn and is production-ready.
+However, you need to change the port to 5000 and the ingest directory
+(from the root of the source directory):
+
+```sh
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
+Of course it is better to set `ORACC_PORT` and `ORACC_INGEST_DIRECTORY` in your `~/bash.rc` or wherever you prefer, rather than having to set them on the command line each time. I will continue to show them on the command line, however.
+
+Ingest from the same directory again, and get logs from that (from any directory):
+
+```sh
+docker restart oracc-ingest
+docker logs --tail=30 -t oracc-ingest
+```
+
+If you want to change the ingest directory, you must remove the old volume and restart. The easiest way would be:
+
+```sh
+docker-compose down -v
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
+This will destroy all the existing elasticsearch data and recreate it. If you would rather not recreate all the data, do this:
+
+```sh
+docker-compose down
+docker rm oracc-ingest
+docker volume rm oracc-rest_ingest
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
+The elastic search data is persistent across restarts. To remove it (again from
+the source directory):
+
+```sh
+docker-compose down -v
+ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+```
+
 ### Option 2: Install elasticsearch on Ubuntu
 
 Use this option if you are deploying to production, or are testing out the application using Multipass as described above.
@@ -331,7 +374,7 @@ To remove the ICU Analysis Plugin:
 Note that, after installing the plugin, if ElasticSearch was already running then each node has to be restarted. If running as a service (like in the instructions below), all nodes can be restarted with one command:
 
 - OS X: `brew services restart elasticsearch`
-- Ubuntu: `sudo service elasticsearch restart`
+- Ubuntu: `sudo systemctl restart elasticsearch`
 
 To launch an instance of Elasticsearch accessible in its default port 9200:
 

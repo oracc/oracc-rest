@@ -1,40 +1,49 @@
 version: "3.8"
 services:
-  api:
-    container_name: api
-    restart: on-failure
+  oracc-api:
+    container_name: oracc-api
+    restart: always
     build:
       context: .
       dockerfile: ./compose/api/Dockerfile
     ports:
-      - "8000:8000"
+    - ${ORACC_PORT:-8000}:8000
     stdin_open: true
     tty: true
     environment:
-      - ELASTICSEARCH_HOST=http://elasticsearch:9200
+    - ELASTICSEARCH_HOST=http://elasticsearch:9200
     depends_on:
-      - elasticsearch
+    - elasticsearch
 
   elasticsearch:
+    restart: always
     build:
       context: ./compose/elasticsearch
       dockerfile: Dockerfile
     environment:
-      - discovery.type=single-node # this is for development only
-      - xpack.security.enabled=false # this should be set to true in production
-      - http.cors.enabled=true
-      - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:9200/_cluster/health?wait_for_status=yellow&timeout=3s"]
-      interval: 4s
-      timeout: 4s
-      retries: 5
-      start_period: 5s
+    - discovery.type=single-node
+    - xpack.security.enabled=false
+    - http.cors.enabled=true
+    - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
+    volumes:
+    - es_data:/usr/share/elasticsearch/data:rw
 
-  ingest-service:
+  oracc-ingest:
+    container_name: oracc-ingest
+    restart: "no"
     build:
       context: .
       dockerfile: ./compose/ingest/Dockerfile
+    volumes:
+    - ingest:/glossaries:ro
     depends_on:
-      elasticsearch:
-        condition: service_healthy
+    - elasticsearch
+
+volumes:
+  es_data:
+  ingest:
+    driver: local
+    driver_opts:
+      o: bind
+      type: none
+      device: ${ORACC_INGEST_DIRECTORY:-ingest/assets/dev/sample-glossaries}

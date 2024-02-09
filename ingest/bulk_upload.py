@@ -1,7 +1,9 @@
 import argparse
 import glob
-import os
+import logging
 import sys
+import time
+import urllib3
 
 import elasticsearch
 from elasticsearch import Elasticsearch
@@ -13,9 +15,7 @@ from .prepare_index import create_index
 
 INDEX_NAME = "oracc"
 
-
-def debug(msg):
-    print(msg)
+LOGGER = logging.getLogger("bulk_upload")
 
 
 def upload_entries(es, entries):
@@ -33,6 +33,30 @@ def ICU_installed(es):
     """Check whether the ICU Analysis plugin is installed locally."""
     cc = elasticsearch.client.CatClient(es)
     return "analysis-icu" in [p["component"] for p in cc.plugins(h=None, format="json")]
+
+
+def await_healthy(es: Elasticsearch, wait: int) -> None:
+    """
+    Wait for an Elasticsearch instance to become healthy.
+
+    :param es: The Elasticsearch instance.
+    :param wait: How many seconds to wait.
+
+    :raises: Exception if health check does not return 'green' or 'yellow'
+    within the time allowed.
+    """
+    end_time = time.monotonic() + wait
+    while True:
+        try:
+            health_result = es.cat.health(h=['status']).strip()
+            LOGGER.info("Health result: >%s<", health_result)
+            if health_result in ['green', 'yellow']:
+                return
+        except elasticsearch.exceptions.ConnectionError as e:
+            pass
+        time.sleep(3)
+        if end_time < time.monotonic():
+            raise Exception("Elasticsearch unhealthy")
 
 
 if __name__ == "__main__":
@@ -53,6 +77,12 @@ if __name__ == "__main__":
         action="store_true",
     )
     parser.add_argument(
+        "--wait",
+        type=int,
+        metavar="SECONDS",
+        help="Wait for up to this many seconds for elasticsearch to be ready before uploading",
+    )
+    parser.add_argument(
         "filenames",
         type=str,
         nargs="*",
@@ -60,9 +90,13 @@ if __name__ == "__main__":
     )
     args = parser.parse_args()
 
-    es = Elasticsearch(args.host, timeout=30)
+    logging.basicConfig(level=logging.DEBUG)
+
+    es = Elasticsearch(args.host)
+    if args.wait:
+        await_healthy(es, args.wait)
     if not ICU_installed(es):
-        debug("ICU Analysis plugin is required but could not be found. Exiting.")
+        LOGGER.debug("ICU Analysis plugin is required but could not be found. Exiting.")
         sys.exit()
 
     clear_database = True
@@ -75,16 +109,16 @@ if __name__ == "__main__":
         for fn in args.filenames:
             files += glob.glob(fn)
 
-    debug("Will index {}".format(",".join(files)))
+    LOGGER.debug("Will index %s", ",".join(files))
 
     # Clear ES database if desired
     client = elasticsearch.client.IndicesClient(es)
     if clear_database:
         try:
-            debug("Will delete index " + INDEX_NAME)
+            LOGGER.debug("Will delete index %s", INDEX_NAME)
             client.delete(index=INDEX_NAME)
         except elasticsearch.exceptions.NotFoundError:
-            debug("Index not found, continuing")
+            LOGGER.debug("Index not found, continuing")
 
     # Create the index with the required settings
     create_index(es, INDEX_NAME)
