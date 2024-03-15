@@ -68,7 +68,7 @@ To stop the Docker container run `docker-compose down`
 ## Docker in the production environment
 
 The docker-compose deployment uses gunicorn and is production-ready.
-However, you need to change the port to 5000 and the ingest directory
+However, you need to change the port to 8000 and the ingest directory
 (from the root of the source directory):
 
 ```sh
@@ -116,10 +116,10 @@ The search can be accessed at the `/search` endpoint of a server running Elastic
 
 ```shell
 # during production
-curl -k https://localhost:5000/search/water-skin
+curl -k https://localhost:8000/search/water-skin
 
 # during development
-curl http://localhost:5000/search/water-skin
+curl http://localhost:8000/search/water-skin
 ```
 
 This searches multiple fields for the given query word and returns all results. The list of fields currently searched is: `gw` (guideword), `cf` (cuneiform), `senses.mng` (meaning), `forms.n` and `norms.n` (lemmatisations).
@@ -135,7 +135,7 @@ In both cases, the result is a JSON array with the full contents of each hit. If
 An older, simpler search mode can also be accessed at the `/search` endpoint:
 
 ```
-curl -XGET localhost:5000/search -d 'gw=water'
+curl -XGET localhost:8000/search -d 'gw=water'
 ```
 
 This mode supports searching a single field (e.g. guideword) for the given value. If more than one fields are specified (or if none are), an error will be returned. This does not accept the extra parameters described below, and should be considered deprecated.
@@ -153,7 +153,7 @@ These are:
 For example, if you want to retrieve the 20 entries that appear most frequently in the indexed corpus, you can request this at:
 
 ```
-localhost:5000/search_all?sort_by=icount&dir=desc&count=20
+localhost:8000/search_all?sort_by=icount&dir=desc&count=20
 ```
 
 ### Paginating the results
@@ -167,7 +167,7 @@ Two other end points can be accessed at the `/suggest` and `/completion` endpoin
 In the case of `/suggest` e.g.:
 
 ```
-curl -XGET localhost:5000/suggest/yam
+curl -XGET localhost:8000/suggest/yam
 ```
 
 This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which are within a distance of 2 changes from the query word, e.g.: `yam` returns `ym` and `ya` (`cf`).
@@ -175,7 +175,7 @@ This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which 
 In the case of `/completion` e.g.:
 
 ```
-curl -XGET localhost:5000/completion/go
+curl -XGET localhost:8000/completion/go
 ```
 
 This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which begin with the query. This works for single letters or fragments of words. e.g.: `go` returns `god` and `goddess`
