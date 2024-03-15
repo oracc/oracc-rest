@@ -31,7 +31,7 @@ This is the directory structure in the project root:
 
 ## Setting up the project
 
-The Oracc project has been dockerised to run Flask and ElasticSearch
+The Oracc project has been dockerised to run Flask and ElasticSearch. This means you only need Docker installed to run the backend aspect of the search site (i.e. this repo) locally
 
 ### Using a python virtual environment
 
@@ -48,55 +48,9 @@ Once you have created and activated your virtual environment, you can install pi
 
 ---
 
-## Spinning up Flask for development on your local machine
+## Spinning up the docker containers
 
-This approach can be used if you want to activate the Flask API directly on your local machine. This is usually the quickest and easiest method for getting started. But if you also want the Flask API to communicate with elasticsearch on your local development machine then please follow the instructions further below for [Exposing a Dockerised instance of elasticsearch](#option-1-expose-a-dockerised-instance-of-elasticsearch).
-
-### Install dependencies
-
-Run the following command from the top level directory of this repo (preferably within a virtual python environment):
-
-```sh
-pip install -r requirements.txt
-```
-
-This will install modules related to both Flask and Elasticsearch.
-
-### Activate Flask in debug mode
-
-From the top-level directory of this repo, run:
-
-```sh
-flask --app app --debug run --port 8000
-```
-
-This will start the server in development mode on port 8000 and expose the endpoints. To run the server on a different port, specify (e.g.) `--port 3000`.
-
-You can test that the API is running by making a request to the test endpoint: `localhost:8000/test`. You should get a "Hello world!!!!!" response.
-
-Any changes to the code should be picked up automatically and make the server restart.
-
-You can stop the server with `ctrl+c`
-
-Do not use the development server when deploying to production. It is intended for use only during local development.
-
----
-
-## Spinning up Flask on Ubuntu
-
-During development, the application can be deployed on a Multipass virtual Ubuntu instance as suggested above.
-
-For production, the application is currently deployed to the Oracc build server (more details on the [ORACC Server wiki](https://github.com/oracc/website/wiki/ORACC-Server)) which runs on Ubuntu and exposes an Apache web server. Ask a senior team member or Steve Tinney to get access to this server.
-
-## Installing and configuring Elasticsearch
-
-Now that the API is up and running in either development or production mode, you can install Elasticsearch so that you can hit the `/search` API endpoints to return the Oracc data.
-
-### Option 1: Expose a Dockerised instance of elasticsearch
-
-Use this option if you are spinning up a completely local instance of the project for development. This option works well if you are spinning up the Flask app in debug mode as described in the section above: [Activate Flask in debug mode](#activate-flask-in-debug-mode).
-
-Make sure you have Docker installed on your local machine first.
+Ensure you have Docker installed on your local machine first.
 
 Then you can simply get elasticsearch and the api server up and running with the following command from the top-level directory of this repo:
 
@@ -111,7 +65,7 @@ from outside the docker network.
 
 To stop the Docker container run `docker-compose down`
 
-#### Using docker-compose in production
+## Docker in the production environment
 
 The docker-compose deployment uses gunicorn and is production-ready.
 However, you need to change the port to 5000 and the ingest directory
