@@ -48,7 +48,7 @@ Once you have created and activated your virtual environment, you can install pi
 
 ---
 
-## Spinning up the docker containers
+## Running the API locally
 
 Ensure you have Docker installed on your local machine first.
 
