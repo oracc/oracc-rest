@@ -3,11 +3,9 @@ import glob
 import logging
 import sys
 import time
-import urllib3
 
 import elasticsearch
 from elasticsearch import Elasticsearch
-import elasticsearch.client
 import elasticsearch.helpers
 
 from .break_down import process_file
@@ -31,8 +29,7 @@ def upload_file(es, input_file):
 
 def ICU_installed(es):
     """Check whether the ICU Analysis plugin is installed locally."""
-    cc = elasticsearch.client.CatClient(es)
-    return "analysis-icu" in [p["component"] for p in cc.plugins(h=None, format="json")]
+    return "analysis-icu" in [p["component"] for p in es.cat.plugins(h=None, format="json")]
 
 
 def await_healthy(es: Elasticsearch, wait: int) -> None:
@@ -112,11 +109,10 @@ if __name__ == "__main__":
     LOGGER.debug("Will index %s", ",".join(files))
 
     # Clear ES database if desired
-    client = elasticsearch.client.IndicesClient(es)
     if clear_database:
         try:
             LOGGER.debug("Will delete index %s", INDEX_NAME)
-            client.delete(index=INDEX_NAME)
+            es.indices.delete(index=INDEX_NAME)
         except elasticsearch.exceptions.NotFoundError:
             LOGGER.debug("Index not found, continuing")
 

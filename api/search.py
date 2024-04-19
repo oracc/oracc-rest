@@ -11,7 +11,7 @@ class ESearch:
     UNICODE_FIELDS = ["cf"]  # fields which may contain non-ASCII characters
 
     def __init__(self, index_name="oracc"):
-        host = os.environ.get("ELASTICSEARCH_HOST")
+        host = os.environ.get("ELASTICSEARCH_HOST", "http://localhost:9200")
         self.client = Elasticsearch(host)
         self.index = index_name
 
