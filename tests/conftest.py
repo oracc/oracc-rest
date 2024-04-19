@@ -3,7 +3,6 @@ import time
 import warnings
 
 from elasticsearch import Elasticsearch, exceptions
-from elasticsearch.client import IndicesClient
 import pytest
 
 import ingest.bulk_upload
@@ -24,10 +23,10 @@ def es(monkeypatch, test_index_name):
     # function-scoped.
     monkeypatch.setattr(ingest.bulk_upload, "INDEX_NAME", test_index_name)
     assert ingest.bulk_upload.INDEX_NAME == test_index_name  # just making sure
-    client = Elasticsearch()
+    client = Elasticsearch("http://localhost:9200")
     yield client
     try:
-        IndicesClient(client).delete(ingest.bulk_upload.INDEX_NAME)
+        client.indices.delete(index=ingest.bulk_upload.INDEX_NAME)
     except exceptions.NotFoundError:
         warnings.warn("The ES index was never created (was anything indexed?)")
 

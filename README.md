@@ -554,7 +554,16 @@ This searches both `gw` (guideword) and `cf` (cuneiform) fields for words which 
 
 The code is accompanied by tests written for the [pytest](https://pytest.org) library (installed with the requirements), which can help ensure that important functionality is not broken.
 
-To run the tests after making changes, execute the following from the top-level directory of this repo:
+To run the tests after making changes, restart the docker compose:
+
+```
+docker-compose down
+docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
+```
+
+then wait for the elastic search container to come up (use
+`docker-compose logs -f` to see it if you like), then execute the
+following (from the top-level directory of this repo):
 
 ```
 python -m pytest tests
