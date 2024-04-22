@@ -54,7 +54,18 @@ Ensure you have Docker installed on your local machine first.
 
 Then you can simply get elasticsearch and the api server up and running with the following command from the top-level directory of this repo:
 
-**Please note if you are on a Mac, you will need to export `ORACC_INGEST_DIRECTORY` as the absolute path to the sample glossaries folder within the ingest directory.**
+**Please note if you are on a Mac, you will may to export `ORACC_INGEST_DIRECTORY` as the absolute path to the sample glossaries folder within the ingest directory.**
+A good indication that you will need to do this is if you receive an error saying `the ingest directory could not be mounted` when trying to build and up the docker containers.
+
+This is because one of the docker containers requires this environment variable to complete the ingest but on Mac, the relative path described in `docker-compose` isn't recognised.
+
+As this would need to be done for every terminal session, it is recommended you add it to your `~/.zshrc` or `~/.bashrc`.
+
+```
+export ORACC_INGEST_DIRECTORY="<absolute path to>/oracc-rest/ingest/assets/dev/sample-glossaries"
+```
+
+You can then proceed to run:
 
 ```
 docker-compose up --build -d
