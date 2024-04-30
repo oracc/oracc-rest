@@ -57,7 +57,7 @@ Then you can simply get elasticsearch and the api server up and running with the
 **Please note if you are on a Mac, you will may to export `ORACC_INGEST_DIRECTORY` as the absolute path to the sample glossaries folder within the ingest directory.**
 A good indication that you will need to do this is if you receive an error saying `the ingest directory could not be mounted` when trying to build and up the docker containers.
 
-This is because one of the docker containers requires this environment variable to complete the ingest but on Mac, the relative path described in `docker-compose` isn't recognised.
+This is because one of the docker containers requires this environment variable to complete the ingest but on Mac, the relative path described in `docker-compose` isn't recognised as somewhere Docker is allowed to read.
 
 As this would need to be done for every terminal session, it is recommended you add it to your `~/.zshrc` or `~/.bashrc`.
 
