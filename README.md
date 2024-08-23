@@ -211,3 +211,14 @@ docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
 then wait for the elastic search container to come up (use
 `docker-compose logs -f` to see it if you like), then execute the
 following (from the top-level directory of this repo):
+
+## Examining memory usage in elasticsearch
+
+```
+$ docker-compose exec elasticsearch bash
+elasticsearch@7b6eb4ff0455:~$ curl "localhost:9200/_nodes/stats?filter_path=nodes.*.jvm.mem.pools.old"
+{"nodes":{"w9Hm2YGAT7iorZM3JTYlUA":{"jvm":{"mem":{"pools":{"old":{"used_in_bytes":29128704,"max_in_bytes":8589934592,"peak_used_in_bytes":41711616,"peak_max_in_bytes":8589934592}}}}}}}
+elasticsearch@7b6eb4ff0455:~$ exit
+```
+
+This shows us 291M used, 8.5G max.
