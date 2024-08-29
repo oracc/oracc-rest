@@ -39,7 +39,7 @@ It is best practice to work within a python virtual environment for both develop
 
 ```sh
 # run the following from the top-level directory of your python project
-python3 -m venv env-name # creates the environment
+python3 -m venv venv # creates the environment
 source venv/bin/activate # activates the environment
 deactivate # deactivates the environment
 ```
@@ -210,7 +210,12 @@ docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
 
 then wait for the elastic search container to come up (use
 `docker-compose logs -f` to see it if you like), then execute the
-following (from the top-level directory of this repo):
+following (from the top-level directory of this repo, having
+activated the virtual environment you created earlier):
+
+```
+python -m pytest tests
+```
 
 ## Examining memory usage in elasticsearch
 
