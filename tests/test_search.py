@@ -45,6 +45,13 @@ def test_multi_word_search(uploaded_entries, test_index_name):
     assert len(search.run("god usan", sort_by="gw")) == 1
     assert not search.run("god snake", sort_by="gw")
 
+def test_wildcard_search(uploaded_entries, test_index_name):
+    search = ESearch(index_name=test_index_name)
+    assert len(search.run("iri", sort_by="gw")) == 0
+    assert len(search.run("kirir", sort_by="gw")) == 1
+    results = search.run("*iri*", sort_by="gw")
+    words_matched = list(map(lambda x: x["cf"], results))
+    assert words_matched == ["kirir"]
 
 def test_suggest_basic(uploaded_entries, test_index_name):
     """Check the basic behaviour of the suggestion endpoint.
