@@ -35,7 +35,7 @@ class ESearch:
         """
         if "*" in word:
             return Q("intervals",  cf={ "wildcard": { "pattern": word } })
-        return Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase_prefix")
+        return Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase")
 
     def _execute_general(
         self, phrase, sort_by="gw", direction="asc", count=None, after=None
