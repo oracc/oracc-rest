@@ -17,7 +17,7 @@ DESTINATION_INDEX_NAME = "oracc"
 LOGGER = logging.getLogger("bulk_upload")
 
 
-def upload_entries(es : Elasticsearch, entries):
+def upload_entries(es: Elasticsearch, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["completions"] = [entry["cf"], entry["gw"]]
@@ -131,7 +131,7 @@ if __name__ == "__main__":
     )
     es.indices.put_settings(
         index=INDEX_NAME,
-        settings={ "index.blocks.write": True }
+        settings={"index.blocks.write": True}
     )
     es.indices.clone(
         index=INDEX_NAME,

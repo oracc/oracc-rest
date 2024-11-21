@@ -34,7 +34,7 @@ class ESearch:
         Create a query for a single word of the phrase entered.
         """
         if "*" in word:
-            return Q("intervals",  cf={ "wildcard": { "pattern": word } })
+            return Q("intervals",  cf={"wildcard": {"pattern": word}})
         return Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase_prefix")
 
     def _execute_general(
