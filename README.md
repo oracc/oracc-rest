@@ -57,7 +57,7 @@ Then you can simply get elasticsearch and the api server up and running with the
 **Please note if you are on a Mac, you will may to export `ORACC_INGEST_DIRECTORY` as the absolute path to the sample glossaries folder within the ingest directory.**
 A good indication that you will need to do this is if you receive an error saying `the ingest directory could not be mounted` when trying to build and up the docker containers.
 
-This is because one of the docker containers requires this environment variable to complete the ingest but on Mac, the relative path described in `docker-compose` isn't recognised as somewhere Docker is allowed to read.
+This is because one of the docker containers requires this environment variable to complete the ingest but on Mac, the relative path described in `docker-compose.yml` isn't recognised as somewhere Docker is allowed to read.
 
 As this would need to be done for every terminal session, it is recommended you add it to your `~/.zshrc` or `~/.bashrc`.
 
@@ -68,57 +68,101 @@ export ORACC_INGEST_DIRECTORY="<absolute path to>/oracc-rest/ingest/assets/dev/s
 You can then proceed to run:
 
 ```
-docker-compose up --build -d
+docker compose up --build -d
 ```
+
+(If you are running on an older OS you might need `docker-compose`
+not `docker compose`, so a dash not a space).
 
 This will expose the api server on `localhost:8000`. The elasticsearch
 server will be populated with the glossaries, and the api server will
 be connected with elasticsearch. Elasticsearch will not be available
 from outside the docker network.
 
-To stop the Docker container run `docker-compose down`
+To stop the Docker container run `docker compose down`
 
 ## Docker in the production environment
 
-The docker-compose deployment uses gunicorn and is production-ready.
-However, you need to change the port to 8000 and the ingest directory
-(from the root of the source directory):
+Just as before, the production environment is easiest to deploy with
+a copy of the source code:
 
 ```sh
-ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+git clone https://github.com/oracc/oracc-rest.git
+cd oracc-rest
+git switch development
 ```
 
-Of course it is better to set `ORACC_PORT` and `ORACC_INGEST_DIRECTORY` in your `~/bash.rc` or wherever you prefer, rather than having to set them on the command line each time. I will continue to show them on the command line, however.
+The docker compose deployment uses gunicorn and is production-ready.
+However, you need to change the port to the port we want the backend
+to listen on and the ingest directory to the path that the search backend
+should ingest glossaries from (this directory must be readable by the
+user `oracc`). You can do this by creating a file `/etc/profile.d/oracc.sh`
+with the following contents:
 
-Ingest from the same directory again, and get logs from that (from any directory):
+```sh
+export ORACC_INGEST_DIRECTORY=/path/to/ingest
+export ORACC_PORT=5000
+```
+
+Then run it (just this once, it will run whenever you log in from now on):
+
+```sh
+source /etc/profile.d/oracc.sh
+```
+
+Then we can run `docker compose up --build -d` as before. This will
+ingest data from the `ORACC_INGEST_DIRECTORY` on startup.
+
+To ingest from the same directory again:
 
 ```sh
 docker restart oracc-ingest
+```
+
+To get logs from the ingest process:
+
+```sh
 docker logs --tail=30 -t oracc-ingest
 ```
 
-If you want to change the ingest directory, you must remove the old volume and restart. The easiest way would be:
+These can be run by any user with Docker privileges from any
+directory.
+
+If you change the ingest directory (by editing `/etc/profile.d/oracc.sh`),
+you must remove the old volume and restart. The easiest way would be:
 
 ```sh
-docker-compose down -v
-ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+source /etc/profile.d/oracc.sh
+docker compose down -v
+docker compose up --build -d
 ```
 
-This will destroy all the existing elasticsearch data and recreate it. If you would rather not recreate all the data, do this:
+This will destroy all the existing elasticsearch data and recreate it.
+If you would rather not recreate all the data, do this:
 
 ```sh
-docker-compose down
+source /etc/profile.d/oracc.sh
+docker compose down
 docker rm oracc-ingest
 docker volume rm oracc-rest_ingest
-ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+docker compose up --build -d
 ```
 
-The elastic search data is persistent across restarts. To remove it (again from
-the source directory):
+The elastic search data is persistent across restarts. To remove it and
+ingest again from scratch (again from the source directory):
 
 ```sh
-docker-compose down -v
-ORACC_INGEST_DIRECTORY=/path/to/ingest ORACC_PORT=5000 docker-compose up --build -d
+docker compose down -v
+docker compose up --build -d
+```
+
+To upgrade to new code without re-ingesting:
+
+```sh
+cd oracc-rest
+git pull
+docker compose down
+docker compose up --build -d
 ```
 
 ## Additional info for querying the Flask API
@@ -204,10 +248,10 @@ The code is accompanied by tests written for the [pytest](https://pytest.org) li
 To run the tests after making changes, restart the docker compose:
 
 ```
-docker-compose down
-docker-compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
+docker compose down
+docker compose -f docker compose.yml -f docker compose.test.yml up -d --build
 ```
 
 then wait for the elastic search container to come up (use
-`docker-compose logs -f` to see it if you like), then execute the
+`docker compose logs -f` to see it if you like), then execute the
 following (from the top-level directory of this repo):
