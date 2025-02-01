@@ -11,12 +11,13 @@ import elasticsearch.helpers
 from .break_down import process_file
 from .prepare_index import create_index
 
-INDEX_NAME = "oracc"
+INDEX_NAME = "building"
+DESTINATION_INDEX_NAME = "oracc"
 
 LOGGER = logging.getLogger("bulk_upload")
 
 
-def upload_entries(es, entries):
+def upload_entries(es: Elasticsearch, entries):
     for entry in entries:
         entry["_index"] = INDEX_NAME
         entry["completions"] = [entry["cf"], entry["gw"]]
@@ -123,3 +124,19 @@ if __name__ == "__main__":
         print(f"going to upload {file}")
         # Break down into individual entries and upload to ES using the bulk API
         upload_file(es, file)
+
+    es.indices.delete(
+        index=DESTINATION_INDEX_NAME,
+        ignore_unavailable=True
+    )
+    es.indices.put_settings(
+        index=INDEX_NAME,
+        settings={"index.blocks.write": True}
+    )
+    es.indices.clone(
+        index=INDEX_NAME,
+        target=DESTINATION_INDEX_NAME
+    )
+    es.indices.delete(
+        index=INDEX_NAME
+    )
