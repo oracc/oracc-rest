@@ -24,6 +24,7 @@ services:
     - xpack.security.enabled=false
     - http.cors.enabled=true
     - http.cors.allow-origin=/http:\/\/(elasticsearch|localhost):9200/
+    - "ES_JAVA_OPTS=-Xms4g -Xmx8g"
     volumes:
     - es_data:/usr/share/elasticsearch/data:rw
 

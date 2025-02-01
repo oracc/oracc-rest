@@ -39,7 +39,7 @@ It is best practice to work within a python virtual environment for both develop
 
 ```sh
 # run the following from the top-level directory of your python project
-python3 -m venv env-name # creates the environment
+python3 -m venv venv # creates the environment
 source venv/bin/activate # activates the environment
 deactivate # deactivates the environment
 ```
@@ -260,3 +260,14 @@ environment and run `pytest`.
 . .venv/bin/activate
 pytest
 ```
+
+## Examining memory usage in elasticsearch
+
+```
+$ docker-compose exec elasticsearch bash
+elasticsearch@7b6eb4ff0455:~$ curl "localhost:9200/_nodes/stats?filter_path=nodes.*.jvm.mem.pools.old"
+{"nodes":{"w9Hm2YGAT7iorZM3JTYlUA":{"jvm":{"mem":{"pools":{"old":{"used_in_bytes":29128704,"max_in_bytes":8589934592,"peak_used_in_bytes":41711616,"peak_max_in_bytes":8589934592}}}}}}}
+elasticsearch@7b6eb4ff0455:~$ exit
+```
+
+This shows us 291M used, 8.5G max.
