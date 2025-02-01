@@ -1,4 +1,3 @@
-version: "3.8"
 services:
   oracc-api:
     container_name: oracc-api

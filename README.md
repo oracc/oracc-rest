@@ -247,11 +247,16 @@ The code is accompanied by tests written for the [pytest](https://pytest.org) li
 
 To run the tests after making changes, restart the docker compose:
 
-```
+```sh
 docker compose down
-docker compose -f docker compose.yml -f docker compose.test.yml up -d --build
+docker compose -f docker-compose.yml -f docker-compose.test.yml up -d --build
 ```
 
 then wait for the elastic search container to come up (use
-`docker compose logs -f` to see it if you like), then execute the
-following (from the top-level directory of this repo):
+`docker compose logs -f` to see it if you like), then enter the virtual
+environment and run `pytest`.
+
+```sh
+. .venv/bin/activate
+pytest
+```
