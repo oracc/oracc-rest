@@ -29,6 +29,16 @@ class ESearch:
         results = search.scan()
         return results
 
+    def subquery(self, word):
+        """
+        Create a query for a single word of the phrase entered.
+        """
+        if "*" in word:
+            # An "intervals" query prefers queries that match in the smallest possible interval.
+            return Q("intervals",  cf={"wildcard": {"pattern": word}})
+        # A "multi_match" query matches across multiple fields.
+        return Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase_prefix")
+
     def _execute_general(
         self, phrase, sort_by="gw", direction="asc", count=None, after=None
     ):
@@ -44,7 +54,7 @@ class ESearch:
         # words, so we need to run multiple queries and combine them.
         # See Issue #17 for more details.
         subqueries = [
-            Q("multi_match", query=word, fields=self.FIELDNAMES, type="phrase_prefix")
+            self.subquery(word)
             for word in phrase.split()
         ]
 
