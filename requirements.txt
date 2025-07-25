@@ -7,7 +7,7 @@ elastic-transport==8.15.1
 elasticsearch==8.17.1
 elasticsearch-dsl==8.17.1
 exceptiongroup==1.2.2
-Flask==3.1.0
+Flask==3.1.1
 Flask-Cors==5.0.0
 Flask-RESTful==0.3.10
 gunicorn==23.0.0
