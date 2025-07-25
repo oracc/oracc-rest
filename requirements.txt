@@ -7,14 +7,14 @@ elastic-transport==8.15.1
 elasticsearch==8.17.1
 elasticsearch-dsl==8.17.1
 exceptiongroup==1.2.2
-Flask==3.1.0
+Flask==3.1.1
 Flask-Cors==6.0.1
 Flask-RESTful==0.3.10
 gunicorn==23.0.0
 importlib_metadata==8.6.1
 iniconfig==2.0.0
 itsdangerous==2.2.0
-Jinja2==3.1.5
+Jinja2==3.1.6
 MarkupSafe==3.0.2
 packaging==24.2
 pluggy==1.5.0
